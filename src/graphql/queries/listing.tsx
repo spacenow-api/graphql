@@ -2,7 +2,6 @@ import {
   GraphQLList as List
 } from 'graphql';
 
-
 import Listing from '../types/listing';
 
 const listing = {
