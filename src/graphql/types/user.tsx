@@ -1,6 +1,7 @@
 import {
   GraphQLObjectType as ObjectType,
-  GraphQLString as StringType,
+  GraphQLBoolean as BooleanType,
+  GraphQLString as StringType
 } from 'graphql';
 
 export default new ObjectType({
@@ -8,8 +9,8 @@ export default new ObjectType({
   description: "Represents User",
   fields: {
     id: { type: StringType },
-    name: { type: StringType },
     email: { type: StringType },
-    password: { type: StringType }
+    password: { type: StringType },
+    emailConfirmed: { type: BooleanType }
   }
 });

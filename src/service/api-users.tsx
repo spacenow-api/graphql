@@ -18,6 +18,10 @@ class UsersAPI extends RESTDataSource {
     return this.get(`${this.path}/${id}`);
   }
 
+  createUser = async (user: IUser): Promise<IUser> => {
+    return this.post(`${this.path}`, user);
+  }
+
 }
 
 export default UsersAPI;

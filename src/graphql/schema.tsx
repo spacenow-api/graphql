@@ -7,6 +7,7 @@ import { getAllListings, getListing } from './queries/listings';
 import { getAllUsers, getUser } from './queries/users';
 import { getAllBookings, getBooking } from './queries/bookings';
 
+import { createUser } from './mutations/users';
 import login from './mutations/auth/login';
 
 const schema = new Schema({
@@ -24,7 +25,8 @@ const schema = new Schema({
   mutation: new ObjectType({
     name: 'Mutation',
     fields: {
-      login
+      login,
+      createUser
     }
   })
 });
