@@ -7,7 +7,7 @@ class AuthAPI extends RESTDataSource {
 
   constructor() {
     super();
-    this.baseURL = 'http://localhost:4000';
+    this.baseURL = 'http://localhost:4001';
   }
 
   register = async (user: IUser) => {
@@ -16,10 +16,6 @@ class AuthAPI extends RESTDataSource {
 
   login = async (auth: IAuth): Promise<IUser> => {
     return this.post(`${this.path}/signin`, auth);
-  }
-
-  logout = async () => {
-    return this.post(`${this.path}/logout`);
   }
 
 }

@@ -1,4 +1,5 @@
 import { RESTDataSource } from 'apollo-datasource-rest';
+import { IBooking } from 'interfaces';
 
 class BookingsAPI extends RESTDataSource {
 
@@ -6,14 +7,14 @@ class BookingsAPI extends RESTDataSource {
 
   constructor() {
     super();
-    this.baseURL = 'http://localhost:4000';
+    this.baseURL = 'http://localhost:4001';
   }
 
-  getAllBookings = async () => {
+  getAllBookings = async (): Promise<[IBooking]> => {
     return this.get(`${this.path}`);
   }
 
-  getBooking = async (id: string) => {
+  getBooking = async (id: string): Promise<IBooking> => {
     return this.get(`${this.path}/${id}`);
   }
 

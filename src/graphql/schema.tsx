@@ -3,17 +3,22 @@ import {
   GraphQLObjectType as ObjectType,
 } from 'graphql';
 
-// Queries
-import listing from './queries/listing';
+import { getAllListings, getListing } from './queries/listings';
+import { getAllUsers, getUser } from './queries/users';
+import { getAllBookings, getBooking } from './queries/bookings';
 
-// Mutation
 import login from './mutations/auth/login';
 
 const schema = new Schema({
   query: new ObjectType({
     name: 'Query',
     fields: {
-      listing
+      getAllListings,
+      getListing,
+      getAllUsers,
+      getUser,
+      getAllBookings,
+      getBooking
     }
   }),
   mutation: new ObjectType({

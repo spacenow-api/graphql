@@ -1,7 +1,9 @@
 import App from './App';
  
 const app = new App(
-  4002,
+  [],
+  4000,
+  '0.0.0.0',
 );
  
 app.listen();

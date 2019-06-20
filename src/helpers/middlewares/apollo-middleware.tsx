@@ -1,7 +1,9 @@
 import { ApolloServer } from 'apollo-server-express';
 
-import BookingsAPI from '../../service/api-booking'
 import AuthAPI from '../../service/api-authentication'
+import BookingsAPI from '../../service/api-bookings'
+import ListingsAPI from '../../service/api-listings'
+import UsersAPI from '../../service/api-users'
 
 import schema from "../../graphql/schema"
 
@@ -11,8 +13,10 @@ export default (): ApolloServer => {
     schema,
     dataSources: () => {
       return {
-        bookingsAPI: new BookingsAPI(),
         authAPI: new AuthAPI(),
+        bookingsAPI: new BookingsAPI(),
+        listingsAPI: new ListingsAPI(),
+        usersAPI: new UsersAPI(),
       };
     }
   })
