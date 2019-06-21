@@ -12,7 +12,7 @@ const login = {
   args: {
     email: { type: new NonNull(StringType) },
     password: { type: new NonNull(StringType) },
-    emailConfirmed: { type: new NonNull(BooleanType) }
+    isEmailConfirmed: { type: new NonNull(BooleanType) }
   },
 
   async resolve(_source: any, _args: any, { dataSources }: any) {

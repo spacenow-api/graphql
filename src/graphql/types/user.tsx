@@ -11,6 +11,6 @@ export default new ObjectType({
     id: { type: StringType },
     email: { type: StringType },
     password: { type: StringType },
-    emailConfirmed: { type: BooleanType }
+    isEmailConfirmed: { type: BooleanType }
   }
 });
