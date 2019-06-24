@@ -1,7 +1,8 @@
 import {
   GraphQLNonNull as NonNull,
   GraphQLInt as IntType,
-  GraphQLString as StringType
+  GraphQLString as StringType,
+  GraphQLBoolean as BooleanType
 } from "graphql";
 
 import { Category } from "../../types";
@@ -12,7 +13,8 @@ const createCategory = {
   args: {
     name: { type: new NonNull(StringType) },  
     parentId: { type: StringType },
-    order: { type: new NonNull(IntType) }
+    order: { type: new NonNull(IntType) },
+    isActive: { type: new NonNull(BooleanType) }
   },
 
   async resolve(_source: any, _args: any, { dataSources }: any) {

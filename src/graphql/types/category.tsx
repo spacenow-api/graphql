@@ -3,6 +3,7 @@ import {
   GraphQLString as StringType,
   GraphQLInt as IntType,
   GraphQLList as List,
+  GraphQLBoolean as BooleanType,
   GraphQLNonNull as NonNull
 } from 'graphql';
 
@@ -16,6 +17,7 @@ const Category: ObjectType = new ObjectType({
     slug: { type: new NonNull(StringType) },
     parentId: { type: StringType },
     order: { type: new NonNull(IntType) },
+    isActive: { type: new NonNull(BooleanType) },
     children: { 
       get type() { return new List(Category) }
     }
