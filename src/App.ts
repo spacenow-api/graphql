@@ -1,5 +1,6 @@
 import express, { Application } from 'express';
 import apolloMiddleware from './helpers/middlewares/apollo-middleware';
+import loggerMiddleware from './helpers/middlewares/logger-middleware';
 import cors from 'cors';
 
 class App {
@@ -12,14 +13,15 @@ class App {
     this.port = port;
     this.host = host;
     this.initializeCORS();
-    this.initializeGraphQL();
+    this.initializeMiddlewares();
   }
 
   private initializeCORS(): void {
     this.app.use(cors())
   }
 
-  private initializeGraphQL(): void {
+  private initializeMiddlewares(): void {
+    this.app.use(loggerMiddleware);
     apolloMiddleware().applyMiddleware({ app: this.app });
   }
 

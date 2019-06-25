@@ -1,4 +1,4 @@
-import { RESTDataSource } from 'apollo-datasource-rest';
+import { RESTDataSource, RequestOptions } from 'apollo-datasource-rest';
 import { IUser } from '../interfaces';
 
 class UsersAPI extends RESTDataSource {
@@ -7,6 +7,10 @@ class UsersAPI extends RESTDataSource {
   constructor() {
     super();
     this.baseURL = 'http://localhost:4001/gateway';
+  }
+
+  willSendRequest(request: RequestOptions) {
+    request.headers.set('Authorization', this.context.token);
   }
 
   getAllUsers = async (): Promise<[IUser]> => {

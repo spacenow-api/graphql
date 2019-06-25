@@ -19,6 +19,11 @@ export default (): ApolloServer => {
         usersAPI: new UsersAPI(),
         categoriesAPI: new CategoriesAPI()
       };
-    }
+    },
+    context: ({ req }) => {
+      return {
+        token: req.headers.authorization,
+      };
+    },
   });
 };
