@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev ./src/server.ts",
-    "start": "ts-node ./src/server.ts"
+    "start": "ts-node ./src/server.ts",
+    "debug": "tsnd --inspect --respawn src/server.ts"
   },
   "dependencies": {
     "apollo-datasource-rest": "~0.5.0",
