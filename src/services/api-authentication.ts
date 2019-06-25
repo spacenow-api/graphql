@@ -1,12 +1,13 @@
 import { RESTDataSource } from 'apollo-datasource-rest';
+
 import { IAuth, IUser } from '../interfaces';
 
 class AuthAPI extends RESTDataSource {
   private path = '/auth';
 
-  constructor() {
+  constructor(gatewayHost: string) {
     super();
-    this.baseURL = 'http://localhost:4001/gateway';
+    this.baseURL = gatewayHost;
   }
 
   register = async (user: IUser) => {

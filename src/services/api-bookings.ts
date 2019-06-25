@@ -1,12 +1,13 @@
 import { RESTDataSource } from 'apollo-datasource-rest';
-import { IBooking } from 'interfaces';
+
+import { IBooking } from '../interfaces';
 
 class BookingsAPI extends RESTDataSource {
   private path = '/bookings';
 
-  constructor() {
+  constructor(gatewayHost: string) {
     super();
-    this.baseURL = 'http://localhost:4001/gateway';
+    this.baseURL = gatewayHost;
   }
 
   getAllBookings = async (): Promise<[IBooking]> => {

@@ -3,9 +3,9 @@ import { RESTDataSource } from 'apollo-datasource-rest';
 class PostsAPI extends RESTDataSource {
   private path = '/posts';
 
-  constructor() {
+  constructor(gatewayHost: string) {
     super();
-    this.baseURL = 'http://localhost:4001/gateway';
+    this.baseURL = gatewayHost;
   }
 
   getAllPosts = async () => {
