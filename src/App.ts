@@ -1,12 +1,12 @@
-import express, { Application } from "express";
-import apolloMiddleware from "./helpers/middlewares/apollo-middleware";
+import express, { Application } from 'express';
+import apolloMiddleware from './helpers/middlewares/apollo-middleware';
 
 class App {
   public app: Application;
   public port: number;
   public host: string;
 
-  constructor(controllers: any, port: number, host: string) {
+  constructor(port: number, host: string) {
     this.app = express();
     this.port = port;
     this.host = host;
@@ -14,7 +14,7 @@ class App {
   }
 
   private initializeGraphQL(): void {
-    apolloMiddleware().applyMiddleware({ app: this.app })
+    apolloMiddleware().applyMiddleware({ app: this.app });
   }
 
   public listen(): void {
