@@ -8,16 +8,19 @@ import CategoriesAPI from '../../services/api-categories';
 
 import schema from '../../graphql/schema';
 
+const GATEWAY_HOST = process.env.GATEWAY_HOST;
+
 export default (): ApolloServer => {
+  const gatewayHost = `${GATEWAY_HOST}/gateway`;
   return new ApolloServer({
     schema,
     dataSources: () => {
       return {
-        authAPI: new AuthAPI(),
-        bookingsAPI: new BookingsAPI(),
-        listingsAPI: new ListingsAPI(),
-        usersAPI: new UsersAPI(),
-        categoriesAPI: new CategoriesAPI()
+        authAPI: new AuthAPI(gatewayHost),
+        bookingsAPI: new BookingsAPI(gatewayHost),
+        listingsAPI: new ListingsAPI(gatewayHost),
+        usersAPI: new UsersAPI(gatewayHost),
+        categoriesAPI: new CategoriesAPI(gatewayHost)
       };
     },
     context: ({ req }) => {

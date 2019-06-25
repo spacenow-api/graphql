@@ -1,12 +1,13 @@
 import { RESTDataSource } from 'apollo-datasource-rest';
+
 import { ICategory } from '../interfaces';
 
 class CategoriesAPI extends RESTDataSource {
   private path = '/categories';
 
-  constructor() {
+  constructor(gatewayHost: string) {
     super();
-    this.baseURL = 'http://localhost:4001/gateway';
+    this.baseURL = gatewayHost;
   }
 
   getRootCategories = async (): Promise<[ICategory]> => {

@@ -4,9 +4,9 @@ import { IUser } from '../interfaces';
 class UsersAPI extends RESTDataSource {
   private path = '/users';
 
-  constructor() {
+  constructor(gatewayHost: string) {
     super();
-    this.baseURL = 'http://localhost:4001/gateway';
+    this.baseURL = gatewayHost;
   }
 
   willSendRequest(request: RequestOptions) {
