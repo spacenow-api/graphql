@@ -1,16 +1,12 @@
-import { RESTDataSource, RequestOptions } from 'apollo-datasource-rest';
 import { IUser } from '../interfaces';
+import PersonalizationAPI from '../interfaces/personalization.inteface';
 
-class UsersAPI extends RESTDataSource {
+class UsersAPI extends PersonalizationAPI {
   private path = '/users';
 
   constructor(gatewayHost: string) {
     super();
     this.baseURL = gatewayHost;
-  }
-
-  willSendRequest(request: RequestOptions) {
-    request.headers.set('Authorization', this.context.token);
   }
 
   getAllUsers = async (): Promise<[IUser]> => {

@@ -1,8 +1,7 @@
-import { RESTDataSource } from 'apollo-datasource-rest';
-
 import { IAuth, IUser } from '../interfaces';
+import PersonalizationAPI from '../interfaces/personalization.inteface';
 
-class AuthAPI extends RESTDataSource {
+class AuthAPI extends PersonalizationAPI {
   private path = '/auth';
 
   constructor(gatewayHost: string) {

@@ -1,8 +1,7 @@
-import { RESTDataSource } from 'apollo-datasource-rest';
-
 import { IBooking } from '../interfaces';
+import PersonalizationAPI from '../interfaces/personalization.inteface';
 
-class BookingsAPI extends RESTDataSource {
+class BookingsAPI extends PersonalizationAPI {
   private path = '/bookings';
 
   constructor(gatewayHost: string) {

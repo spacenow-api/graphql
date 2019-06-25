@@ -1,6 +1,6 @@
-import { RESTDataSource } from 'apollo-datasource-rest';
+import PersonalizationAPI from '../interfaces/personalization.inteface';
 
-class ListingsAPI extends RESTDataSource {
+class ListingsAPI extends PersonalizationAPI {
   private path = '/listings';
 
   constructor(gatewayHost: string) {
