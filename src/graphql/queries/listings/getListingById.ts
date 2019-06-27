@@ -1,16 +1,22 @@
 import { GraphQLInt } from 'graphql';
 
-import { Listing } from '../../types';
+import { OutputListingByIdType } from '../../types/listing';
 
 const getListingById = {
-  type: Listing,
+  type: OutputListingByIdType,
 
   args: {
     id: { type: GraphQLInt }
   },
 
   async resolve(_: any, args: any, { dataSources }: any) {
-    return await dataSources.listingsAPI.getListingById(args.id);
+    const api = dataSources.listingsAPI;
+    const listingObj = await api.getListingById(args.id);
+    const listingDataObj = await api.getListingDataByListingId(args.id);
+    return {
+      ...listingObj,
+      listingData: listingDataObj
+    };
   }
 };
 

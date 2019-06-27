@@ -1,7 +1,5 @@
 import PersonalizationAPI from '../interfaces/personalization.inteface';
 
-const PATH = '/listings';
-
 class ListingsAPI extends PersonalizationAPI {
   constructor(gatewayHost: string) {
     super();
@@ -9,7 +7,11 @@ class ListingsAPI extends PersonalizationAPI {
   }
 
   getListingById = async (id: string) => {
-    return this.get(`${PATH}/${id}`);
+    return this.get(`/listings/${id}`);
+  };
+
+  getListingDataByListingId = async (listingId: string) => {
+    return this.get(`/listings/data/${listingId}`);
   };
 }
 
