@@ -1,9 +1,9 @@
 import { GraphQLInt } from 'graphql';
 
-import { OutputListingByIdType } from '../../types/listing';
+import { OutputListingType } from '../../types/listing';
 
 const getListingById = {
-  type: OutputListingByIdType,
+  type: OutputListingType,
 
   args: {
     id: { type: GraphQLInt }

@@ -7,8 +7,8 @@ import {
   GraphQLList as List
 } from 'graphql';
 
-const OutputListingDataByListingIdType = new ObjectType({
-  name: 'OutputListingDataByListingIdType',
+const ListingDataType = new ObjectType({
+  name: 'ListingDataType',
   fields: {
     listingId: { type: IntType },
     accessType: { type: StringType },
@@ -35,8 +35,8 @@ const OutputListingDataByListingIdType = new ObjectType({
   }
 });
 
-const OutputListingByIdType = new ObjectType({
-  name: 'OutputListingByIdType',
+const OutputListingType = new ObjectType({
+  name: 'OutputListingType',
   fields: {
     id: { type: IntType },
     userId: { type: StringType },
@@ -50,8 +50,8 @@ const OutputListingByIdType = new ObjectType({
     updatedAt: { type: StringType },
     createdAt: { type: StringType },
     count: { type: IntType },
-    listingData: { type: OutputListingDataByListingIdType }
+    listingData: { type: ListingDataType }
   }
 });
 
-export { OutputListingByIdType };
+export { OutputListingType };
