@@ -9,7 +9,7 @@ const getListingById = {
     id: { type: GraphQLInt }
   },
 
-  async resolve(req: any, args: any, { dataSources }: any) {
+  async resolve(_: any, args: any, { dataSources }: any) {
     return await dataSources.listingsAPI.getListingById(args.id);
   }
 };
