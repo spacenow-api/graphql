@@ -1,7 +1,3 @@
-import getAllListings from './getAllListings';
-import getListing from './getListing';
+import getListingById from './getListingById';
 
-export {
-  getAllListings,
-  getListing
-};
+export { getListingById };

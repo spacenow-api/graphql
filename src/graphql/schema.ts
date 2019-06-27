@@ -1,9 +1,9 @@
 import {
   GraphQLSchema as Schema,
-  GraphQLObjectType as ObjectType,
+  GraphQLObjectType as ObjectType
 } from 'graphql';
 
-import { getAllListings, getListing } from './queries/listings';
+import { getListingById } from './queries/listings';
 import { getAllUsers, getUser } from './queries/users';
 import { getAllBookings, getBooking } from './queries/bookings';
 import { getRootCategories, getCategory } from './queries/categories';
@@ -16,13 +16,12 @@ const schema = new Schema({
   query: new ObjectType({
     name: 'Query',
     fields: {
-      getAllListings,
-      getListing,
+      getListingById,
       getAllUsers,
       getUser,
       getAllBookings,
       getBooking,
-      getRootCategories, 
+      getRootCategories,
       getCategory
     }
   }),

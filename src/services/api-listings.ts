@@ -1,19 +1,15 @@
 import PersonalizationAPI from '../interfaces/personalization.inteface';
 
-class ListingsAPI extends PersonalizationAPI {
-  private path = '/listings';
+const PATH = '/listings';
 
+class ListingsAPI extends PersonalizationAPI {
   constructor(gatewayHost: string) {
     super();
     this.baseURL = gatewayHost;
   }
 
-  getAllListings = async () => {
-    return this.get(`${this.path}`);
-  };
-
-  getListing = async (id: string) => {
-    return this.get(`${this.path}/${id}`);
+  getListingById = async (id: string) => {
+    return this.get(`${PATH}/${id}`);
   };
 }
 

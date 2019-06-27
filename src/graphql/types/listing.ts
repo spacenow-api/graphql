@@ -5,8 +5,8 @@ import {
 
 export default new ObjectType({
   name: 'Listing',
-  description: "Represents Listing",
+  description: 'Represents Listings (Spaces)',
   fields: {
-    listingId: { type: IntType }
+    id: { type: IntType }
   }
 });

@@ -1,7 +1,8 @@
 import express, { Application } from 'express';
+import cors from 'cors';
+
 import apolloMiddleware from './helpers/middlewares/apollo-middleware';
 import loggerMiddleware from './helpers/middlewares/logger-middleware';
-import cors from 'cors';
 
 class App {
   public app: Application;

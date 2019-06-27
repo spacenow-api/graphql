@@ -25,8 +25,8 @@ export default (): ApolloServer => {
     },
     context: ({ req }) => {
       return {
-        token: req.headers.authorization,
+        token: req.headers.authorization
       };
-    },
+    }
   });
 };
