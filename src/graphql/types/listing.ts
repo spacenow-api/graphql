@@ -9,6 +9,38 @@ import {
 
 import { OutputLocationType } from './location';
 
+const ListSettingsType = new ObjectType({
+  name: 'ListSettingsType',
+  fields: {
+    id: { type: IntType },
+    typeId: { type: IntType },
+    itemName: { type: StringType },
+    otherItemName: { type: StringType },
+    description: { type: StringType },
+    maximum: { type: StringType },
+    minimum: { type: StringType },
+    startValue: { type: StringType },
+    endValue: { type: StringType },
+    step: { type: StringType },
+    isEnable: { type: StringType },
+    photo: { type: StringType },
+    photoType: { type: StringType },
+    isSpecification: { type: BooleanType },
+    createdAt: { type: StringType },
+    updatedAt: { type: StringType },
+    specData: { type: StringType }
+  }
+});
+
+const ListSettingsParentType = new ObjectType({
+  name: 'ListSettingsParentType',
+  fields: {
+    id: { type: IntType },
+    category: { type: ListSettingsType },
+    subcategory: { type: ListSettingsType }
+  }
+});
+
 const ListingDataType = new ObjectType({
   name: 'ListingDataType',
   fields: {
@@ -53,7 +85,8 @@ const OutputListingType = new ObjectType({
     createdAt: { type: StringType },
     count: { type: IntType },
     listingData: { type: ListingDataType },
-    location: { type: OutputLocationType }
+    location: { type: OutputLocationType },
+    listSettingsParent: { type: ListSettingsParentType }
   }
 });
 
