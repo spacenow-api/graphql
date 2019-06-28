@@ -10,12 +10,16 @@ const getListingById = {
   },
 
   async resolve(_: any, args: any, { dataSources }: any) {
-    const api = dataSources.listingsAPI;
-    const listingObj = await api.getListingById(args.id);
-    const listingDataObj = await api.getListingDataByListingId(args.id);
+    const { listingsAPI, locationsAPI } = dataSources;
+    const listingObj = await listingsAPI.getListingById(args.id);
+    const listingDataObj = await listingsAPI.getListingDataByListingId(args.id);
+    const locationObj = await locationsAPI.getLocationById(
+      listingObj.locationId
+    );
     return {
       ...listingObj,
-      listingData: listingDataObj
+      listingData: listingDataObj,
+      location: locationObj
     };
   }
 };

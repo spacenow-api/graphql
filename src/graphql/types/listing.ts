@@ -7,6 +7,8 @@ import {
   GraphQLList as List
 } from 'graphql';
 
+import { OutputLocationType } from './location';
+
 const ListingDataType = new ObjectType({
   name: 'ListingDataType',
   fields: {
@@ -50,7 +52,8 @@ const OutputListingType = new ObjectType({
     updatedAt: { type: StringType },
     createdAt: { type: StringType },
     count: { type: IntType },
-    listingData: { type: ListingDataType }
+    listingData: { type: ListingDataType },
+    location: { type: OutputLocationType }
   }
 });
 

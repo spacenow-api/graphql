@@ -5,6 +5,7 @@ import BookingsAPI from '../../services/api-bookings';
 import ListingsAPI from '../../services/api-listings';
 import UsersAPI from '../../services/api-users';
 import CategoriesAPI from '../../services/api-categories';
+import LocationsAPI from '../../services/api-locations';
 
 import schema from '../../graphql/schema';
 
@@ -20,7 +21,8 @@ export default (): ApolloServer => {
         bookingsAPI: new BookingsAPI(gatewayHost),
         listingsAPI: new ListingsAPI(gatewayHost),
         usersAPI: new UsersAPI(gatewayHost),
-        categoriesAPI: new CategoriesAPI(gatewayHost)
+        categoriesAPI: new CategoriesAPI(gatewayHost),
+        locationsAPI: new LocationsAPI(gatewayHost)
       };
     },
     context: ({ req }) => {
