@@ -1,14 +1,7 @@
 import Auth, { Token } from './Auth';
 import Booking from './Booking';
 import Category from './Category';
-import Listing from './Listing';
 import User from './User';
+import { OutputListingType } from './listing';
 
-export {
-  Auth,
-  Booking,
-  Category,
-  Listing,
-  Token,
-  User
-}
+export { Auth, Booking, Category, Token, User, OutputListingType };

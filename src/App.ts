@@ -1,7 +1,8 @@
 import express, { Application } from 'express';
+import cors from 'cors';
+
 import apolloMiddleware from './helpers/middlewares/apollo-middleware';
 import loggerMiddleware from './helpers/middlewares/logger-middleware';
-import cors from 'cors';
 
 class App {
   public app: Application;
@@ -17,7 +18,7 @@ class App {
   }
 
   private initializeCORS(): void {
-    this.app.use(cors())
+    this.app.use(cors());
   }
 
   private initializeMiddlewares(): void {
@@ -27,7 +28,7 @@ class App {
 
   public listen(): void {
     this.app.listen(this.port, this.host, () => {
-      console.log(`App listening on the port ${this.host}:${this.port}`);
+      console.log(`Server * GraphQL * listening on ${this.host}:${this.port}`);
     });
   }
 }
