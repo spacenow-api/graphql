@@ -6,7 +6,11 @@ import {
 import { getListingById } from './queries/listings';
 import { getAllUsers, getUser } from './queries/users';
 import { getAllBookings, getBooking } from './queries/bookings';
-import { getRootCategories, getCategory } from './queries/categories';
+import {
+  getRootCategories,
+  getCategory,
+  getCategoriesLegacy
+} from './queries/categories';
 
 import { createUser } from './mutations/users';
 import { createCategory } from './mutations/categories';
@@ -22,7 +26,8 @@ const schema = new Schema({
       getAllBookings,
       getBooking,
       getRootCategories,
-      getCategory
+      getCategory,
+      getCategoriesLegacy
     }
   }),
   mutation: new ObjectType({
