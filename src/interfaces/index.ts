@@ -1,6 +1,7 @@
 import IAuth from './auth.interface';
 import IUser from './user.interface';
 import IBooking from './booking.interface';
+import { ILocationRequest, ILocationResponse } from './location.interface';
 import {
   ICategory,
   ICategoryLegacy,
@@ -15,5 +16,7 @@ export {
   IUser,
   ICategoryLegacy,
   ISubCategoryLegacy,
-  IBookingPeriodLegacy
+  IBookingPeriodLegacy,
+  ILocationRequest,
+  ILocationResponse
 };

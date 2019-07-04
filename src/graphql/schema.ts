@@ -16,6 +16,7 @@ import {
 import { createUser } from './mutations/users';
 import { createCategory } from './mutations/categories';
 import login from './mutations/auth/login';
+import { getOrCreateLocation } from './mutations/locations';
 
 const schema = new Schema({
   query: new ObjectType({
@@ -37,7 +38,8 @@ const schema = new Schema({
     fields: {
       login,
       createUser,
-      createCategory
+      createCategory,
+      getOrCreateLocation
     }
   })
 });
