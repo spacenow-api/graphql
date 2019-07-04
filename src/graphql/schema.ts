@@ -3,6 +3,7 @@ import {
   GraphQLObjectType as ObjectType
 } from 'graphql';
 
+import { getLocationById } from './queries/locations';
 import { getListingById } from './queries/listings';
 import { getAllUsers, getUser } from './queries/users';
 import { getAllBookings, getBooking } from './queries/bookings';
@@ -27,7 +28,8 @@ const schema = new Schema({
       getBooking,
       getRootCategories,
       getCategory,
-      getCategoriesLegacy
+      getCategoriesLegacy,
+      getLocationById
     }
   }),
   mutation: new ObjectType({
