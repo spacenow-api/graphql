@@ -17,6 +17,14 @@ class ListingsAPI extends PersonalizationAPI {
   getListingSettingsByListingId = async (listingId: string) => {
     return this.get(`/listings/settings/${listingId}`);
   };
+
+  createDraft = async (listing: any) => {
+    return this.post(`/listings/draft`, listing);
+  };
+
+  update = async (listing: any) => {
+    return this.put(`/listings/update`, listing);
+  };
 }
 
 export default ListingsAPI;

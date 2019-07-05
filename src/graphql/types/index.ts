@@ -3,6 +3,7 @@ import Booking from './Booking';
 import { Category, CategoryLegacyType } from './Category';
 import User from './User';
 import { OutputListingType } from './listing';
+import { SuccessOutput } from './mutation';
 
 export {
   Auth,
@@ -11,5 +12,6 @@ export {
   Token,
   User,
   OutputListingType,
-  CategoryLegacyType
+  CategoryLegacyType,
+  SuccessOutput
 };
