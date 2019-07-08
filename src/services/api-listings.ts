@@ -1,4 +1,5 @@
 import PersonalizationAPI from '../interfaces/personalization.inteface';
+import { IDraftRequest } from '../interfaces/listing.interface';
 
 class ListingsAPI extends PersonalizationAPI {
   constructor(gatewayHost: string) {
@@ -18,7 +19,7 @@ class ListingsAPI extends PersonalizationAPI {
     return this.get(`/listings/settings/${listingId}`);
   };
 
-  createDraft = async (listing: any) => {
+  createDraft = async (listing: IDraftRequest) => {
     return this.post(`/listings/draft`, listing);
   };
 

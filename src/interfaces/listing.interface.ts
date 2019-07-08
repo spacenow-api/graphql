@@ -1,11 +1,11 @@
 interface IDraftRequest {
+  userId: string;
   locationId: number;
   listSettingsParentId: number;
   bookingPeriod?: string;
   title?: string;
   coverPhotoId?: number;
   quantity?: number;
-  userId: string;
 }
 
 interface IAccessHoursRequest {
@@ -54,4 +54,42 @@ interface IUpdateRequest {
   listingRules?: Array<number>;
 }
 
-export { IDraftRequest, IUpdateRequest };
+interface IListingResponse {
+  id: number;
+  locationId: number;
+  userId: string;
+  listSettingsParentId: number;
+  bookingPeriod: string;
+  roomType: string;
+  houseType: string;
+  residenceType: string;
+  bedrooms: string;
+  buildingSize: string;
+  bedType: string;
+  beds: number;
+  personCapacity: number;
+  bathrooms: number;
+  bathroomType: string;
+  country: string;
+  street: string;
+  buildingName: string;
+  city: string;
+  state: string;
+  zipcode: string;
+  lat: string;
+  lng: string;
+  isMapTouched: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+  title: string;
+  description: string;
+  coverPhoto: number;
+  bookingType: string;
+  isPublished: boolean;
+  isReady: boolean;
+  coverPhotoId: number;
+  quantity: number;
+  status: string;
+}
+
+export { IDraftRequest, IUpdateRequest, IListingResponse };
