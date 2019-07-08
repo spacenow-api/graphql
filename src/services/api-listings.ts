@@ -1,5 +1,5 @@
 import PersonalizationAPI from '../interfaces/personalization.inteface';
-import { IDraftRequest } from '../interfaces/listing.interface';
+import { IDraftRequest, IUpdateRequest } from '../interfaces/listing.interface';
 
 class ListingsAPI extends PersonalizationAPI {
   constructor(gatewayHost: string) {
@@ -23,7 +23,7 @@ class ListingsAPI extends PersonalizationAPI {
     return this.post(`/listings/draft`, listing);
   };
 
-  update = async (listing: any) => {
+  update = async (listing: IUpdateRequest) => {
     return this.put(`/listings/update`, listing);
   };
 }

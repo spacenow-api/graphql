@@ -1,4 +1,5 @@
 import {
+  GraphQLInputObjectType as InputObjectType,
   GraphQLObjectType as ObjectType,
   GraphQLInt as IntType,
   GraphQLString as StringType,
@@ -41,6 +42,64 @@ const ListSettingsParentType = new ObjectType({
   }
 });
 
+const OutputListingAccessHoursType = new ObjectType({
+  name: 'OutputListingAccessHoursType',
+  description: 'Represents listing opening hours',
+  fields: {
+    weekday: { type: IntType },
+    allday: { type: BooleanType },
+    openHour: { type: StringType },
+    closeHour: { type: StringType }
+  }
+});
+
+const InputListingAccessHoursType = new InputObjectType({
+  name: 'InputListingAccessHoursType',
+  description: 'Represents listing opening hours',
+  fields: {
+    weekday: { type: IntType },
+    allday: { type: BooleanType },
+    openHour: { type: StringType },
+    closeHour: { type: StringType }
+  }
+});
+
+const OutputListingAccessDaysType = new ObjectType({
+  name: 'OutputListingAccessDaysType',
+  fields: {
+    listingId: { type: IntType },
+    mon: { type: BooleanType },
+    tue: { type: BooleanType },
+    wed: { type: BooleanType },
+    thu: { type: BooleanType },
+    fri: { type: BooleanType },
+    sat: { type: BooleanType },
+    sun: { type: BooleanType },
+    all247: { type: BooleanType },
+    listingAccessHours: {
+      type: new List(OutputListingAccessHoursType)
+    }
+  }
+});
+
+const InputListingAccessDaysType = new InputObjectType({
+  name: 'InputListingAccessDaysType',
+  fields: {
+    listingId: { type: IntType },
+    mon: { type: BooleanType },
+    tue: { type: BooleanType },
+    wed: { type: BooleanType },
+    thu: { type: BooleanType },
+    fri: { type: BooleanType },
+    sat: { type: BooleanType },
+    sun: { type: BooleanType },
+    all247: { type: BooleanType },
+    listingAccessHours: {
+      type: new List(InputListingAccessHoursType)
+    }
+  }
+});
+
 const ListingDataType = new ObjectType({
   name: 'ListingDataType',
   fields: {
@@ -65,6 +124,7 @@ const ListingDataType = new ObjectType({
     listingAmenities: { type: new List(IntType) },
     listingExceptionDates: { type: new List(StringType) },
     listingRules: { type: new List(IntType) },
+    listingAccessDays: { type: OutputListingAccessDaysType },
     status: { type: StringType }
   }
 });
@@ -90,4 +150,4 @@ const OutputListingType = new ObjectType({
   }
 });
 
-export { OutputListingType };
+export { OutputListingType, InputListingAccessDaysType };

@@ -92,4 +92,4 @@ interface IListingResponse {
   status: string;
 }
 
-export { IDraftRequest, IUpdateRequest, IListingResponse };
+export { IDraftRequest, IUpdateRequest, IListingResponse, IAccessDaysRequest };
