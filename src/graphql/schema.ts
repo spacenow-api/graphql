@@ -7,14 +7,14 @@ import { getLocationById } from './queries/locations';
 import { getListingById } from './queries/listings';
 import { getAllUsers, getUser } from './queries/users';
 import { getAllBookings, getBooking } from './queries/bookings';
+import { getAvailabilitiesByListingId } from './queries/availabilities';
+import { getAllHolidays } from './queries/holidays';
 
 import {
   getRootCategories,
   getCategory,
   getCategoriesLegacy
 } from './queries/categories';
-
-import { getAvailabilitiesByListingId } from './queries/availabilities';
 
 import { createUser } from './mutations/users';
 import { createCategory } from './mutations/categories';
@@ -35,7 +35,8 @@ const schema = new Schema({
       getCategory,
       getCategoriesLegacy,
       getLocationById,
-      getAvailabilitiesByListingId
+      getAvailabilitiesByListingId,
+      getAllHolidays
     }
   }),
   mutation: new ObjectType({
