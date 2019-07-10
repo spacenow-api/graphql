@@ -1,4 +1,4 @@
-import { ICategory } from '../interfaces';
+import { ICategory, ICategoryLegacy } from '../interfaces';
 import PersonalizationAPI from '../interfaces/personalization.inteface';
 
 class CategoriesAPI extends PersonalizationAPI {
@@ -19,6 +19,10 @@ class CategoriesAPI extends PersonalizationAPI {
 
   createCategory = async (user: ICategory): Promise<ICategory> => {
     return this.post(`${this.path}`, user);
+  };
+
+  getCategoriesLegacy = async (): Promise<ICategoryLegacy> => {
+    return this.get(`${this.path}/legacy`);
   };
 }
 

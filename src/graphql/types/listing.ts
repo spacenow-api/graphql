@@ -1,4 +1,5 @@
 import {
+  GraphQLInputObjectType as InputObjectType,
   GraphQLObjectType as ObjectType,
   GraphQLInt as IntType,
   GraphQLString as StringType,
@@ -32,12 +33,106 @@ const ListSettingsType = new ObjectType({
   }
 });
 
-const ListSettingsParentType = new ObjectType({
-  name: 'ListSettingsParentType',
+const OutputListingRulesType = new ObjectType({
+  name: 'OutputListingRulesType',
+  fields: {
+    id: { type: IntType },
+    listingId: { type: IntType },
+    listSettingsId: { type: IntType },
+    createdAt: { type: StringType },
+    updatedAt: { type: StringType },
+    settingsData: { type: ListSettingsType },
+  }
+});
+
+const OutputListingAmenitiesType = new ObjectType({
+  name: 'OutputListingAmenitiesType',
+  fields: {
+    id: { type: IntType },
+    listingId: { type: IntType },
+    listSettingsId: { type: IntType },
+    amount: { type: IntType },
+    quantity: { type: IntType },
+    currency: { type: StringType },
+    settings: { type: StringType },
+    type: { type: StringType },
+    createdAt: { type: StringType },
+    updatedAt: { type: StringType },
+    settingsData: { type: ListSettingsType },
+  }
+});
+
+const OutputListSettingsParentType = new ObjectType({
+  name: 'OutputListSettingsParentType',
   fields: {
     id: { type: IntType },
     category: { type: ListSettingsType },
     subcategory: { type: ListSettingsType }
+  }
+});
+
+const OutputListingAccessHoursType = new ObjectType({
+  name: 'OutputListingAccessHoursType',
+  description: 'Represents listing opening hours',
+  fields: {
+    id: { type: IntType },
+    listingAccessDaysId: { type: IntType },
+    weekday: { type: IntType },
+    openHour: { type: StringType },
+    closeHour: { type: StringType },
+    allday: { type: BooleanType },
+    createdAt: { type: StringType },
+    updatedAt: { type: StringType },
+  }
+});
+
+const InputListingAccessHoursType = new InputObjectType({
+  name: 'InputListingAccessHoursType',
+  description: 'Represents listing opening hours',
+  fields: {
+    weekday: { type: IntType },
+    openHour: { type: StringType },
+    closeHour: { type: StringType },
+    allday: { type: BooleanType },
+  }
+});
+
+const OutputListingAccessDaysType = new ObjectType({
+  name: 'OutputListingAccessDaysType',
+  fields: {
+    id: { type: IntType },
+    listingId: { type: IntType },
+    mon: { type: BooleanType },
+    tue: { type: BooleanType },
+    wed: { type: BooleanType },
+    thu: { type: BooleanType },
+    fri: { type: BooleanType },
+    sat: { type: BooleanType },
+    sun: { type: BooleanType },
+    all247: { type: BooleanType },
+    createdAt: { type: StringType },
+    updatedAt: { type: StringType },
+    listingAccessHours: {
+      type: new List(OutputListingAccessHoursType)
+    }
+  }
+});
+
+const InputListingAccessDaysType = new InputObjectType({
+  name: 'InputListingAccessDaysType',
+  fields: {
+    listingId: { type: IntType },
+    mon: { type: BooleanType },
+    tue: { type: BooleanType },
+    wed: { type: BooleanType },
+    thu: { type: BooleanType },
+    fri: { type: BooleanType },
+    sat: { type: BooleanType },
+    sun: { type: BooleanType },
+    all247: { type: BooleanType },
+    listingAccessHours: {
+      type: new List(InputListingAccessHoursType)
+    }
   }
 });
 
@@ -65,6 +160,7 @@ const ListingDataType = new ObjectType({
     listingAmenities: { type: new List(IntType) },
     listingExceptionDates: { type: new List(StringType) },
     listingRules: { type: new List(IntType) },
+    listingAccessDays: { type: OutputListingAccessDaysType },
     status: { type: StringType }
   }
 });
@@ -81,13 +177,16 @@ const OutputListingType = new ObjectType({
     isReady: { type: BooleanType },
     quantity: { type: IntType },
     status: { type: StringType },
-    updatedAt: { type: StringType },
     createdAt: { type: StringType },
+    updatedAt: { type: StringType },
     count: { type: IntType },
     listingData: { type: ListingDataType },
     location: { type: OutputLocationType },
-    listSettingsParent: { type: ListSettingsParentType }
+    amenities: { type: new List(OutputListingAmenitiesType) },
+    rules: { type: new List(OutputListingRulesType) },
+    accessDays: { type: OutputListingAccessDaysType },
+    settingsParent: { type: OutputListSettingsParentType }
   }
 });
 
-export { OutputListingType };
+export { OutputListingType, InputListingAccessDaysType };
