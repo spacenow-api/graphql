@@ -1,13 +1,14 @@
-import { ApolloServer } from 'apollo-server-express';
+import { ApolloServer } from "apollo-server-express";
 
-import AuthAPI from '../../services/api-authentication';
-import BookingsAPI from '../../services/api-bookings';
-import ListingsAPI from '../../services/api-listings';
-import UsersAPI from '../../services/api-users';
-import CategoriesAPI from '../../services/api-categories';
-import LocationsAPI from '../../services/api-locations';
+import AssetsAPI from "../../services/api-assets";
+import AuthAPI from "../../services/api-authentication";
+import BookingsAPI from "../../services/api-bookings";
+import ListingsAPI from "../../services/api-listings";
+import UsersAPI from "../../services/api-users";
+import CategoriesAPI from "../../services/api-categories";
+import LocationsAPI from "../../services/api-locations";
 
-import schema from '../../graphql/schema';
+import schema from "../../graphql/schema";
 
 const GATEWAY_HOST = process.env.GATEWAY_HOST;
 
@@ -17,6 +18,7 @@ export default (): ApolloServer => {
     schema,
     dataSources: () => {
       return {
+        assetsAPI: new AssetsAPI(gatewayHost),
         authAPI: new AuthAPI(gatewayHost),
         bookingsAPI: new BookingsAPI(gatewayHost),
         listingsAPI: new ListingsAPI(gatewayHost),

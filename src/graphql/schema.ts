@@ -1,21 +1,25 @@
 import {
   GraphQLSchema as Schema,
   GraphQLObjectType as ObjectType
-} from 'graphql';
+} from "graphql";
 
-import { getListingById } from './queries/listings';
-import { getAllUsers, getUser } from './queries/users';
-import { getAllBookings, getBooking } from './queries/bookings';
-import { getRootCategories, getCategory } from './queries/categories';
+import { getAllAssets, getAsset } from "./queries/assets";
+import { getListingById } from "./queries/listings";
+import { getAllUsers, getUser } from "./queries/users";
+import { getAllBookings, getBooking } from "./queries/bookings";
+import { getRootCategories, getCategory } from "./queries/categories";
 
-import { createUser } from './mutations/users';
-import { createCategory } from './mutations/categories';
-import login from './mutations/auth/login';
+import { createAsset } from "./mutations/assets";
+import { createCategory } from "./mutations/categories";
+import { createUser } from "./mutations/users";
+import login from "./mutations/auth/login";
 
 const schema = new Schema({
   query: new ObjectType({
-    name: 'Query',
+    name: "Query",
     fields: {
+      getAllAssets,
+      getAsset,
       getListingById,
       getAllUsers,
       getUser,
@@ -26,9 +30,10 @@ const schema = new Schema({
     }
   }),
   mutation: new ObjectType({
-    name: 'Mutation',
+    name: "Mutation",
     fields: {
       login,
+      createAsset,
       createUser,
       createCategory
     }
