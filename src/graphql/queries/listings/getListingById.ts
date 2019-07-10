@@ -11,22 +11,34 @@ const getListingById = {
 
   async resolve(_: any, args: any, { dataSources }: any) {
     const { listingsAPI, locationsAPI } = dataSources;
+
     const listingObj = await listingsAPI.getListingById(args.id);
-    const listingDataObj = await listingsAPI.getListingDataByListingId(args.id);
-    const settingsObj = await listingsAPI.getListingSettingsByListingId(args.id);
-    const locationObj = await locationsAPI.getLocationById(listingObj.locationId);
-    const amenitiesArray = await listingsAPI.getListingAmenitiesByListingId(args.id);
-    const rulesArray = await listingsAPI.getListingRulesByListingId(args.id);
-    const accessDaysObj = await listingsAPI.getListingAccessDaysByListingId(args.id);
-    return {
-      ...listingObj,
-      listingData: listingDataObj,
-      location: locationObj,
-      settingsParent: settingsObj,
-      amenities: amenitiesArray,
-      rules: rulesArray,
-      accessDays: accessDaysObj
-    };
+
+    const listingDataObj = (id: number) => listingsAPI.getListingDataByListingId(id);
+    const locationObj = (id: number) => locationsAPI.getLocationById(id);
+    const settingsObj = (id: number) => listingsAPI.getListingSettingsByListingId(id);
+    const amenitiesArray = (id: number) => listingsAPI.getListingAmenitiesByListingId(id);
+    const rulesArray = (id: number) => listingsAPI.getListingRulesByListingId(id);
+    const accessDaysObj = (id: number) => listingsAPI.getListingAccessDaysByListingId(id);
+
+    return Promise.all([
+      listingDataObj(args.id),
+      locationObj(listingObj.locationId),
+      settingsObj(args.id),
+      amenitiesArray(args.id),
+      rulesArray(args.id),
+      accessDaysObj(args.id)]
+    ).then((values) => {
+      return {
+        ...listingObj,
+        listingData: values[0],
+        location: values[1],
+        settingsParent: values[2],
+        amenities: values[3],
+        rules: values[4],
+        accessDays: values[5]
+      };
+    });
   }
 };
 
