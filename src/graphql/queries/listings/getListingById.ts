@@ -15,11 +15,17 @@ const getListingById = {
     const listingDataObj = await listingsAPI.getListingDataByListingId(args.id);
     const settingsObj = await listingsAPI.getListingSettingsByListingId(args.id);
     const locationObj = await locationsAPI.getLocationById(listingObj.locationId);
+    const amenitiesArray = await listingsAPI.getListingAmenitiesByListingId(args.id);
+    const rulesArray = await listingsAPI.getListingRulesByListingId(args.id);
+    const accessDaysObj = await listingsAPI.getListingAccessDaysByListingId(args.id);
     return {
       ...listingObj,
       listingData: listingDataObj,
       location: locationObj,
-      listSettingsParent: settingsObj
+      settingsParent: settingsObj,
+      amenities: amenitiesArray,
+      rules: rulesArray,
+      accessDays: accessDaysObj
     };
   }
 };

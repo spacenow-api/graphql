@@ -33,8 +33,37 @@ const ListSettingsType = new ObjectType({
   }
 });
 
-const ListSettingsParentType = new ObjectType({
-  name: 'ListSettingsParentType',
+const OutputListingRulesType = new ObjectType({
+  name: 'OutputListingRulesType',
+  fields: {
+    id: { type: IntType },
+    listingId: { type: IntType },
+    listSettingsId: { type: IntType },
+    createdAt: { type: StringType },
+    updatedAt: { type: StringType },
+    settingsData: { type: ListSettingsType },
+  }
+});
+
+const OutputListingAmenitiesType = new ObjectType({
+  name: 'OutputListingAmenitiesType',
+  fields: {
+    id: { type: IntType },
+    listingId: { type: IntType },
+    listSettingsId: { type: IntType },
+    amount: { type: IntType },
+    quantity: { type: IntType },
+    currency: { type: StringType },
+    settings: { type: StringType },
+    type: { type: StringType },
+    createdAt: { type: StringType },
+    updatedAt: { type: StringType },
+    settingsData: { type: ListSettingsType },
+  }
+});
+
+const OutputListSettingsParentType = new ObjectType({
+  name: 'OutputListSettingsParentType',
   fields: {
     id: { type: IntType },
     category: { type: ListSettingsType },
@@ -46,10 +75,14 @@ const OutputListingAccessHoursType = new ObjectType({
   name: 'OutputListingAccessHoursType',
   description: 'Represents listing opening hours',
   fields: {
+    id: { type: IntType },
+    listingAccessDaysId: { type: IntType },
     weekday: { type: IntType },
-    allday: { type: BooleanType },
     openHour: { type: StringType },
-    closeHour: { type: StringType }
+    closeHour: { type: StringType },
+    allday: { type: BooleanType },
+    createdAt: { type: StringType },
+    updatedAt: { type: StringType },
   }
 });
 
@@ -58,15 +91,16 @@ const InputListingAccessHoursType = new InputObjectType({
   description: 'Represents listing opening hours',
   fields: {
     weekday: { type: IntType },
-    allday: { type: BooleanType },
     openHour: { type: StringType },
-    closeHour: { type: StringType }
+    closeHour: { type: StringType },
+    allday: { type: BooleanType },
   }
 });
 
 const OutputListingAccessDaysType = new ObjectType({
   name: 'OutputListingAccessDaysType',
   fields: {
+    id: { type: IntType },
     listingId: { type: IntType },
     mon: { type: BooleanType },
     tue: { type: BooleanType },
@@ -76,6 +110,8 @@ const OutputListingAccessDaysType = new ObjectType({
     sat: { type: BooleanType },
     sun: { type: BooleanType },
     all247: { type: BooleanType },
+    createdAt: { type: StringType },
+    updatedAt: { type: StringType },
     listingAccessHours: {
       type: new List(OutputListingAccessHoursType)
     }
@@ -141,12 +177,15 @@ const OutputListingType = new ObjectType({
     isReady: { type: BooleanType },
     quantity: { type: IntType },
     status: { type: StringType },
-    updatedAt: { type: StringType },
     createdAt: { type: StringType },
+    updatedAt: { type: StringType },
     count: { type: IntType },
     listingData: { type: ListingDataType },
     location: { type: OutputLocationType },
-    listSettingsParent: { type: ListSettingsParentType }
+    amenities: { type: new List(OutputListingAmenitiesType) },
+    rules: { type: new List(OutputListingRulesType) },
+    accessDays: { type: OutputListingAccessDaysType },
+    settingsParent: { type: OutputListSettingsParentType }
   }
 });
 

@@ -1,5 +1,6 @@
 import PersonalizationAPI from '../interfaces/personalization.inteface';
-import { IDraftRequest, IUpdateRequest } from '../interfaces/listing.interface';
+
+import * as _ from '../interfaces/listing.interface';
 
 class ListingsAPI extends PersonalizationAPI {
   constructor(gatewayHost: string) {
@@ -7,23 +8,35 @@ class ListingsAPI extends PersonalizationAPI {
     this.baseURL = gatewayHost;
   }
 
-  getListingById = async (id: string) => {
+  getListingById = async (id: string): Promise<_.IListingResponse> => {
     return this.get(`/listings/${id}`);
   };
 
-  getListingDataByListingId = async (listingId: string) => {
+  getListingDataByListingId = async (listingId: string): Promise<_.IListingDataResponse> => {
     return this.get(`/listings/data/${listingId}`);
   };
 
-  getListingSettingsByListingId = async (listingId: string) => {
+  getListingSettingsByListingId = async (listingId: string): Promise<_.IListingSettingsResponse> => {
     return this.get(`/listings/settings/${listingId}`);
   };
 
-  createDraft = async (listing: IDraftRequest) => {
+  getListingAccessDaysByListingId = async (listingId: string): Promise<_.IListingAccessDaysResponse> => {
+    return this.get(`/listings/access/${listingId}`);
+  };
+
+  getListingAmenitiesByListingId = async (listingId: string): Promise<_.IListingAmenitiesResponse> => {
+    return this.get(`/listings/amenities/${listingId}`);
+  };
+
+  getListingRulesByListingId = async (listingId: string): Promise<_.IListingRulesResponse> => {
+    return this.get(`/listings/rules/${listingId}`);
+  };
+
+  createDraft = async (listing: _.IDraftRequest) => {
     return this.post(`/listings/draft`, listing);
   };
 
-  update = async (listing: IUpdateRequest) => {
+  update = async (listing: _.IUpdateRequest) => {
     return this.put(`/listings/update`, listing);
   };
 }
