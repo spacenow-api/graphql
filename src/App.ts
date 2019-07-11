@@ -5,9 +5,12 @@ import apolloMiddleware from "./helpers/middlewares/apollo-middleware";
 import loggerMiddleware from "./helpers/middlewares/logger-middleware";
 
 class App {
-  public app: Application;
-  public port: number;
-  public host: string;
+
+  private app: Application;
+
+  private port: number;
+
+  private host: string;
 
   constructor(port: number, host: string) {
     this.app = express();

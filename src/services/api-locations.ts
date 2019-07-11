@@ -6,6 +6,7 @@ import {
 } from '../interfaces/location.interface';
 
 class LocationsAPI extends PersonalizationAPI {
+
   constructor(gatewayHost: string) {
     super();
     this.baseURL = gatewayHost;
@@ -15,9 +16,7 @@ class LocationsAPI extends PersonalizationAPI {
     return this.get(`/locations/${id}`);
   };
 
-  getOrCreateLocation = async (
-    location: ILocationRequest
-  ): Promise<ILocationResponse> => {
+  getOrCreateLocation = async (location: ILocationRequest): Promise<ILocationResponse> => {
     return this.post('/locations', location);
   };
 }

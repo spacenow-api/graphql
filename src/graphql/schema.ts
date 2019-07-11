@@ -13,11 +13,13 @@ import { createUser } from "./mutations/users";
 import { getListingById } from "./queries/listings";
 import { createCategory } from "./mutations/categories";
 import { createOrUpdateListing } from "./mutations/listings";
+
 import {
   getRootCategories,
   getCategory,
   getCategoriesLegacy
 } from "./queries/categories";
+
 import { getLocationById } from "./queries/locations";
 import { getAvailabilitiesByListingId } from "./queries/availabilities";
 import { getOrCreateLocation } from "./mutations/locations";
