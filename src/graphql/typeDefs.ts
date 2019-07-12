@@ -2,7 +2,7 @@ import { gql } from 'apollo-server';
 
 const typeDefs = gql`
 
-  type OutputLocationType {
+  type Location {
     id: Int
     userId: String
     country: String
@@ -49,7 +49,7 @@ const typeDefs = gql`
     expiresIn: Int
   }
 
-  type AvailabilitiesType {
+  type Availabilities {
     bookingDates: [String]
     exceptionDates: [String]
   }
@@ -87,7 +87,7 @@ const typeDefs = gql`
     children: [Category]
   }
 
-  type BookingPeriodLegacyType {
+  type BookingPeriodLegacy {
     id: Int
     listSettingsParentId: Int
     monthly: Int
@@ -96,7 +96,7 @@ const typeDefs = gql`
     hourly: Int
   }
 
-  type SubCategoryLegacyType {
+  type SubCategoryLegacy {
     id: Int
     listSettingsParentId: Int
     listSettingsChildId: Int
@@ -114,10 +114,10 @@ const typeDefs = gql`
     photoType: String
     isSpecification: Int
     specData: String
-    bookingPeriod: BookingPeriodLegacyType
+    bookingPeriod: BookingPeriodLegacy
   }
 
-  type CategoryLegacyType {
+  type CategoryLegacy {
     id: Int
     typeId: Int
     itemName: String
@@ -133,10 +133,10 @@ const typeDefs = gql`
     photoType: String
     isSpecification: Int
     specData: String
-    subCategories: [SubCategoryLegacyType]
+    subCategories: [SubCategoryLegacy]
   }
 
-  type HolidaysType {
+  type Holidays {
     date: String
     description: String
   }
@@ -148,7 +148,7 @@ const typeDefs = gql`
     isEmailConfirmed: Boolean!
   }
 
-  type ListSettingsType {
+  type ListSettings {
     id: Int
     typeId: Int
     itemName: String
@@ -168,16 +168,16 @@ const typeDefs = gql`
     specData: String
   }
 
-  type OutputListingRulesType {
+  type ListingRules {
     id: Int
     listingId: Int
     listSettingsId: Int
     createdAt: String
     updatedAt: String
-    settingsData: ListSettingsType
+    settingsData: ListSettings
   }
 
-  type OutputListingAmenitiesType {
+  type ListingAmenities {
     id: Int
     listingId: Int
     listSettingsId: Int
@@ -188,16 +188,16 @@ const typeDefs = gql`
     type: String
     createdAt: String
     updatedAt: String
-    settingsData: ListSettingsType
+    settingsData: ListSettings
   }
 
-  type OutputListSettingsParentType {
+  type ListSettingsParent {
     id: Int
-    category: ListSettingsType
-    subcategory: ListSettingsType
+    category: ListSettings
+    subcategory: ListSettings
   }
 
-  type OutputListingAccessHoursType {
+  type ListingAccessHours {
     id: Int
     listingAccessDaysId: Int
     weekday: Int
@@ -208,14 +208,7 @@ const typeDefs = gql`
     updatedAt: String
   }
 
-  type InputListingAccessHoursType {
-    weekday: Int
-    openHour: String
-    closeHour: String
-    allday: Boolean
-  }
-
-  type OutputListingAccessDaysType {
+  type ListingAccessDays {
     id: Int
     listingId: Int
     mon: Boolean
@@ -228,10 +221,17 @@ const typeDefs = gql`
     all247: Boolean
     createdAt: String
     updatedAt: String
-    listingAccessHours: [OutputListingAccessHoursType]
+    listingAccessHours: [ListingAccessHours]
   }
 
-  type InputListingAccessDaysType {
+  input ListingAccessHoursInput {
+    weekday: Int
+    openHour: String
+    closeHour: String
+    allday: Boolean
+  }
+
+  input ListingAccessDaysInput {
     listingId: Int
     mon: Boolean
     tue: Boolean
@@ -241,10 +241,10 @@ const typeDefs = gql`
     sat: Boolean
     sun: Boolean
     all247: Boolean
-    listingAccessHours: [InputListingAccessHoursType]
+    listingAccessHours: [ListingAccessHoursInput]
   }
 
-  type ListingDataType {
+  type ListingData {
     listingId: Int
     accessType: String
     bookingNoticeTime: String
@@ -266,11 +266,11 @@ const typeDefs = gql`
     listingAmenities: [Int]
     listingExceptionDates: [String]
     listingRules: [Int]
-    listingAccessDays: OutputListingAccessDaysType
+    listingAccessDays: ListingAccessDays
     status: String
   }
 
-  type OutputListingType {
+  type Listing {
     id: Int
     userId: String
     title: String
@@ -283,20 +283,40 @@ const typeDefs = gql`
     createdAt: String
     updatedAt: String
     count: Int
-    listingData: ListingDataType
-    location: OutputLocationType
-    amenities: [OutputListingAmenitiesType]
-    rules: [OutputListingRulesType]
-    accessDays: OutputListingAccessDaysType
-    settingsParent: OutputListSettingsParentType
+    listingData: ListingData
+    location: Location
+    amenities: [ListingAmenities]
+    rules: [ListingRules]
+    accessDays: ListingAccessDays
+    settingsParent: ListSettingsParent
   }
 
-  type SuccessOutput {
+  type Success {
     status: String
   }
 
   type Query {
-    getLocationById(id: Int): OutputLocationType
+    getAllAssets: [Asset]
+    getAsset(id: String!): Asset
+    getAvailabilitiesByListingId(listingId: Int): Availabilities
+    getAllBookings: [Booking]
+    getBooking: Booking
+    getCategoriesLegacy: [CategoryLegacy]
+    getCategory(id: String!): Category 
+    getRootCategories: [Category]
+    getAllHolidays(countryShortName: String, year: Int, state: String!): [Holidays]
+    getListingById(id: Int): Listing 
+    getLocationById(id: Int): Location
+    getAllUsers: [User]
+    getUser(id: String!): User
+  }
+
+  type Mutation {
+    createAsset(file: Upload): Asset
+    login(email: String, password: String): Token 
+    createCategory(name: String, parentId: String, order: Int, isActive: Boolean): Category
+    createOrUpdateListing(userId: String!, locationId: Int!, listSettingsParentId: Int!, bookingPeriod: String, title: String, coverPhotoId: Int, quantity: Int, listingId: Int, accessType: String, bookingNoticeTime: String, minTerm: Float, maxTerm: Float, description: String, basePrice: Float, currency: String, isAbsorvedFee: Boolean, capacity: Int, size: Int, meetingRooms: Int, isFurnished: Boolean, carSpace: Int, sizeOfVehicle: String, maxEntranceHeight: String, spaceType: String, bookingType: String, listingAmenities: [Int], listingAccessDays: ListingAccessDaysInput, listingExceptionDates: [String], listingRules: [Int]): Success
+    getOrCreateLocation(suggestAddress: String!, userId: String, country: String, address1: String, address2: String, buildingName: String, city: String, state: String, zipcode: String, lat: String, lng: String): Location
   }
 `;
 
