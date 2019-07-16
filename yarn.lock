@@ -61,6 +61,10 @@
   dependencies:
     "@types/node" "*"
 
+"@types/bluebird@~3.5.27":
+  version "3.5.27"
+  resolved "https://registry.yarnpkg.com/@types/bluebird/-/bluebird-3.5.27.tgz#61eb4d75dc6bfbce51cf49ee9bbebe941b2cb5d0"
+
 "@types/body-parser@*", "@types/body-parser@1.17.0":
   version "1.17.0"
   resolved "https://registry.yarnpkg.com/@types/body-parser/-/body-parser-1.17.0.tgz#9f5c9d9bd04bb54be32d5eb9fc0d8c974e6cf58c"
@@ -143,6 +147,10 @@
 "@types/strip-json-comments@0.0.30":
   version "0.0.30"
   resolved "https://registry.yarnpkg.com/@types/strip-json-comments/-/strip-json-comments-0.0.30.tgz#9aa30c04db212a9a0649d6ae6fd50accc40748a1"
+
+"@types/validator@~10.11.1":
+  version "10.11.1"
+  resolved "https://registry.yarnpkg.com/@types/validator/-/validator-10.11.1.tgz#76e983ce155261838463b73728856cf8bc628d53"
 
 "@types/ws@^6.0.0":
   version "6.0.1"
