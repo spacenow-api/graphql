@@ -179,16 +179,7 @@ const resolvers = {
       const { locationsAPI } = dataSources;
       return locationsAPI.getOrCreateLocation({
         suggestAddress: args.suggestAddress,
-        userId: args.userId,
-        country: args.country,
-        address1: args.address1,
-        address2: args.address2,
-        buildingName: args.buildingName,
-        city: args.city,
-        state: args.state,
-        zipcode: args.zipcode,
-        lat: args.lat,
-        lng: args.lng
+        userId: args.userId
       });
     },
 
