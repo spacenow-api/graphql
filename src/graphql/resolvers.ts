@@ -177,10 +177,7 @@ const resolvers = {
 
     getOrCreateLocation: async (_: any, args: any, { dataSources }: any) => {
       const { locationsAPI } = dataSources;
-      return locationsAPI.getOrCreateLocation({
-        suggestAddress: args.suggestAddress,
-        userId: args.userId
-      });
+      return locationsAPI.getOrCreateLocation({ suggestAddress: args.suggestAddress });
     },
 
   }

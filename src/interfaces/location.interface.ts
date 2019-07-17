@@ -1,6 +1,5 @@
 interface ILocationRequest {
   suggestAddress: string;
-  userId: string;
 }
 
 interface ILocationResponse {
