@@ -15,37 +15,22 @@ import {
 
 import * as config from "./config";
 
-const gatewayHost = `${config.GATEWAY_HOST}/gateway`;
-const assetHost = `${config.ASSETS_HOST}`;
-
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  onHealthCheck: () => (Promise.resolve()),
+  context: ({ req }) => ({ token: req.headers.authorization }),
   dataSources: () => {
     return {
-      assetsAPI: new AssetsAPI(assetHost),
-      authAPI: new AuthAPI(gatewayHost),
-      bookingsAPI: new BookingsAPI(gatewayHost),
-      listingsAPI: new ListingsAPI(gatewayHost),
-      usersAPI: new UsersAPI(gatewayHost),
-      categoriesAPI: new CategoriesAPI(gatewayHost),
-      locationsAPI: new LocationsAPI(gatewayHost),
-      availabilitiesAPI: new AvailabilitiesAPI(gatewayHost)
+      assetsAPI: new AssetsAPI(config.ASSETS_API_HOST),
+      authAPI: new AuthAPI(config.USERS_AUTHENTICATION_API_HOST),
+      bookingsAPI: new BookingsAPI(config.BOOKINGS_API_HOST),
+      listingsAPI: new ListingsAPI(config.SPACES_API_HOST),
+      usersAPI: new UsersAPI(config.USERS_AUTHENTICATION_API_HOST),
+      categoriesAPI: new CategoriesAPI(config.CATEGORIES_API_HOST),
+      locationsAPI: new LocationsAPI(config.LOCATIONS_API_HOST),
+      availabilitiesAPI: new AvailabilitiesAPI(config.AVAILABILITIES_API_HOST)
     };
-  },
-  context: ({ req }) => {
-    return {
-      token: req.headers.authorization
-    };
-  },
-  onHealthCheck: () => {
-    return new Promise((resolve, reject) => {
-      if (true) {
-        resolve();
-      } else {
-        reject();
-      }
-    });
   }
 });
 
