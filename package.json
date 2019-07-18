@@ -7,7 +7,7 @@
     "dev": "ts-node-dev ./src/server.ts",
     "start": "ts-node ./src/server.ts",
     "build": "tsc",
-    "prod": "node ./dist/server.ts",
+    "prod": "node ./dist/server.js",
     "debug": "tsnd --inspect --respawn src/server.ts"
   },
   "dependencies": {

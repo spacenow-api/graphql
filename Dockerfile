@@ -21,6 +21,6 @@ WORKDIR /app
 
 COPY --from=first-stage /app ./
 
-EXPOSE 400
+EXPOSE 4000
 
 CMD ["yarn", "prod"]
