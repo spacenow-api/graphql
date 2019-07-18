@@ -74,6 +74,10 @@ Parameters:
     Description: "Task definition for this service"
     Type: String
     Default: ""
+  AssetsApiHost:
+    Description: "Assets api host endpoint"
+    Type: String
+    Default: ""
 Conditions:
   isMaster: !Equals [!Ref SliceName, master]
   isFeature: !Not [Condition: isMaster]
@@ -173,6 +177,9 @@ Resources:
           Image: !Ref ImageUrl
           PortMappings:
             - ContainerPort: !Ref ContainerPort
+          Environment:
+            - Name: ASSETS_API_HOST
+              Value: !Ref AssetsApiHost
 
           LogConfiguration:
             LogDriver: awslogs

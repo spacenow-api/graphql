@@ -34,12 +34,14 @@ HostedZoneName=$(echo "$2.cloud.spacenow.com" | tr '[:upper:]' '[:lower:]')
 echo "Getting SSM Parameters "
 
 ACM_CERTIFICATE=$(get_ssm_parameter /$2/ACM_CERTIFICATE)
+ASSETS_API_HOST=$(get_ssm_parameter /$2/SPACENOW/ASSETS_API_HOST)
 echo "ENV ${2}"
 CF_PARAMS="ParameterKey=ImageUrl,ParameterValue=$3 \
           ParameterKey=ContainerPort,ParameterValue=4000 \
           ParameterKey=StackName,ParameterValue=$2 \
           ParameterKey=SliceName,ParameterValue=$4 \
           ParameterKey=Certificate,ParameterValue=$ACM_CERTIFICATE \
+          ParameterKey=AssetsApiHost,ParameterValue=$ASSETS_API_HOST \
           ParameterKey=HostedZoneName,ParameterValue=$HostedZoneName"
 echo "Checking if stack exists ..."
 if ! aws cloudformation describe-stacks --region $region --stack-name $stack_name ; then
