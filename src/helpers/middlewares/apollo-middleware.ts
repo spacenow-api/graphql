@@ -12,14 +12,16 @@ import AvailabilitiesAPI from "../../services/api-availabilities";
 import schema from "../../graphql/schema";
 
 const GATEWAY_HOST = process.env.GATEWAY_HOST;
+const ASSETS_HOST = process.env.ASSETS_HOST;
 
 export default (): ApolloServer => {
   const gatewayHost = `${GATEWAY_HOST}/gateway`;
+  const assetsHost = `${ASSETS_HOST}`;
   return new ApolloServer({
     schema,
     dataSources: () => {
       return {
-        assetsAPI: new AssetsAPI(gatewayHost),
+        assetsAPI: new AssetsAPI(assetsHost),
         authAPI: new AuthAPI(gatewayHost),
         bookingsAPI: new BookingsAPI(gatewayHost),
         listingsAPI: new ListingsAPI(gatewayHost),

@@ -8,13 +8,20 @@ import { GraphQLUpload as UploadType } from "graphql-upload";
 
 import { Asset } from "../../types";
 
+interface IFileStream {
+  createReadStream: any;
+  filename: string;
+  mimetype: string;
+  encoding: string;
+}
+
 const createAsset = {
   type: Asset,
 
   args: {
     // title: { type: StringType },
     // description: { type: StringType },
-    // accessControl: { type: StringType },
+    folder: { type: StringType },
     file: { type: UploadType }
     // isActive: { type: BooleanType }
   },

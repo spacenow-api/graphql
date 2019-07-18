@@ -7,6 +7,7 @@ interface IAsset {
 
 interface IAssetInput {
   file: File;
+  folder?: string;
 }
 
 interface IAssetOutput extends IAsset {

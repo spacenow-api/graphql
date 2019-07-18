@@ -1,8 +1,7 @@
-import { gql } from 'apollo-server';
+import { gql } from "apollo-server";
 
 const typeDefs = gql`
-
-  type OutputLocationType {
+  type OutputLocation {
     id: Int
     userId: String
     country: String
@@ -18,8 +17,23 @@ const typeDefs = gql`
     updatedAt: String
   }
 
+  type OutputAsset {
+    id: ID!
+    path: String!
+    filename: String!
+    mimetype: String!
+    encoding: String!
+  }
+
   type Query {
-    getLocationById(id: Int): OutputLocationType
+    getLocationById(id: Int): OutputLocation
+    getAllAssets: [OutputAsset!]!
+    getAsset(id: ID): OutputAsset
+  }
+
+  type Mutation {
+    createAsset(folder: String, file: Upload!): OutputAsset!
+    createMultipleAssets(folder: String, files: [Upload!]!): [OutputAsset!]!
   }
 `;
 
