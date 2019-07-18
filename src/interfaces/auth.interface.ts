@@ -1,11 +1,11 @@
 interface IToken {
-    token: string;
-    expiresIn: number;
+	token: string;
+	expiresIn?: number;
 }
 
 interface IAuth {
-    email: string;
-    password: string;
+	email: string;
+	password: string;
 }
-   
+
 export { IAuth as default, IToken };

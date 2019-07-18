@@ -1,9 +1,9 @@
-import PersonalizationAPI from '../interfaces/personalization.inteface';
+import { ApolloError } from 'apollo-server';
 
-import {
-  ILocationRequest,
-  ILocationResponse
-} from '../interfaces/location.interface';
+import { toError } from './../helpers/exceptions/HttpException';
+
+import PersonalizationAPI from '../interfaces/personalization.inteface';
+import { ILocationRequest } from '../interfaces/location.interface';
 
 class LocationsAPI extends PersonalizationAPI {
 
@@ -13,11 +13,11 @@ class LocationsAPI extends PersonalizationAPI {
   }
 
   getLocationById = async (id: number) => {
-    return this.get(`/locations/${id}`);
+    return this.get(`/locations/${id}`).catch((err) => new ApolloError(toError(err)));
   };
 
-  getOrCreateLocation = async (location: ILocationRequest): Promise<ILocationResponse> => {
-    return this.post('/locations', location);
+  getOrCreateLocation = async (location: ILocationRequest) => {
+    return this.post('/locations', location).catch((err) => new ApolloError(toError(err)));
   };
 }
 

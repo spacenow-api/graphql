@@ -2,7 +2,16 @@ import { ApolloServer } from "apollo-server";
 
 import { typeDefs, resolvers } from "./graphql";
 
-import { LocationsAPI, AssetsAPI } from "./services";
+import {
+  AssetsAPI,
+  AuthAPI,
+  BookingsAPI,
+  ListingsAPI,
+  UsersAPI,
+  CategoriesAPI,
+  LocationsAPI,
+  AvailabilitiesAPI
+} from "./services";
 
 import * as config from "./config";
 
@@ -14,8 +23,14 @@ const server = new ApolloServer({
   resolvers,
   dataSources: () => {
     return {
+      assetsAPI: new AssetsAPI(assetHost),
+      authAPI: new AuthAPI(gatewayHost),
+      bookingsAPI: new BookingsAPI(gatewayHost),
+      listingsAPI: new ListingsAPI(gatewayHost),
+      usersAPI: new UsersAPI(gatewayHost),
+      categoriesAPI: new CategoriesAPI(gatewayHost),
       locationsAPI: new LocationsAPI(gatewayHost),
-      assetsAPI: new AssetsAPI(assetHost)
+      availabilitiesAPI: new AvailabilitiesAPI(gatewayHost)
     };
   },
   context: ({ req }) => {
@@ -25,7 +40,6 @@ const server = new ApolloServer({
   },
   onHealthCheck: () => {
     return new Promise((resolve, reject) => {
-      // Replace the `true` in this conditional with more specific checks!
       if (true) {
         resolve();
       } else {
@@ -37,7 +51,4 @@ const server = new ApolloServer({
 
 server.listen().then(({ url }) => {
   console.info(`Server * GraphQL * listening on ${url}`);
-  console.info(
-    `Try your health check at: ${url}.well-known/apollo/server-health`
-  );
 });

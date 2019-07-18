@@ -1,4 +1,8 @@
-import { IAuth, IUser } from '../interfaces';
+import { ApolloError } from 'apollo-server';
+
+import { toError } from './../helpers/exceptions/HttpException';
+
+import { IAuth, IUser, IToken } from '../interfaces';
 import PersonalizationAPI from '../interfaces/personalization.inteface';
 
 class AuthAPI extends PersonalizationAPI {
@@ -15,6 +19,11 @@ class AuthAPI extends PersonalizationAPI {
 
   login = async (auth: IAuth): Promise<IUser> => {
     return this.post(`${this.path}/signin`, auth);
+  };
+
+  tokenValidate = async (token: IToken) => {
+    const status = await this.post(`${this.path}/token/validate`, token);
+    return { status };
   };
 }
 
