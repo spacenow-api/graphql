@@ -5,6 +5,6 @@ export default (
   response: Response,
   next: NextFunction
 ): void => {
-  console.log(`${request.method} ${request.path}`);
+  console.info(`${request.method} ${request.path}`);
   next();
 };

@@ -23,8 +23,7 @@ class AssetsAPI extends PersonalizationAPI {
     const { createReadStream, filename }: any = await asset.file;
     const sFile = createReadStream(filename);
     fs.writeFileSync(filename, sFile);
-
-    console.log(sFile.resume());
+    console.debug(sFile.resume());
     const formData = new FormData();
     formData.append("file", sFile.resume(), filename);
     return this.post(`${this.path}/${asset.folder}`, formData, {
