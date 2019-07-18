@@ -180,6 +180,9 @@ const resolvers = {
       return locationsAPI.getOrCreateLocation({ suggestAddress: args.suggestAddress });
     },
 
+    tokenValidate: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.authAPI.tokenValidate({ token: args.token });
+    }
   }
 };
 

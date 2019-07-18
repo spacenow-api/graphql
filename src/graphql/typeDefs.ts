@@ -317,6 +317,7 @@ const typeDefs = gql`
     createCategory(name: String, parentId: String, order: Int, isActive: Boolean): Category
     createOrUpdateListing(userId: String!, locationId: Int!, listSettingsParentId: Int!, bookingPeriod: String, title: String, coverPhotoId: Int, quantity: Int, listingId: Int, accessType: String, bookingNoticeTime: String, minTerm: Float, maxTerm: Float, description: String, basePrice: Float, currency: String, isAbsorvedFee: Boolean, capacity: Int, size: Int, meetingRooms: Int, isFurnished: Boolean, carSpace: Int, sizeOfVehicle: String, maxEntranceHeight: String, spaceType: String, bookingType: String, listingAmenities: [Int], listingAccessDays: ListingAccessDaysInput, listingExceptionDates: [String], listingRules: [Int]): Success
     getOrCreateLocation(suggestAddress: String!): Location
+    tokenValidate(token: String!): Success
   }
 `;
 
