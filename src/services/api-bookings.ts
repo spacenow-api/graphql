@@ -4,9 +4,9 @@ import PersonalizationAPI from '../interfaces/personalization.inteface';
 class BookingsAPI extends PersonalizationAPI {
   private path = '/bookings';
 
-  constructor(gatewayHost: string) {
+  constructor(apiAddress: string) {
     super();
-    this.baseURL = gatewayHost;
+    this.baseURL = apiAddress;
   }
 
   getAllBookings = async (): Promise<[IBooking]> => {

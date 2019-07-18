@@ -7,9 +7,9 @@ import { ILocationRequest } from '../interfaces/location.interface';
 
 class LocationsAPI extends PersonalizationAPI {
 
-  constructor(gatewayHost: string) {
+  constructor(apiAddress: string) {
     super();
-    this.baseURL = gatewayHost;
+    this.baseURL = apiAddress;
   }
 
   getLocationById = async (id: number) => {

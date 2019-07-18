@@ -6,9 +6,9 @@ import fs from "fs";
 class AssetsAPI extends PersonalizationAPI {
   private path = "/assets";
 
-  constructor(gatewayHost: string) {
+  constructor(apiAddress: string) {
     super();
-    this.baseURL = gatewayHost;
+    this.baseURL = apiAddress;
   }
 
   getAllAssets = async (): Promise<[IAssetOutput]> => {

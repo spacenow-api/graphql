@@ -7,9 +7,9 @@ import PersonalizationAPI from '../interfaces/personalization.inteface';
 import * as _ from '../interfaces/listing.interface';
 
 class ListingsAPI extends PersonalizationAPI {
-  constructor(gatewayHost: string) {
+  constructor(apiAddress: string) {
     super();
-    this.baseURL = gatewayHost;
+    this.baseURL = apiAddress;
   }
 
   getListingById = async (id: string): Promise<_.IListingResponse> => {

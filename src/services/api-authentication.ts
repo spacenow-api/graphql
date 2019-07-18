@@ -8,9 +8,9 @@ import PersonalizationAPI from '../interfaces/personalization.inteface';
 class AuthAPI extends PersonalizationAPI {
   private path = '/auth';
 
-  constructor(gatewayHost: string) {
+  constructor(apiAddress: string) {
     super();
-    this.baseURL = gatewayHost;
+    this.baseURL = apiAddress;
   }
 
   register = async (user: IUser) => {

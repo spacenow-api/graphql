@@ -3,9 +3,9 @@ import PersonalizationAPI from '../interfaces/personalization.inteface';
 class PostsAPI extends PersonalizationAPI {
   private path = '/posts';
 
-  constructor(gatewayHost: string) {
+  constructor(apiAddress: string) {
     super();
-    this.baseURL = gatewayHost;
+    this.baseURL = apiAddress;
   }
 
   getAllPosts = async () => {

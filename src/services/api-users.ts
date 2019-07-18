@@ -4,9 +4,9 @@ import PersonalizationAPI from '../interfaces/personalization.inteface';
 class UsersAPI extends PersonalizationAPI {
   private path = '/users';
 
-  constructor(gatewayHost: string) {
+  constructor(apiAddress: string) {
     super();
-    this.baseURL = gatewayHost;
+    this.baseURL = apiAddress;
   }
 
   getAllUsers = async (): Promise<[IUser]> => {

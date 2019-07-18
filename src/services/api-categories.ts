@@ -4,9 +4,9 @@ import PersonalizationAPI from '../interfaces/personalization.inteface';
 class CategoriesAPI extends PersonalizationAPI {
   private path = '/categories';
 
-  constructor(gatewayHost: string) {
+  constructor(apiAddress: string) {
     super();
-    this.baseURL = gatewayHost;
+    this.baseURL = apiAddress;
   }
 
   getRootCategories = async (): Promise<[ICategory]> => {
