@@ -13,8 +13,8 @@ export const SPACES_API_HOST: string = process.env.SPACES_API_HOST || "http://lo
 
 export const USERS_AUTHENTICATION_API_HOST: string = process.env.USERS_API_HOST || "http://localhost:6001";
 
-export const AVAILABILITIES_API_HOST: string = process.env.AVAILABILITIES_API_HOST || "http://localhost:6006";
+export const AVAILABILITIES_API_HOST: string = process.env.AVAILABILITIES_API_HOST || "https://api-availabilities.sandpit.cloud.spacenow.com";
 
-export const BOOKINGS_API_HOST: string = process.env.BOOKINGS_API_HOST || "http://localhost:6004";
+export const BOOKINGS_API_HOST: string = process.env.BOOKINGS_API_HOST || "https://api-bookings.sandpit.cloud.spacenow.com";
 
 export const HOLIDAYS_HOST: string = "https://data.gov.au/data/api/3/action/datastore_search?resource_id=bda4d4f2-7fde-4bfc-8a23-a6eefc8cef80";
