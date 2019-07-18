@@ -298,15 +298,15 @@ const typeDefs = gql`
   type Query {
     getAllAssets: [Asset]
     getAsset(id: String!): Asset
-    getAvailabilitiesByListingId(listingId: Int): Availabilities
+    getAvailabilitiesByListingId(listingId: Int!): Availabilities
     getAllBookings: [Booking]
     getBooking: Booking
     getCategoriesLegacy: [CategoryLegacy]
     getCategory(id: String!): Category 
     getRootCategories: [Category]
     getAllHolidays(countryShortName: String, year: Int, state: String!): [Holidays]
-    getListingById(id: Int): Listing 
-    getLocationById(id: Int): Location
+    getListingById(id: Int!): Listing 
+    getLocationById(id: Int!): Location
     getAllUsers: [User]
     getUser(id: String!): User
   }

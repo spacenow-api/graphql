@@ -13,7 +13,7 @@ class LocationsAPI extends PersonalizationAPI {
   }
 
   getLocationById = async (id: number) => {
-    return this.get(`/locations/${id}`);
+    return this.get(`/locations/${id}`).catch((err) => new ApolloError(toError(err)));
   };
 
   getOrCreateLocation = async (location: ILocationRequest) => {
