@@ -80,17 +80,12 @@ const resolvers = {
 
       const listingObj = await listingsAPI.getListingById(args.id);
 
-      const listingDataObj = (id: number) =>
-        listingsAPI.getListingDataByListingId(id);
+      const listingDataObj = (id: number) => listingsAPI.getListingDataByListingId(id);
       const locationObj = (id: number) => locationsAPI.getLocationById(id);
-      const settingsObj = (id: number) =>
-        listingsAPI.getListingSettingsByListingId(id);
-      const amenitiesArray = (id: number) =>
-        listingsAPI.getListingAmenitiesByListingId(id);
-      const rulesArray = (id: number) =>
-        listingsAPI.getListingRulesByListingId(id);
-      const accessDaysObj = (id: number) =>
-        listingsAPI.getListingAccessDaysByListingId(id);
+      const settingsObj = (id: number) => listingsAPI.getListingSettingsByListingId(id);
+      const amenitiesArray = (id: number) => listingsAPI.getListingAmenitiesByListingId(id);
+      const rulesArray = (id: number) => listingsAPI.getListingRulesByListingId(id);
+      const accessDaysObj = (id: number) => listingsAPI.getListingAccessDaysByListingId(id);
 
       return Promise.all([
         listingDataObj(args.id),

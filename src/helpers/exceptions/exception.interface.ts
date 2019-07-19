@@ -1,16 +1,20 @@
-interface Response {
+interface IBody {
+  message: string;
+}
+
+interface IResponse {
   url: string;
   status: number;
   statusText: string;
-  body: string;
+  body: IBody;
 }
 
-interface Extensions {
-  response: Response;
+interface IExtensions {
+  response: IResponse;
 }
 
 interface IDataSourceErr {
-  extensions: Extensions;
+  extensions: IExtensions;
 }
 
 export { IDataSourceErr }
