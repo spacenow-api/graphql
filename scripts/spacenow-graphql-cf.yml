@@ -102,6 +102,10 @@ Parameters:
     Description: "Assets api host endpoint"
     Type: String
     Default: ""
+  Playground:
+    Description: "Assets api host endpoint"
+    Type: String
+    Default: ""
 Conditions:
   isMaster: !Equals [!Ref SliceName, master]
   isFeature: !Not [Condition: isMaster]
@@ -216,6 +220,8 @@ Resources:
               Value: !Ref AvailabilitiesApiHost
             - Name: BOOKINGS_API_HOST
               Value: !Ref BookingsApiHost
+            - Name: PLAYGROUND
+              Value: !Ref Playground
 
           LogConfiguration:
             LogDriver: awslogs
