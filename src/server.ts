@@ -18,7 +18,9 @@ import * as config from "./config";
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  onHealthCheck: () => (Promise.resolve()),
+  introspection: true,
+  playground: true,
+  onHealthCheck: () => Promise.resolve(),
   context: ({ req }) => ({ token: req.headers.authorization }),
   dataSources: () => {
     return {
