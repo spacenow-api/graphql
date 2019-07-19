@@ -78,6 +78,30 @@ Parameters:
     Description: "Assets api host endpoint"
     Type: String
     Default: ""
+  CategoriesApiHost:
+    Description: "Assets api host endpoint"
+    Type: String
+    Default: ""
+  LocationsApiHost:
+    Description: "Assets api host endpoint"
+    Type: String
+    Default: ""
+  SpacesApiHost:
+    Description: "Assets api host endpoint"
+    Type: String
+    Default: ""
+  UsersApiHost:
+    Description: "Assets api host endpoint"
+    Type: String
+    Default: ""
+  AvailabilitiesApiHost:
+    Description: "Assets api host endpoint"
+    Type: String
+    Default: ""
+  BookingsApiHost:
+    Description: "Assets api host endpoint"
+    Type: String
+    Default: ""
 Conditions:
   isMaster: !Equals [!Ref SliceName, master]
   isFeature: !Not [Condition: isMaster]
@@ -180,6 +204,18 @@ Resources:
           Environment:
             - Name: ASSETS_API_HOST
               Value: !Ref AssetsApiHost
+            - Name: CATEGORIES_API_HOST
+              Value: !Ref CategoriesApiHost
+            - Name: LOCATIONS_API_HOST
+              Value: !Ref LocationsApiHost
+            - Name: SPACES_API_HOST
+              Value: !Ref SpacesApiHost
+            - Name: USERS_API_HOST
+              Value: !Ref UsersApiHost
+            - Name: AVAILABILITIES_API_HOST
+              Value: !Ref AvailabilitiesApiHost
+            - Name: BOOKINGS_API_HOST
+              Value: !Ref BookingsApiHost
 
           LogConfiguration:
             LogDriver: awslogs
