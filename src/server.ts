@@ -18,8 +18,8 @@ import * as config from "./config";
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  introspection: true,
-  playground: true,
+  introspection: config.PLAYGROUND,
+  playground: config.PLAYGROUND,
   onHealthCheck: () => Promise.resolve(),
   context: ({ req }) => ({ token: req.headers.authorization }),
   dataSources: () => {
