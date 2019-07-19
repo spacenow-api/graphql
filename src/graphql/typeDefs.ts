@@ -147,6 +147,36 @@ const typeDefs = gql`
     isEmailConfirmed: Boolean!
   }
 
+  type UserProfile {
+    status: String
+    userId: String
+    profileId: Int
+    firstName: String
+    lastName: String
+    displayName: String
+    dateOfBirth: String
+    picture: String
+    gender: String
+    phoneNumber: String
+    preferredLanguage: String
+    preferredCurrency: String
+    info: String
+    location: String
+    createdAt: String
+    updatedAt: String
+    stripeCusId: String
+    country: Int
+    verificationCode: Int
+    countryCode: String
+    customerId: String
+    accountId: String
+    userLocationId: Int
+    profileType: String
+    companyName: String
+    companyId: String
+    contactJobRole: String
+  }
+
   type ListSettings {
     id: Int
     typeId: Int
@@ -355,7 +385,7 @@ const typeDefs = gql`
       listingRules: [Int]
     ): Success
     getOrCreateLocation(suggestAddress: String!): Location
-    tokenValidate(token: String!): Success
+    tokenValidate(token: String!): UserProfile
   }
 `;
 
