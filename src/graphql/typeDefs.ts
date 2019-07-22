@@ -342,6 +342,9 @@ const typeDefs = gql`
     getLocationById(id: Int!): Location
     getAllUsers: [User]
     getUser(id: String!): User
+    getAllAmenitiesBySubCategoryId(subCategoryId: Int!): [ListSettings]
+    getAllRules: [ListSettings]
+    getAllAccessTypes: [ListSettings]
   }
 
   type Mutation {

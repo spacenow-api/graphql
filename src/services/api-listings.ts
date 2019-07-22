@@ -36,6 +36,18 @@ class ListingsAPI extends PersonalizationAPI {
     return this.get(`/listings/rules/${listingId}`).catch((err) => new ApolloError(toError(err)));
   };
 
+  getAllAmenitiesBySubCategoryId = async (subCategoryId: number): Promise<_.IListingSettingsResponse> => {
+    return this.get(`/listings/fetch/amenities/${subCategoryId}`).catch((err) => new ApolloError(toError(err)));
+  };
+
+  getAllRules = async (): Promise<_.IListingSettingsResponse> => {
+    return this.get(`/listings/fetch/rules`).catch((err) => new ApolloError(toError(err)));
+  };
+
+  getAllAccessTypes = async (): Promise<_.IListingSettingsResponse> => {
+    return this.get(`/listings/fetch/accesstypes`).catch((err) => new ApolloError(toError(err)));
+  };
+
   createDraft = async (listing: _.IDraftRequest) => {
     return this.post(`/listings/draft`, listing).catch((err) => new ApolloError(toError(err)));
   };

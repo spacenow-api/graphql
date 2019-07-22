@@ -117,7 +117,19 @@ const resolvers = {
 
     getUser: async (_: any, args: any, { dataSources }: any) => {
       return await dataSources.usersAPI.getUser(args.id);
-    }
+    },
+
+    getAllAmenitiesBySubCategoryId: async (_: any, args: any, { dataSources }: any) => {
+      return await dataSources.listingsAPI.getAllAmenitiesBySubCategoryId(args.subCategoryId);
+    },
+
+    getAllRules: async (_: any, args: any, { dataSources }: any) => {
+      return await dataSources.listingsAPI.getAllRules();
+    },
+
+    getAllAccessTypes: async (_: any, args: any, { dataSources }: any) => {
+      return await dataSources.listingsAPI.getAllAccessTypes();
+    },
   },
 
   Mutation: {
