@@ -130,6 +130,10 @@ const resolvers = {
     getAllAccessTypes: async (_: any, args: any, { dataSources }: any) => {
       return await dataSources.listingsAPI.getAllAccessTypes();
     },
+
+    getAllSpecificationsByParentId: async (_: any, args: any, { dataSources }: any) => {
+      return await dataSources.listingsAPI.getListingSpecificationsByParentId(args.listSettingsParentId);
+    },
   },
 
   Mutation: {

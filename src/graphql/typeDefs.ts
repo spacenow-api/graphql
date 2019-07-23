@@ -345,6 +345,7 @@ const typeDefs = gql`
     getAllAmenitiesBySubCategoryId(subCategoryId: Int!): [ListSettings]
     getAllRules: [ListSettings]
     getAllAccessTypes: [ListSettings]
+    getAllSpecificationsByParentId(listSettingsParentId: Int!): [ListSettings]
   }
 
   type Mutation {
