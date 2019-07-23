@@ -23,15 +23,8 @@ const resolvers = {
       return await dataSources.assetsAPI.getAsset(args.id);
     },
 
-    getAvailabilitiesByListingId: async (
-      _: any,
-      args: any,
-      { dataSources }: any
-    ) => {
-      const { availabilitiesAPI } = dataSources;
-      const {
-        availability
-      } = await availabilitiesAPI.getAvailabilitiesByListingId(args.listingId);
+    getAvailabilitiesByListingId: async (_: any, args: any, { dataSources }: any) => {
+      const { availability } = await dataSources.availabilitiesAPI.getAvailabilitiesByListingId(args.listingId);
       return {
         bookingDates: availability.bookingDates,
         exceptionDates: availability.exceptionDates
@@ -67,9 +60,7 @@ const resolvers = {
           date: moment(o["Date"], "YYYYMMDD").format("YYYY-MM-DD"),
           description: o["Holiday Name"]
         }));
-      if (holidays) {
-        return holidays;
-      }
+      if (holidays) return holidays;
       return {
         status: "failed to get Holidays"
       };
@@ -204,9 +195,7 @@ const resolvers = {
 
     getOrCreateLocation: async (_: any, args: any, { dataSources }: any) => {
       const { locationsAPI } = dataSources;
-      return locationsAPI.getOrCreateLocation({
-        suggestAddress: args.suggestAddress
-      });
+      return locationsAPI.getOrCreateLocation({ suggestAddress: args.suggestAddress });
     },
 
     tokenValidate: async (_: any, args: any, { dataSources }: any) => {

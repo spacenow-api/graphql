@@ -224,6 +224,7 @@ const typeDefs = gql`
     id: Int
     category: ListSettings
     subcategory: ListSettings
+    bookingPeriod: BookingPeriodLegacy
   }
 
   type ListingAccessHours {
