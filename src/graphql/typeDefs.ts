@@ -387,7 +387,7 @@ const typeDefs = gql`
       listingAccessDays: ListingAccessDaysInput
       listingExceptionDates: [String]
       listingRules: [Int]
-    ): Success
+    ): Listing
     getOrCreateLocation(suggestAddress: String!): Location
     tokenValidate(token: String!): UserProfile
   }

@@ -2,6 +2,8 @@ import { ApolloError } from 'apollo-server';
 
 import { toError } from './../helpers/exceptions/HttpException';
 
+import { LocationsAPI } from './../services'
+
 import PersonalizationAPI from '../interfaces/personalization.inteface';
 
 import * as _ from '../interfaces/listing.interface';
@@ -11,6 +13,34 @@ class ListingsAPI extends PersonalizationAPI {
     super();
     this.baseURL = apiAddress;
   }
+
+  public fetchWholeListing = async (listingId: string, locationsAPI: LocationsAPI): Promise<_.IListingResponse> => {
+    const listingObj = await this.getListingById(listingId);
+    const listingDataObj = (id: string) => this.getListingDataByListingId(id);
+    const locationObj = (id: number) => locationsAPI.getLocationById(id);
+    const settingsObj = (id: string) => this.getListingSettingsByListingId(id);
+    const amenitiesArray = (id: string) => this.getListingAmenitiesByListingId(id);
+    const rulesArray = (id: string) => this.getListingRulesByListingId(id);
+    const accessDaysObj = (id: string) => this.getListingAccessDaysByListingId(id);
+    return Promise.all([
+      listingDataObj(listingId),
+      locationObj(listingObj.locationId),
+      settingsObj(listingId),
+      amenitiesArray(listingId),
+      rulesArray(listingId),
+      accessDaysObj(listingId)
+    ]).then(values => {
+      return {
+        ...listingObj,
+        listingData: values[0],
+        location: values[1],
+        settingsParent: values[2],
+        amenities: values[3],
+        rules: values[4],
+        accessDays: values[5]
+      };
+    });
+  };
 
   getListingById = async (id: string): Promise<_.IListingResponse> => {
     return this.get(`/listings/${id}`).catch((err) => new ApolloError(toError(err)));

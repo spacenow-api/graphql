@@ -76,39 +76,7 @@ const resolvers = {
 
     getListingById: async (_: any, args: any, { dataSources }: any) => {
       const { listingsAPI, locationsAPI } = dataSources;
-
-      const listingObj = await listingsAPI.getListingById(args.id);
-
-      const listingDataObj = (id: number) =>
-        listingsAPI.getListingDataByListingId(id);
-      const locationObj = (id: number) => locationsAPI.getLocationById(id);
-      const settingsObj = (id: number) =>
-        listingsAPI.getListingSettingsByListingId(id);
-      const amenitiesArray = (id: number) =>
-        listingsAPI.getListingAmenitiesByListingId(id);
-      const rulesArray = (id: number) =>
-        listingsAPI.getListingRulesByListingId(id);
-      const accessDaysObj = (id: number) =>
-        listingsAPI.getListingAccessDaysByListingId(id);
-
-      return Promise.all([
-        listingDataObj(args.id),
-        locationObj(listingObj.locationId),
-        settingsObj(args.id),
-        amenitiesArray(args.id),
-        rulesArray(args.id),
-        accessDaysObj(args.id)
-      ]).then(values => {
-        return {
-          ...listingObj,
-          listingData: values[0],
-          location: values[1],
-          settingsParent: values[2],
-          amenities: values[3],
-          rules: values[4],
-          accessDays: values[5]
-        };
-      });
+      return listingsAPI.fetchWholeListing(args.id, locationsAPI);
     },
 
     getLocationById: async (_: any, args: any, { dataSources }: any) => {
@@ -166,7 +134,7 @@ const resolvers = {
     },
 
     createOrUpdateListing: async (_: any, args: any, { dataSources }: any) => {
-      const { listingsAPI } = dataSources;
+      const { listingsAPI, locationsAPI } = dataSources;
       let listingObj: IListingResponse;
       if (args.listingId) {
         // Update an existent Listing;
@@ -212,9 +180,7 @@ const resolvers = {
         };
         listingObj = await listingsAPI.createDraft(requestDraftObj);
       }
-      return {
-        status: `Listing ${listingObj.id} Created/Updated with success!`
-      };
+      return listingsAPI.fetchWholeListing(listingObj.id, locationsAPI);
     },
 
     getOrCreateLocation: async (_: any, args: any, { dataSources }: any) => {
