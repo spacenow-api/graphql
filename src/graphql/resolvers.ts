@@ -80,12 +80,17 @@ const resolvers = {
 
       const listingObj = await listingsAPI.getListingById(args.id);
 
-      const listingDataObj = (id: number) => listingsAPI.getListingDataByListingId(id);
+      const listingDataObj = (id: number) =>
+        listingsAPI.getListingDataByListingId(id);
       const locationObj = (id: number) => locationsAPI.getLocationById(id);
-      const settingsObj = (id: number) => listingsAPI.getListingSettingsByListingId(id);
-      const amenitiesArray = (id: number) => listingsAPI.getListingAmenitiesByListingId(id);
-      const rulesArray = (id: number) => listingsAPI.getListingRulesByListingId(id);
-      const accessDaysObj = (id: number) => listingsAPI.getListingAccessDaysByListingId(id);
+      const settingsObj = (id: number) =>
+        listingsAPI.getListingSettingsByListingId(id);
+      const amenitiesArray = (id: number) =>
+        listingsAPI.getListingAmenitiesByListingId(id);
+      const rulesArray = (id: number) =>
+        listingsAPI.getListingRulesByListingId(id);
+      const accessDaysObj = (id: number) =>
+        listingsAPI.getListingAccessDaysByListingId(id);
 
       return Promise.all([
         listingDataObj(args.id),
@@ -119,8 +124,14 @@ const resolvers = {
       return await dataSources.usersAPI.getUser(args.id);
     },
 
-    getAllAmenitiesBySubCategoryId: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.listingsAPI.getAllAmenitiesBySubCategoryId(args.subCategoryId);
+    getAllAmenitiesBySubCategoryId: async (
+      _: any,
+      args: any,
+      { dataSources }: any
+    ) => {
+      return await dataSources.listingsAPI.getAllAmenitiesBySubCategoryId(
+        args.subCategoryId
+      );
     },
 
     getAllRules: async (_: any, args: any, { dataSources }: any) => {
@@ -129,7 +140,7 @@ const resolvers = {
 
     getAllAccessTypes: async (_: any, args: any, { dataSources }: any) => {
       return await dataSources.listingsAPI.getAllAccessTypes();
-    },
+    }
   },
 
   Mutation: {
@@ -183,7 +194,6 @@ const resolvers = {
       } else {
         // Considering a new listing from scratch;
         const requestDraftObj: IDraftRequest = {
-          userId: args.userId,
           locationId: args.locationId,
           listSettingsParentId: args.listSettingsParentId,
           bookingPeriod: args.bookingPeriod,

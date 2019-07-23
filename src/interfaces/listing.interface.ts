@@ -1,5 +1,4 @@
 export interface IDraftRequest {
-  userId: string;
   locationId: number;
   listSettingsParentId: number;
   bookingPeriod?: string;

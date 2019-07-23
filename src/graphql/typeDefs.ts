@@ -357,7 +357,6 @@ const typeDefs = gql`
       isActive: Boolean
     ): Category
     createOrUpdateListing(
-      userId: String!
       locationId: Int!
       listSettingsParentId: Int!
       bookingPeriod: String
