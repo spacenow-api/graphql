@@ -28,10 +28,11 @@ const resolvers = {
       args: any,
       { dataSources }: any
     ) => {
-      const { availabilitiesAPI } = dataSources;
       const {
         availability
-      } = await availabilitiesAPI.getAvailabilitiesByListingId(args.listingId);
+      } = await dataSources.availabilitiesAPI.getAvailabilitiesByListingId(
+        args.listingId
+      );
       return {
         bookingDates: availability.bookingDates,
         exceptionDates: availability.exceptionDates
@@ -67,9 +68,7 @@ const resolvers = {
           date: moment(o["Date"], "YYYYMMDD").format("YYYY-MM-DD"),
           description: o["Holiday Name"]
         }));
-      if (holidays) {
-        return holidays;
-      }
+      if (holidays) return holidays;
       return {
         status: "failed to get Holidays"
       };
@@ -140,6 +139,16 @@ const resolvers = {
 
     getAllAccessTypes: async (_: any, args: any, { dataSources }: any) => {
       return await dataSources.listingsAPI.getAllAccessTypes();
+    },
+
+    getAllSpecificationsByParentId: async (
+      _: any,
+      args: any,
+      { dataSources }: any
+    ) => {
+      return await dataSources.listingsAPI.getListingSpecificationsByParentId(
+        args.listSettingsParentId
+      );
     }
   },
 

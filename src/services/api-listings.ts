@@ -24,6 +24,10 @@ class ListingsAPI extends PersonalizationAPI {
     return this.get(`/listings/settings/${listingId}`).catch((err) => new ApolloError(toError(err)));
   };
 
+  getListingSpecificationsByParentId = async (listSettingsParentId: string): Promise<_.IListingSettingsResponse> => {
+    return this.get(`/listings/settings/specifications/${listSettingsParentId}`).catch((err) => new ApolloError(toError(err)));
+  };
+
   getListingAccessDaysByListingId = async (listingId: string): Promise<_.IListingAccessDaysResponse> => {
     return this.get(`/listings/access/${listingId}`).catch((err) => new ApolloError(toError(err)));
   };
