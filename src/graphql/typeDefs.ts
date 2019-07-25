@@ -383,6 +383,7 @@ const typeDefs = gql`
       maxEntranceHeight: String
       spaceType: String
       bookingType: String
+      bookingPeriod: String
       listingAmenities: [Int]
       listingAccessDays: ListingAccessDaysInput
       listingExceptionDates: [String]

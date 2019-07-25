@@ -162,6 +162,7 @@ const resolvers = {
           maxEntranceHeight: args.maxEntranceHeight,
           spaceType: args.spaceType,
           bookingType: args.bookingType,
+          bookingPeriod: args.bookingPeriod,
           listingAmenities: args.listingAmenities,
           listingAccessDays: args.listingAccessDays,
           listingExceptionDates: args.listingExceptionDates,

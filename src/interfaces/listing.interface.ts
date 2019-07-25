@@ -27,6 +27,7 @@ export interface IUpdateRequest {
   maxEntranceHeight?: string;
   spaceType?: string;
   bookingType?: string;
+  bookingPeriod?: string;
   listingAmenities?: Array<number>;
   listingAccessDays?: IListingAccessDaysRequest;
   listingExceptionDates?: Array<string>;
