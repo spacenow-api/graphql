@@ -396,12 +396,13 @@ const typeDefs = gql`
       maxEntranceHeight: String
       spaceType: String
       bookingType: String
+      bookingPeriod: String
       listingAmenities: [Int]
       listingAccessDays: ListingAccessDaysInput
       listingExceptionDates: [String]
       listingRules: [Int]
     ): Listing
-    getOrCreateLocation(suggestAddress: String!): Location
+    getOrCreateLocation(suggestAddress: String!, unit: String): Location
     tokenValidate(token: String!): UserProfile
   }
 `;

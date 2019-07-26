@@ -15,7 +15,7 @@ class ListingsAPI extends PersonalizationAPI {
   }
 
   public fetchWholeListing = async (listingId: string, locationsAPI: LocationsAPI): Promise<_.IListingResponse> => {
-    const listingObj = await this.getListingById(listingId);
+    const listingObj = await this.getListingById(listingId, true);
     const listingDataObj = (id: string) => this.getListingDataByListingId(id);
     const locationObj = (id: number) => locationsAPI.getLocationById(id);
     const settingsObj = (id: string) => this.getListingSettingsByListingId(id);
@@ -42,7 +42,8 @@ class ListingsAPI extends PersonalizationAPI {
     });
   };
 
-  getListingById = async (id: string): Promise<_.IListingResponse> => {
+  getListingById = async (id: string, cleanCache: boolean = false): Promise<_.IListingResponse> => {
+    if (cleanCache) this.memoizedResults.clear();
     return this.get(`/listings/${id}`).catch((err) => new ApolloError(toError(err)));
   };
 
@@ -87,7 +88,7 @@ class ListingsAPI extends PersonalizationAPI {
   };
 
   update = async (listing: _.IUpdateRequest) => {
-    return this.put(`/listings/update`, listing).catch((err) => new ApolloError(toError(err)));
+    return await this.put(`/listings/update`, listing).catch((err) => new ApolloError(toError(err)));
   };
 }
 

@@ -9,7 +9,7 @@ class AvailabilitiesAPI extends PersonalizationAPI {
   }
 
   getAvailabilitiesByListingId = async (id: number): Promise<_.IAvailabilitiesResponse> => {
-    return this.get(`/availabilities/getByListing/${id}`);
+    return this.get(`/getByListing/${id}`);
   };
 }
 

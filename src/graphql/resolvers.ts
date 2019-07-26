@@ -184,6 +184,7 @@ const resolvers = {
           maxEntranceHeight: args.maxEntranceHeight,
           spaceType: args.spaceType,
           bookingType: args.bookingType,
+          bookingPeriod: args.bookingPeriod,
           listingAmenities: args.listingAmenities,
           listingAccessDays: args.listingAccessDays,
           listingExceptionDates: args.listingExceptionDates,
@@ -208,7 +209,8 @@ const resolvers = {
     getOrCreateLocation: async (_: any, args: any, { dataSources }: any) => {
       const { locationsAPI } = dataSources;
       return locationsAPI.getOrCreateLocation({
-        suggestAddress: args.suggestAddress
+        suggestAddress: args.suggestAddress,
+        unit: args.unit
       });
     },
 
