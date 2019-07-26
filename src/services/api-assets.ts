@@ -1,4 +1,9 @@
-import { IAssetOutput, IAssetInput } from "../interfaces";
+import {
+  IAssetOutput,
+  IAssetInput,
+  IListingAssetOutput,
+  IListingAssetInput
+} from "../interfaces";
 import PersonalizationAPI from "../interfaces/personalization.inteface";
 import FormData from "form-data";
 import fs from "fs";
@@ -19,6 +24,12 @@ class AssetsAPI extends PersonalizationAPI {
     return this.get(`${this.path}/${id}`);
   };
 
+  getAllAssetsByListingId = async (
+    listingId: string
+  ): Promise<IListingAssetOutput> => {
+    return this.get(`${this.path}/listing/${listingId}`);
+  };
+
   createAsset = async (asset: IAssetInput): Promise<IAssetOutput> => {
     const { createReadStream, filename }: any = await asset.file;
     const sFile = createReadStream(filename);
@@ -29,6 +40,12 @@ class AssetsAPI extends PersonalizationAPI {
     return this.post(`${this.path}/${asset.folder}`, formData, {
       headers: formData.getHeaders()
     });
+  };
+
+  createListingAsset = async (
+    asset: IListingAssetInput
+  ): Promise<IAssetOutput> => {
+    return this.post(`/listingAsset`, asset);
   };
 }
 

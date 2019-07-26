@@ -22,4 +22,21 @@ interface IAssetSize {
   size: string;
 }
 
-export { IAssetOutput as default, IAssetInput };
+interface IListingAsset {
+  listingId: number;
+  assetId: string;
+  isCover: boolean;
+}
+
+interface IListingAssetInput extends IListingAsset {}
+
+interface IListingAssetOutput extends IListingAsset {
+  asset: IAssetOutput;
+}
+
+export {
+  IAssetOutput as default,
+  IAssetInput,
+  IListingAssetOutput,
+  IListingAssetInput
+};

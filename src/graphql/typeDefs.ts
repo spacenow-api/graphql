@@ -321,6 +321,13 @@ const typeDefs = gql`
     settingsParent: ListSettingsParent
   }
 
+  type ListingAsset {
+    listingId: Int
+    assetId: String
+    isCover: Boolean
+    asset: Asset
+  }
+
   type Success {
     status: String
   }
@@ -328,6 +335,7 @@ const typeDefs = gql`
   type Query {
     getAllAssets: [Asset]
     getAsset(id: String!): Asset
+    getAllAssetsByListingId(listingId: Int!): [ListingAsset]
     getAvailabilitiesByListingId(listingId: Int!): Availabilities
     getAllBookings: [Booking]
     getBooking: Booking
@@ -351,6 +359,11 @@ const typeDefs = gql`
 
   type Mutation {
     createAsset(file: Upload): Asset
+    createListingAsset(
+      listingId: Int!
+      assetId: String!
+      isCover: Boolean
+    ): ListingAsset
     login(email: String, password: String): Token
     createCategory(
       name: String

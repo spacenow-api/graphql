@@ -23,6 +23,24 @@ const resolvers = {
       return await dataSources.assetsAPI.getAsset(args.id);
     },
 
+    getAllAssetsByListingId: async (
+      _: any,
+      args: any,
+      { dataSources }: any
+    ) => {
+      const assetsListing = await dataSources.assetsAPI.getAllAssetsByListingId(
+        args.listingId
+      );
+      let assetsByListing: any = [];
+      const promise = assetsListing.map(async (assetListing: any) => {
+        const asset = await dataSources.assetsAPI.getAsset(
+          assetListing.assetId
+        );
+        assetsByListing.push({ ...assetListing, asset });
+      });
+      return await Promise.all(promise).then(() => assetsByListing);
+    },
+
     getAvailabilitiesByListingId: async (
       _: any,
       args: any,
@@ -123,6 +141,10 @@ const resolvers = {
   Mutation: {
     createAsset: async (_: any, args: any, { dataSources }: any) => {
       return await dataSources.assetsAPI.createAsset(args);
+    },
+
+    createListingAsset: async (_: any, args: any, { dataSources }: any) => {
+      return await dataSources.assetsAPI.createListingAsset(args);
     },
 
     login: async (_: any, args: any, { dataSources }: any) => {
