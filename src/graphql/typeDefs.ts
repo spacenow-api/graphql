@@ -389,7 +389,7 @@ const typeDefs = gql`
       listingExceptionDates: [String]
       listingRules: [Int]
     ): Listing
-    getOrCreateLocation(suggestAddress: String!): Location
+    getOrCreateLocation(suggestAddress: String!, unit: String): Location
     tokenValidate(token: String!): UserProfile
   }
 `;
