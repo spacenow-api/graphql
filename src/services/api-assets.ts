@@ -34,6 +34,14 @@ class AssetsAPI extends PersonalizationAPI {
 			headers: formData.getHeaders(),
 		});
 	};
+
+	deletePhoto = (args: any) => {
+		return this.delete(`${this.path}/${args.listingId}/${args.photoId}`);
+	};
+
+	setCoverPhoto = (args: any) => {
+		return this.put(`${this.path}/${args.listingId}/${args.photoId}`);
+	};
 }
 
 export default AssetsAPI;

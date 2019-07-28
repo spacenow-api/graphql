@@ -121,6 +121,14 @@ const resolvers = {
 			return await dataSources.assetsAPI.uploadPhoto(args);
 		},
 
+		deletePhoto: async (_: any, args: any, { dataSources }: any) => {
+			return await dataSources.assetsAPI.deletePhoto(args);
+		},
+
+		setCoverPhoto: async (_: any, args: any, { dataSources }: any) => {
+			return await dataSources.assetsAPI.setCoverPhoto(args);
+		},
+
 		login: async (_: any, args: any, { dataSources }: any) => {
 			return await dataSources.authAPI.login(args);
 		},

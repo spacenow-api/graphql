@@ -371,6 +371,8 @@ const typeDefs = gql`
 
 	type Mutation {
 		uploadPhoto(file: Upload, listingId: Int!): ListingPhotos
+		deletePhoto(photoId: Int!, listingId: Int!): Success
+		setCoverPhoto(photoId: Int!, listingId: Int!): Success
 		login(email: String, password: String): Token
 		createCategory(
 			name: String
