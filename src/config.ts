@@ -9,8 +9,10 @@ export const PLAYGROUND = process.env.PLAYGROUND
 	? Boolean(process.env.PLAYGROUND)
 	: false;
 
+export const TEMP_FILE_UPLOAD = './temp';
+
 export const ASSETS_API_HOST: string =
-	process.env.ASSETS_API_HOST || 'http://0.0.0.0:6007';
+	process.env.ASSETS_API_HOST || 'http://localhost:6007';
 
 export const CATEGORIES_API_HOST: string =
 	process.env.CATEGORIES_API_HOST || 'http://localhost:6003';
