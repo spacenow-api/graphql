@@ -14,40 +14,39 @@ class ListingsAPI extends PersonalizationAPI {
 		this.baseURL = apiAddress;
 	}
 
-	public fetchWholeListing = async (
-		listingId: string,
-		locationsAPI: LocationsAPI,
-	): Promise<_.IListingResponse> => {
-		const listingObj = await this.getListingById(listingId, true);
-		const listingDataObj = (id: string) => this.getListingDataByListingId(id);
-		const locationObj = (id: number) => locationsAPI.getLocationById(id);
-		const settingsObj = (id: string) => this.getListingSettingsByListingId(id);
-		const amenitiesArray = (id: string) =>
-			this.getListingAmenitiesByListingId(id);
-		const photosArray = (id: string) => this.getPhotosByListingId(id);
-		const rulesArray = (id: string) => this.getListingRulesByListingId(id);
-		const accessDaysObj = (id: string) =>
-			this.getListingAccessDaysByListingId(id);
-		return Promise.all([
-			listingDataObj(listingId),
-			locationObj(listingObj.locationId),
-			settingsObj(listingId),
-			amenitiesArray(listingId),
-			photosArray(listingId),
-			rulesArray(listingId),
-			accessDaysObj(listingId),
-		]).then(values => {
-			return {
-				...listingObj,
-				listingData: values[0],
-				location: values[1],
-				settingsParent: values[2],
-				amenities: values[3],
-				photos: values[4],
-				rules: values[5],
-				accessDays: values[6],
-			};
-		});
+	public fetchWholeListing = async (listingId: string, locationsAPI: LocationsAPI): Promise<_.IListingResponse> => {
+		try {
+			const listingObj = await this.getListingById(listingId, true);
+			const listingDataObj = (id: string) => this.getListingDataByListingId(id);
+			const locationObj = (id: number) => locationsAPI.getLocationById(id);
+			const settingsObj = (id: string) => this.getListingSettingsByListingId(id);
+			const amenitiesArray = (id: string) => this.getListingAmenitiesByListingId(id);
+			const photosArray = (id: string) => this.getPhotosByListingId(id);
+			const rulesArray = (id: string) => this.getListingRulesByListingId(id);
+			const accessDaysObj = (id: string) => this.getListingAccessDaysByListingId(id);
+			return Promise.all([
+				listingDataObj(listingId),
+				locationObj(listingObj.locationId),
+				settingsObj(listingId),
+				amenitiesArray(listingId),
+				photosArray(listingId),
+				rulesArray(listingId),
+				accessDaysObj(listingId)
+			]).then(values => {
+				return {
+					...listingObj,
+					listingData: values[0],
+					location: values[1],
+					settingsParent: values[2],
+					amenities: values[3],
+					photos: values[4],
+					rules: values[5],
+					accessDays: values[6],
+				};
+			});
+		} catch (err) {
+			throw new ApolloError(toError(err));
+		}
 	};
 
 	getListingById = async (
@@ -55,9 +54,7 @@ class ListingsAPI extends PersonalizationAPI {
 		cleanCache: boolean = false,
 	): Promise<_.IListingResponse> => {
 		if (cleanCache) this.memoizedResults.clear();
-		return this.get(`/listings/${id}`).catch(
-			err => new ApolloError(toError(err)),
-		);
+		return this.get(`/listings/${id}`);
 	};
 
 	getListingDataByListingId = async (
