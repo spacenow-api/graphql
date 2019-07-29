@@ -14,8 +14,6 @@ COPY . .
 
 RUN yarn build
 
-RUN chmod 777 /app/dist/temp
-
 EXPOSE 4000
 
 CMD ["yarn", "prod"]
