@@ -199,6 +199,11 @@ const resolvers = {
 		tokenValidate: async (_: any, args: any, { dataSources }: any) => {
 			return dataSources.authAPI.tokenValidate({ token: args.token });
 		},
+
+		publish: async (_: any, args: any, { dataSources }: any) => {
+			const { listingsAPI } = dataSources;
+			return listingsAPI.publish(args.listingId, args.status);
+		},
 	},
 };
 

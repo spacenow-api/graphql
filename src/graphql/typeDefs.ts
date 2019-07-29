@@ -413,6 +413,7 @@ const typeDefs = gql`
 		): Listing
 		getOrCreateLocation(suggestAddress: String!, unit: String): Location
 		tokenValidate(token: String!): UserProfile
+		publish(listingId: Int!, status: Boolean!): Listing
 	}
 `;
 

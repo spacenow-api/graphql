@@ -144,6 +144,11 @@ class ListingsAPI extends PersonalizationAPI {
 			err => new ApolloError(toError(err)),
 		);
 	};
+
+	publish = async (listingId: number, status: boolean) => {
+		return this.put(`/listings/${listingId}/publish/${status}`)
+			.catch(err => new ApolloError(toError(err)));
+	};
 }
 
 export default ListingsAPI;
