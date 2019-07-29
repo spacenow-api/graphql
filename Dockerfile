@@ -14,8 +14,7 @@ COPY . .
 
 RUN yarn build
 
-RUN mkdir /temp
-RUN mkdir /app/dist/temp
+RUN chmod 777 /app/temp
 
 EXPOSE 4000
 
