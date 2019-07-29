@@ -177,12 +177,23 @@ const typeDefs = gql`
 		contactJobRole: String
 	}
 
+	type UserVerificationInfo {
+		id: Int
+		userId: String
+		isEmailConfirmed: Boolean
+		isFacebookConnected: Boolean
+		isGoogleConnected: Boolean
+		isIdVerification: Boolean
+		isPhoneVerified: Boolean
+	}
+
 	type CustomUserVerification {
 		id: String
 		email: String
 		password: String
 		emailConfirmed: Boolean
 		profile: UserProfile
+		verification: UserVerificationInfo
 	}
 
 	type TokenValidation {
