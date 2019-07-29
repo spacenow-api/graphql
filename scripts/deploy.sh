@@ -33,7 +33,7 @@ HostedZoneName=$(echo "$2.cloud.spacenow.com" | tr '[:upper:]' '[:lower:]')
 # get ssm parameters from env
 echo "Getting SSM Parameters "
 
-ACM_CERTIFICATE=$(get_ssm_parameter /$2/ACM_CERTIFICATE)
+ACM_CERTIFICATE=$(get_ssm_parameter /$2/SPACENOW/ACM_CERTIFICATE)
 ASSETS_API_HOST=$(get_ssm_parameter /$2/SPACENOW/ASSETS_API_HOST)
 CATEGORIES_API_HOST=$(get_ssm_parameter /$2/SPACENOW/CATEGORIES_API_HOST)
 LOCATIONS_API_HOST=$(get_ssm_parameter /$2/SPACENOW/LOCATIONS_API_HOST)
