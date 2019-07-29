@@ -14,12 +14,8 @@ COPY . .
 
 RUN yarn build
 
-# The instructions for the second stage
-FROM node:10.16.0-jessie-slim
-
-WORKDIR /app
-
-COPY --from=first-stage /app ./
+RUN mkdir /temp
+RUN mkdir /app/dist/temp
 
 EXPOSE 4000
 
