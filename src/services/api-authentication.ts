@@ -1,4 +1,4 @@
-import { IAuth, IUser, IToken, IUserProfileLegancy } from '../interfaces';
+import { IAuth, IUser, IToken, IUserProfileLegancy, ITokenValidation } from '../interfaces';
 import PersonalizationAPI from '../interfaces/personalization.inteface';
 
 class AuthAPI extends PersonalizationAPI {
@@ -17,8 +17,8 @@ class AuthAPI extends PersonalizationAPI {
     return this.post(`${this.path}/signin`, auth);
   };
 
-  tokenValidate = async (token: IToken): Promise<IUserProfileLegancy> => {
-    return <IUserProfileLegancy>await this.post(`${this.path}/token/validate`, token);
+  tokenValidate = async (token: IToken): Promise<ITokenValidation> => {
+    return <ITokenValidation>await this.post(`${this.path}/token/validate`, token);
   };
 }
 

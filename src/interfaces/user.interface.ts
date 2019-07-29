@@ -1,8 +1,12 @@
 interface IUser {
 	id: string;
-	name: string;
 	email: string;
 	password: string;
+	emailConfirmed: number;
+	type: string;
+	createdAt: Date;
+	updatedAt: Date;
+	userBanStatus: number;
 }
 
 interface IUserProfileLegancy {
@@ -34,4 +38,17 @@ interface IUserProfileLegancy {
 	contactJobRole: string;
 }
 
-export { IUser, IUserProfileLegancy };
+interface ITokenValidation {
+	status: string;
+	id: string;
+	email: string;
+	password: string;
+	emailConfirmed: number;
+	type: string;
+	createdAt: Date;
+	updatedAt: Date;
+	userBanStatus: number;
+	profile: IUserProfileLegancy;
+}
+
+export { IUser, IUserProfileLegancy, ITokenValidation };

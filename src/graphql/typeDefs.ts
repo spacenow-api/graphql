@@ -141,10 +141,10 @@ const typeDefs = gql`
 	}
 
 	type User {
-		id: String!
-		email: String!
-		password: String!
-		isEmailConfirmed: Boolean!
+		id: String
+		email: String
+		password: String
+		emailConfirmed: Boolean
 	}
 
 	type UserProfile {
@@ -175,6 +175,19 @@ const typeDefs = gql`
 		companyName: String
 		companyId: String
 		contactJobRole: String
+	}
+
+	type CustomUserVerification {
+		id: String
+		email: String
+		password: String
+		emailConfirmed: Boolean
+		profile: UserProfile
+	}
+
+	type TokenValidation {
+		status: String
+		user: CustomUserVerification
 	}
 
 	type ListSettings {
@@ -412,7 +425,7 @@ const typeDefs = gql`
 			listingRules: [Int]
 		): Listing
 		getOrCreateLocation(suggestAddress: String!, unit: String): Location
-		tokenValidate(token: String!): UserProfile
+		tokenValidate(token: String!): TokenValidation
 		publish(listingId: Int!, status: Boolean!): Listing
 	}
 `;
