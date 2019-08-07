@@ -3,14 +3,14 @@ import axios from "axios";
 import moment from "moment";
 import GraphQLUpload from "graphql-upload";
 
-import * as config from "./../config";
+import * as config from "./../../config";
 
 import {
   IHolidayResponse,
   IListingResponse,
   IUpdateRequest,
   IDraftRequest
-} from "./../interfaces";
+} from "./../../interfaces";
 
 const resolvers = {
   Upload: GraphQLUpload,
@@ -117,10 +117,6 @@ const resolvers = {
       return await dataSources.listingsAPI.getListingSpecificationsByParentId(
         args.listSettingsParentId
       );
-    },
-
-    getPaymentAccount: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.paymentsAPI.getAccount();
     }
   },
 
@@ -220,15 +216,6 @@ const resolvers = {
     publish: async (_: any, args: any, { dataSources }: any) => {
       const { listingsAPI } = dataSources;
       return listingsAPI.publish(args.listingId, args.status);
-    },
-
-    createPaymentAccount: async (_: any, args: any, { dataSources }: any) => {
-
-      return dataSources.paymentsAPI.createAccount();
-    },
-
-    removePaymentAccount: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.paymentsAPI.removeAccount();
     }
   }
 };
