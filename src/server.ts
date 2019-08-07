@@ -21,7 +21,7 @@ const server = new ApolloServer({
   introspection: config.PLAYGROUND,
   playground: config.PLAYGROUND,
   onHealthCheck: () => Promise.resolve(),
-  context: ({ req }) => ({ token: req.headers.authorization }),
+  context: ({ req, res }) => ({ token: req.headers.authorization, res }),
   dataSources: () => {
     return {
       assetsAPI: new AssetsAPI(config.ASSETS_API_HOST),
