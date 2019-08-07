@@ -398,6 +398,7 @@ const typeDefs = gql`
     getPhotosByListingId(listingId: Int!): [ListingPhotos]
     getLocationById(id: Int!): Location
     getAllUsers: [User]
+    getAllUsersLegacy: [User]
     getUser(id: String!): User
     getAllAmenitiesBySubCategoryId(subCategoryId: Int!): [ListSettings]
     getAllRules: [ListSettings]

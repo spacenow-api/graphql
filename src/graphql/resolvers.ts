@@ -83,6 +83,10 @@ const resolvers = {
       return await dataSources.usersAPI.getAllUsers();
     },
 
+    getAllUsersLegacy: async (_: any, args: any, { dataSources }: any) => {
+      return await dataSources.usersAPI.getAllUsersLegacy();
+    },
+
     getUser: async (_: any, args: any, { dataSources }: any) => {
       return await dataSources.usersAPI.getUser(args.id);
     },

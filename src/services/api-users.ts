@@ -1,8 +1,8 @@
-import { IUser } from '../interfaces';
-import PersonalizationAPI from '../interfaces/personalization.inteface';
+import { IUser } from "../interfaces";
+import PersonalizationAPI from "../interfaces/personalization.inteface";
 
 class UsersAPI extends PersonalizationAPI {
-  private path = '/users';
+  private path = "/users";
 
   constructor(apiAddress: string) {
     super();
@@ -11,6 +11,10 @@ class UsersAPI extends PersonalizationAPI {
 
   getAllUsers = async (): Promise<[IUser]> => {
     return this.get(`${this.path}`);
+  };
+
+  getAllUsersLegacy = async (): Promise<[IUser]> => {
+    return this.get(`/usersLegacy`);
   };
 
   getUser = async (id: string): Promise<IUser> => {
