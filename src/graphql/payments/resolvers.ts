@@ -9,18 +9,18 @@ const resolvers = {
   Query: {
 
     getPaymentAccount: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.paymentsAPI.getAccount();
+      return dataSources.paymenstsAPI.getAccount();
     }
   },
 
   Mutation: {
 
     createPaymentAccount: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.paymentsAPI.createAccount();
+      return dataSources.paymenstsAPI.createAccount();
     },
 
     removePaymentAccount: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.paymentsAPI.removeAccount();
+      return dataSources.paymenstsAPI.removeAccount();
     }
   }
 };
