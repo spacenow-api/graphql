@@ -9,7 +9,7 @@ interface IUser {
 	userBanStatus: number;
 }
 
-interface IUserProfileLegancy {
+interface IUserProfileLegacy {
 	userId: string;
 	profileId: number;
 	firstName: string;
@@ -48,7 +48,7 @@ interface ITokenValidation {
 	createdAt: Date;
 	updatedAt: Date;
 	userBanStatus: number;
-	profile: IUserProfileLegancy;
+	profile: IUserProfileLegacy;
 }
 
-export { IUser, IUserProfileLegancy, ITokenValidation };
+export { IUser, IUserProfileLegacy, ITokenValidation };

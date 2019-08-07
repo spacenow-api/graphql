@@ -5,7 +5,7 @@ import IAssetOutput, {
 } from "./asset.interface";
 import IAuth from "./auth.interface";
 import { IToken } from "./auth.interface";
-import { IUser, IUserProfileLegancy, ITokenValidation } from "./user.interface";
+import { IUser, IUserProfileLegacy, ITokenValidation } from "./user.interface";
 import IBooking from "./booking.interface";
 import { ILocationRequest, ILocationResponse } from "./location.interface";
 import { IHolidayResponse } from "./holidays.interface";
@@ -43,7 +43,7 @@ export {
   IUpdateRequest,
   IDraftRequest,
   IToken,
-  IUserProfileLegancy,
+  IUserProfileLegacy,
   ITokenValidation,
   IAccountRequest,
   IAccountResponse,

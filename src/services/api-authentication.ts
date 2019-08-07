@@ -2,7 +2,7 @@ import {
   IAuth,
   IUser,
   IToken,
-  IUserProfileLegancy,
+  IUserProfileLegacy,
   ITokenValidation
 } from "../interfaces";
 import PersonalizationAPI from "../interfaces/personalization.inteface";
