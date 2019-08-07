@@ -20,6 +20,9 @@ import {
   ISubCategoryLegacy,
   IBookingPeriodLegacy
 } from "./category.interface";
+import { IAccountRequest } from './account-request.interface'
+import { IAccountResponse } from './account-response.interface'
+import PersonalizationAPI from "../interfaces/personalization.inteface";
 
 export {
   IAssetOutput,
@@ -41,5 +44,8 @@ export {
   IDraftRequest,
   IToken,
   IUserProfileLegancy,
-  ITokenValidation
+  ITokenValidation,
+  IAccountRequest,
+  IAccountResponse,
+  PersonalizationAPI
 };

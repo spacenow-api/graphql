@@ -117,10 +117,15 @@ const resolvers = {
       return await dataSources.listingsAPI.getListingSpecificationsByParentId(
         args.listSettingsParentId
       );
+    },
+
+    getPaymentAccount: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.paymentsAPI.getAccount();
     }
   },
 
   Mutation: {
+
     uploadPhoto: async (_: any, args: any, { dataSources }: any) => {
       return await dataSources.assetsAPI.uploadPhoto(args);
     },
@@ -215,6 +220,15 @@ const resolvers = {
     publish: async (_: any, args: any, { dataSources }: any) => {
       const { listingsAPI } = dataSources;
       return listingsAPI.publish(args.listingId, args.status);
+    },
+
+    createPaymentAccount: async (_: any, args: any, { dataSources }: any) => {
+
+      return dataSources.paymentsAPI.createAccount();
+    },
+
+    removePaymentAccount: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.paymentsAPI.removeAccount();
     }
   }
 };
