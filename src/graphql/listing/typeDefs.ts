@@ -145,6 +145,8 @@ const typeDefs = gql`
     email: String
     password: String
     emailConfirmed: Boolean
+    role: String
+    profile: UserProfile
   }
 
   type UserProfile {
