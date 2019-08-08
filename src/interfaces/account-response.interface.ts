@@ -124,4 +124,10 @@ interface IAccountResponseVerification {
   fields_needed: any[];
 }
 
-export { IAccountResponse }
+interface IAccountDeleteConfirmation {
+  id: string;
+  object: string;
+  deleted: boolean;
+}
+
+export { IAccountResponse, IAccountDeleteConfirmation }

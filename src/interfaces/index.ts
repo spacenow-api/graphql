@@ -21,7 +21,7 @@ import {
   IBookingPeriodLegacy
 } from "./category.interface";
 import { IAccountRequest } from './account-request.interface'
-import { IAccountResponse } from './account-response.interface'
+import { IAccountResponse, IAccountDeleteConfirmation } from './account-response.interface'
 import PersonalizationAPI from "../interfaces/personalization.inteface";
 
 export {
@@ -47,5 +47,6 @@ export {
   ITokenValidation,
   IAccountRequest,
   IAccountResponse,
-  PersonalizationAPI
+  PersonalizationAPI,
+  IAccountDeleteConfirmation
 };

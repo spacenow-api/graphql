@@ -126,13 +126,41 @@ const typeDefs = gql`
     decline_charge_on: DeclineChargeOn
   }
 
+  type StripeAccountDeleteConfirmation {
+    id: String
+    object: String
+    deleted: Boolean
+  }
+
   extend type Query {
     getPaymentAccount: StripeAccountType
   }
 
   extend type Mutation {
-    createPaymentAccount: StripeAccountType
-    removePaymentAccount: Boolean
+    createPaymentAccount(
+      type: String!
+      email: String!
+      country: String!
+      object: String!
+      external_account_country: String!
+      currency: String!
+      routing_number: String!
+      account_number: String!
+      personal_id_number: String!
+      first_name: String!
+      last_name: String!
+      legal_entity_type: String!
+      business_tax_id: String!
+      business_name: String!
+      city: String!
+      line1: String!
+      postal_code: Int!
+      state: String!
+      day: Int!
+      month: Int!
+      year: Int!
+    ): StripeAccountType
+    removePaymentAccount: StripeAccountDeleteConfirmation
   }
 `;
 

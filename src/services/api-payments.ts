@@ -1,4 +1,4 @@
-import { PersonalizationAPI, IAccountRequest, IAccountResponse } from "../interfaces";
+import { PersonalizationAPI, IAccountRequest, IAccountResponse, IAccountDeleteConfirmation } from "../interfaces";
 
 class PaymenstsAPI extends PersonalizationAPI {
 
@@ -15,7 +15,7 @@ class PaymenstsAPI extends PersonalizationAPI {
     return this.post('/payment/account', data);
   };
 
-  removeAccount = async (): Promise<void> => {
+  removeAccount = async (): Promise<IAccountDeleteConfirmation> => {
     return this.delete('/payment/account');
   };
 }
