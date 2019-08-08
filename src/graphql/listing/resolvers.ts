@@ -3,14 +3,14 @@ import axios from "axios";
 import moment from "moment";
 import GraphQLUpload from "graphql-upload";
 
-import * as config from "./../config";
+import * as config from "./../../config";
 
 import {
   IHolidayResponse,
   IListingResponse,
   IUpdateRequest,
   IDraftRequest
-} from "./../interfaces";
+} from "./../../interfaces";
 
 const resolvers = {
   Upload: GraphQLUpload,
@@ -121,6 +121,7 @@ const resolvers = {
   },
 
   Mutation: {
+
     uploadPhoto: async (_: any, args: any, { dataSources }: any) => {
       return await dataSources.assetsAPI.uploadPhoto(args);
     },

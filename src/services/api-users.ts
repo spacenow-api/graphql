@@ -14,7 +14,7 @@ class UsersAPI extends PersonalizationAPI {
   };
 
   getAllUsersLegacy = async (): Promise<[IUser]> => {
-    return this.get(`/usersLegacy`);
+    return this.get(`/users/legacy`);
   };
 
   getUser = async (id: string): Promise<IUser> => {

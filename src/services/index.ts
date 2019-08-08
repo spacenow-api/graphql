@@ -6,6 +6,7 @@ import UsersAPI from "./api-users";
 import CategoriesAPI from "./api-categories";
 import LocationsAPI from "./api-locations";
 import AvailabilitiesAPI from "./api-availabilities";
+import PaymenstsAPI from "./api-payments";
 
 export {
   AssetsAPI,
@@ -15,5 +16,6 @@ export {
   UsersAPI,
   CategoriesAPI,
   LocationsAPI,
-  AvailabilitiesAPI
+  AvailabilitiesAPI,
+  PaymenstsAPI
 };
