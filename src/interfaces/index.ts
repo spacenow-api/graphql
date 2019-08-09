@@ -1,7 +1,8 @@
 import IAssetOutput, {
   IAssetInput,
   IListingAssetInput,
-  IListingAssetOutput
+  IListingAssetOutput,
+  IPhotoInput
 } from "./asset.interface";
 import IAuth from "./auth.interface";
 import { IToken } from "./auth.interface";
@@ -23,6 +24,7 @@ import {
 import { IAccountRequest } from './account-request.interface'
 import { IAccountResponse, IAccountDeleteConfirmation } from './account-response.interface'
 import PersonalizationAPI from "../interfaces/personalization.inteface";
+import { IMailRequest, IMailConfirmation } from '../interfaces/mail.interface';
 
 export {
   IAssetOutput,
@@ -48,5 +50,8 @@ export {
   IAccountRequest,
   IAccountResponse,
   PersonalizationAPI,
-  IAccountDeleteConfirmation
+  IAccountDeleteConfirmation,
+  IMailRequest,
+  IMailConfirmation,
+  IPhotoInput
 };

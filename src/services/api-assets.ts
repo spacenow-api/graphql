@@ -1,13 +1,16 @@
-import PersonalizationAPI from '../interfaces/personalization.inteface';
 import FormData from 'form-data';
 import fs from 'fs';
 
-import * as config from '../config';
-import * as _ from '../interfaces/listing.interface';
-import { IPhotoInput } from '../interfaces/asset.interface';
 import streaming from '../helpers/streaming';
 
+import PersonalizationAPI from '../interfaces/personalization.inteface';
+import * as _ from '../interfaces/listing.interface';
+import { IPhotoInput, IMailConfirmation, IMailRequest } from '../interfaces';
+
+import * as config from '../config';
+
 class AssetsAPI extends PersonalizationAPI {
+
 	private path = '/photos';
 
 	constructor(apiAssets: string) {
@@ -15,9 +18,7 @@ class AssetsAPI extends PersonalizationAPI {
 		this.baseURL = apiAssets;
 	}
 
-	uploadPhoto = async (
-		asset: IPhotoInput,
-	): Promise<_.IListingPhotosResponse> => {
+	uploadPhoto = async (asset: IPhotoInput): Promise<_.IListingPhotosResponse> => {
 		const { createReadStream, filename }: any = await asset.file;
 		const stream = createReadStream();
 		await streaming({ stream, filename });
@@ -42,6 +43,10 @@ class AssetsAPI extends PersonalizationAPI {
 	setCoverPhoto = (args: any) => {
 		return this.put(`${this.path}/${args.listingId}/${args.photoId}`);
 	};
+
+	sendMail = async (mailRequest: IMailRequest): Promise<IMailConfirmation> => {
+		return this.post('/mail/send', mailRequest);
+	}
 }
 
 export default AssetsAPI;
