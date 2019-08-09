@@ -1,12 +1,6 @@
 import { gql } from "apollo-server";
 
 const typeDefs = gql`
-  interface MutationResponse {
-    code: String!
-    success: Boolean!
-    message: String!
-  }
-
   input UserInput {
     id: String
     email: String
