@@ -30,8 +30,9 @@ const resolvers = {
       return dataSources.authAPI.tokenAdminValidate({ token: args.token });
     },
 
-    updateUser: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.usersAPI.updateUser(args);
+    updateUserLegacy: async (_: any, args: any, { dataSources }: any) => {
+      console.log("ARGS", args);
+      return await dataSources.usersAPI.updateUserLegacy(args);
     }
   }
 };

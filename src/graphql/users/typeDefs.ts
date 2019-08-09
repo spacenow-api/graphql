@@ -7,6 +7,13 @@ const typeDefs = gql`
     message: String!
   }
 
+  type UpdateUserMutationResponse implements MutationResponse {
+    code: String!
+    success: Boolean!
+    message: String!
+    user: User
+  }
+
   input UserInput {
     id: String
     email: String
@@ -111,7 +118,7 @@ const typeDefs = gql`
   }
 
   extend type Mutation {
-    updateUser(input: UserInput): User
+    updateUserLegacy(input: UserInput): UpdateUserMutationResponse
     login(email: String, password: String): Token
     loginAdmin(email: String, password: String): Token
     tokenValidate(token: String!): TokenValidation
