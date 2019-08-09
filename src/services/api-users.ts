@@ -24,6 +24,10 @@ class UsersAPI extends PersonalizationAPI {
   createUser = async (user: IUser): Promise<IUser> => {
     return this.post(`${this.path}`, user);
   };
+
+  udpateUser = async (user: IUser): Promise<IUser> => {
+    return this.patch(`${this.path}`, user);
+  };
 }
 
 export default UsersAPI;
