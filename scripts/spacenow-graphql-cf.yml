@@ -214,7 +214,7 @@ Resources:
               Value: !Ref LocationsApiHost
             - Name: SPACES_API_HOST
               Value: !Ref SpacesApiHost
-            - Name: USERS_AUTHENTICATION_API_HOST
+            - Name: USERS_API_HOST
               Value: !Ref UsersApiHost
             - Name: API_AVAILABILITIES
               Value: !Ref AvailabilitiesApiHost
