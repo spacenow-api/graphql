@@ -38,7 +38,7 @@ ASSETS_API_HOST=$(get_ssm_parameter /$2/SPACENOW/ASSETS_API_HOST)
 CATEGORIES_API_HOST=$(get_ssm_parameter /$2/SPACENOW/CATEGORIES_API_HOST)
 LOCATIONS_API_HOST=$(get_ssm_parameter /$2/SPACENOW/LOCATIONS_API_HOST)
 SPACES_API_HOST=$(get_ssm_parameter /$2/SPACENOW/SPACES_API_HOST)
-USERS_API_HOST=$(get_ssm_parameter /$2/SPACENOW/USERS_API_HOST)
+USERS_AUTHENTICATION_API_HOST=$(get_ssm_parameter /$2/SPACENOW/USERS_AUTHENTICATION_API_HOST)
 API_AVAILABILITIES=$(get_ssm_parameter /$2/SPACENOW/API_AVAILABILITIES)
 BOOKINGS_API_HOST=$(get_ssm_parameter /$2/SPACENOW/API_BOOKINGS)
 PLAYGROUND=$(get_ssm_parameter /$2/SPACENOW/PLAYGROUND)
@@ -52,7 +52,7 @@ CF_PARAMS="ParameterKey=ImageUrl,ParameterValue=$3 \
           ParameterKey=CategoriesApiHost,ParameterValue=$CATEGORIES_API_HOST \
           ParameterKey=LocationsApiHost,ParameterValue=$LOCATIONS_API_HOST \
           ParameterKey=SpacesApiHost,ParameterValue=$SPACES_API_HOST \
-          ParameterKey=UsersApiHost,ParameterValue=$USERS_API_HOST \
+          ParameterKey=UsersApiHost,ParameterValue=$USERS_AUTHENTICATION_API_HOST \
           ParameterKey=AvailabilitiesApiHost,ParameterValue=$API_AVAILABILITIES \
           ParameterKey=BookingsApiHost,ParameterValue=$BOOKINGS_API_HOST \
           ParameterKey=Playground,ParameterValue=$PLAYGROUND \

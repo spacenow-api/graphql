@@ -22,7 +22,7 @@ export const SPACES_API_HOST: string =
 	process.env.SPACES_API_HOST || 'http://localhost:6002';
 
 export const USERS_AUTHENTICATION_API_HOST: string =
-	process.env.USERS_API_HOST || 'http://localhost:6001';
+	process.env.USERS_AUTHENTICATION_API_HOST || 'http://localhost:6001';
 
 export const API_AVAILABILITIES: string =
 	process.env.API_AVAILABILITIES ||
