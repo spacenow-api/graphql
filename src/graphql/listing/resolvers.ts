@@ -79,18 +79,6 @@ const resolvers = {
       return await dataSources.locationsAPI.getLocationById(args.id);
     },
 
-    getAllUsers: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.usersAPI.getAllUsers();
-    },
-
-    getAllUsersLegacy: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.usersAPI.getAllUsersLegacy();
-    },
-
-    getUser: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.usersAPI.getUser(args.id);
-    },
-
     getAllAmenitiesBySubCategoryId: async (
       _: any,
       args: any,
@@ -121,7 +109,6 @@ const resolvers = {
   },
 
   Mutation: {
-
     uploadPhoto: async (_: any, args: any, { dataSources }: any) => {
       return await dataSources.assetsAPI.uploadPhoto(args);
     },
@@ -132,14 +119,6 @@ const resolvers = {
 
     setCoverPhoto: async (_: any, args: any, { dataSources }: any) => {
       return await dataSources.assetsAPI.setCoverPhoto(args);
-    },
-
-    login: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.authAPI.login(args);
-    },
-
-    loginAdmin: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.authAPI.loginAdmin(args);
     },
 
     createCategory: async (_: any, args: any, { dataSources }: any) => {
@@ -203,14 +182,6 @@ const resolvers = {
         suggestAddress: args.suggestAddress,
         unit: args.unit
       });
-    },
-
-    tokenValidate: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.authAPI.tokenValidate({ token: args.token });
-    },
-
-    tokenAdminValidate: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.authAPI.tokenAdminValidate({ token: args.token });
     },
 
     publish: async (_: any, args: any, { dataSources }: any) => {

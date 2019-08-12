@@ -1,8 +1,4 @@
-import { UserInputError } from "apollo-server";
-
-import * as config from "./../../config";
-
-import { IAccountRequest, IAccountResponse } from "./../../interfaces";
+import { IAccountRequest } from "./../../interfaces";
 
 const resolvers = {
 

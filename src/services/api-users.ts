@@ -14,7 +14,7 @@ class UsersAPI extends PersonalizationAPI {
   };
 
   getAllUsersLegacy = async (): Promise<[IUser]> => {
-    return this.get(`/users/legacy`);
+    return this.get(`${this.path}/legacy`);
   };
 
   getUser = async (id: string): Promise<IUser> => {
@@ -27,6 +27,14 @@ class UsersAPI extends PersonalizationAPI {
 
   createUser = async (user: IUser): Promise<IUser> => {
     return this.post(`${this.path}`, user);
+  };
+
+  updateUserLegacy = async (user: IUser): Promise<IUser> => {
+    return this.patch(`${this.path}/legacy?id=${user.id}`, user);
+  };
+
+  deleteUserByEmail = async (email: string): Promise<IUser> => {
+    return this.delete(`${this.path}/legacy?email=${email}`);
   };
 }
 

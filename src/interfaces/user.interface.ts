@@ -4,9 +4,11 @@ interface IUser {
 	password: string;
 	emailConfirmed: number;
 	type: string;
+	userBanStatus: number;
+	role: string;
+	provider: string;
 	createdAt: Date;
 	updatedAt: Date;
-	userBanStatus: number;
 }
 
 interface IUserProfileLegacy {
