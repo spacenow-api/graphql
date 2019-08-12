@@ -371,6 +371,7 @@ const typeDefs = gql`
     photos: [ListingPhotos]
     accessDays: ListingAccessDays
     settingsParent: ListSettingsParent
+    user: User
   }
 
   type ListingAsset {
