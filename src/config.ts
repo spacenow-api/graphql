@@ -1,9 +1,7 @@
 import * as dotenv from 'dotenv';
 dotenv.config();
 
-export const PORT: number = process.env.PORT
-	? parseInt(process.env.PORT)
-	: 4000;
+export const PORT: number = 4000;
 
 export const PLAYGROUND = process.env.PLAYGROUND
 	? Boolean(process.env.PLAYGROUND)
