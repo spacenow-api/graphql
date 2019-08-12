@@ -216,7 +216,7 @@ Resources:
               Value: !Ref SpacesApiHost
             - Name: USERS_API_HOST
               Value: !Ref UsersApiHost
-            - Name: AVAILABILITIES_API_HOST
+            - Name: API_AVAILABILITIES
               Value: !Ref AvailabilitiesApiHost
             - Name: BOOKINGS_API_HOST
               Value: !Ref BookingsApiHost

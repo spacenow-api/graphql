@@ -26,8 +26,8 @@ export const SPACES_API_HOST: string =
 export const USERS_AUTHENTICATION_API_HOST: string =
 	process.env.USERS_API_HOST || 'http://localhost:6001';
 
-export const AVAILABILITIES_API_HOST: string =
-	process.env.AVAILABILITIES_API_HOST ||
+export const API_AVAILABILITIES: string =
+	process.env.API_AVAILABILITIES ||
 	'https://api-availabilities.sandpit.cloud.spacenow.com';
 
 export const BOOKINGS_API_HOST: string =

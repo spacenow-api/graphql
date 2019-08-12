@@ -33,7 +33,7 @@ const server = new ApolloServer({
       paymenstsAPI: new PaymenstsAPI(config.USERS_AUTHENTICATION_API_HOST),
       categoriesAPI: new CategoriesAPI(config.CATEGORIES_API_HOST),
       locationsAPI: new LocationsAPI(config.LOCATIONS_API_HOST),
-      availabilitiesAPI: new AvailabilitiesAPI(config.AVAILABILITIES_API_HOST)
+      availabilitiesAPI: new AvailabilitiesAPI(config.API_AVAILABILITIES)
     };
   }
 });
