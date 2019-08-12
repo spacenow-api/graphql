@@ -1,4 +1,4 @@
-import { IUser } from "../interfaces";
+import { IUser, IResponseUser } from "../interfaces";
 import PersonalizationAPI from "../interfaces/personalization.inteface";
 
 class UsersAPI extends PersonalizationAPI {
@@ -13,7 +13,7 @@ class UsersAPI extends PersonalizationAPI {
     return this.get(`${this.path}`);
   };
 
-  getAllUsersLegacy = async (): Promise<[IUser]> => {
+  getAllUsersLegacy = async (): Promise<IResponseUser> => {
     return this.get(`${this.path}/legacy`);
   };
 
