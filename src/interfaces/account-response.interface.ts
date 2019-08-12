@@ -73,7 +73,7 @@ interface LegalEntity {
   additional_owners: any[];
   address: Address;
   business_name: string;
-  business_tax_id_provided: boolean;
+  business_tax_id_provided?: boolean;
   dob: Dob;
   first_name: string;
   last_name: string;
