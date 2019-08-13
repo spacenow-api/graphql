@@ -64,6 +64,8 @@ const typeDefs = gql`
     updatedAt: Int
     priceType: String
     guestId: String
+    checkIn: String
+    checkOut: String
   }
 
   type Category {

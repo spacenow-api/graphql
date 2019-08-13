@@ -19,8 +19,8 @@ interface LegalEntity {
   first_name: string;
   last_name: string;
   type: string;
-  business_tax_id: string;
-  business_name: string;
+  business_tax_id?: string;
+  business_name?: string;
   address: Address;
   dob: Dob;
 }

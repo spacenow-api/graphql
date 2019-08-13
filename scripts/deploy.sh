@@ -39,7 +39,7 @@ CATEGORIES_API_HOST=$(get_ssm_parameter /$2/SPACENOW/CATEGORIES_API_HOST)
 LOCATIONS_API_HOST=$(get_ssm_parameter /$2/SPACENOW/LOCATIONS_API_HOST)
 SPACES_API_HOST=$(get_ssm_parameter /$2/SPACENOW/SPACES_API_HOST)
 USERS_API_HOST=$(get_ssm_parameter /$2/SPACENOW/USERS_API_HOST)
-AVAILABILITIES_API_HOST=$(get_ssm_parameter /$2/SPACENOW/API_AVAILABILITIES)
+API_AVAILABILITIES=$(get_ssm_parameter /$2/SPACENOW/API_AVAILABILITIES)
 BOOKINGS_API_HOST=$(get_ssm_parameter /$2/SPACENOW/API_BOOKINGS)
 PLAYGROUND=$(get_ssm_parameter /$2/SPACENOW/PLAYGROUND)
 echo "ENV ${2}"
@@ -53,7 +53,7 @@ CF_PARAMS="ParameterKey=ImageUrl,ParameterValue=$3 \
           ParameterKey=LocationsApiHost,ParameterValue=$LOCATIONS_API_HOST \
           ParameterKey=SpacesApiHost,ParameterValue=$SPACES_API_HOST \
           ParameterKey=UsersApiHost,ParameterValue=$USERS_API_HOST \
-          ParameterKey=AvailabilitiesApiHost,ParameterValue=$AVAILABILITIES_API_HOST \
+          ParameterKey=AvailabilitiesApiHost,ParameterValue=$API_AVAILABILITIES \
           ParameterKey=BookingsApiHost,ParameterValue=$BOOKINGS_API_HOST \
           ParameterKey=Playground,ParameterValue=$PLAYGROUND \
           ParameterKey=HostedZoneName,ParameterValue=$HostedZoneName"

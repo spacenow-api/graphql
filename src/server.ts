@@ -26,14 +26,14 @@ const server = new ApolloServer({
   dataSources: () => {
     return {
       assetsAPI: new AssetsAPI(config.ASSETS_API_HOST),
-      authAPI: new AuthAPI(config.USERS_AUTHENTICATION_API_HOST),
+      authAPI: new AuthAPI(config.USERS_API_HOST),
       bookingsAPI: new BookingsAPI(config.BOOKINGS_API_HOST),
       listingsAPI: new ListingsAPI(config.SPACES_API_HOST),
-      usersAPI: new UsersAPI(config.USERS_AUTHENTICATION_API_HOST),
-      paymenstsAPI: new PaymenstsAPI(config.USERS_AUTHENTICATION_API_HOST),
+      usersAPI: new UsersAPI(config.USERS_API_HOST),
+      paymenstsAPI: new PaymenstsAPI(config.USERS_API_HOST),
       categoriesAPI: new CategoriesAPI(config.CATEGORIES_API_HOST),
       locationsAPI: new LocationsAPI(config.LOCATIONS_API_HOST),
-      availabilitiesAPI: new AvailabilitiesAPI(config.AVAILABILITIES_API_HOST)
+      availabilitiesAPI: new AvailabilitiesAPI(config.API_AVAILABILITIES)
     };
   }
 });

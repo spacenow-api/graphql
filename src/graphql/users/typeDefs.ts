@@ -98,9 +98,14 @@ const typeDefs = gql`
     admin: CustomAdminUserVerification
   }
 
+  type UsersResponse {
+    rows: [User]
+    count: Int
+  }
+
   extend type Query {
     getAllUsers: [User]
-    getAllUsersLegacy: [User]
+    getAllUsersLegacy: UsersResponse
     getUser(id: String!): User
   }
 
