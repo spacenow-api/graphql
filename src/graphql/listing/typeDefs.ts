@@ -321,6 +321,7 @@ const typeDefs = gql`
     getAllRules: [ListSettings]
     getAllAccessTypes: [ListSettings]
     getAllSpecificationsByParentId(listSettingsParentId: Int!): [ListSettings]
+    getLetterListingsByState(state: String!): [Listing]
   }
 
   extend type Mutation {

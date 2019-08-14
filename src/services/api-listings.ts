@@ -79,13 +79,22 @@ class ListingsAPI extends PersonalizationAPI {
     );
   };
 
-  getListingSettingsByListingId = async (
-    listingId: string
-  ): Promise<_.IListingSettingsResponse> => {
-    return this.get(`/listings/settings/${listingId}`).catch(
-      err => new ApolloError(toError(err))
-    );
-  };
+	getLetterListingsByState = async (state: string, locationsAPI: LocationsAPI, usersAPI: UsersAPI): Promise<Array<any>> => {
+		const listingsArray: Array<_.IListingResponse> = await this.get(`/listings/letter/state/${state}`);
+		try {
+			return listingsArray.map(o => this.fetchWholeListing(o.id.toString(), locationsAPI, usersAPI));
+		} catch (err) {
+			throw new ApolloError(toError(err));
+		}
+	};
+
+	getListingSettingsByListingId = async (
+		listingId: string,
+	): Promise<_.IListingSettingsResponse> => {
+		return this.get(`/listings/settings/${listingId}`).catch(
+			err => new ApolloError(toError(err)),
+		);
+	};
 
   getListingSpecificationsByParentId = async (
     listSettingsParentId: string

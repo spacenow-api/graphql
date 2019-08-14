@@ -80,6 +80,11 @@ const resolvers = {
       );
     },
 
+    getLetterListingsByState: async (_: any, args: any, { dataSources }: any) => {
+      const { listingsAPI, locationsAPI, usersAPI } = dataSources;
+      return listingsAPI.getLetterListingsByState(args.state, locationsAPI, usersAPI);
+    },
+
     getLocationById: async (_: any, args: any, { dataSources }: any) => {
       return await dataSources.locationsAPI.getLocationById(args.id);
     },
