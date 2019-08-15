@@ -82,7 +82,7 @@ class ListingsAPI extends PersonalizationAPI {
 	getLetterListingsByState = async (state: string, locationsAPI: LocationsAPI, usersAPI: UsersAPI): Promise<Array<any>> => {
 		const listingsArray: Array<_.IListingResponse> = await this.get(`/listings/letter/state/${state}`);
 		try {
-			return listingsArray.map(o => this.fetchWholeListing(o.id.toString(), locationsAPI, usersAPI));
+			return listingsArray.map(o => this.fetchWholeListing(o.id.toString(), locationsAPI, usersAPI, true));
 		} catch (err) {
 			throw new ApolloError(toError(err));
 		}
