@@ -2,7 +2,7 @@ import { ApolloError } from 'apollo-server';
 
 import { toError } from './../helpers/exceptions/HttpException';
 
-import { LocationsAPI } from './../services';
+import { LocationsAPI, UsersAPI } from './../services';
 
 import PersonalizationAPI from '../interfaces/personalization.inteface';
 
@@ -14,9 +14,9 @@ class ListingsAPI extends PersonalizationAPI {
 		this.baseURL = apiAddress;
 	}
 
-	public fetchWholeListing = async (listingId: string, locationsAPI: LocationsAPI): Promise<_.IListingResponse> => {
+	public fetchWholeListing = async (listingId: string, locationsAPI: LocationsAPI, usersAPI: UsersAPI, isPublic: boolean): Promise<_.IListingResponse> => {
 		try {
-			const listingObj = await this.getListingById(listingId, true);
+			const listingObj = await this.getListingById(listingId, true, isPublic);
 			const listingDataObj = (id: string) => this.getListingDataByListingId(id);
 			const locationObj = (id: number) => locationsAPI.getLocationById(id);
 			const settingsObj = (id: string) => this.getListingSettingsByListingId(id);
@@ -24,6 +24,7 @@ class ListingsAPI extends PersonalizationAPI {
 			const photosArray = (id: string) => this.getPhotosByListingId(id);
 			const rulesArray = (id: string) => this.getListingRulesByListingId(id);
 			const accessDaysObj = (id: string) => this.getListingAccessDaysByListingId(id);
+			const userObj = (id: string) => usersAPI.getUserLegancyById(id);
 			return Promise.all([
 				listingDataObj(listingId),
 				locationObj(listingObj.locationId),
@@ -31,7 +32,8 @@ class ListingsAPI extends PersonalizationAPI {
 				amenitiesArray(listingId),
 				photosArray(listingId),
 				rulesArray(listingId),
-				accessDaysObj(listingId)
+				accessDaysObj(listingId),
+				userObj(listingObj.userId),
 			]).then(values => {
 				return {
 					...listingObj,
@@ -42,6 +44,7 @@ class ListingsAPI extends PersonalizationAPI {
 					photos: values[4],
 					rules: values[5],
 					accessDays: values[6],
+					user: values[7]
 				};
 			});
 		} catch (err) {
@@ -52,9 +55,10 @@ class ListingsAPI extends PersonalizationAPI {
 	getListingById = async (
 		id: string,
 		cleanCache: boolean = false,
+		isPublic: boolean
 	): Promise<_.IListingResponse> => {
 		if (cleanCache) this.memoizedResults.clear();
-		return this.get(`/listings/${id}`);
+		return isPublic ? this.get(`/listings/public/${id}`) : this.get(`/listings/${id}`);
 	};
 
 	getListingDataByListingId = async (

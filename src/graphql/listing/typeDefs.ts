@@ -288,6 +288,7 @@ const typeDefs = gql`
     photos: [ListingPhotos]
     accessDays: ListingAccessDays
     settingsParent: ListSettingsParent
+    user: User
   }
 
   type ListingAsset {
@@ -313,7 +314,7 @@ const typeDefs = gql`
       year: Int
       state: String!
     ): [Holidays]
-    getListingById(id: Int!): Listing
+    getListingById(id: Int!, isPublic: Boolean): Listing
     getPhotosByListingId(listingId: Int!): [ListingPhotos]
     getLocationById(id: Int!): Location
     getAllAmenitiesBySubCategoryId(subCategoryId: Int!): [ListSettings]

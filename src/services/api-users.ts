@@ -21,6 +21,10 @@ class UsersAPI extends PersonalizationAPI {
     return this.get(`${this.path}/${id}`);
   };
 
+  getUserLegancyById = async (id: string): Promise<IUser> => {
+    return this.get(`/users/legacy/${id}`);
+  };
+
   createUser = async (user: IUser): Promise<IUser> => {
     return this.post(`${this.path}`, user);
   };
