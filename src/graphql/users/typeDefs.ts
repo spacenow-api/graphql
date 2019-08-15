@@ -118,6 +118,7 @@ const typeDefs = gql`
     loginAdmin(email: String, password: String): Token
     tokenValidate(token: String!): TokenValidation
     tokenAdminValidate(token: String!): AdminTokenValidation
+    signup(email: String!, password: String!, firstName: String!, lastName: String!): Success
   }
 `;
 

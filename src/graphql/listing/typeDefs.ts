@@ -298,10 +298,6 @@ const typeDefs = gql`
     asset: Asset
   }
 
-  type Success {
-    status: String
-  }
-
   extend type Query {
     getAvailabilitiesByListingId(listingId: Int!): Availabilities
     getAllBookings: [Booking]

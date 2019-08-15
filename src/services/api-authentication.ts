@@ -1,13 +1,18 @@
+import { ApolloError } from 'apollo-server';
+
+import { toError } from './../helpers/exceptions/HttpException';
+
 import {
   IAuth,
   IUser,
   IToken,
-  IUserProfileLegacy,
   ITokenValidation
 } from "../interfaces";
+
 import PersonalizationAPI from "../interfaces/personalization.inteface";
 
 class AuthAPI extends PersonalizationAPI {
+
   private path = "/auth";
 
   constructor(apiAddress: string) {
@@ -15,8 +20,18 @@ class AuthAPI extends PersonalizationAPI {
     this.baseURL = apiAddress;
   }
 
-  register = async (user: IUser) => {
-    return this.post(`${this.path}/register`, user);
+  signup = async (email: string, password: string, firstName: string, lastName: string) => {
+    try {
+      await this.post(`${this.path}/signup`, {
+        email,
+        password,
+        firstName,
+        lastName
+      });
+      return { status: 'success' }
+    } catch (err) {
+      throw new ApolloError(toError(err));
+    }
   };
 
   login = async (auth: IAuth): Promise<IUser> => {
@@ -28,15 +43,11 @@ class AuthAPI extends PersonalizationAPI {
   };
 
   tokenValidate = async (token: IToken): Promise<ITokenValidation> => {
-    return <ITokenValidation>(
-      await this.post(`${this.path}/token/validate`, token)
-    );
+    return <ITokenValidation>(await this.post(`${this.path}/token/validate`, token));
   };
 
   tokenAdminValidate = async (token: IToken): Promise<ITokenValidation> => {
-    return <ITokenValidation>(
-      await this.post(`${this.path}/token/adminValidate`, token)
-    );
+    return <ITokenValidation>(await this.post(`${this.path}/token/adminValidate`, token));
   };
 }
 

@@ -1,7 +1,7 @@
 const resolvers = {
   Query: {
     getAllUsers: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.usersAPI.getAllUsers();
+      return dataSources.usersAPI.getAllUsers();
     },
 
     getUserLegacyById: async (_: any, args: any, { dataSources }: any) => {
@@ -9,21 +9,21 @@ const resolvers = {
     },
 
     getAllUsersLegacy: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.usersAPI.getAllUsersLegacy();
+      return dataSources.usersAPI.getAllUsersLegacy();
     },
 
     getUser: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.usersAPI.getUser(args.id);
+      return dataSources.usersAPI.getUser(args.id);
     }
   },
 
   Mutation: {
     login: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.authAPI.login(args);
+      return dataSources.authAPI.login(args);
     },
 
     loginAdmin: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.authAPI.loginAdmin(args);
+      return dataSources.authAPI.loginAdmin(args);
     },
 
     tokenValidate: async (_: any, args: any, { dataSources }: any) => {
@@ -35,11 +35,15 @@ const resolvers = {
     },
 
     updateUserLegacy: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.usersAPI.updateUserLegacy(args.input);
+      return dataSources.usersAPI.updateUserLegacy(args.input);
     },
 
     deleteUserByEmail: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.usersAPI.deleteUserByEmail(args.email);
+      return dataSources.usersAPI.deleteUserByEmail(args.email);
+    },
+
+    signup: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.authAPI.signup(args.email, args.password, args.firstName, args.lastName);
     }
   }
 };
