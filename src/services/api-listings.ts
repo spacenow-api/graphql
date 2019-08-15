@@ -32,7 +32,7 @@ class ListingsAPI extends PersonalizationAPI {
       const rulesArray = (id: string) => this.getListingRulesByListingId(id);
       const accessDaysObj = (id: string) =>
         this.getListingAccessDaysByListingId(id);
-      const userObj = (id: string) => usersAPI.getUserLegancyById(id);
+      const userObj = (id: string) => usersAPI.getUserLegacyById(id);
       return Promise.all([
         listingDataObj(listingId),
         locationObj(listingObj.locationId),
