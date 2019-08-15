@@ -108,6 +108,7 @@ const typeDefs = gql`
     getAllUsers: [User]
     getAllUsersLegacy: UsersResponse
     getUser(id: String!): User
+    getUserLegacyById(id: String!): User
   }
 
   extend type Mutation {

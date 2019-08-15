@@ -4,6 +4,10 @@ const resolvers = {
       return await dataSources.usersAPI.getAllUsers();
     },
 
+    getUserLegacyById: async (_: any, args: any, { dataSources }: any) => {
+      return await dataSources.usersAPI.getUserLegacyById(args.id);
+    },
+
     getAllUsersLegacy: async (_: any, args: any, { dataSources }: any) => {
       return await dataSources.usersAPI.getAllUsersLegacy();
     },
