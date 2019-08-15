@@ -72,7 +72,12 @@ const resolvers = {
 
     getListingById: async (_: any, args: any, { dataSources }: any) => {
       const { listingsAPI, locationsAPI, usersAPI } = dataSources;
-      return listingsAPI.fetchWholeListing(args.id, locationsAPI, usersAPI, args.isPublic);
+      return listingsAPI.fetchWholeListing(
+        args.id,
+        locationsAPI,
+        usersAPI,
+        args.isPublic
+      );
     },
 
     getLocationById: async (_: any, args: any, { dataSources }: any) => {
@@ -126,7 +131,7 @@ const resolvers = {
     },
 
     createOrUpdateListing: async (_: any, args: any, { dataSources }: any) => {
-      const { listingsAPI, locationsAPI } = dataSources;
+      const { listingsAPI, locationsAPI, usersAPI } = dataSources;
       let listingObj: IListingResponse;
       if (args.listingId) {
         // Update an existent Listing;
@@ -173,7 +178,11 @@ const resolvers = {
         };
         listingObj = await listingsAPI.createDraft(requestDraftObj);
       }
-      return listingsAPI.fetchWholeListing(listingObj.id, locationsAPI);
+      return listingsAPI.fetchWholeListing(
+        listingObj.id,
+        locationsAPI,
+        usersAPI
+      );
     },
 
     getOrCreateLocation: async (_: any, args: any, { dataSources }: any) => {
