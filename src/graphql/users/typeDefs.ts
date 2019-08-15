@@ -30,6 +30,7 @@ const typeDefs = gql`
     userBanStatus: Int
     provider: String
     profile: UserProfile
+    userVerifiedInfo: UserVerificationInfo
   }
 
   type UserProfile {
