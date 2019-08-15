@@ -72,7 +72,7 @@ const resolvers = {
 
     getListingById: async (_: any, args: any, { dataSources }: any) => {
       const { listingsAPI, locationsAPI, usersAPI } = dataSources;
-      return listingsAPI.fetchWholeListing(args.id, locationsAPI, usersAPI);
+      return listingsAPI.fetchWholeListing(args.id, locationsAPI, usersAPI, args.isPublic);
     },
 
     getLocationById: async (_: any, args: any, { dataSources }: any) => {

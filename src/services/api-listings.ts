@@ -14,9 +14,9 @@ class ListingsAPI extends PersonalizationAPI {
 		this.baseURL = apiAddress;
 	}
 
-	public fetchWholeListing = async (listingId: string, locationsAPI: LocationsAPI, usersAPI: UsersAPI): Promise<_.IListingResponse> => {
+	public fetchWholeListing = async (listingId: string, locationsAPI: LocationsAPI, usersAPI: UsersAPI, isPublic: boolean): Promise<_.IListingResponse> => {
 		try {
-			const listingObj = await this.getListingById(listingId, true);
+			const listingObj = await this.getListingById(listingId, true, isPublic);
 			const listingDataObj = (id: string) => this.getListingDataByListingId(id);
 			const locationObj = (id: number) => locationsAPI.getLocationById(id);
 			const settingsObj = (id: string) => this.getListingSettingsByListingId(id);
@@ -55,9 +55,10 @@ class ListingsAPI extends PersonalizationAPI {
 	getListingById = async (
 		id: string,
 		cleanCache: boolean = false,
+		isPublic: boolean
 	): Promise<_.IListingResponse> => {
 		if (cleanCache) this.memoizedResults.clear();
-		return this.get(`/listings/${id}`);
+		return isPublic ? this.get(`/listings/public/${id}`) : this.get(`/listings/${id}`);
 	};
 
 	getListingDataByListingId = async (
