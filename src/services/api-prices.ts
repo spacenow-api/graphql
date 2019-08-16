@@ -1,6 +1,8 @@
 import PersonalizationAPI from '../interfaces/personalization.inteface';
 
-import { IPriceEstimationList, IPriceEstimation } from '../interfaces/prices.interface';
+import { IPriceEstimation } from '../interfaces/prices.interface';
+
+import estimationsData from './../helpers/data/estimations';
 
 class PricesAPI extends PersonalizationAPI {
 
@@ -9,11 +11,8 @@ class PricesAPI extends PersonalizationAPI {
     this.baseURL = apiAddress;
   }
 
-  list = async (): Promise<Array<IPriceEstimation>> => {
-    const estimations: IPriceEstimationList = await this.get(`/list`);
-    if (estimations)
-      return estimations.results;
-    return [];
+  list = async (type: string): Promise<Array<IPriceEstimation>> => {
+    return estimationsData.filter(o => o.type === type);
   };
 }
 
