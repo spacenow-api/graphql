@@ -11,7 +11,8 @@ import {
   CategoriesAPI,
   LocationsAPI,
   AvailabilitiesAPI,
-  PaymenstsAPI
+  PaymenstsAPI,
+  PricesAPI
 } from "./services";
 
 import * as config from "./config";
@@ -33,7 +34,8 @@ const server = new ApolloServer({
       paymenstsAPI: new PaymenstsAPI(config.USERS_API_HOST),
       categoriesAPI: new CategoriesAPI(config.CATEGORIES_API_HOST),
       locationsAPI: new LocationsAPI(config.LOCATIONS_API_HOST),
-      availabilitiesAPI: new AvailabilitiesAPI(config.API_AVAILABILITIES)
+      availabilitiesAPI: new AvailabilitiesAPI(config.API_AVAILABILITIES),
+      pricesAPI: new PricesAPI(config.API_CAMPAIGNS)
     };
   }
 });

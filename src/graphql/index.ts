@@ -4,16 +4,18 @@ import paymentsT from './payments/typeDefs'
 import usersT from './users/typeDefs';
 import assetsT from './assets/typeDefs';
 import integrationsT from './integrations/typeDefs'
+import pricesT from './prices/typeDefs'
 
-const typeDefs = [rootT, listingT, paymentsT, usersT, assetsT, integrationsT]
+const typeDefs = [rootT, listingT, paymentsT, usersT, assetsT, integrationsT, pricesT]
 
 import listingR from './listing/resolvers';
 import paymentsR from './payments/resolvers'
 import usersR from './users/resolvers';
 import assetsR from './assets/resolvers';
 import integrationsR from './integrations/resolvers'
+import pricesR from './prices/resolvers'
 
-const resolvers = [listingR, paymentsR, usersR, assetsR, integrationsR]
+const resolvers = [listingR, paymentsR, usersR, assetsR, integrationsR, pricesR]
 
 
 export { typeDefs, resolvers };
