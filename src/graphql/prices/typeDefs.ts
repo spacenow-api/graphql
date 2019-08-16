@@ -7,12 +7,13 @@ const typeDefs = gql`
     state: String
     suburb: String
     postcode: String
-    estimate: Int
+    estimate: Float
     term: String
+    type: String
   }
 
   extend type Query {
-    getPricesEstimation: [PriceEstimation]
+    getPricesEstimation(type: String!): [PriceEstimation]
   }
 `;
 
