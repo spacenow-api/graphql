@@ -13,7 +13,8 @@ import {
   AvailabilitiesAPI,
   PaymenstsAPI,
   WeWorkAPI,
-  HubSpotAPI
+  HubSpotAPI,
+  PricesAPI
 } from "./services";
 
 import * as config from "./config";
@@ -37,7 +38,8 @@ const server = new ApolloServer({
       locationsAPI: new LocationsAPI(config.LOCATIONS_API_HOST),
       availabilitiesAPI: new AvailabilitiesAPI(config.API_AVAILABILITIES),
       weWorkAPI: new WeWorkAPI(config.WEWORK_API),
-      hubSpotAPI: new HubSpotAPI(config.HUBSPOT_FORMS_API)
+      hubSpotAPI: new HubSpotAPI(config.HUBSPOT_FORMS_API),
+      pricesAPI: new PricesAPI(config.API_CAMPAIGNS)
     };
   }
 });
