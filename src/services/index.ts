@@ -7,6 +7,7 @@ import CategoriesAPI from "./api-categories";
 import LocationsAPI from "./api-locations";
 import AvailabilitiesAPI from "./api-availabilities";
 import PaymenstsAPI from "./api-payments";
+import PricesAPI from './api-prices';
 
 export {
   AssetsAPI,
@@ -17,5 +18,6 @@ export {
   CategoriesAPI,
   LocationsAPI,
   AvailabilitiesAPI,
-  PaymenstsAPI
+  PaymenstsAPI,
+  PricesAPI
 };
