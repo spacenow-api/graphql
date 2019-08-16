@@ -34,3 +34,14 @@ export const BOOKINGS_API_HOST: string =
 
 export const HOLIDAYS_HOST: string =
 	'https://data.gov.au/data/api/3/action/datastore_search?resource_id=bda4d4f2-7fde-4bfc-8a23-a6eefc8cef80';
+
+export const WEWORK_API: string =
+	'https://refer.wework.com/api/v1/partners/referrals';
+
+	export const WEWORK_API_KEY: string = 'API_KEY'
+
+export const HUBSPOT_FORMS_API: string =
+	'https://forms.hubspot.com'
+
+export const HUBSPOT_PORTAL_ID = '5126785'
+export const HUBSPOT_FORM_GUID = '81780c35-04df-4b49-a2d7-781537210b11'

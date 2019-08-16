@@ -1,4 +1,4 @@
-interface IWeWork {
+export interface IWeWork {
   email: string,
   name: string,
   phone: string,
@@ -10,5 +10,3 @@ interface IWeWork {
   contact_allowed: boolean,
   notes: string
 }
- 
-export default IWeWork;

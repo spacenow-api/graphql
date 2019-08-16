@@ -2,7 +2,20 @@ import { gql } from "apollo-server";
 
 const typeDefs = gql`
 
-  input WeWorkInput {
+input WeWorkInput {
+  email: String
+  name: String
+  phone: String
+  city: String
+  requested_location: String
+  company_name: String
+  requested_move_in_date: String
+  desks_estimated: String
+  contact_allowed: Boolean
+  notes: String
+}
+
+  type WeWork {
     email: String
     name: String
     phone: String
@@ -15,28 +28,18 @@ const typeDefs = gql`
     notes: String
   }
 
-  type WeWorkOutput {
-    id: Int
-    email: String
-    name: String
-    phone: String
-    city: String
-    requested_location: String
-    company_name: String
-    requested_move_in_date: String
-    desks_estimated: String
-    contact_allowed: Boolean
-    notes: String
-  }
-
-  extend type Query {
-    getWeWorkReferrals: [WeWorkOutput]
+  type Output {
+    status: String
   }
 
   extend type Mutation {
     createWeWorkReferral(
       wework: WeWorkInput
-    ): WeWorkOutput
+    ): Output
+
+    sendHubSpotForm (
+      hubspot: WeWorkInput
+    ): Output
   }
 `;
 

@@ -33,6 +33,7 @@ import {
 } from "./account-response.interface";
 import PersonalizationAPI from "../interfaces/personalization.inteface";
 import { IMailRequest, IMailConfirmation } from "../interfaces/mail.interface";
+import { IWeWork } from "./integrations.interface";
 
 export {
   IAssetOutput,
@@ -62,5 +63,6 @@ export {
   IAccountDeleteConfirmation,
   IMailRequest,
   IMailConfirmation,
-  IPhotoInput
+  IPhotoInput,
+  IWeWork
 };

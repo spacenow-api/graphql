@@ -7,6 +7,8 @@ import CategoriesAPI from "./api-categories";
 import LocationsAPI from "./api-locations";
 import AvailabilitiesAPI from "./api-availabilities";
 import PaymenstsAPI from "./api-payments";
+import WeWorkAPI from "./api-wework";
+import HubSpotAPI from "./api-hubspot";
 
 export {
   AssetsAPI,
@@ -17,5 +19,7 @@ export {
   CategoriesAPI,
   LocationsAPI,
   AvailabilitiesAPI,
-  PaymenstsAPI
+  PaymenstsAPI,
+  WeWorkAPI,
+  HubSpotAPI
 };

@@ -1,16 +1,4 @@
-// import { UserInputError } from "apollo-server";
-// import axios from "axios";
-// import moment from "moment";
 import GraphQLUpload from "graphql-upload";
-
-// import * as config from "./../../config";
-
-// import {
-//   IHolidayResponse,
-//   IListingResponse,
-//   IUpdateRequest,
-//   IDraftRequest
-// } from "./../../interfaces";
 
 const resolvers = {
   Upload: GraphQLUpload,
@@ -19,6 +7,24 @@ const resolvers = {
   },
 
   Mutation: {
+
+    createWeWorkReferral: async (_: any, args: any, { dataSources }: any) => {
+      const { weWorkAPI } = dataSources;
+      
+      return weWorkAPI.createWeWorkReferral(
+        args.wework
+      );
+    },
+    
+    sendHubSpotForm: async (_: any, args: any, { dataSources }: any) => {
+      const { hubSpotAPI } = dataSources;
+
+      await hubSpotAPI.sendHubSpotForm(
+        args.hubspot
+      );
+
+      return { status: "success" }
+    },
 
   }
 };
