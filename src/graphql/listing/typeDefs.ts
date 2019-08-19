@@ -253,7 +253,7 @@ const typeDefs = gql`
     currency: String
     isAbsorvedFee: Boolean
     capacity: Int
-    size: Int
+    size: Float
     meetingRooms: Int
     isFurnished: Boolean
     carSpace: Int
@@ -350,7 +350,7 @@ const typeDefs = gql`
       currency: String
       isAbsorvedFee: Boolean
       capacity: Int
-      size: Int
+      size: Float
       meetingRooms: Int
       isFurnished: Boolean
       carSpace: Int
