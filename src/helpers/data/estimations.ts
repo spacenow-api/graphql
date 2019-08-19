@@ -1054,15 +1054,6 @@ export default
       "type": "office"
     },
     {
-      "priceEstimationId": "EF81R61",
-      "suburb": "Newcastle",
-      "postcode": "2300",
-      "state": "NSW",
-      "estimate": 310,
-      "term": "month",
-      "type": "office"
-    },
-    {
       "priceEstimationId": "CJ48B74",
       "suburb": "Alexandria",
       "postcode": "2015",
