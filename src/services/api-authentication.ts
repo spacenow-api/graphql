@@ -46,6 +46,14 @@ class AuthAPI extends PersonalizationAPI {
     return <ITokenValidation>(await this.post(`${this.path}/token/validate`, token));
   };
 
+  tokenGoogleValidate = async (iToken: IToken): Promise<ITokenValidation> => {
+    return <ITokenValidation>(await this.post(`${this.path}/token/google/validate?access_token=${iToken.token}`));
+  };
+
+  tokenFacebookValidate = async (iToken: IToken): Promise<ITokenValidation> => {
+    return <ITokenValidation>(await this.post(`${this.path}/token/facebook/validate?access_token=${iToken.token}`));
+  };
+
   tokenAdminValidate = async (token: IToken): Promise<ITokenValidation> => {
     return <ITokenValidation>(await this.post(`${this.path}/token/adminValidate`, token));
   };

@@ -30,6 +30,14 @@ const resolvers = {
       return dataSources.authAPI.tokenValidate({ token: args.token });
     },
 
+    tokenGoogleValidate: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.authAPI.tokenGoogleValidate({ token: args.token });
+    },
+
+    tokenFacebookValidate: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.authAPI.tokenFacebookValidate({ token: args.token });
+    },
+
     tokenAdminValidate: async (_: any, args: any, { dataSources }: any) => {
       return dataSources.authAPI.tokenAdminValidate({ token: args.token });
     },
