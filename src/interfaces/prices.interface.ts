@@ -10,6 +10,7 @@ interface IPriceEstimation {
   postcode: string;
   estimate: number;
   term: string;
+  type: string;
 }
 
 export { IPriceEstimationList, IPriceEstimation };
