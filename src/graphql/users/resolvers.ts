@@ -52,6 +52,14 @@ const resolvers = {
 
     signup: async (_: any, args: any, { dataSources }: any) => {
       return dataSources.authAPI.signup(args.email, args.password, args.firstName, args.lastName);
+    },
+
+    resetPassword: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.usersAPI.resetPassword(args.email);
+    },
+
+    resetPasswordUpdate: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.usersAPI.resetPasswordUpdate(args.email, args.token, args.password);
     }
   }
 };

@@ -127,6 +127,8 @@ const typeDefs = gql`
     tokenFacebookValidate(token: String!): TokenValidation
     tokenAdminValidate(token: String!): AdminTokenValidation
     signup(email: String!, password: String!, firstName: String!, lastName: String!): Success
+    resetPassword(email: String!): Success
+    resetPasswordUpdate(email: String!, token: String!, password: String!): Success
   }
 `;
 

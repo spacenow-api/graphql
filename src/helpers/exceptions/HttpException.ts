@@ -1,9 +1,18 @@
+import { ApolloError } from "apollo-server";
+
 import { IDataSourceErr } from './exception.interface'
+
+export const catchApolloError = (err: any) => new ApolloError(toError(err));
 
 export const toError = (err: IDataSourceErr): string => {
   console.error('New exception unmarshal: ', err);
-  const errBody = err.extensions.response.body;
-  return errBody.message || 'API exception not mapped.';
+  try {
+    const errBody = err.extensions.response.body;
+    return errBody.message || 'API exception not mapped.';
+  } catch (exception) {
+    console.error(exception);
+    return "Problems to unmarshal Apollo exception.";
+  }
 }
 
 export default class HttpException extends Error {
