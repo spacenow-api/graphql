@@ -1,6 +1,4 @@
-import { ApolloError } from 'apollo-server';
-
-import { toError } from './../helpers/exceptions/HttpException';
+import { catchApolloError } from "./../helpers/exceptions/HttpException";
 
 import {
   IAuth,
@@ -21,41 +19,38 @@ class AuthAPI extends PersonalizationAPI {
   }
 
   signup = async (email: string, password: string, firstName: string, lastName: string) => {
-    try {
-      await this.post(`${this.path}/signup`, {
-        email,
-        password,
-        firstName,
-        lastName
-      });
-      return { status: 'success' }
-    } catch (err) {
-      throw new ApolloError(toError(err));
-    }
+    return this.post(`${this.path}/signup`, {
+      email,
+      password,
+      firstName,
+      lastName
+    }).then(() => {
+      return { status: 'success' };
+    }).catch(catchApolloError);
   };
 
   login = async (auth: IAuth) => {
-    return this.post(`${this.path}/signin`, auth);
+    return this.post(`${this.path}/signin`, auth).catch(catchApolloError);
   };
 
   loginAdmin = async (auth: IAuth): Promise<IUser> => {
-    return this.post(`${this.path}/adminSignin`, auth);
+    return this.post(`${this.path}/adminSignin`, auth).catch(catchApolloError);
   };
 
   tokenValidate = async (token: IToken) => {
-    return this.post(`${this.path}/token/validate`, token);
+    return this.post(`${this.path}/token/validate`, token).catch(catchApolloError);
   };
 
   tokenGoogleValidate = async (iToken: IToken) => {
-    return this.post(`${this.path}/token/google/validate`, { token: iToken.token });
+    return this.post(`${this.path}/token/google/validate`, { token: iToken.token }).catch(catchApolloError);
   };
 
   tokenFacebookValidate = async (iToken: IToken) => {
-    return this.post(`${this.path}/token/facebook/validate?access_token=${iToken.token}`);
+    return this.post(`${this.path}/token/facebook/validate?access_token=${iToken.token}`).catch(catchApolloError);
   };
 
   tokenAdminValidate = async (token: IToken): Promise<ITokenValidation> => {
-    return <ITokenValidation>(await this.post(`${this.path}/token/adminValidate`, token));
+    return this.post(`${this.path}/token/adminValidate`, token).catch(catchApolloError);
   };
 }
 
