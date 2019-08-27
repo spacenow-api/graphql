@@ -85,6 +85,7 @@ const typeDefs = gql`
   type TokenWithUser {
     token: String
     expiresIn: Int
+    status: String
     user: CustomUserVerification
   }
 
@@ -123,8 +124,8 @@ const typeDefs = gql`
     login(email: String, password: String): TokenWithUser
     loginAdmin(email: String, password: String): Token
     tokenValidate(token: String!): TokenValidation
-    tokenGoogleValidate(token: String!): TokenValidation
-    tokenFacebookValidate(token: String!): TokenValidation
+    tokenGoogleValidate(token: String!): TokenWithUser
+    tokenFacebookValidate(token: String!): TokenWithUser
     tokenAdminValidate(token: String!): AdminTokenValidation
     signup(email: String!, password: String!, firstName: String!, lastName: String!): Success
     resetPassword(email: String!): Success

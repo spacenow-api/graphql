@@ -34,7 +34,7 @@ class AuthAPI extends PersonalizationAPI {
     }
   };
 
-  login = async (auth: IAuth): Promise<IUser> => {
+  login = async (auth: IAuth) => {
     return this.post(`${this.path}/signin`, auth);
   };
 
@@ -42,16 +42,16 @@ class AuthAPI extends PersonalizationAPI {
     return this.post(`${this.path}/adminSignin`, auth);
   };
 
-  tokenValidate = async (token: IToken): Promise<ITokenValidation> => {
-    return <ITokenValidation>(await this.post(`${this.path}/token/validate`, token));
+  tokenValidate = async (token: IToken) => {
+    return this.post(`${this.path}/token/validate`, token);
   };
 
-  tokenGoogleValidate = async (iToken: IToken): Promise<ITokenValidation> => {
-    return <ITokenValidation>(await this.post(`${this.path}/token/google/validate?access_token=${iToken.token}`));
+  tokenGoogleValidate = async (iToken: IToken) => {
+    return this.post(`${this.path}/token/google/validate`, { token: iToken.token });
   };
 
-  tokenFacebookValidate = async (iToken: IToken): Promise<ITokenValidation> => {
-    return <ITokenValidation>(await this.post(`${this.path}/token/facebook/validate?access_token=${iToken.token}`));
+  tokenFacebookValidate = async (iToken: IToken) => {
+    return this.post(`${this.path}/token/facebook/validate?access_token=${iToken.token}`);
   };
 
   tokenAdminValidate = async (token: IToken): Promise<ITokenValidation> => {
