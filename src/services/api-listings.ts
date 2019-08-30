@@ -14,24 +14,16 @@ class ListingsAPI extends PersonalizationAPI {
     this.baseURL = apiAddress;
   }
 
-  public fetchWholeListing = async (
-    listingId: string,
-    locationsAPI: LocationsAPI,
-    usersAPI: UsersAPI,
-    isPublic: boolean
-  ): Promise<_.IListingResponse> => {
+  public fetchWholeListing = async (listingId: string, locationsAPI: LocationsAPI, usersAPI: UsersAPI, isPublic: boolean): Promise<_.IListingResponse> => {
     try {
       const listingObj = await this.getListingById(listingId, true, isPublic);
       const listingDataObj = (id: string) => this.getListingDataByListingId(id);
       const locationObj = (id: number) => locationsAPI.getLocationById(id);
-      const settingsObj = (id: string) =>
-        this.getListingSettingsByListingId(id);
-      const amenitiesArray = (id: string) =>
-        this.getListingAmenitiesByListingId(id);
+      const settingsObj = (id: string) => this.getListingSettingsByListingId(id);
+      const amenitiesArray = (id: string) => this.getListingAmenitiesByListingId(id);
       const photosArray = (id: string) => this.getPhotosByListingId(id);
       const rulesArray = (id: string) => this.getListingRulesByListingId(id);
-      const accessDaysObj = (id: string) =>
-        this.getListingAccessDaysByListingId(id);
+      const accessDaysObj = (id: string) => this.getListingAccessDaysByListingId(id);
       const userObj = (id: string) => usersAPI.getUserLegacyById(id);
       return Promise.all([
         listingDataObj(listingId),

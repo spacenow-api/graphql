@@ -16,6 +16,7 @@ import {
   HubSpotAPI,
   PricesAPI,
   EmailsAPI
+  SearchAPI
 } from "./services";
 
 import * as config from "./config";
@@ -42,6 +43,7 @@ const server = new ApolloServer({
       hubSpotAPI: new HubSpotAPI(config.HUBSPOT_FORMS_API),
       pricesAPI: new PricesAPI(config.API_CAMPAIGNS),
       emailsAPI: new EmailsAPI(config.EMAILS_API),
+      searchAPI: new SearchAPI(config.SEARCH_API_HOST)
     };
   }
 });

@@ -11,6 +11,7 @@ import WeWorkAPI from "./api-wework";
 import HubSpotAPI from "./api-hubspot";
 import PricesAPI from './api-prices';
 import EmailsAPI from './api-emails';
+import SearchAPI from './api-search';
 
 export {
   AssetsAPI,
@@ -26,4 +27,5 @@ export {
   HubSpotAPI,
   PricesAPI,
   EmailsAPI
+  SearchAPI
 };
