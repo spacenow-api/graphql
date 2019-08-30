@@ -3,8 +3,7 @@ const resolvers = {
   Query: {
 
     searchByAddress: async (_: any, args: any, { dataSources }: any) => {
-      const { listingsAPI, locationsAPI, searchAPI, usersAPI } = dataSources;
-      return searchAPI.searchByAddress(args.lat, args.lng, args.userId, listingsAPI, locationsAPI, usersAPI);
+      return dataSources.searchAPI.searchByAddress(args.lat, args.lng, args.userId);
     },
 
     searchByFilters: async (_: any, args: any, { dataSources }: any) => {
