@@ -56,6 +56,7 @@ const typeDefs = gql`
     profileId: Int
     firstName: String
     lastName: String
+    picture: String
   }
 
   type SearchHost {
