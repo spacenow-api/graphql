@@ -15,7 +15,7 @@ class SearchAPI extends PersonalizationAPI {
 
   searchByAddress = async (lat: string, lng: string, userId: string) => {
     try {
-      const searchResult = await this.get(`/search/${userId}/listings/${lat},${lng}`);
+      const searchResult = await this.get(`/search/listings/${lat},${lng}`);
       return {
         status: 'OK',
         searchKey: searchResult.searchKey,
