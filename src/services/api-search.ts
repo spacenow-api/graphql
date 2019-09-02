@@ -26,7 +26,7 @@ class SearchAPI extends PersonalizationAPI {
     }
   };
 
-  searchByFilters = async (key: string, categories: string, duration: string, priceMin: number, priceMax: number, instant: boolean) => {
+  searchByFilters = async (key: string, categories: string, duration: string, priceMin: number, priceMax: number, instant: string) => {
     return this.get(`/search/${key}/query`, {
       categories,
       duration,
