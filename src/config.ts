@@ -47,3 +47,5 @@ export const HUBSPOT_PORTAL_ID = '5126785'
 export const HUBSPOT_FORM_GUID = '81780c35-04df-4b49-a2d7-781537210b11'
 
 export const API_CAMPAIGNS: string = process.env.API_CAMPAIGNS || 'https://api-price-estimation.sandpit.cloud.spacenow.com/price-estimation';
+
+export const EMAILS_API: string = process.env.EMAILS_API || 'https://api-emails.sandpit.cloud.spacenow.com';

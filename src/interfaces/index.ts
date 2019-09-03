@@ -34,6 +34,7 @@ import {
 import PersonalizationAPI from "../interfaces/personalization.inteface";
 import { IMailRequest, IMailConfirmation } from "../interfaces/mail.interface";
 import { IWeWork } from "./integrations.interface";
+import IEmail from "./email.interface";
 
 export {
   IAssetOutput,
@@ -64,5 +65,6 @@ export {
   IMailRequest,
   IMailConfirmation,
   IPhotoInput,
-  IWeWork
+  IWeWork,
+  IEmail
 };

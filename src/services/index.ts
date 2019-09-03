@@ -10,6 +10,7 @@ import PaymenstsAPI from "./api-payments";
 import WeWorkAPI from "./api-wework";
 import HubSpotAPI from "./api-hubspot";
 import PricesAPI from './api-prices';
+import EmailsAPI from './api-emails';
 
 export {
   AssetsAPI,
@@ -23,5 +24,6 @@ export {
   PaymenstsAPI,
   WeWorkAPI,
   HubSpotAPI,
-  PricesAPI
+  PricesAPI,
+  EmailsAPI
 };

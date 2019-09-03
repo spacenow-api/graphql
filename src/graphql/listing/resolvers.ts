@@ -196,6 +196,11 @@ const resolvers = {
     publish: async (_: any, args: any, { dataSources }: any) => {
       const { listingsAPI } = dataSources;
       return listingsAPI.publish(args.listingId, args.status);
+    },
+
+    cleanListingAvailabilities: async (_: any, args: any, { dataSources }: any) => {
+      const { bookingsAPI } = dataSources;
+      return bookingsAPI.cleanListingAvailabilities(args.listingId);
     }
   }
 };
