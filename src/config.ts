@@ -26,7 +26,7 @@ export const USERS_API_HOST: string =
 
 export const API_AVAILABILITIES: string =
 	process.env.API_AVAILABILITIES ||
-	'https://api-availabilities.sandpit.cloud.spacenow.com';
+	'https://api-availabilities.sandpit.cloud.spacenow.com/availabilities';
 
 export const BOOKINGS_API_HOST: string =
 	process.env.BOOKINGS_API_HOST ||
