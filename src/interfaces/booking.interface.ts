@@ -19,6 +19,7 @@ interface IBooking {
     updatedAt: number,
     priceType: string,
     guestId: string,
+    isAbsorvedFee: boolean,
 }
    
 export default IBooking;

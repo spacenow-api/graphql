@@ -80,6 +80,11 @@ const resolvers = {
       );
     },
 
+    getLetterListingsByState: async (_: any, args: any, { dataSources }: any) => {
+      const { listingsAPI, locationsAPI, usersAPI } = dataSources;
+      return listingsAPI.getLetterListingsByState(args.state, locationsAPI, usersAPI);
+    },
+
     getLocationById: async (_: any, args: any, { dataSources }: any) => {
       return await dataSources.locationsAPI.getLocationById(args.id);
     },
@@ -196,6 +201,11 @@ const resolvers = {
     publish: async (_: any, args: any, { dataSources }: any) => {
       const { listingsAPI } = dataSources;
       return listingsAPI.publish(args.listingId, args.status);
+    },
+
+    cleanListingAvailabilities: async (_: any, args: any, { dataSources }: any) => {
+      const { bookingsAPI } = dataSources;
+      return bookingsAPI.cleanListingAvailabilities(args.listingId);
     }
   }
 };

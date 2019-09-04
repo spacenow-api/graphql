@@ -14,24 +14,16 @@ class ListingsAPI extends PersonalizationAPI {
     this.baseURL = apiAddress;
   }
 
-  public fetchWholeListing = async (
-    listingId: string,
-    locationsAPI: LocationsAPI,
-    usersAPI: UsersAPI,
-    isPublic: boolean
-  ): Promise<_.IListingResponse> => {
+  public fetchWholeListing = async (listingId: string, locationsAPI: LocationsAPI, usersAPI: UsersAPI, isPublic: boolean): Promise<_.IListingResponse> => {
     try {
       const listingObj = await this.getListingById(listingId, true, isPublic);
       const listingDataObj = (id: string) => this.getListingDataByListingId(id);
       const locationObj = (id: number) => locationsAPI.getLocationById(id);
-      const settingsObj = (id: string) =>
-        this.getListingSettingsByListingId(id);
-      const amenitiesArray = (id: string) =>
-        this.getListingAmenitiesByListingId(id);
+      const settingsObj = (id: string) => this.getListingSettingsByListingId(id);
+      const amenitiesArray = (id: string) => this.getListingAmenitiesByListingId(id);
       const photosArray = (id: string) => this.getPhotosByListingId(id);
       const rulesArray = (id: string) => this.getListingRulesByListingId(id);
-      const accessDaysObj = (id: string) =>
-        this.getListingAccessDaysByListingId(id);
+      const accessDaysObj = (id: string) => this.getListingAccessDaysByListingId(id);
       const userObj = (id: string) => usersAPI.getUserLegacyById(id);
       return Promise.all([
         listingDataObj(listingId),
@@ -79,13 +71,22 @@ class ListingsAPI extends PersonalizationAPI {
     );
   };
 
-  getListingSettingsByListingId = async (
-    listingId: string
-  ): Promise<_.IListingSettingsResponse> => {
-    return this.get(`/listings/settings/${listingId}`).catch(
-      err => new ApolloError(toError(err))
-    );
-  };
+	getLetterListingsByState = async (state: string, locationsAPI: LocationsAPI, usersAPI: UsersAPI): Promise<Array<any>> => {
+		const listingsArray: Array<_.IListingResponse> = await this.get(`/listings/letter/state/${state}`);
+		try {
+			return listingsArray.map(o => this.fetchWholeListing(o.id.toString(), locationsAPI, usersAPI, true));
+		} catch (err) {
+			throw new ApolloError(toError(err));
+		}
+	};
+
+	getListingSettingsByListingId = async (
+		listingId: string,
+	): Promise<_.IListingSettingsResponse> => {
+		return this.get(`/listings/settings/${listingId}`).catch(
+			err => new ApolloError(toError(err)),
+		);
+	};
 
   getListingSpecificationsByParentId = async (
     listSettingsParentId: string
