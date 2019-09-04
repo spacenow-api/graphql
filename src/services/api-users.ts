@@ -1,5 +1,16 @@
-import { IUser, IResponseUser } from "../interfaces";
+import {
+  IUser,
+  IUserProfileLegacy,
+  IResponseUser,
+  IProfilePictureInput
+} from "../interfaces";
 import PersonalizationAPI from "../interfaces/personalization.inteface";
+
+import FormData from "form-data";
+import fs from "fs";
+import streaming from "../helpers/streaming";
+
+import * as config from "../config";
 
 class UsersAPI extends PersonalizationAPI {
   private path = "/users";
@@ -31,6 +42,37 @@ class UsersAPI extends PersonalizationAPI {
 
   updateUserLegacy = async (user: IUser): Promise<IUser> => {
     return this.patch(`${this.path}/legacy?id=${user.id}`, user);
+  };
+
+  updateUserProfileLegacy = async (
+    userId: string,
+    userProfile: IUserProfileLegacy
+  ): Promise<IUserProfileLegacy> => {
+    return this.patch(`${this.path}/legacy/profile?id=${userId}`, userProfile);
+  };
+
+  updateProfilePicture = async (
+    picture: IProfilePictureInput
+  ): Promise<IProfilePictureInput> => {
+    const { createReadStream, filename }: any = await picture.file;
+    const stream = createReadStream();
+    await streaming({ stream, filename });
+    const formData = new FormData();
+    formData.append(
+      "file",
+      fs.createReadStream(`${config.TEMP_FILE_UPLOAD}/${filename}`),
+      filename
+    );
+    fs.unlink(`${config.TEMP_FILE_UPLOAD}/${filename}`, () => (err: any) =>
+      console.log(err)
+    );
+    return this.post(
+      `${this.path}/legacy/profile/picture?id=${picture.userId}`,
+      formData,
+      {
+        headers: formData.getHeaders()
+      }
+    );
   };
 
   deleteUserByEmail = async (email: string): Promise<IUser> => {

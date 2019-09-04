@@ -38,6 +38,20 @@ const resolvers = {
       return await dataSources.usersAPI.updateUserLegacy(args.input);
     },
 
+    updateUserProfileLegacy: async (
+      _: any,
+      args: any,
+      { dataSources }: any
+    ) => {
+      return await dataSources.usersAPI.updateUserProfileLegacy(args.userId, {
+        data: args.input
+      });
+    },
+
+    updateProfilePicture: async (_: any, args: any, { dataSources }: any) => {
+      return await dataSources.usersAPI.updateProfilePicture(args);
+    },
+
     deleteUserByEmail: async (_: any, args: any, { dataSources }: any) => {
       return await dataSources.usersAPI.deleteUserByEmail(args.email);
     }

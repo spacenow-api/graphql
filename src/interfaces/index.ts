@@ -10,7 +10,8 @@ import {
   IUser,
   IUserProfileLegacy,
   ITokenValidation,
-  IResponseUser
+  IResponseUser,
+  IProfilePictureInput
 } from "./user.interface";
 import IBooking from "./booking.interface";
 import { ILocationRequest, ILocationResponse } from "./location.interface";
@@ -44,6 +45,7 @@ export {
   IBooking,
   ICategory,
   IUser,
+  IProfilePictureInput,
   IResponseUser,
   ICategoryLegacy,
   ISubCategoryLegacy,

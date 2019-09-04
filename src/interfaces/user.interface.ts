@@ -58,4 +58,15 @@ interface IResponseUser {
   count: number;
 }
 
-export { IUser, IUserProfileLegacy, ITokenValidation, IResponseUser };
+interface IProfilePictureInput {
+  file: File;
+  userId: string;
+}
+
+export {
+  IUser,
+  IUserProfileLegacy,
+  ITokenValidation,
+  IResponseUser,
+  IProfilePictureInput
+};

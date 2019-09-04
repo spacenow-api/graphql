@@ -33,6 +33,36 @@ const typeDefs = gql`
     userVerifiedInfo: UserVerificationInfo
   }
 
+  input UserProfileInput {
+    status: String
+    userId: String
+    profileId: Int
+    firstName: String
+    lastName: String
+    displayName: String
+    dateOfBirth: String
+    picture: String
+    gender: String
+    phoneNumber: String
+    preferredLanguage: String
+    preferredCurrency: String
+    info: String
+    location: String
+    createdAt: String
+    updatedAt: String
+    stripeCusId: String
+    country: Int
+    verificationCode: Int
+    countryCode: String
+    customerId: String
+    accountId: String
+    userLocationId: Int
+    profileType: String
+    companyName: String
+    companyId: String
+    contactJobRole: String
+  }
+
   type UserProfile {
     status: String
     userId: String
@@ -113,6 +143,8 @@ const typeDefs = gql`
 
   extend type Mutation {
     updateUserLegacy(input: UserInput): Success
+    updateUserProfileLegacy(userId: String, input: UserProfileInput): Success
+    updateProfilePicture(file: Upload, userId: String!): Success
     deleteUserByEmail(email: String): Success
     login(email: String, password: String): Token
     loginAdmin(email: String, password: String): Token
