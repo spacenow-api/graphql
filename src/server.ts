@@ -15,7 +15,7 @@ import {
   WeWorkAPI,
   HubSpotAPI,
   PricesAPI,
-  EmailsAPI
+  EmailsAPI,
   SearchAPI
 } from "./services";
 

@@ -26,6 +26,6 @@ export {
   WeWorkAPI,
   HubSpotAPI,
   PricesAPI,
-  EmailsAPI
+  EmailsAPI,
   SearchAPI
 };
