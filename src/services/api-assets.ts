@@ -29,7 +29,7 @@ class AssetsAPI extends PersonalizationAPI {
 			filename,
 		);
 		fs.unlink(`${config.TEMP_FILE_UPLOAD}/${filename}`, () => (err: any) =>
-			console.log(err),
+			console.error(err),
 		);
 		return this.post(`${this.path}/upload/${asset.listingId}`, formData, {
 			headers: formData.getHeaders(),

@@ -298,10 +298,6 @@ const typeDefs = gql`
     asset: Asset
   }
 
-  type Success {
-    status: String
-  }
-
   extend type Query {
     getAvailabilitiesByListingId(listingId: Int!): Availabilities
     getAllBookings: [Booking]
@@ -321,6 +317,7 @@ const typeDefs = gql`
     getAllRules: [ListSettings]
     getAllAccessTypes: [ListSettings]
     getAllSpecificationsByParentId(listSettingsParentId: Int!): [ListSettings]
+    getLetterListingsByState(state: String!): [Listing]
   }
 
   extend type Mutation {

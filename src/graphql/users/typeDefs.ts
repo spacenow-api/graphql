@@ -82,6 +82,13 @@ const typeDefs = gql`
     verification: UserVerificationInfo
   }
 
+  type TokenWithUser {
+    token: String
+    expiresIn: Int
+    status: String
+    user: CustomUserVerification
+  }
+
   type CustomAdminUserVerification {
     id: String
     email: String
@@ -114,10 +121,15 @@ const typeDefs = gql`
   extend type Mutation {
     updateUserLegacy(input: UserInput): Success
     deleteUserByEmail(email: String): Success
-    login(email: String, password: String): Token
+    login(email: String, password: String): TokenWithUser
     loginAdmin(email: String, password: String): Token
     tokenValidate(token: String!): TokenValidation
+    tokenGoogleValidate(token: String!): TokenWithUser
+    tokenFacebookValidate(token: String!): TokenWithUser
     tokenAdminValidate(token: String!): AdminTokenValidation
+    signup(email: String!, password: String!, firstName: String!, lastName: String!): Success
+    resetPassword(email: String!): Success
+    resetPasswordUpdate(email: String!, token: String!, password: String!): Success
   }
 `;
 

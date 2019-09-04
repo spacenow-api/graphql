@@ -1,3 +1,5 @@
+import { IToken } from './auth.interface';
+
 interface IUser {
   id: string;
   email: string;
