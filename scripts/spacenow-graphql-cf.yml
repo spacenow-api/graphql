@@ -111,6 +111,16 @@ Parameters:
     Type: String
     Default: ''
     NoEcho: true
+  SearchApiHost:
+    Description: 'SEARCH_API_HOST'
+    Type: String
+    Default: ''
+    NoEcho: true
+  EmailsApi:
+    Description: 'EMAILS_API'
+    Type: String
+    Default: ''
+    NoEcho: true
 Conditions:
   isMaster: !Equals [!Ref SliceName, master]
   isFeature: !Not [Condition: isMaster]
@@ -229,6 +239,10 @@ Resources:
               Value: !Ref Playground
             - Name: API_CAMPAIGNS
               Value: !Ref ApiCampaings
+            - Name: SEARCH_API_HOST
+              Value: !Ref SearchApiHost
+            - Name: EMAILS_API
+              Value: !Ref EmailsApi
 
           LogConfiguration:
             LogDriver: awslogs
