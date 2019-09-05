@@ -159,7 +159,7 @@ const typeDefs = gql`
     tokenGoogleValidate(token: String!): TokenWithUser
     tokenFacebookValidate(token: String!): TokenWithUser
     tokenAdminValidate(token: String!): AdminTokenValidation
-    signup(email: String!, password: String!, firstName: String!, lastName: String!): Success
+    signup(email: String!, password: String!, firstName: String!, lastName: String!): TokenWithUser
     resetPassword(email: String!): Success
     resetPasswordUpdate(email: String!, token: String!, password: String!): Success
   }
