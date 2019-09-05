@@ -26,6 +26,26 @@ const typeDefs = gql`
     accessType: String
   }
 
+  type SearchSpecification {
+    id: Int
+    typeId: Int
+    itemName: String
+    otherItemName: String
+    description: String
+    maximum: String
+    minimum: String
+    startValue: String
+    endValue: String
+    step: String
+    isEnable: String
+    photo: String
+    photoType: String
+    isSpecification: Boolean
+    createdAt: String
+    updatedAt: String
+    specData: String
+  }
+
   type SearchLocation {
     id: Int
     country: String
@@ -73,6 +93,7 @@ const typeDefs = gql`
     bookingPeriod: String
     listSettingsParentId: Int
     listingData: SearchListingData
+    specifications: [SearchSpecification]
     location: SearchLocation
     category: SearchCategory
     subcategory: SearchSubCategory
