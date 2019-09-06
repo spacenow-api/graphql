@@ -104,12 +104,18 @@ const typeDefs = gql`
   type SearchResult {
     status: String
     searchKey: String
+    page: Int
+    perPage: Int
+    prePage: Int
+    nextPage: Int
+    total: Int
+    totalPages: Int
     result: [SearchListing]
   }
   
   extend type Query {  
     searchByAddress(lat: String!, lng: String!): SearchResult
-    searchByFilters(key: String!, categories: String, duration: String, priceMin: Float, priceMax: Float, instant: String): SearchResult
+    searchByFilters(key: String!, categories: String, duration: String, priceMin: Float, priceMax: Float, instant: String, page: Int): SearchResult
   }
 `;
 
