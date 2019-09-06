@@ -24,8 +24,6 @@ class AuthAPI extends PersonalizationAPI {
       password,
       firstName,
       lastName
-    }).then(() => {
-      return { status: 'success' };
     }).catch(catchApolloError);
   };
 

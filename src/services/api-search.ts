@@ -13,26 +13,18 @@ class SearchAPI extends PersonalizationAPI {
     this.baseURL = apiAddress;
   }
 
-  searchByAddress = async (lat: string, lng: string, userId: string) => {
-    try {
-      const searchResult = await this.get(`/search/listings/${lat},${lng}`);
-      return {
-        status: 'OK',
-        searchKey: searchResult.searchKey,
-        result: searchResult.listings
-      }
-    } catch (err) {
-      throw new ApolloError(toError(err));
-    }
+  searchByAddress = async (lat: string, lng: string) => {
+    return this.get(`/search/listings/${lat},${lng}`).catch((err) => new ApolloError(toError(err)));
   };
 
-  searchByFilters = async (key: string, categories: string, duration: string, priceMin: number, priceMax: number, instant: string) => {
+  searchByFilters = async (key: string, categories: string, duration: string, priceMin: number, priceMax: number, instant: string, page: number) => {
     return this.post(`/search/${key}/query`, {
       categories,
       duration,
       priceMin,
       priceMax,
-      instant
+      instant,
+      page
     }).catch((err) => new ApolloError(toError(err)));
   };
 }

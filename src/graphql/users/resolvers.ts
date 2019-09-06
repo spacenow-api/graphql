@@ -73,7 +73,7 @@ const resolvers = {
     },
 
     resetPasswordUpdate: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.usersAPI.resetPasswordUpdate(args.email, args.token, args.password);
+      return dataSources.usersAPI.resetPasswordUpdate(args.token, args.password);
     }
   }
 };

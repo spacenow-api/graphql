@@ -92,16 +92,8 @@ class UsersAPI extends PersonalizationAPI {
     );
   };
 
-  resetPasswordUpdate = async (
-    email: string,
-    token: string,
-    password: string
-  ) => {
-    return this.post(`${this.path}/legacy/password/reset/update`, {
-      email,
-      token,
-      password
-    }).catch(catchApolloError);
+  resetPasswordUpdate = async (token: string, password: string) => {
+    return this.post(`${this.path}/legacy/password/reset/update`, { token, password }).catch(catchApolloError);
   };
 }
 
