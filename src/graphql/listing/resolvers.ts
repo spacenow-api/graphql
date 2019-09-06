@@ -14,6 +14,31 @@ import {
 
 const resolvers = {
   Upload: GraphQLUpload,
+
+  Listing: {
+    amenities(parent: any, args: any, context: any, info: any) {
+      return context.dataSources.listingsAPI.getAllAmenitiesByListingId(
+        parent.id
+      );
+    },
+    listingData(parent: any, args: any, context: any, info: any) {
+      return context.dataSources.listingsAPI.getListingDataByListingId(
+        parent.id
+      );
+    },
+    location(parent: any, args: any, context: any, info: any) {
+      return context.dataSources.locationsAPI.getLocationById(parent.id);
+    },
+    photos(parent: any, args: any, context: any, info: any) {
+      return context.dataSources.listingsAPI.getPhotosByListingId(parent.id);
+    },
+    settingsParent(parent: any, args: any, context: any, info: any) {
+      return context.dataSources.listingsAPI.getListingSettingsByListingId(
+        parent.id
+      );
+    }
+  },
+
   Query: {
     getPhotosByListingId: async (_: any, args: any, { dataSources }: any) => {
       return await dataSources.listingsAPI.getPhotosByListingId(args.listingId);
@@ -70,6 +95,10 @@ const resolvers = {
       };
     },
 
+    getAllListingsByUser: async (_: any, args: any, { dataSources }: any) => {
+      return await dataSources.listingsAPI.getAllListingsByUser(args.userId);
+    },
+
     getListingById: async (_: any, args: any, { dataSources }: any) => {
       const { listingsAPI, locationsAPI, usersAPI } = dataSources;
       return listingsAPI.fetchWholeListing(
@@ -80,9 +109,17 @@ const resolvers = {
       );
     },
 
-    getLetterListingsByState: async (_: any, args: any, { dataSources }: any) => {
+    getLetterListingsByState: async (
+      _: any,
+      args: any,
+      { dataSources }: any
+    ) => {
       const { listingsAPI, locationsAPI, usersAPI } = dataSources;
-      return listingsAPI.getLetterListingsByState(args.state, locationsAPI, usersAPI);
+      return listingsAPI.getLetterListingsByState(
+        args.state,
+        locationsAPI,
+        usersAPI
+      );
     },
 
     getLocationById: async (_: any, args: any, { dataSources }: any) => {
@@ -96,6 +133,16 @@ const resolvers = {
     ) => {
       return await dataSources.listingsAPI.getAllAmenitiesBySubCategoryId(
         args.subCategoryId
+      );
+    },
+
+    getAllAmenitiesByListingId: async (
+      _: any,
+      args: any,
+      { dataSources }: any
+    ) => {
+      return await dataSources.listingsAPI.getAllAmenitiesByListingId(
+        args.listingId
       );
     },
 
@@ -203,7 +250,11 @@ const resolvers = {
       return listingsAPI.publish(args.listingId, args.status);
     },
 
-    cleanListingAvailabilities: async (_: any, args: any, { dataSources }: any) => {
+    cleanListingAvailabilities: async (
+      _: any,
+      args: any,
+      { dataSources }: any
+    ) => {
       const { bookingsAPI } = dataSources;
       return bookingsAPI.cleanListingAvailabilities(args.listingId);
     }

@@ -175,6 +175,20 @@ const typeDefs = gql`
     settingsData: ListSettings
   }
 
+  type Amenity {
+    id: Int
+    listingId: Int
+    listSettingsId: Int
+    amount: Int
+    quantity: Int
+    currency: String
+    settings: String
+    type: String
+    createdAt: String
+    updatedAt: String
+    settingsData: ListSettings
+  }
+
   type ListSettingsParent {
     id: Int
     category: ListSettings
@@ -283,12 +297,17 @@ const typeDefs = gql`
     count: Int
     listingData: ListingData
     location: Location
-    amenities: [ListingAmenities]
+    amenities: [Amenity]
     rules: [ListingRules]
     photos: [ListingPhotos]
     accessDays: ListingAccessDays
     settingsParent: ListSettingsParent
     user: User
+  }
+
+  type Listings {
+    count: Int
+    rows: [Listing]
   }
 
   type ListingAsset {
@@ -311,9 +330,11 @@ const typeDefs = gql`
       state: String!
     ): [Holidays]
     getListingById(id: Int!, isPublic: Boolean): Listing
+    getAllListingsByUser(userId: String!, isPublic: Boolean): Listings
     getPhotosByListingId(listingId: Int!): [ListingPhotos]
     getLocationById(id: Int!): Location
     getAllAmenitiesBySubCategoryId(subCategoryId: Int!): [ListSettings]
+    getAllAmenitiesByListingId(listing: Int!): [Amenity]
     getAllRules: [ListSettings]
     getAllAccessTypes: [ListSettings]
     getAllSpecificationsByParentId(listSettingsParentId: Int!): [ListSettings]

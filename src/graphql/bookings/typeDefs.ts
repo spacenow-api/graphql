@@ -1,35 +1,35 @@
 import { gql } from "apollo-server";
 
 const typeDefs = gql`
-
-  type PendingBookings {
+  type Bookings {
     count: Int
-    bookings: [BookingType]
+    items: [BookingType]
   }
 
-  type BookingType {   
-    listingId: Int,
-    quantity: Int,
-    currency: String,
-    totalPrice: Float,
-    bookingType: String,
-    basePrice: Float,
-    createdAt: Float,
-    period: Int,
-    sourceId: String,
-    bookingState: String,
-    chargeId: String,
-    hostServiceFee: Float,
-    confirmationCode: Float,
-    bookingId: String,
-    guestServiceFee: Float,
-    hostId: String,
-    paymentState: String,
-    updatedAt: Float,
-    priceType: String,
-    guestId: String,
-    checkIn: String,
-    checkOut: String,
+  type BookingType {
+    listing: Listing
+    listingId: Int
+    quantity: Int
+    currency: String
+    totalPrice: Float
+    bookingType: String
+    basePrice: Float
+    createdAt: Float
+    period: Int
+    sourceId: String
+    bookingState: String
+    chargeId: String
+    hostServiceFee: Float
+    confirmationCode: Float
+    bookingId: String
+    guestServiceFee: Float
+    hostId: String
+    paymentState: String
+    updatedAt: Float
+    priceType: String
+    guestId: String
+    checkIn: String
+    checkOut: String
     reservations: [String]
   }
 
@@ -39,10 +39,13 @@ const typeDefs = gql`
   }
 
   extend type Query {
-    getPendingBookingsByUser(
-      listingId: Int
+    getPendingBookingsByUser(listingId: Int, userId: String): Bookings
+    getAllBookingsByUser(
       userId: String
-    ): PendingBookings
+      userType: String
+      status: String
+      period: [String]
+    ): Bookings
   }
 
   extend type Mutation {
@@ -59,9 +62,7 @@ const typeDefs = gql`
       reservations: [String]
     ): BookingOutput
 
-    timeoutBooking(
-      bookingId: String
-    ): BookingOutput
+    timeoutBooking(bookingId: String): BookingOutput
   }
 `;
 
