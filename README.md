@@ -29,3 +29,11 @@ AVAILABILITIES API: https://api-availabilities.sandpit.cloud.spacenow.com/availa
 ```
 BOOKINGS API: https://api-bookings.sandpit.cloud.spacenow.com
 ```
+
+```
+SEARCH API: 6008
+```
+
+```
+PAYMENTS API: 6009
+```

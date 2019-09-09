@@ -5,7 +5,7 @@ const resolvers = {
   Query: {
 
     getPaymentAccount: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.paymenstsAPI.getAccount();
+      return dataSources.paymentsAPI.getAccount();
     }
   },
 
@@ -43,11 +43,11 @@ const resolvers = {
           account_number: args.account_number,
         }
       }
-      return dataSources.paymenstsAPI.createAccount(iCreateAccount);
+      return dataSources.paymentsAPI.createAccount(iCreateAccount);
     },
 
     removePaymentAccount: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.paymenstsAPI.removeAccount();
+      return dataSources.paymentsAPI.removeAccount();
     }
   }
 };
