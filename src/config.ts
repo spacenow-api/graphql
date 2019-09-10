@@ -21,7 +21,7 @@ export const USERS_API_HOST: string = process.env.USERS_API_HOST || 'http://loca
 
 export const API_AVAILABILITIES: string = process.env.API_AVAILABILITIES || 'https://api-availabilities.sandpit.cloud.spacenow.com/availabilities';
 
-export const BOOKINGS_API_HOST: string = process.env.BOOKINGS_API_HOST || 'https://api-bookings.sandpit.cloud.spacenow.com';
+export const API_BOOKING: string = process.env.API_BOOKING || 'https://api-bookings.sandpit.cloud.spacenow.com';
 
 export const HOLIDAYS_HOST: string = 'https://data.gov.au/data/api/3/action/datastore_search?resource_id=bda4d4f2-7fde-4bfc-8a23-a6eefc8cef80';
 

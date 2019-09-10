@@ -238,7 +238,7 @@ Resources:
               Value: !Ref UsersApiHost
             - Name: API_AVAILABILITIES
               Value: !Ref AvailabilitiesApiHost
-            - Name: BOOKINGS_API_HOST
+            - Name: API_BOOKING
               Value: !Ref BookingsApiHost
             - Name: PLAYGROUND
               Value: !Ref Playground

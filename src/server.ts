@@ -32,7 +32,7 @@ const server = new ApolloServer({
     return {
       assetsAPI: new AssetsAPI(config.ASSETS_API_HOST),
       authAPI: new AuthAPI(config.USERS_API_HOST),
-      bookingsAPI: new BookingsAPI(config.BOOKINGS_API_HOST),
+      bookingsAPI: new BookingsAPI(config.API_BOOKING),
       listingsAPI: new ListingsAPI(config.SPACES_API_HOST),
       usersAPI: new UsersAPI(config.USERS_API_HOST),
       paymentsAPI: new PaymentsAPI(config.PAYMENTS_API_HOST),
