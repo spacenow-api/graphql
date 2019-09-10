@@ -58,7 +58,7 @@ CF_PARAMS="ParameterKey=ImageUrl,ParameterValue=$3 \
           ParameterKey=SpacesApiHost,ParameterValue=$SPACES_API_HOST \
           ParameterKey=UsersApiHost,ParameterValue=$USERS_API_HOST \
           ParameterKey=AvailabilitiesApiHost,ParameterValue=$API_AVAILABILITIES \
-          ParameterKey=BookingsApiHost,ParameterValue=$API_BOOKING \
+          ParameterKey=ApiBooking,ParameterValue=$API_BOOKING \
           ParameterKey=Playground,ParameterValue=$PLAYGROUND \
           ParameterKey=ApiCampaings,ParameterValue=$API_CAMPAIGNS \
           ParameterKey=SearchApiHost,ParameterValue=$SEARCH_API_HOST \

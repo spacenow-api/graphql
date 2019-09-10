@@ -98,8 +98,8 @@ Parameters:
     Description: 'Assets api host endpoint'
     Type: String
     Default: ''
-  BookingsApiHost:
-    Description: 'Assets api host endpoint'
+  ApiBooking:
+    Description: 'Bookings api host endpoint'
     Type: String
     Default: ''
   Playground:
@@ -239,7 +239,7 @@ Resources:
             - Name: API_AVAILABILITIES
               Value: !Ref AvailabilitiesApiHost
             - Name: API_BOOKING
-              Value: !Ref BookingsApiHost
+              Value: !Ref ApiBooking
             - Name: PLAYGROUND
               Value: !Ref Playground
             - Name: API_CAMPAIGNS
