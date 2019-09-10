@@ -6,6 +6,10 @@ const resolvers = {
 
     getPaymentAccount: async (_: any, args: any, { dataSources }: any) => {
       return dataSources.paymentsAPI.getAccount();
+    },
+
+    getPaymentCards: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.paymentsAPI.getCards();
     }
   },
 
@@ -48,6 +52,18 @@ const resolvers = {
 
     removePaymentAccount: async (_: any, args: any, { dataSources }: any) => {
       return dataSources.paymentsAPI.removeAccount();
+    },
+
+    createPaymentCard: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.paymentsAPI.createCard(args.cardName, args.cardNumber, args.expMonth, args.expYear, args.cvc);
+    },
+
+    deletePaymentCard: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.paymentsAPI.deleteCard(args.cardId);
+    },
+
+    createPayment: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.paymentsAPI.doPayment(args.cardId, args.bookingId);
     }
   }
 };
