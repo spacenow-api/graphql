@@ -121,6 +121,11 @@ Parameters:
     Type: String
     Default: ''
     NoEcho: true
+  PaymentsApiHost:
+    Description: 'PAYMENTS_API_HOST'
+    Type: String
+    Default: ''
+    NoEcho: true
 Conditions:
   isMaster: !Equals [!Ref SliceName, master]
   isFeature: !Not [Condition: isMaster]
@@ -243,6 +248,8 @@ Resources:
               Value: !Ref SearchApiHost
             - Name: EMAILS_API
               Value: !Ref EmailsApi
+            - Name: PAYMENTS_API_HOST
+              Value: !Ref PaymentsApiHost
 
           LogConfiguration:
             LogDriver: awslogs
