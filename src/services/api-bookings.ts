@@ -6,6 +6,8 @@ import { toError } from "./../helpers/exceptions/HttpException";
 import { ApolloError } from "apollo-server";
 
 class BookingsAPI extends PersonalizationAPI {
+  private path = "/bookings";
+
   constructor(apiAddress: string) {
     super();
     this.baseURL = apiAddress;
@@ -36,13 +38,13 @@ class BookingsAPI extends PersonalizationAPI {
   };
 
   acceptBooking = async (bookingId: String): Promise<IBooking> => {
-    return this.put(`/accept/${bookingId}`).catch(
+    return this.put(`${this.path}/accept/${bookingId}`).catch(
       err => new ApolloError(toError(err))
     );
   };
 
   declineBooking = async (bookingId: String): Promise<IBooking> => {
-    return this.put(`/decline/${bookingId}`).catch(
+    return this.put(`${this.path}/decline/${bookingId}`).catch(
       err => new ApolloError(toError(err))
     );
   };
