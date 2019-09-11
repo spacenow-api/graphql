@@ -2,6 +2,7 @@ import {
   IUser,
   IUserProfileLegacy,
   IResponseUser,
+  IProfilePicture,
   IProfilePictureInput,
   IDocument,
   IDocumentInput
@@ -60,7 +61,7 @@ class UsersAPI extends PersonalizationAPI {
 
   updateProfilePicture = async (
     picture: IProfilePictureInput
-  ): Promise<IProfilePictureInput> => {
+  ): Promise<IProfilePicture> => {
     const { createReadStream, filename }: any = await picture.file;
     const stream = createReadStream();
     await streaming({ stream, filename });

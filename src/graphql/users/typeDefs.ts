@@ -154,6 +154,11 @@ const typeDefs = gql`
     count: Int
   }
 
+  type UserProfilePicture {
+    userId: String
+    picture: String
+  }
+
   extend type Query {
     getAllUsers: [User]
     getAllUsersLegacy: UsersResponse
@@ -165,7 +170,7 @@ const typeDefs = gql`
   extend type Mutation {
     updateUserLegacy(input: UserInput): Success
     updateUserProfileLegacy(userId: String, input: UserProfileInput): Success
-    updateProfilePicture(file: Upload, userId: String!): Success
+    updateProfilePicture(file: Upload, userId: String!): UserProfilePicture
     deleteUserByEmail(email: String): Success
     deleteDocument(id: String, userId: String): Success
     uploadDocument(userId: String, file: Upload): Document

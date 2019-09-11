@@ -1,4 +1,4 @@
-import { IToken } from './auth.interface';
+import { IToken } from "./auth.interface";
 
 interface IUser {
   id: string;
@@ -65,8 +65,14 @@ interface IProfilePictureInput {
   userId: string;
 }
 
+interface IProfilePicture {
+  picture: string;
+  userId: string;
+}
+
 export {
   IUser,
+  IProfilePicture,
   IUserProfileLegacy,
   ITokenValidation,
   IResponseUser,
