@@ -6,6 +6,7 @@ const typeDefs = gql`
     id: Int
     name: String
     isCover: Boolean
+    type: String
   }
 
   type SearchListingData {
@@ -13,7 +14,6 @@ const typeDefs = gql`
     basePrice: Float
     currency: String
     minTerm: Float
-    isAbsorvedFee: Int
     capacity: Int
     size: Float
     meetingRooms: Int
@@ -31,18 +31,6 @@ const typeDefs = gql`
     typeId: Int
     itemName: String
     otherItemName: String
-    description: String
-    maximum: String
-    minimum: String
-    startValue: String
-    endValue: String
-    step: String
-    isEnable: String
-    photo: String
-    photoType: String
-    isSpecification: Boolean
-    createdAt: String
-    updatedAt: String
     specData: String
   }
 
@@ -76,6 +64,7 @@ const typeDefs = gql`
     profileId: Int
     firstName: String
     lastName: String
+    displayName: String
     picture: String
   }
 
