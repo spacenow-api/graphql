@@ -27,7 +27,9 @@ const resolvers = {
       );
     },
     location(parent: any, args: any, context: any, info: any) {
-      return context.dataSources.locationsAPI.getLocationById(parent.id);
+      return context.dataSources.locationsAPI.getLocationById(
+        parent.locationId
+      );
     },
     photos(parent: any, args: any, context: any, info: any) {
       return context.dataSources.listingsAPI.getPhotosByListingId(parent.id);
