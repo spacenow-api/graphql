@@ -98,8 +98,8 @@ Parameters:
     Description: 'Assets api host endpoint'
     Type: String
     Default: ''
-  BookingsApiHost:
-    Description: 'Assets api host endpoint'
+  ApiBooking:
+    Description: 'Bookings api host endpoint'
     Type: String
     Default: ''
   Playground:
@@ -118,6 +118,11 @@ Parameters:
     NoEcho: true
   EmailsApi:
     Description: 'EMAILS_API'
+    Type: String
+    Default: ''
+    NoEcho: true
+  PaymentsApiHost:
+    Description: 'PAYMENTS_API_HOST'
     Type: String
     Default: ''
     NoEcho: true
@@ -233,8 +238,8 @@ Resources:
               Value: !Ref UsersApiHost
             - Name: API_AVAILABILITIES
               Value: !Ref AvailabilitiesApiHost
-            - Name: BOOKINGS_API_HOST
-              Value: !Ref BookingsApiHost
+            - Name: API_BOOKING
+              Value: !Ref ApiBooking
             - Name: PLAYGROUND
               Value: !Ref Playground
             - Name: API_CAMPAIGNS
@@ -243,6 +248,8 @@ Resources:
               Value: !Ref SearchApiHost
             - Name: EMAILS_API
               Value: !Ref EmailsApi
+            - Name: PAYMENTS_API_HOST
+              Value: !Ref PaymentsApiHost
 
           LogConfiguration:
             LogDriver: awslogs

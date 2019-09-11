@@ -3,6 +3,8 @@ dotenv.config();
 
 export const PORT: number = 4000;
 
+export const jwtSecret: string = process.env.JWT_SECRET || 'Spacenow';
+
 export const PLAYGROUND = process.env.PLAYGROUND ? Boolean(process.env.PLAYGROUND) : false;
 
 export const TEMP_FILE_UPLOAD = './temp';
@@ -19,7 +21,7 @@ export const USERS_API_HOST: string = process.env.USERS_API_HOST || 'http://loca
 
 export const API_AVAILABILITIES: string = process.env.API_AVAILABILITIES || 'https://api-availabilities.sandpit.cloud.spacenow.com/availabilities';
 
-export const BOOKINGS_API_HOST: string = process.env.BOOKINGS_API_HOST || 'https://api-bookings.sandpit.cloud.spacenow.com';
+export const API_BOOKING: string = process.env.API_BOOKING || 'https://api-bookings.sandpit.cloud.spacenow.com/bookings';
 
 export const HOLIDAYS_HOST: string = 'https://data.gov.au/data/api/3/action/datastore_search?resource_id=bda4d4f2-7fde-4bfc-8a23-a6eefc8cef80';
 
@@ -34,5 +36,7 @@ export const HUBSPOT_FORM_GUID: string = '81780c35-04df-4b49-a2d7-781537210b11'
 export const API_CAMPAIGNS: string = process.env.API_CAMPAIGNS || 'https://api-price-estimation.sandpit.cloud.spacenow.com/price-estimation';
 
 export const SEARCH_API_HOST: string = process.env.SEARCH_API_HOST || 'http://localhost:6008';
+
+export const PAYMENTS_API_HOST: string = process.env.PAYMENTS_API_HOST || 'http://localhost:6009';
 
 export const EMAILS_API: string = process.env.EMAILS_API || 'https://api-emails.sandpit.cloud.spacenow.com';

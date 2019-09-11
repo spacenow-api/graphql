@@ -39,6 +39,7 @@ const typeDefs = gql`
   }
 
   extend type Query {
+    getBookingById(id: String!): BookingType
     getPendingBookingsByUser(listingId: Int, userId: String): Bookings
     getAllBookingsByUser(
       userId: String

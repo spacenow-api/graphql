@@ -6,7 +6,7 @@ import UsersAPI from "./api-users";
 import CategoriesAPI from "./api-categories";
 import LocationsAPI from "./api-locations";
 import AvailabilitiesAPI from "./api-availabilities";
-import PaymenstsAPI from "./api-payments";
+import PaymentsAPI from "./api-payments";
 import WeWorkAPI from "./api-wework";
 import HubSpotAPI from "./api-hubspot";
 import PricesAPI from './api-prices';
@@ -22,7 +22,7 @@ export {
   CategoriesAPI,
   LocationsAPI,
   AvailabilitiesAPI,
-  PaymenstsAPI,
+  PaymentsAPI,
   WeWorkAPI,
   HubSpotAPI,
   PricesAPI,

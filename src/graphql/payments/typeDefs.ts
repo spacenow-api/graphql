@@ -132,8 +132,92 @@ const typeDefs = gql`
     deleted: Boolean
   }
 
+  type TaxIds {
+    object: String
+    has_more: Boolean
+    total_count: Int
+    url: String
+    data: [String]
+  }
+  
+  type Subscriptions {
+    object: String
+    has_more: Boolean
+    total_count: Int
+    url: String
+    data: [String]
+  }
+  
+  type SourceData {
+    id: String
+    object: String
+    address_city: String
+    address_country: String
+    address_line1: String
+    address_line1_check: String
+    address_line2: String
+    address_state: String
+    address_zip: String
+    address_zip_check: String
+    brand: String
+    country: String
+    customer: String
+    cvc_check: String
+    dynamic_last4: String
+    exp_month: Int
+    exp_year: Int
+    fingerprint: String
+    funding: String
+    last4: String
+    name: String
+    tokenization_method: String
+  }
+  
+  type Sources {
+    object: String
+    has_more: Boolean
+    total_count: Int
+    url: String
+    data: [SourceData]
+  }
+  
+  type InvoiceSettings {
+    custom_fields: String
+    default_payment_method: String
+    footer: String
+  }
+  
+  type StripeSourceType {
+    id: String
+    object: String
+    account_balance: Int
+    address: String
+    balance: Int
+    created: Int
+    currency: String
+    default_source: String
+    delinquent: Boolean
+    description: String
+    discount: String
+    email: String
+    invoice_prefix: String
+    livemode: Boolean
+    name: String
+    phone: String
+    shipping: String
+    tax_exempt: String
+    tax_info: String
+    tax_info_verification: String
+    tax_ids: TaxIds
+    subscriptions: Subscriptions
+    sources: Sources
+    preferred_locales: [String]
+    invoice_settings: InvoiceSettings
+  }
+
   extend type Query {
     getPaymentAccount: StripeAccountType
+    getPaymentCards: StripeSourceType
   }
 
   extend type Mutation {
@@ -161,6 +245,9 @@ const typeDefs = gql`
       year: Int!
     ): StripeAccountType
     removePaymentAccount: StripeAccountDeleteConfirmation
+    createPaymentCard(cardName: String!, cardNumber: String!, expMonth: Int!, expYear: Int!, cvc: String!): StripeSourceType
+    deletePaymentCard(cardId: String!): StripeSourceType
+    createPayment(cardId: String!, bookingId: String!): Success
   }
 `;
 

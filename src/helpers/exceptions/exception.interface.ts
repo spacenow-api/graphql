@@ -1,5 +1,6 @@
 interface IBody {
   message: string;
+  error?: string;
 }
 
 interface IResponse {

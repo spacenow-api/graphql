@@ -8,7 +8,7 @@ export const toError = (err: IDataSourceErr): string => {
   console.error('New exception unmarshal: ', err);
   try {
     const errBody = err.extensions.response.body;
-    return errBody.message || 'API exception not mapped.';
+    return errBody.message || errBody.error || 'API exception not mapped.';
   } catch (exception) {
     console.error(exception);
     return "Problems to unmarshal Apollo exception.";

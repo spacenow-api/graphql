@@ -10,46 +10,38 @@ const resolvers = {
   },
 
   Query: {
+    getBookingById: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.bookingsAPI.getBookingById(args.id);
+    },
+
     getPendingBookingsByUser: async (
       _: any,
       args: any,
       { dataSources }: any
     ) => {
-      const { bookingsAPI } = dataSources;
-      console.log(args);
-      return await bookingsAPI.getPendingBookingsByUser(args);
+      return dataSources.bookingsAPI.getPendingBookingsByUser(args);
     },
 
     getAllBookingsByUser: async (_: any, args: any, { dataSources }: any) => {
-      const { bookingsAPI } = dataSources;
-      console.log(args);
-      return await bookingsAPI.getAllBookingsByUser(args);
+      return dataSources.bookingsAPI.getAllBookingsByUser(args);
     }
   },
 
   Mutation: {
     createBooking: async (_: any, args: any, { dataSources }: any) => {
-      const { bookingsAPI } = dataSources;
-
-      return bookingsAPI.createBooking(args);
+      return dataSources.bookingsAPI.createBooking(args);
     },
 
     timeoutBooking: async (_: any, args: any, { dataSources }: any) => {
-      const { bookingsAPI } = dataSources;
-
-      return bookingsAPI.timeoutBooking(args.bookingId);
+      return dataSources.bookingsAPI.timeoutBooking(args.bookingId);
     },
 
     acceptBooking: async (_: any, args: any, { dataSources }: any) => {
-      const { bookingsAPI } = dataSources;
-
-      return bookingsAPI.acceptBooking(args.bookingId);
+      return dataSources.bookingsAPI.acceptBooking(args.bookingId);
     },
 
     declineBooking: async (_: any, args: any, { dataSources }: any) => {
-      const { bookingsAPI } = dataSources;
-
-      return bookingsAPI.declineBooking(args.bookingId);
+      return dataSources.bookingsAPI.declineBooking(args.bookingId);
     }
   }
 };

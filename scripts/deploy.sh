@@ -40,11 +40,12 @@ LOCATIONS_API_HOST=$(get_ssm_parameter /$2/SPACENOW/LOCATIONS_API_HOST)
 SPACES_API_HOST=$(get_ssm_parameter /$2/SPACENOW/SPACES_API_HOST)
 USERS_API_HOST=$(get_ssm_parameter /$2/SPACENOW/USERS_API_HOST)
 API_AVAILABILITIES=$(get_ssm_parameter /$2/SPACENOW/API_AVAILABILITIES)
-BOOKINGS_API_HOST=$(get_ssm_parameter /$2/SPACENOW/API_BOOKINGS)
+API_BOOKING=$(get_ssm_parameter /$2/SPACENOW/API_BOOKING)
 PLAYGROUND=$(get_ssm_parameter /$2/SPACENOW/PLAYGROUND)
 API_CAMPAIGNS=$(get_ssm_parameter /$2/SPACENOW/API_CAMPAIGNS)
 SEARCH_API_HOST=$(get_ssm_parameter /$2/SPACENOW/SEARCH_API_HOST)
 EMAILS_API=$(get_ssm_parameter /$2/SPACENOW/EMAILS_API)
+PAYMENTS_API_HOST=$(get_ssm_parameter /$2/SPACENOW/PAYMENTS_API_HOST)
 echo "ENV ${2}"
 CF_PARAMS="ParameterKey=ImageUrl,ParameterValue=$3 \
           ParameterKey=ContainerPort,ParameterValue=4000 \
@@ -57,11 +58,12 @@ CF_PARAMS="ParameterKey=ImageUrl,ParameterValue=$3 \
           ParameterKey=SpacesApiHost,ParameterValue=$SPACES_API_HOST \
           ParameterKey=UsersApiHost,ParameterValue=$USERS_API_HOST \
           ParameterKey=AvailabilitiesApiHost,ParameterValue=$API_AVAILABILITIES \
-          ParameterKey=BookingsApiHost,ParameterValue=$BOOKINGS_API_HOST \
+          ParameterKey=ApiBooking,ParameterValue=$API_BOOKING \
           ParameterKey=Playground,ParameterValue=$PLAYGROUND \
           ParameterKey=ApiCampaings,ParameterValue=$API_CAMPAIGNS \
           ParameterKey=SearchApiHost,ParameterValue=$SEARCH_API_HOST \
           ParameterKey=EmailsApi,ParameterValue=$EMAILS_API \
+          ParameterKey=PaymentsApiHost,ParameterValue=$PAYMENTS_API_HOST \
           ParameterKey=HostedZoneName,ParameterValue=$HostedZoneName"
 echo "Checking if stack exists ..."
 if ! aws cloudformation describe-stacks --region $region --stack-name $stack_name ; then

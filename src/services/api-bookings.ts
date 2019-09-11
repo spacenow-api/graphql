@@ -1,10 +1,11 @@
 import { IBooking } from "../interfaces";
 import PersonalizationAPI from "../interfaces/personalization.inteface";
-import { ApolloError } from "apollo-server";
+
 import { toError } from "./../helpers/exceptions/HttpException";
 
+import { ApolloError } from "apollo-server";
+
 class BookingsAPI extends PersonalizationAPI {
-  private path = "/bookings";
 
   constructor(apiAddress: string) {
     super();
@@ -12,29 +13,23 @@ class BookingsAPI extends PersonalizationAPI {
   }
 
   getAllBookings = async (): Promise<[IBooking]> => {
-    return this.get(`${this.path}`);
+    return this.get(`/`).catch(err => new ApolloError(toError(err)));
   };
 
-  getBooking = async (id: string): Promise<IBooking> => {
-    return this.get(`${this.path}/${id}`);
+  getBookingById = async (id: string): Promise<IBooking> => {
+    return this.get(`/${id}`).catch(err => new ApolloError(toError(err)));
   };
 
   cleanListingAvailabilities = async (id: string): Promise<IBooking> => {
-    return await this.put(
-      `${this.path}/cleanListingAvailabilities/${id}`
-    ).catch(err => new ApolloError(toError(err)));
+    return await this.put(`/cleanListingAvailabilities/${id}`).catch(err => new ApolloError(toError(err)));
   };
 
   createBooking = async (booking: IBooking): Promise<IBooking> => {
-    return this.post(`${this.path}`, booking).catch(
-      err => new ApolloError(toError(err))
-    );
+    return this.post(`/`, booking).catch(err => new ApolloError(toError(err)));
   };
 
   timeoutBooking = async (bookingId: String): Promise<IBooking> => {
-    return this.put(`${this.path}/timeout/${bookingId}`).catch(
-      err => new ApolloError(toError(err))
-    );
+    return this.put(`/timeout/${bookingId}`).catch(err => new ApolloError(toError(err)));
   };
 
   acceptBooking = async (bookingId: String): Promise<IBooking> => {
@@ -50,16 +45,15 @@ class BookingsAPI extends PersonalizationAPI {
   };
 
   getPendingBookingsByUser = async (args: any): Promise<IBooking> => {
-    return this.get(
-      `${this.path}/getPendingByGuestId/${args.userId}/${args.listingId}`
-    );
+    return this.get(`/getPendingByGuestId/${args.userId}/${args.listingId}`).catch(err => new ApolloError(toError(err)));
   };
 
   getAllBookingsByUser = async (args: any): Promise<IBooking> => {
     if (args.userType === "host")
-      return this.get(`${this.path}/byHostId/${args.userId}`);
-    return this.get(`${this.path}/byGuestId/${args.userId}`);
+      return this.get(`/byHostId/${args.userId}`).catch(err => new ApolloError(toError(err)));
+    return this.get(`/byGuestId/${args.userId}`).catch(err => new ApolloError(toError(err)));
   };
+
 }
 
 export default BookingsAPI;
