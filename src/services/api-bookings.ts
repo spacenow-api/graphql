@@ -37,6 +37,18 @@ class BookingsAPI extends PersonalizationAPI {
     );
   };
 
+  acceptBooking = async (bookingId: String): Promise<IBooking> => {
+    return this.put(`${this.path}/accept/${bookingId}`).catch(
+      err => new ApolloError(toError(err))
+    );
+  };
+
+  declineBooking = async (bookingId: String): Promise<IBooking> => {
+    return this.put(`${this.path}/decline/${bookingId}`).catch(
+      err => new ApolloError(toError(err))
+    );
+  };
+
   getPendingBookingsByUser = async (args: any): Promise<IBooking> => {
     return this.get(
       `${this.path}/getPendingByGuestId/${args.userId}/${args.listingId}`

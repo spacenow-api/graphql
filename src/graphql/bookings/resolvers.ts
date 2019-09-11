@@ -38,6 +38,18 @@ const resolvers = {
       const { bookingsAPI } = dataSources;
 
       return bookingsAPI.timeoutBooking(args.bookingId);
+    },
+
+    acceptBooking: async (_: any, args: any, { dataSources }: any) => {
+      const { bookingsAPI } = dataSources;
+
+      return bookingsAPI.acceptBooking(args.bookingId);
+    },
+
+    declineBooking: async (_: any, args: any, { dataSources }: any) => {
+      const { bookingsAPI } = dataSources;
+
+      return bookingsAPI.declineBooking(args.bookingId);
     }
   }
 };
