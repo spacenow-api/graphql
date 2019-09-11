@@ -16,15 +16,12 @@ const resolvers = {
   Upload: GraphQLUpload,
 
   Listing: {
+
     amenities(parent: any, args: any, context: any, info: any) {
-      return context.dataSources.listingsAPI.getAllAmenitiesByListingId(
-        parent.id
-      );
+      return context.dataSources.listingsAPI.getAllAmenitiesByListingId(parent.id);
     },
     listingData(parent: any, args: any, context: any, info: any) {
-      return context.dataSources.listingsAPI.getListingDataByListingId(
-        parent.id
-      );
+      return context.dataSources.listingsAPI.getListingDataByListingId(parent.id);
     },
     location(parent: any, args: any, context: any, info: any) {
       return context.dataSources.locationsAPI.getLocationById(parent.id);
@@ -33,9 +30,10 @@ const resolvers = {
       return context.dataSources.listingsAPI.getPhotosByListingId(parent.id);
     },
     settingsParent(parent: any, args: any, context: any, info: any) {
-      return context.dataSources.listingsAPI.getListingSettingsByListingId(
-        parent.id
-      );
+      return context.dataSources.listingsAPI.getListingSettingsByListingId(parent.id);
+    },
+    accessDays(parent: any, args: any, context: any, info: any) {
+      return context.dataSources.listingsAPI.getListingAccessDaysByListingId(parent.id);
     }
   },
 
