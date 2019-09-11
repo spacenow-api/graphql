@@ -2,7 +2,9 @@ import {
   IUser,
   IUserProfileLegacy,
   IResponseUser,
-  IProfilePictureInput
+  IProfilePictureInput,
+  IDocument,
+  IDocumentInput
 } from "../interfaces";
 
 import { catchApolloError } from "./../helpers/exceptions/HttpException";
@@ -80,6 +82,40 @@ class UsersAPI extends PersonalizationAPI {
     );
   };
 
+  getUserDocuments = async (userId: string): Promise<[IDocument]> => {
+    return this.get(`${this.path}/legacy/documents/${userId}`).catch(
+      catchApolloError
+    );
+  };
+
+  deleteDocument = async (id: string, userId: string) => {
+    return this.delete(
+      `${this.path}/legacy/document/${id}?userId=${userId}`
+    ).catch(catchApolloError);
+  };
+
+  uploadDocument = async (document: IDocumentInput): Promise<IDocument> => {
+    const { createReadStream, filename }: any = await document.file;
+    const stream = createReadStream();
+    await streaming({ stream, filename });
+    const formData = new FormData();
+    formData.append(
+      "file",
+      fs.createReadStream(`${config.TEMP_FILE_UPLOAD}/${filename}`),
+      filename
+    );
+    fs.unlink(`${config.TEMP_FILE_UPLOAD}/${filename}`, () => (err: any) =>
+      console.log(err)
+    );
+    return this.post(
+      `${this.path}/legacy/document/${document.userId}`,
+      formData,
+      {
+        headers: formData.getHeaders()
+      }
+    );
+  };
+
   deleteUserByEmail = async (email: string): Promise<IUser> => {
     return this.delete(`${this.path}/legacy?email=${email}`).catch(
       catchApolloError
@@ -93,7 +129,10 @@ class UsersAPI extends PersonalizationAPI {
   };
 
   resetPasswordUpdate = async (token: string, password: string) => {
-    return this.post(`${this.path}/legacy/password/reset/update`, { token, password }).catch(catchApolloError);
+    return this.post(`${this.path}/legacy/password/reset/update`, {
+      token,
+      password
+    }).catch(catchApolloError);
   };
 }
 

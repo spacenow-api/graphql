@@ -64,6 +64,8 @@ const typeDefs = gql`
     ): BookingOutput
 
     timeoutBooking(bookingId: String): BookingOutput
+    acceptBooking(bookingId: String): BookingOutput
+    declineBooking(bookingId: String): BookingOutput
   }
 `;
 

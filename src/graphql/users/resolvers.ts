@@ -14,6 +14,10 @@ const resolvers = {
 
     getUser: async (_: any, args: any, { dataSources }: any) => {
       return dataSources.usersAPI.getUser(args.id);
+    },
+
+    getUserDocuments: async (_: any, args: any, { dataSources }: any) => {
+      return await dataSources.usersAPI.getUserDocuments(args.userId);
     }
   },
 
@@ -42,6 +46,10 @@ const resolvers = {
       return dataSources.authAPI.tokenAdminValidate({ token: args.token });
     },
 
+    deleteDocument: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.usersAPI.deleteDocument(args.id, args.userId);
+    },
+
     updateUserLegacy: async (_: any, args: any, { dataSources }: any) => {
       return dataSources.usersAPI.updateUserLegacy(args.input);
     },
@@ -60,12 +68,21 @@ const resolvers = {
       return await dataSources.usersAPI.updateProfilePicture(args);
     },
 
+    uploadDocument: async (_: any, args: any, { dataSources }: any) => {
+      return await dataSources.usersAPI.uploadDocument(args);
+    },
+
     deleteUserByEmail: async (_: any, args: any, { dataSources }: any) => {
       return dataSources.usersAPI.deleteUserByEmail(args.email);
     },
 
     signup: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.authAPI.signup(args.email, args.password, args.firstName, args.lastName);
+      return dataSources.authAPI.signup(
+        args.email,
+        args.password,
+        args.firstName,
+        args.lastName
+      );
     },
 
     resetPassword: async (_: any, args: any, { dataSources }: any) => {
@@ -73,7 +90,10 @@ const resolvers = {
     },
 
     resetPasswordUpdate: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.usersAPI.resetPasswordUpdate(args.token, args.password);
+      return dataSources.usersAPI.resetPasswordUpdate(
+        args.token,
+        args.password
+      );
     }
   }
 };

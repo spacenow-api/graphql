@@ -33,6 +33,19 @@ const typeDefs = gql`
     userVerifiedInfo: UserVerificationInfo
   }
 
+  type Document {
+    id: String
+    userId: String
+    fileName: String
+    fileType: String
+    documentStatus: String
+  }
+
+  type DocumentResponse {
+    count: Int
+    rows: [Document]
+  }
+
   input UserProfileInput {
     status: String
     userId: String
@@ -145,6 +158,7 @@ const typeDefs = gql`
     getAllUsers: [User]
     getAllUsersLegacy: UsersResponse
     getUser(id: String!): User
+    getUserDocuments(userId: String!): DocumentResponse
     getUserLegacyById(id: String!): User
   }
 
@@ -153,13 +167,20 @@ const typeDefs = gql`
     updateUserProfileLegacy(userId: String, input: UserProfileInput): Success
     updateProfilePicture(file: Upload, userId: String!): Success
     deleteUserByEmail(email: String): Success
+    deleteDocument(id: String, userId: String): Success
+    uploadDocument(userId: String, file: Upload): Document
     login(email: String, password: String): TokenWithUser
     loginAdmin(email: String, password: String): Token
     tokenValidate(token: String!): TokenValidation
     tokenGoogleValidate(token: String!): TokenWithUser
     tokenFacebookValidate(token: String!): TokenWithUser
     tokenAdminValidate(token: String!): AdminTokenValidation
-    signup(email: String!, password: String!, firstName: String!, lastName: String!): TokenWithUser
+    signup(
+      email: String!
+      password: String!
+      firstName: String!
+      lastName: String!
+    ): TokenWithUser
     resetPassword(email: String!): Success
     resetPasswordUpdate(token: String!, password: String!): Success
   }
