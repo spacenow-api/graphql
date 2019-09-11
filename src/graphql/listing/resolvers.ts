@@ -34,7 +34,10 @@ const resolvers = {
     },
     accessDays(parent: any, args: any, context: any, info: any) {
       return context.dataSources.listingsAPI.getListingAccessDaysByListingId(parent.id);
-    }
+    },
+    user(parent: any, args: any, context: any, info: any) {
+      return context.dataSources.usersAPI.getUserLegacyById(parent.userId);
+    },
   },
 
   Query: {
