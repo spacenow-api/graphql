@@ -215,6 +215,12 @@ const typeDefs = gql`
     invoice_settings: InvoiceSettings
   }
 
+  type PaymentResponse {
+    status: String
+    bookingId: String
+    bookingState: String
+  }
+
   extend type Query {
     getPaymentAccount: StripeAccountType
     getPaymentCards: StripeSourceType
@@ -247,7 +253,7 @@ const typeDefs = gql`
     removePaymentAccount: StripeAccountDeleteConfirmation
     createPaymentCard(cardName: String!, cardNumber: String!, expMonth: Int!, expYear: Int!, cvc: String!): StripeSourceType
     deletePaymentCard(cardId: String!): StripeSourceType
-    createPayment(cardId: String!, bookingId: String!): Success
+    createPayment(cardId: String!, bookingId: String!): PaymentResponse
   }
 `;
 
