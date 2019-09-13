@@ -257,6 +257,7 @@ const typeDefs = gql`
   }
 
   type ListingData {
+    id: Int
     listingId: Int
     accessType: String
     bookingNoticeTime: String
