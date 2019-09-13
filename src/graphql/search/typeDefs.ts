@@ -103,7 +103,7 @@ const typeDefs = gql`
   }
   
   extend type Query {  
-    searchByAddress(lat: String!, lng: String!): SearchResult
+    searchByAddress(lat: String!, lng: String!, categories: String, duration: String, priceMin: Float, priceMax: Float, instant: String): SearchResult
     searchByFilters(key: String!, categories: String, duration: String, priceMin: Float, priceMax: Float, instant: String, page: Int): SearchResult
   }
 `;
