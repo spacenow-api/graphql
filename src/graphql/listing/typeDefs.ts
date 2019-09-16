@@ -386,6 +386,7 @@ const typeDefs = gql`
     getOrCreateLocation(suggestAddress: String!, unit: String): Location
     publish(listingId: Int!, status: Boolean!): Listing
     cleanListingAvailabilities(listingId: Int!): Success
+    removeListingById(listingId: Int!): Success
   }
 `;
 

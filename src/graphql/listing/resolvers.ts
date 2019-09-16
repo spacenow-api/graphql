@@ -260,6 +260,10 @@ const resolvers = {
     ) => {
       const { bookingsAPI } = dataSources;
       return bookingsAPI.cleanListingAvailabilities(args.listingId);
+    },
+
+    removeListingById: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.listingsAPI.removeListingById(args.listingId);
     }
   }
 };

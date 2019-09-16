@@ -184,6 +184,10 @@ class ListingsAPI extends PersonalizationAPI {
     );
   };
 
+  removeListingById = async (listingId: string): Promise<any> => {
+    return this.delete(`/listings/${listingId}`).catch(err => new ApolloError(toError(err)));
+  };
+
   publish = async (listingId: number, status: boolean) => {
     return this.put(`/listings/${listingId}/publish/${status}`).catch(
       err => new ApolloError(toError(err))
