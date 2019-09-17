@@ -45,12 +45,16 @@ class BookingsAPI extends PersonalizationAPI {
       .catch(err => new ApolloError(toError(err)));
   };
 
-  getAllBookingsByUser = async (args: any): Promise<IBooking> => {
+  getAllBookingsByUser = async (args: any): Promise<any> => {
+    let bookingsApi = `/byGuestId/${args.userId}`
     if (args.userType === "host")
-      return this.get(`/byHostId/${args.userId}`)
-        .catch(err => new ApolloError(toError(err)));
-    return this.get(`/byGuestId/${args.userId}`)
-      .catch(err => new ApolloError(toError(err)));
+      bookingsApi = `/byHostId/${args.userId}`
+    const bookings = await this.get(bookingsApi).catch(err => new ApolloError(toError(err)));
+    const sortedItems = bookings.items.sort((a: IBooking, b: IBooking) => b.updatedAt - a.updatedAt);
+    return {
+      count: bookings.count,
+      items: sortedItems
+    };
   };
 }
 
