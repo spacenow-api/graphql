@@ -38,7 +38,9 @@ class UsersAPI extends PersonalizationAPI {
     return this.get(`${this.path}/${id}`).catch(catchApolloError);
   };
 
-  getUserLegacyById = async (id: string): Promise<IUser> => {
+  getUserLegacyById = async (id: string, token?: string): Promise<IUser> => {
+    if (token)
+      return this.post(`${this.path}/legacy/email/verification`, { token }).catch(catchApolloError);
     return this.get(`${this.path}/legacy/${id}`).catch(catchApolloError);
   };
 
@@ -134,6 +136,10 @@ class UsersAPI extends PersonalizationAPI {
       token,
       password
     }).catch(catchApolloError);
+  };
+
+  resendEmail = async (email: string) => {
+    return this.post(`${this.path}/legacy/reset/verification`, { email }).catch(catchApolloError);
   };
 }
 

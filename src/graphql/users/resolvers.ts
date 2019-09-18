@@ -5,7 +5,7 @@ const resolvers = {
     },
 
     getUserLegacyById: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.usersAPI.getUserLegacyById(args.id);
+      return await dataSources.usersAPI.getUserLegacyById(args.id, args.token);
     },
 
     getAllUsersLegacy: async (_: any, args: any, { dataSources }: any) => {
@@ -94,6 +94,10 @@ const resolvers = {
         args.token,
         args.password
       );
+    },
+
+    resendEmail: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.usersAPI.resendEmail(args.email);
     }
   }
 };

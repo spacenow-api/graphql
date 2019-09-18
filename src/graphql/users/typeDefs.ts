@@ -164,7 +164,7 @@ const typeDefs = gql`
     getAllUsersLegacy: UsersResponse
     getUser(id: String!): User
     getUserDocuments(userId: String!): DocumentResponse
-    getUserLegacyById(id: String!): User
+    getUserLegacyById(id: String!, token: String): User
   }
 
   extend type Mutation {
@@ -188,6 +188,7 @@ const typeDefs = gql`
     ): TokenWithUser
     resetPassword(email: String!): Success
     resetPasswordUpdate(token: String!, password: String!): Success
+    resendEmail(email: String!): Success
   }
 `;
 
