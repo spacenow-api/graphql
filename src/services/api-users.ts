@@ -74,7 +74,7 @@ class UsersAPI extends PersonalizationAPI {
       filename
     );
     fs.unlink(`${config.TEMP_FILE_UPLOAD}/${filename}`, () => (err: any) =>
-      console.log(err)
+      console.error(err)
     );
     return this.post(
       `${this.path}/legacy/profile/picture?id=${picture.userId}`,
@@ -108,7 +108,7 @@ class UsersAPI extends PersonalizationAPI {
       filename
     );
     fs.unlink(`${config.TEMP_FILE_UPLOAD}/${filename}`, () => (err: any) =>
-      console.log(err)
+      console.error(err)
     );
     return this.post(
       `${this.path}/legacy/document/${document.userId}`,
