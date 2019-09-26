@@ -16,12 +16,15 @@ const resolvers = {
   Upload: GraphQLUpload,
 
   Listing: {
-
     amenities(parent: any, args: any, context: any, info: any) {
-      return context.dataSources.listingsAPI.getAllAmenitiesByListingId(parent.id);
+      return context.dataSources.listingsAPI.getAllAmenitiesByListingId(
+        parent.id
+      );
     },
     listingData(parent: any, args: any, context: any, info: any) {
-      return context.dataSources.listingsAPI.getListingDataByListingId(parent.id);
+      return context.dataSources.listingsAPI.getListingDataByListingId(
+        parent.id
+      );
     },
     location(parent: any, args: any, context: any, info: any) {
       return context.dataSources.locationsAPI.getLocationById(
@@ -32,14 +35,18 @@ const resolvers = {
       return context.dataSources.listingsAPI.getPhotosByListingId(parent.id);
     },
     settingsParent(parent: any, args: any, context: any, info: any) {
-      return context.dataSources.listingsAPI.getListingSettingsByListingId(parent.id);
+      return context.dataSources.listingsAPI.getListingSettingsByListingId(
+        parent.id
+      );
     },
     accessDays(parent: any, args: any, context: any, info: any) {
-      return context.dataSources.listingsAPI.getListingAccessDaysByListingId(parent.id);
+      return context.dataSources.listingsAPI.getListingAccessDaysByListingId(
+        parent.id
+      );
     },
     user(parent: any, args: any, context: any, info: any) {
       return context.dataSources.usersAPI.getUserLegacyById(parent.userId);
-    },
+    }
   },
 
   Query: {
@@ -264,6 +271,11 @@ const resolvers = {
 
     removeListingById: async (_: any, args: any, { dataSources }: any) => {
       return dataSources.listingsAPI.removeListingById(args.listingId);
+    },
+
+    claimListing: async (_: any, args: any, { dataSources }: any) => {
+      const { listingsAPI } = dataSources;
+      return listingsAPI.claimListing(args.listingId);
     }
   }
 };

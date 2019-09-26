@@ -387,6 +387,7 @@ const typeDefs = gql`
     publish(listingId: Int!, status: Boolean!): Listing
     cleanListingAvailabilities(listingId: Int!): Success
     removeListingById(listingId: Int!): Success
+    claimListing(listingId: Int!): Success
   }
 `;
 
