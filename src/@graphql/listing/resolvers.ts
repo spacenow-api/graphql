@@ -3,14 +3,14 @@ import axios from "axios";
 import moment from "moment";
 import GraphQLUpload from "graphql-upload";
 
-import * as config from "./../../config";
+import * as config from "../../config";
 
 import {
   IHolidayResponse,
   IListingResponse,
   IUpdateRequest,
   IDraftRequest
-} from "./../../interfaces";
+} from "../../interfaces";
 
 const resolvers = {
   Upload: GraphQLUpload,
@@ -107,6 +107,10 @@ const resolvers = {
 
     getAllListingsByUser: async (_: any, args: any, { dataSources }: any) => {
       return await dataSources.listingsAPI.getAllListingsByUser(args.userId);
+    },
+
+    getAllListings: async (_: any, args: any, { dataSources }: any) => {
+      return await dataSources.listingsAPI.getAllListings();
     },
 
     getListingById: async (_: any, args: any, { dataSources }: any) => {

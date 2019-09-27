@@ -1,6 +1,6 @@
 module.exports = {
   service: {
-    localSchemaFile: 'src/graphql/typeDefs.ts',
+    localSchemaFile: 'src/core/typeDefs.ts',
     url: 'http://localhost:4000/graphql'
   }
 };

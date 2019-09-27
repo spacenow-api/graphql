@@ -1,6 +1,7 @@
 import { ApolloServer } from "apollo-server";
 
-import { typeDefs, resolvers } from "./graphql";
+import { typeDefs, resolvers } from "./@graphql";
+import { CurrencyDirective } from "./@graphql/directives";
 
 import {
   AssetsAPI,
@@ -24,6 +25,9 @@ import * as config from "./config";
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  schemaDirectives: {
+    currency: CurrencyDirective
+  },
   introspection: config.PLAYGROUND,
   playground: config.PLAYGROUND,
   onHealthCheck: () => Promise.resolve(),
@@ -48,6 +52,6 @@ const server = new ApolloServer({
   }
 });
 
-server.listen().then(({ url }) => {
+server.listen().then(({ url }: any) => {
   console.info(`Server * GraphQL * listening on ${url}`);
 });

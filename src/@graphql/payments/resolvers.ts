@@ -1,9 +1,7 @@
-import { IAccountRequest } from "./../../interfaces";
+import { IAccountRequest } from "../../interfaces";
 
 const resolvers = {
-
   Query: {
-
     getPaymentAccount: async (_: any, args: any, { dataSources }: any) => {
       return dataSources.paymentsAPI.getAccount();
     },
@@ -14,7 +12,6 @@ const resolvers = {
   },
 
   Mutation: {
-
     createPaymentAccount: async (_: any, args: any, { dataSources }: any) => {
       const iCreateAccount = <IAccountRequest>{
         type: args.type,
@@ -31,12 +28,12 @@ const resolvers = {
             city: args.city,
             line1: args.line1,
             postal_code: args.postal_code,
-            state: args.state,
+            state: args.state
           },
           dob: {
             day: args.day,
             month: args.month,
-            year: args.year,
+            year: args.year
           }
         },
         external_account: {
@@ -44,9 +41,9 @@ const resolvers = {
           country: args.external_account_country,
           currency: args.currency,
           routing_number: args.routing_number,
-          account_number: args.account_number,
+          account_number: args.account_number
         }
-      }
+      };
       return dataSources.paymentsAPI.createAccount(iCreateAccount);
     },
 
@@ -55,7 +52,13 @@ const resolvers = {
     },
 
     createPaymentCard: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.paymentsAPI.createCard(args.cardName, args.cardNumber, args.expMonth, args.expYear, args.cvc);
+      return dataSources.paymentsAPI.createCard(
+        args.cardName,
+        args.cardNumber,
+        args.expMonth,
+        args.expYear,
+        args.cvc
+      );
     },
 
     deletePaymentCard: async (_: any, args: any, { dataSources }: any) => {
