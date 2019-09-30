@@ -19,9 +19,9 @@ export const SPACES_API_HOST: string = process.env.SPACES_API_HOST || 'http://lo
 
 export const USERS_API_HOST: string = process.env.USERS_API_HOST || 'http://localhost:6001';
 
-export const API_AVAILABILITIES: string = process.env.API_AVAILABILITIES || 'https://api-availabilities.sandpit.cloud.spacenow.com/availabilities';
+export const API_AVAILABILITIES: string = process.env.API_AVAILABILITIES || 'http://localhost:6011/availabilities';
 
-export const API_BOOKING: string = process.env.API_BOOKING || 'https://api-bookings.sandpit.cloud.spacenow.com/bookings';
+export const API_BOOKING: string = process.env.API_BOOKING || 'http://localhost:6007/bookings';
 
 export const HOLIDAYS_HOST: string = 'https://data.gov.au/data/api/3/action/datastore_search?resource_id=bda4d4f2-7fde-4bfc-8a23-a6eefc8cef80';
 
@@ -39,4 +39,4 @@ export const SEARCH_API_HOST: string = process.env.SEARCH_API_HOST || 'http://lo
 
 export const PAYMENTS_API_HOST: string = process.env.PAYMENTS_API_HOST || 'http://localhost:6009';
 
-export const EMAILS_API: string = process.env.EMAILS_API || 'https://api-emails.sandpit.cloud.spacenow.com';
+export const EMAILS_API: string = process.env.EMAILS_API || 'http://localhost:6010';

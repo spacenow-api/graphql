@@ -23,11 +23,11 @@ USERS & AUTHENTICATION API: 6001
 ```
 
 ```
-AVAILABILITIES API: https://api-availabilities.sandpit.cloud.spacenow.com/availabilities
+AVAILABILITIES API: http://localhost:6011/availabilities
 ```
 
 ```
-BOOKINGS API: https://api-bookings.sandpit.cloud.spacenow.com
+BOOKINGS API: http://localhost:6007
 ```
 
 ```
