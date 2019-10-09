@@ -67,6 +67,8 @@ const typeDefs = gql`
       guestId: String
       isAbsorvedFee: Boolean
       reservations: [String]
+      checkInHour: String
+      checkOutHour: String
     ): BookingOutput
 
     timeoutBooking(bookingId: String): BookingOutput
