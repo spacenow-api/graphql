@@ -1,28 +1,36 @@
-import { ICategory, ICategoryLegacy } from '../interfaces';
-import PersonalizationAPI from '../interfaces/personalization.inteface';
+import { ICategory } from "../interfaces";
+import PersonalizationAPI from "../interfaces/personalization.inteface";
 
 class CategoriesAPI extends PersonalizationAPI {
-  private path = '/categories';
-
   constructor(apiAddress: string) {
     super();
     this.baseURL = apiAddress;
   }
 
   getRootCategories = async (): Promise<[ICategory]> => {
-    return this.get(`${this.path}`);
+    return this.get(`categories/root`);
+  };
+
+  getCategories = async (
+    pageIndex: number,
+    pageSize: number
+  ): Promise<[ICategory]> => {
+    return this.get(`categories?pageIndex=${pageIndex}&pageSize=${pageSize}`);
   };
 
   getCategory = async (id: string): Promise<ICategory> => {
-    return this.get(`${this.path}/${id}`);
+    return this.get(`category/${id}`);
   };
 
-  createCategory = async (user: ICategory): Promise<ICategory> => {
-    return this.post(`${this.path}`, user);
+  createCategory = async (category: ICategory): Promise<ICategory> => {
+    return this.post(`category`, new Object({ ...category }));
   };
 
-  getCategoriesLegacy = async (): Promise<ICategoryLegacy> => {
-    return this.get(`${this.path}/legacy`);
+  updateCategory = async (
+    id: string,
+    category: ICategory
+  ): Promise<ICategory> => {
+    return this.put(`category/${id}`, new Object({ ...category }));
   };
 }
 

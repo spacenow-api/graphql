@@ -68,16 +68,6 @@ const typeDefs = gql`
     checkOut: String
   }
 
-  type Category {
-    id: String!
-    name: String!
-    slug: String!
-    parentId: String
-    order: Int!
-    isActive: Boolean!
-    children: [Category]
-  }
-
   type BookingPeriodLegacy {
     id: Int
     listSettingsParentId: Int
@@ -323,8 +313,6 @@ const typeDefs = gql`
     getAllBookings: [Booking]
     getBooking: Booking
     getCategoriesLegacy: [CategoryLegacy]
-    getCategory(id: String!): Category
-    getRootCategories: [Category]
     getAllHolidays(
       countryShortName: String
       year: Int
@@ -347,12 +335,6 @@ const typeDefs = gql`
     uploadPhoto(file: Upload, listingId: Int!): ListingPhotos
     deletePhoto(photoId: Int!, listingId: Int!): Success
     setCoverPhoto(photoId: Int!, listingId: Int!): Success
-    createCategory(
-      name: String
-      parentId: String
-      order: Int
-      isActive: Boolean
-    ): Category
     createOrUpdateListing(
       locationId: Int!
       listSettingsParentId: Int!

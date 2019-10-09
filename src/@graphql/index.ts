@@ -8,6 +8,8 @@ import pricesT from "./prices/typeDefs";
 import bookingT from "./bookings/typeDefs";
 import emailsT from "./emails/typeDefs";
 import searchT from "./search/typeDefs";
+import categoriesT from "./categories/typeDefs";
+import eavT from "./eav/typeDefs";
 
 const typeDefs = [
   rootT,
@@ -19,7 +21,9 @@ const typeDefs = [
   pricesT,
   bookingT,
   emailsT,
-  searchT
+  searchT,
+  categoriesT,
+  eavT
 ];
 
 import listingR from "./listing/resolvers";
@@ -31,6 +35,8 @@ import pricesR from "./prices/resolvers";
 import bookingR from "./bookings/resolvers";
 import emailsR from "./emails/resolvers";
 import searchR from "./search/resolvers";
+import categoriesR from "./categories/resolvers";
+import eavR from "./eav/resolvers";
 
 const resolvers: any = [
   listingR,
@@ -41,7 +47,9 @@ const resolvers: any = [
   pricesR,
   bookingR,
   emailsR,
-  searchR
+  searchR,
+  categoriesR,
+  eavR
 ];
 
 export { typeDefs, resolvers };

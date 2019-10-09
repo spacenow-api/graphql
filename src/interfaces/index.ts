@@ -28,6 +28,7 @@ import {
   ISubCategoryLegacy,
   IBookingPeriodLegacy
 } from "./category.interface";
+import { IEAVAttribute } from "./eav.interface";
 import { IAccountRequest } from "./account-request.interface";
 import {
   IAccountResponse,
@@ -73,5 +74,6 @@ export {
   IWeWork,
   IEmail,
   IDocument,
-  IDocumentInput
+  IDocumentInput,
+  IEAVAttribute
 };

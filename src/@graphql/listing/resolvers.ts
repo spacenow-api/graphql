@@ -192,10 +192,6 @@ const resolvers = {
       return await dataSources.assetsAPI.setCoverPhoto(args);
     },
 
-    createCategory: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.categoriesAPI.createCategory(args);
-    },
-
     createOrUpdateListing: async (_: any, args: any, { dataSources }: any) => {
       const { listingsAPI, locationsAPI, usersAPI } = dataSources;
       let listingObj: IListingResponse;
