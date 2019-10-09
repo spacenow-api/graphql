@@ -26,8 +26,8 @@ const resolvers = {
       return dataSources.bookingsAPI.getAllBookingsByUser(args);
     },
 
-    getHourlyPeriod: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.bookingsAPI.getHourlyPeriod(args.checkInHour, args.checkOutHour);
+    getHourlyAvailability: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.bookingsAPI.getHourlyAvailability(args.listingId, args.date, args.checkInHour, args.checkOutHour);
     },
   },
 
