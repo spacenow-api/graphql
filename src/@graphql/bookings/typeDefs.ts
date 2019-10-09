@@ -30,6 +30,8 @@ const typeDefs = gql`
     guestId: String
     checkIn: String
     checkOut: String
+    checkInHour: String
+    checkOutHour: String
     reservations: [String]
   }
 
