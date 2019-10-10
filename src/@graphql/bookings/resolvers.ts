@@ -24,7 +24,11 @@ const resolvers = {
 
     getAllBookingsByUser: async (_: any, args: any, { dataSources }: any) => {
       return dataSources.bookingsAPI.getAllBookingsByUser(args);
-    }
+    },
+
+    getHourlyAvailability: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.bookingsAPI.getHourlyAvailability(args.listingId, args.date, args.checkInHour, args.checkOutHour);
+    },
   },
 
   Mutation: {

@@ -30,12 +30,20 @@ const typeDefs = gql`
     guestId: String
     checkIn: String
     checkOut: String
+    checkInHour: String
+    checkOutHour: String
     reservations: [String]
   }
 
   type BookingOutput {
     bookingId: String
     status: Boolean
+  }
+
+  type HourlyAvailability {
+    status: Boolean
+    hours: Int
+    isAvailable: Boolean
   }
 
   extend type Query {
@@ -47,6 +55,7 @@ const typeDefs = gql`
       status: String
       period: [String]
     ): Bookings
+    getHourlyAvailability(listingId: Int!, date: String!, checkInHour: String!, checkOutHour: String!): HourlyAvailability
   }
 
   extend type Mutation {
@@ -61,6 +70,8 @@ const typeDefs = gql`
       guestId: String
       isAbsorvedFee: Boolean
       reservations: [String]
+      checkInHour: String
+      checkOutHour: String
     ): BookingOutput
 
     timeoutBooking(bookingId: String): BookingOutput

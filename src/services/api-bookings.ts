@@ -56,6 +56,11 @@ class BookingsAPI extends PersonalizationAPI {
       items: sortedItems
     };
   };
+
+  getHourlyAvailability = async (listingId: number, date: string, checkInHour: string, checkOutHour: string): Promise<any> => {
+    return this.post(`/getHourlyAvailability`, { listingId, date, checkInHour, checkOutHour })
+      .catch(err => new ApolloError(toError(err)));
+  }
 }
 
 export default BookingsAPI;
