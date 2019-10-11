@@ -5,7 +5,7 @@ const resolvers = {
 
   BookingType: {
     listing(parent: any, args: any, context: any, info: any) {
-      return context.dataSources.listingsAPI.getListingById(parent.listingId);
+      return context.dataSources.spacesAPI.getListingById(parent.listingId);
     }
   },
 

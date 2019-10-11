@@ -1,5 +1,5 @@
 import rootT from "./typeDefs";
-import listingT from "./listing/typeDefs";
+import spacesT from "./spaces/typeDefs";
 import paymentsT from "./payments/typeDefs";
 import usersT from "./users/typeDefs";
 import assetsT from "./assets/typeDefs";
@@ -10,10 +10,11 @@ import emailsT from "./emails/typeDefs";
 import searchT from "./search/typeDefs";
 import categoriesT from "./categories/typeDefs";
 import eavT from "./eav/typeDefs";
+import listingsT from "./listings/typeDefs";
 
 const typeDefs = [
   rootT,
-  listingT,
+  spacesT,
   paymentsT,
   usersT,
   assetsT,
@@ -23,10 +24,11 @@ const typeDefs = [
   emailsT,
   searchT,
   categoriesT,
-  eavT
+  eavT,
+  listingsT
 ];
 
-import listingR from "./listing/resolvers";
+import spacesR from "./spaces/resolvers";
 import paymentsR from "./payments/resolvers";
 import usersR from "./users/resolvers";
 import assetsR from "./assets/resolvers";
@@ -37,9 +39,10 @@ import emailsR from "./emails/resolvers";
 import searchR from "./search/resolvers";
 import categoriesR from "./categories/resolvers";
 import eavR from "./eav/resolvers";
+import listingsR from "./listings/resolvers";
 
 const resolvers: any = [
-  listingR,
+  spacesR,
   paymentsR,
   usersR,
   assetsR,
@@ -49,7 +52,8 @@ const resolvers: any = [
   emailsR,
   searchR,
   categoriesR,
-  eavR
+  eavR,
+  listingsR
 ];
 
 export { typeDefs, resolvers };

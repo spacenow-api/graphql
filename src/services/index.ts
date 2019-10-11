@@ -2,7 +2,7 @@ import AssetsAPI from "./api-assets";
 import AuthAPI from "./api-authentication";
 import EAVAPI from "./api-eav";
 import BookingsAPI from "./api-bookings";
-import ListingsAPI from "./api-listings";
+import SpacesAPI from "./api-spaces";
 import UsersAPI from "./api-users";
 import CategoriesAPI from "./api-categories";
 import LocationsAPI from "./api-locations";
@@ -13,12 +13,13 @@ import HubSpotAPI from "./api-hubspot";
 import PricesAPI from "./api-prices";
 import EmailsAPI from "./api-emails";
 import SearchAPI from "./api-search";
+import ListingsAPI from "./api-listings";
 
 export {
   AssetsAPI,
   AuthAPI,
   BookingsAPI,
-  ListingsAPI,
+  SpacesAPI,
   UsersAPI,
   CategoriesAPI,
   LocationsAPI,
@@ -29,5 +30,6 @@ export {
   PricesAPI,
   EmailsAPI,
   SearchAPI,
-  EAVAPI
+  EAVAPI,
+  ListingsAPI
 };

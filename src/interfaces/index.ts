@@ -20,7 +20,8 @@ import { IHolidayResponse } from "./holidays.interface";
 import {
   IListingResponse,
   IUpdateRequest,
-  IDraftRequest
+  IDraftRequest,
+  IListingCategory
 } from "./listing.interface";
 import {
   ICategory,
@@ -48,6 +49,7 @@ export {
   IAuth,
   IBooking,
   ICategory,
+  IListingCategory,
   IUser,
   IProfilePicture,
   IProfilePictureInput,

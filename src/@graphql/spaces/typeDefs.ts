@@ -337,7 +337,7 @@ const typeDefs = gql`
     setCoverPhoto(photoId: Int!, listingId: Int!): Success
     createOrUpdateListing(
       locationId: Int!
-      listSettingsParentId: Int!
+      categoryId: ID!
       bookingPeriod: String
       title: String
       coverPhotoId: Int

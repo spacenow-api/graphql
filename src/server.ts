@@ -7,7 +7,7 @@ import {
   AssetsAPI,
   AuthAPI,
   BookingsAPI,
-  ListingsAPI,
+  SpacesAPI,
   UsersAPI,
   CategoriesAPI,
   LocationsAPI,
@@ -18,7 +18,8 @@ import {
   PricesAPI,
   EmailsAPI,
   SearchAPI,
-  EAVAPI
+  EAVAPI,
+  ListingsAPI
 } from "./services";
 
 import * as config from "./config";
@@ -38,7 +39,7 @@ const server = new ApolloServer({
       assetsAPI: new AssetsAPI(config.ASSETS_API_HOST),
       authAPI: new AuthAPI(config.USERS_API_HOST),
       bookingsAPI: new BookingsAPI(config.API_BOOKING),
-      listingsAPI: new ListingsAPI(config.SPACES_API_HOST),
+      spacesAPI: new SpacesAPI(config.SPACES_API_HOST),
       usersAPI: new UsersAPI(config.USERS_API_HOST),
       paymentsAPI: new PaymentsAPI(config.PAYMENTS_API_HOST),
       categoriesAPI: new CategoriesAPI(config.CATEGORIES_API_HOST),
@@ -49,7 +50,8 @@ const server = new ApolloServer({
       pricesAPI: new PricesAPI(config.API_CAMPAIGNS),
       emailsAPI: new EmailsAPI(config.EMAILS_API),
       searchAPI: new SearchAPI(config.SEARCH_API_HOST),
-      eavAPI: new EAVAPI(config.EAV_API)
+      eavAPI: new EAVAPI(config.EAV_API),
+      listingsAPI: new ListingsAPI(config.LISTINGS_API)
     };
   }
 });

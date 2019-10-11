@@ -17,14 +17,12 @@ const resolvers = {
 
   Listing: {
     amenities(parent: any, args: any, context: any, info: any) {
-      return context.dataSources.listingsAPI.getAllAmenitiesByListingId(
+      return context.dataSources.spacesAPI.getAllAmenitiesByListingId(
         parent.id
       );
     },
     listingData(parent: any, args: any, context: any, info: any) {
-      return context.dataSources.listingsAPI.getListingDataByListingId(
-        parent.id
-      );
+      return context.dataSources.spacesAPI.getListingDataByListingId(parent.id);
     },
     location(parent: any, args: any, context: any, info: any) {
       return context.dataSources.locationsAPI.getLocationById(
@@ -32,15 +30,15 @@ const resolvers = {
       );
     },
     photos(parent: any, args: any, context: any, info: any) {
-      return context.dataSources.listingsAPI.getPhotosByListingId(parent.id);
+      return context.dataSources.spacesAPI.getPhotosByListingId(parent.id);
     },
     settingsParent(parent: any, args: any, context: any, info: any) {
-      return context.dataSources.listingsAPI.getListingSettingsByListingId(
+      return context.dataSources.spacesAPI.getListingSettingsByListingId(
         parent.id
       );
     },
     accessDays(parent: any, args: any, context: any, info: any) {
-      return context.dataSources.listingsAPI.getListingAccessDaysByListingId(
+      return context.dataSources.spacesAPI.getListingAccessDaysByListingId(
         parent.id
       );
     },
@@ -51,7 +49,7 @@ const resolvers = {
 
   Query: {
     getPhotosByListingId: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.listingsAPI.getPhotosByListingId(args.listingId);
+      return await dataSources.spacesAPI.getPhotosByListingId(args.listingId);
     },
 
     getAvailabilitiesByListingId: async (
@@ -106,11 +104,11 @@ const resolvers = {
     },
 
     getAllListingsByUser: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.listingsAPI.getAllListingsByUser(args.userId);
+      return await dataSources.spacesAPI.getAllListingsByUser(args.userId);
     },
 
     getAllListings: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.listingsAPI.getAllListings();
+      return await dataSources.spacesAPI.getAllListings();
     },
 
     getListingById: async (_: any, args: any, { dataSources }: any) => {
@@ -145,7 +143,7 @@ const resolvers = {
       args: any,
       { dataSources }: any
     ) => {
-      return await dataSources.listingsAPI.getAllAmenitiesBySubCategoryId(
+      return await dataSources.spacesAPI.getAllAmenitiesBySubCategoryId(
         args.subCategoryId
       );
     },
@@ -155,17 +153,17 @@ const resolvers = {
       args: any,
       { dataSources }: any
     ) => {
-      return await dataSources.listingsAPI.getAllAmenitiesByListingId(
+      return await dataSources.spacesAPI.getAllAmenitiesByListingId(
         args.listingId
       );
     },
 
     getAllRules: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.listingsAPI.getAllRules();
+      return await dataSources.spacesAPI.getAllRules();
     },
 
     getAllAccessTypes: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.listingsAPI.getAllAccessTypes();
+      return await dataSources.spacesAPI.getAllAccessTypes();
     },
 
     getAllSpecificationsByParentId: async (
@@ -173,7 +171,7 @@ const resolvers = {
       args: any,
       { dataSources }: any
     ) => {
-      return await dataSources.listingsAPI.getListingSpecificationsByParentId(
+      return await dataSources.spacesAPI.getListingSpecificationsByParentId(
         args.listSettingsParentId
       );
     }
@@ -270,7 +268,7 @@ const resolvers = {
     },
 
     removeListingById: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.listingsAPI.removeListingById(args.listingId);
+      return dataSources.spacesAPI.removeListingById(args.listingId);
     },
 
     claimListing: async (_: any, args: any, { dataSources }: any) => {
