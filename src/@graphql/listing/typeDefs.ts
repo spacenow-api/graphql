@@ -318,6 +318,27 @@ const typeDefs = gql`
     asset: Asset
   }
 
+  type PublicReview {
+    id: Int
+    reservationId: Int
+    listId: Int
+    authorId: String
+    userId: String
+    reviewContent: String
+    rating: Int
+  }
+
+  type PrivateReview {
+    id: Int
+    reservationId: Int
+    listId: Int
+    authorId: String
+    userId: String
+    reviewContent: String
+    rating: Int
+    privateFeedback: String
+  }
+
   extend type Query {
     getAvailabilitiesByListingId(listingId: Int!): Availabilities
     getAllBookings: [Booking]
@@ -341,6 +362,8 @@ const typeDefs = gql`
     getAllAccessTypes: [ListSettings]
     getAllSpecificationsByParentId(listSettingsParentId: Int!): [ListSettings]
     getLetterListingsByState(state: String!): [Listing]
+    getPublicReviews(listingId: Int!): [PublicReview]
+    getPrivateReviews(listingId: Int!): [PrivateReview]
   }
 
   extend type Mutation {
@@ -389,6 +412,7 @@ const typeDefs = gql`
     cleanListingAvailabilities(listingId: Int!): Success
     removeListingById(listingId: Int!): Success
     claimListing(listingId: Int!): Success
+    createReview(listingId: Int!, publicComment: String!, privateComment: String, rate: Int!): Success
   }
 `;
 

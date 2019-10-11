@@ -176,7 +176,15 @@ const resolvers = {
       return await dataSources.listingsAPI.getListingSpecificationsByParentId(
         args.listSettingsParentId
       );
-    }
+    },
+
+    getPublicReviews: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.listingsAPI.getPublicReviews(args.listingId);
+    },
+
+    getPrivateReviews: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.listingsAPI.getPrivateReviews(args.listingId);
+    },
   },
 
   Mutation: {
@@ -280,7 +288,11 @@ const resolvers = {
     claimListing: async (_: any, args: any, { dataSources }: any) => {
       const { listingsAPI } = dataSources;
       return listingsAPI.claimListing(args.listingId);
-    }
+    },
+
+    createReview: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.listingsAPI.createReview(args.listingId, args.publicComment, args.privateComment, args.rate);
+    },
   }
 };
 
