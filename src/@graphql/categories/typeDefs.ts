@@ -16,11 +16,23 @@ const typeDefs = gql`
     order: Int
   }
 
+  type CategoryAttribute {
+    id: ID
+    categoryId: ID
+    attributeId: ID
+  }
+  input CategoryAttributeInput {
+    categoryId: ID
+    attributeId: ID
+  }
+
   extend type Query {
     getCategories(pageIndex: Int, pageSize: Int): Response
       @cacheControl(maxAge: 30)
     getRootCategories: Response
     getCategory(id: ID!): Category
+    getCategoryAttributes(id: ID, pageIndex: Int, pageSize: Int): Response
+      @cacheControl(maxAge: 30)
   }
 
   extend type Mutation {

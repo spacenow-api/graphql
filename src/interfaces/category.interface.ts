@@ -7,6 +7,12 @@ interface ICategory {
   isActive: boolean;
 }
 
+interface ICategoryAttribute {
+  id: string;
+  categoryId: string;
+  attributeId: string;
+}
+
 interface IBookingPeriodLegacy {
   id: number;
   listSettingsParentId: number;
@@ -62,4 +68,10 @@ interface ICategoryLegacy {
   subCategories: Array<ISubCategoryLegacy>;
 }
 
-export { ICategory, ICategoryLegacy, ISubCategoryLegacy, IBookingPeriodLegacy };
+export {
+  ICategory,
+  ICategoryAttribute,
+  ICategoryLegacy,
+  ISubCategoryLegacy,
+  IBookingPeriodLegacy
+};

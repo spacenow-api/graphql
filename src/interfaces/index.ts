@@ -25,6 +25,7 @@ import {
 } from "./listing.interface";
 import {
   ICategory,
+  ICategoryAttribute,
   ICategoryLegacy,
   ISubCategoryLegacy,
   IBookingPeriodLegacy
@@ -49,6 +50,7 @@ export {
   IAuth,
   IBooking,
   ICategory,
+  ICategoryAttribute,
   IListingCategory,
   IUser,
   IProfilePicture,

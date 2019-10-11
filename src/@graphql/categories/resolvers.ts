@@ -15,6 +15,17 @@ const resolvers = {
     },
     getCategory: async (_source: any, _args: any, { dataSources }: any) => {
       return dataSources.categoriesAPI.getCategory(_args.id);
+    },
+    getCategoryAttributes: async (
+      _source: any,
+      _args: any,
+      { dataSources }: any
+    ) => {
+      return dataSources.categoriesAPI.getCategoryAttributes(
+        _args.id,
+        _args.pageIndex,
+        _args.pageSize
+      );
     }
   },
   Mutation: {

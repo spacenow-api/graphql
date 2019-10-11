@@ -1,4 +1,4 @@
-import { ICategory } from "../interfaces";
+import { ICategory, ICategoryAttribute } from "../interfaces";
 import PersonalizationAPI from "../interfaces/personalization.inteface";
 
 class CategoriesAPI extends PersonalizationAPI {
@@ -20,6 +20,16 @@ class CategoriesAPI extends PersonalizationAPI {
 
   getCategory = async (id: string): Promise<ICategory> => {
     return this.get(`category/${id}`);
+  };
+
+  getCategoryAttributes = async (
+    id: string,
+    pageIndex: number,
+    pageSize: number
+  ): Promise<[ICategoryAttribute]> => {
+    return await this.get(
+      `category-attributes/${id}?pageIndex=${pageIndex}&pageSize=${pageSize}`
+    );
   };
 
   createCategory = async (category: ICategory): Promise<ICategory> => {
