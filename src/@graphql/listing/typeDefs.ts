@@ -320,20 +320,18 @@ const typeDefs = gql`
 
   type PublicReview {
     id: Int
-    reservationId: Int
+    reservationId: String
     listId: Int
     authorId: String
-    userId: String
     reviewContent: String
     rating: Int
   }
 
   type PrivateReview {
     id: Int
-    reservationId: Int
+    reservationId: String
     listId: Int
     authorId: String
-    userId: String
     reviewContent: String
     rating: Int
     privateFeedback: String
@@ -412,7 +410,7 @@ const typeDefs = gql`
     cleanListingAvailabilities(listingId: Int!): Success
     removeListingById(listingId: Int!): Success
     claimListing(listingId: Int!): Success
-    createReview(listingId: Int!, publicComment: String!, privateComment: String, rate: Int!): Success
+    createReview(bookingId: String!, publicComment: String!, privateComment: String, rating: Int!): [PublicReview]
   }
 `;
 

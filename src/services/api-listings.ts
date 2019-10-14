@@ -215,8 +215,8 @@ class ListingsAPI extends PersonalizationAPI {
     return this.get(`/listing/${listingId}/reviews/private`).catch(err => new ApolloError(toError(err)));
   }
 
-  createReview = async (listingId: number, publicComment: string, privateComment: string, rate: number): Promise<any> => {
-    return this.post(`/listing/${listingId}/reviews`, { publicComment, privateComment, rate }).catch(err => new ApolloError(toError(err)));
+  createReview = async (bookingId: string, publicComment: string, privateComment: string, rating: number): Promise<any> => {
+    return this.post(`/listing/${bookingId}/reviews`, { publicComment, privateComment, rating }).catch(err => new ApolloError(toError(err)));
   }
 }
 

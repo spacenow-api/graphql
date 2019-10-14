@@ -291,7 +291,7 @@ const resolvers = {
     },
 
     createReview: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.listingsAPI.createReview(args.listingId, args.publicComment, args.privateComment, args.rate);
+      return dataSources.listingsAPI.createReview(args.bookingId, args.publicComment, args.privateComment, args.rating);
     },
   }
 };
