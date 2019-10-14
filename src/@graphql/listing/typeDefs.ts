@@ -325,6 +325,7 @@ const typeDefs = gql`
     authorId: String
     reviewContent: String
     rating: Int
+    createdAt: String
   }
 
   type PrivateReview {
@@ -335,6 +336,7 @@ const typeDefs = gql`
     reviewContent: String
     rating: Int
     privateFeedback: String
+    createdAt: String
   }
 
   extend type Query {
