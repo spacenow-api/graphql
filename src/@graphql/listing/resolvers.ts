@@ -49,6 +49,18 @@ const resolvers = {
     }
   },
 
+  PublicReview: {
+    author(parent: any, args: any, context: any, info: any) {
+      return context.dataSources.usersAPI.getUserLegacyById(parent.authorId);
+    }
+  },
+
+  PrivateReview: {
+    author(parent: any, args: any, context: any, info: any) {
+      return context.dataSources.usersAPI.getUserLegacyById(parent.authorId);
+    }
+  },
+
   Query: {
     getPhotosByListingId: async (_: any, args: any, { dataSources }: any) => {
       return await dataSources.listingsAPI.getPhotosByListingId(args.listingId);

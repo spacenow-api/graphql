@@ -322,7 +322,7 @@ const typeDefs = gql`
     id: Int
     reservationId: String
     listId: Int
-    authorId: String
+    author: User
     reviewContent: String
     rating: Int
     createdAt: String
@@ -332,7 +332,7 @@ const typeDefs = gql`
     id: Int
     reservationId: String
     listId: Int
-    authorId: String
+    author: User
     reviewContent: String
     rating: Int
     privateFeedback: String
