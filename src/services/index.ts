@@ -1,6 +1,6 @@
 import AssetsAPI from "./api-assets";
 import AuthAPI from "./api-authentication";
-import EAVAPI from "./api-eav";
+import AttributesAPI from "./api-attributes";
 import BookingsAPI from "./api-bookings";
 import SpacesAPI from "./api-spaces";
 import UsersAPI from "./api-users";
@@ -30,6 +30,6 @@ export {
   PricesAPI,
   EmailsAPI,
   SearchAPI,
-  EAVAPI,
+  AttributesAPI,
   ListingsAPI
 };

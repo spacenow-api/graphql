@@ -9,7 +9,7 @@ import bookingT from "./bookings/typeDefs";
 import emailsT from "./emails/typeDefs";
 import searchT from "./search/typeDefs";
 import categoriesT from "./categories/typeDefs";
-import eavT from "./eav/typeDefs";
+import attributesT from "./attributes/typeDefs";
 import listingsT from "./listings/typeDefs";
 
 const typeDefs = [
@@ -24,7 +24,7 @@ const typeDefs = [
   emailsT,
   searchT,
   categoriesT,
-  eavT,
+  attributesT,
   listingsT
 ];
 
@@ -38,7 +38,7 @@ import bookingR from "./bookings/resolvers";
 import emailsR from "./emails/resolvers";
 import searchR from "./search/resolvers";
 import categoriesR from "./categories/resolvers";
-import eavR from "./eav/resolvers";
+import attributesR from "./attributes/resolvers";
 import listingsR from "./listings/resolvers";
 
 const resolvers: any = [
@@ -52,7 +52,7 @@ const resolvers: any = [
   emailsR,
   searchR,
   categoriesR,
-  eavR,
+  attributesR,
   listingsR
 ];
 

@@ -21,7 +21,8 @@ import {
   IListingResponse,
   IUpdateRequest,
   IDraftRequest,
-  IListingCategory
+  IListingCategory,
+  IListingAttribute
 } from "./listing.interface";
 import {
   ICategory,
@@ -30,7 +31,7 @@ import {
   ISubCategoryLegacy,
   IBookingPeriodLegacy
 } from "./category.interface";
-import { IEAVAttribute } from "./eav.interface";
+import { IAttribute } from "./attribute.interface";
 import { IAccountRequest } from "./account-request.interface";
 import {
   IAccountResponse,
@@ -79,5 +80,6 @@ export {
   IEmail,
   IDocument,
   IDocumentInput,
-  IEAVAttribute
+  IAttribute,
+  IListingAttribute
 };

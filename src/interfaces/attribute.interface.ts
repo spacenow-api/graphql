@@ -1,6 +1,5 @@
-interface IEAVAttribute {
+interface IAttribute {
   id: string;
-  entityTypeId: string;
   attributeCode: string;
   frontendInput: string;
   frontendLabel: string;
@@ -9,4 +8,4 @@ interface IEAVAttribute {
   isRequired: boolean;
 }
 
-export { IEAVAttribute };
+export { IAttribute };

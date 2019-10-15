@@ -57,7 +57,8 @@ export const PAYMENTS_API_HOST: string =
 export const EMAILS_API: string =
   process.env.EMAILS_API || "http://localhost:6010";
 
-export const EAV_API: string = process.env.EAV_API || "http://localhost:6012";
+export const ATTRIBUTES_API: string =
+  process.env.ATTRIBUTES_API || "http://localhost:6012";
 
 export const LISTINGS_API: string =
   process.env.LISTINGS_API || "http://localhost:6013";

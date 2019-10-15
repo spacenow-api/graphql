@@ -1,9 +1,8 @@
 import { gql } from "apollo-server";
 
 const typeDefs = gql`
-  type EAVAttribute {
+  type Attribute {
     id: ID
-    entityTypeId: ID
     attributeCode: String
     attributeModel: String
     frontendInput: String
@@ -13,8 +12,7 @@ const typeDefs = gql`
     isRequired: Boolean
   }
 
-  input EAVAttributeInput {
-    entityTypeId: ID
+  input AttributeInput {
     attributeCode: String
     attributeModel: String
     frontendInput: String
@@ -22,24 +20,12 @@ const typeDefs = gql`
     backendType: String
     backendModel: String
     isRequired: Boolean
-  }
-
-  type EAVEntityAttribute {
-    id: ID
-    entityId: ID
-    attributeId: ID
-  }
-  input EAVEntityAttributeInput {
-    entityId: ID
-    attributeId: ID
   }
 
   extend type Query {
-    getEAVAttributes(pageIndex: Int, pageSize: Int): Response
+    getAttributes(pageIndex: Int, pageSize: Int): Response
       @cacheControl(maxAge: 30)
-    getEAVAttribute(id: ID!): EAVAttribute
-    getEAVEntityAttributes(id: ID, pageIndex: Int, pageSize: Int): Response
-      @cacheControl(maxAge: 30)
+    getAttribute(id: ID!): Attribute
   }
 `;
 

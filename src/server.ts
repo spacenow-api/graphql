@@ -18,7 +18,7 @@ import {
   PricesAPI,
   EmailsAPI,
   SearchAPI,
-  EAVAPI,
+  AttributesAPI,
   ListingsAPI
 } from "./services";
 
@@ -50,7 +50,7 @@ const server = new ApolloServer({
       pricesAPI: new PricesAPI(config.API_CAMPAIGNS),
       emailsAPI: new EmailsAPI(config.EMAILS_API),
       searchAPI: new SearchAPI(config.SEARCH_API_HOST),
-      eavAPI: new EAVAPI(config.EAV_API),
+      attributesAPI: new AttributesAPI(config.ATTRIBUTES_API),
       listingsAPI: new ListingsAPI(config.LISTINGS_API)
     };
   }

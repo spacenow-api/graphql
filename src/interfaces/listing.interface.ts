@@ -217,3 +217,10 @@ export interface IListingCategory {
   categoryId: string;
   listingId: string;
 }
+
+export interface IListingAttribute {
+  id: string;
+  attributeId: string;
+  listingId: number;
+  value: any;
+}
