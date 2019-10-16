@@ -324,7 +324,12 @@ const typeDefs = gql`
     listId: Int
     author: User
     reviewContent: String
-    rating: Int
+    ratingOverall: Float
+    ratingCheckIn: Float
+    ratingHost: Float
+    ratingValue: Float
+    ratingCleanliness: Float
+    ratingLocation: Float
     createdAt: String
   }
 
@@ -334,8 +339,13 @@ const typeDefs = gql`
     listId: Int
     author: User
     reviewContent: String
-    rating: Int
     privateFeedback: String
+    ratingOverall: Float
+    ratingCheckIn: Float
+    ratingHost: Float
+    ratingValue: Float
+    ratingCleanliness: Float
+    ratingLocation: Float
     createdAt: String
   }
 
@@ -412,7 +422,7 @@ const typeDefs = gql`
     cleanListingAvailabilities(listingId: Int!): Success
     removeListingById(listingId: Int!): Success
     claimListing(listingId: Int!): Success
-    createReview(bookingId: String!, publicComment: String!, privateComment: String, rating: Int!): [PublicReview]
+    createReview(bookingId: String!, publicComment: String!, privateComment: String, ratingOverall: Int!, ratingCheckIn: Int!, ratingHost: Int!, ratingValue: Int!, ratingCleanliness: Int!, ratingLocation: Int!): [PublicReview]
   }
 `;
 
