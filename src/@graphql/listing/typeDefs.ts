@@ -422,7 +422,8 @@ const typeDefs = gql`
     cleanListingAvailabilities(listingId: Int!): Success
     removeListingById(listingId: Int!): Success
     claimListing(listingId: Int!): Success
-    createReview(bookingId: String!, publicComment: String!, privateComment: String, ratingOverall: Int!, ratingCheckIn: Int!, ratingHost: Int!, ratingValue: Int!, ratingCleanliness: Int!, ratingLocation: Int!): [PublicReview]
+    createReviewFromGuest(bookingId: String!, publicComment: String!, privateComment: String, ratingOverall: Int!, ratingCheckIn: Int!, ratingHost: Int!, ratingValue: Int!, ratingCleanliness: Int!, ratingLocation: Int!): [PublicReview]
+    createReviewFromHost(bookingId: String!, publicComment: String!, ratingOverall: Int!): [PublicReview]
   }
 `;
 

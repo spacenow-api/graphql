@@ -302,8 +302,8 @@ const resolvers = {
       return listingsAPI.claimListing(args.listingId);
     },
 
-    createReview: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.listingsAPI.createReview(
+    createReviewFromGuest: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.listingsAPI.createReviewFromGuest(
         args.bookingId,
         args.publicComment,
         args.privateComment,
@@ -315,6 +315,14 @@ const resolvers = {
         args.ratingLocation
       );
     },
+
+    createReviewFromHost: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.listingsAPI.createReviewFromHost(
+        args.bookingId,
+        args.publicComment,
+        args.ratingOverall
+      );
+    }
   }
 };
 
