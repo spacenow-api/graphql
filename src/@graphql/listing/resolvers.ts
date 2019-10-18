@@ -49,7 +49,7 @@ const resolvers = {
     }
   },
 
-  PublicReview: {
+  Review: {
     author(parent: any, args: any, context: any, info: any) {
       return context.dataSources.usersAPI.getUserLegacyById(parent.authorId);
     }
@@ -191,7 +191,7 @@ const resolvers = {
     },
 
     getPublicReviews: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.listingsAPI.getPublicReviews(args.listingId);
+      return dataSources.listingsAPI.getPublicReviews(args.listingId, args.page, args.pageSize);
     },
 
     getPrivateReviews: async (_: any, args: any, { dataSources }: any) => {

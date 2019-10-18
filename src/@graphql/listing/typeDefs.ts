@@ -318,7 +318,7 @@ const typeDefs = gql`
     asset: Asset
   }
 
-  type PublicReview {
+  type Review {
     id: Int
     reservationId: String
     listId: Int
@@ -331,6 +331,11 @@ const typeDefs = gql`
     ratingCleanliness: Float
     ratingLocation: Float
     createdAt: String
+  }
+
+  type PublicReview {
+    totalPages: Int
+    result: [Review]
   }
 
   type PrivateReview {
@@ -372,7 +377,7 @@ const typeDefs = gql`
     getAllAccessTypes: [ListSettings]
     getAllSpecificationsByParentId(listSettingsParentId: Int!): [ListSettings]
     getLetterListingsByState(state: String!): [Listing]
-    getPublicReviews(listingId: Int!): [PublicReview]
+    getPublicReviews(listingId: Int!, page: Int, pageSize: Int): PublicReview
     getPrivateReviews(listingId: Int!): [PrivateReview]
   }
 
@@ -422,8 +427,8 @@ const typeDefs = gql`
     cleanListingAvailabilities(listingId: Int!): Success
     removeListingById(listingId: Int!): Success
     claimListing(listingId: Int!): Success
-    createReviewFromGuest(bookingId: String!, publicComment: String!, privateComment: String, ratingOverall: Int!, ratingCheckIn: Int!, ratingHost: Int!, ratingValue: Int!, ratingCleanliness: Int!, ratingLocation: Int!): [PublicReview]
-    createReviewFromHost(bookingId: String!, publicComment: String!, ratingOverall: Int!): [PublicReview]
+    createReviewFromGuest(bookingId: String!, publicComment: String!, privateComment: String, ratingOverall: Int!, ratingCheckIn: Int!, ratingHost: Int!, ratingValue: Int!, ratingCleanliness: Int!, ratingLocation: Int!): [Review]
+    createReviewFromHost(bookingId: String!, publicComment: String!, ratingOverall: Int!): [Review]
   }
 `;
 

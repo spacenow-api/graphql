@@ -207,8 +207,8 @@ class ListingsAPI extends PersonalizationAPI {
     );
   };
 
-  getPublicReviews = async (listingId: number): Promise<Array<_.IReviews>> => {
-    return this.get(`/listing/${listingId}/reviews`).catch(err => new ApolloError(toError(err)));
+  getPublicReviews = async (listingId: number, page: number, pageSize: number): Promise<Array<_.IReviews>> => {
+    return this.get(`/listing/${listingId}/reviews?page=${page}&pageSize=${pageSize}`).catch(err => new ApolloError(toError(err)));
   }
 
   getPrivateReviews = async (listingId: number): Promise<Array<_.IReviews>> => {
