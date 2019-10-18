@@ -24,10 +24,12 @@ const typeDefs = gql`
     bookingId: String
     guestServiceFee: Float
     hostId: String
+    host: User
     paymentState: String
     updatedAt: Float
     priceType: String
     guestId: String
+    guest: User
     checkIn: String
     checkOut: String
     checkInHour: String

@@ -38,6 +38,7 @@ import { IMailRequest, IMailConfirmation } from "../interfaces/mail.interface";
 import { IWeWork } from "./integrations.interface";
 import IEmail from "./email.interface";
 import { IDocument, IDocumentInput } from "./document.interface";
+import { IReviews } from './listing.interface';
 
 export {
   IAssetOutput,
@@ -73,5 +74,6 @@ export {
   IWeWork,
   IEmail,
   IDocument,
-  IDocumentInput
+  IDocumentInput,
+  IReviews
 };

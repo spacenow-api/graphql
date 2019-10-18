@@ -206,6 +206,35 @@ class ListingsAPI extends PersonalizationAPI {
       err => new ApolloError(toError(err))
     );
   };
+
+  getPublicReviews = async (listingId: number, page: number, pageSize: number): Promise<Array<_.IReviews>> => {
+    return this.get(`/listing/${listingId}/reviews?page=${page}&pageSize=${pageSize}`).catch(err => new ApolloError(toError(err)));
+  }
+
+  getPrivateReviews = async (listingId: number): Promise<Array<_.IReviews>> => {
+    return this.get(`/listing/${listingId}/reviews/private`).catch(err => new ApolloError(toError(err)));
+  }
+
+  createReviewFromGuest = async (bookingId: string, publicComment: string, privateComment: string, ratingOverall: number, ratingCheckIn: number, ratingHost: number, ratingValue: number, ratingCleanliness: number, ratingLocation: number): Promise<any> => {
+    return this.post(`/listing/${bookingId}/reviews`, {
+      publicComment,
+      privateComment,
+      ratingOverall,
+      ratingCheckIn,
+      ratingHost,
+      ratingValue,
+      ratingCleanliness,
+      ratingLocation
+    }).catch(err => new ApolloError(toError(err)));
+  }
+
+  createReviewFromHost = async (bookingId: string, publicComment: string, ratingOverall: number): Promise<any> => {
+    return this.post(`/listing/${bookingId}/reviews`, {
+      publicComment,
+      ratingOverall,
+      isAdmin: 1
+    }).catch(err => new ApolloError(toError(err)));
+  }
 }
 
 export default ListingsAPI;
