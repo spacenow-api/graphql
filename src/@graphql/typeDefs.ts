@@ -1,4 +1,4 @@
-import { gql } from "apollo-server";
+import { gql } from 'apollo-server'
 
 const typeDefs = gql`
   directive @currency on FIELD_DEFINITION
@@ -14,6 +14,6 @@ const typeDefs = gql`
   type Mutation {
     root: String
   }
-`;
+`
 
-export default typeDefs;
+export default typeDefs
