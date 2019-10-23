@@ -21,6 +21,7 @@ import { IMailRequest, IMailConfirmation } from '../interfaces/mail.interface'
 import { IWeWork } from './integrations.interface'
 import IEmail from './email.interface'
 import { IDocument, IDocumentInput } from './document.interface'
+import { IReviews } from './listing.interface'
 import { IMessage } from './message.interface'
 
 export {
@@ -58,5 +59,6 @@ export {
   IEmail,
   IDocument,
   IDocumentInput,
-  IMessage
+  IMessage,
+  IReviews
 }

@@ -6,6 +6,12 @@ const resolvers = {
   BookingType: {
     listing(parent: any, args: any, context: any, info: any) {
       return context.dataSources.listingsAPI.getListingById(parent.listingId);
+    },
+    guest(parent: any, args: any, context: any, info: any) {
+      return context.dataSources.usersAPI.getUserLegacyById(parent.guestId);
+    },
+    host(parent: any, args: any, context: any, info: any) {
+      return context.dataSources.usersAPI.getUserLegacyById(parent.hostId);
     }
   },
 
