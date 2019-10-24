@@ -126,6 +126,11 @@ Parameters:
     Type: String
     Default: ''
     NoEcho: true
+  MessagesApi:
+    Description: 'MESSAGES_API'
+    Type: String
+    Default: ''
+    NoEcho: true
 Conditions:
   isMaster: !Equals [!Ref SliceName, master]
   isFeature: !Not [Condition: isMaster]
@@ -250,6 +255,8 @@ Resources:
               Value: !Ref EmailsApi
             - Name: PAYMENTS_API_HOST
               Value: !Ref PaymentsApiHost
+            - Name: MESSAGES_API
+              Value: !Ref MessagesApi
 
           LogConfiguration:
             LogDriver: awslogs
