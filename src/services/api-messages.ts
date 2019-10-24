@@ -5,15 +5,15 @@ import { toError } from './../helpers/exceptions/HttpException'
 import { ApolloError } from 'apollo-server'
 
 class MessagesAPI extends PersonalizationAPI {
-
   constructor(apiAddress: string) {
     super()
     this.baseURL = apiAddress
   }
 
   getMessagesByUser = async (args: any): Promise<any> => {
-    return this.get(`/message/${args.id}?type=${args.type}&pageIndex=${args.pageIndex}&pageSize=${args.pageSize}`)
-      .catch(err => new ApolloError(toError(err)))
+    return this.get(
+      `/messages/${args.id}?type=${args.type}&pageIndex=${args.pageIndex}&pageSize=${args.pageSize}`
+    ).catch(err => new ApolloError(toError(err)))
   }
 
   getMessage = async (id: string): Promise<any> => {
@@ -37,8 +37,9 @@ class MessagesAPI extends PersonalizationAPI {
   }
 
   getMessageItems = async (args: any): Promise<any> => {
-    return this.get(`/message-items/${args.id}?type=${args.type}&pageIndex=${args.pageIndex}&pageSize=${args.pageSize}`)
-      .catch(err => new ApolloError(toError(err)))
+    return this.get(
+      `/message-items/${args.id}?type=${args.type}&pageIndex=${args.pageIndex}&pageSize=${args.pageSize}`
+    ).catch(err => new ApolloError(toError(err)))
   }
 
   readMessageItems = async (id: string): Promise<any> => {
