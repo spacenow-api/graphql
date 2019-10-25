@@ -2,6 +2,7 @@ import FormData from 'form-data';
 import fs from 'fs';
 
 import streaming from '../helpers/streaming';
+import { catchApolloError } from "./../helpers/exceptions/HttpException";
 
 import PersonalizationAPI from '../interfaces/personalization.inteface';
 import * as _ from '../interfaces/listing.interface';
@@ -31,9 +32,7 @@ class AssetsAPI extends PersonalizationAPI {
 		fs.unlink(`${config.TEMP_FILE_UPLOAD}/${filename}`, () => (err: any) =>
 			console.error(err),
 		);
-		return this.post(`${this.path}/upload/${asset.listingId}`, formData, {
-			headers: formData.getHeaders(),
-		});
+		return this.post(`${this.path}/upload/${asset.listingId}`, formData, { headers: formData.getHeaders() }).catch(catchApolloError);
 	};
 
 	deletePhoto = (args: any) => {
