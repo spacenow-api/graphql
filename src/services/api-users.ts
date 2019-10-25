@@ -102,21 +102,9 @@ class UsersAPI extends PersonalizationAPI {
     const stream = createReadStream();
     await streaming({ stream, filename });
     const formData = new FormData();
-    formData.append(
-      "file",
-      fs.createReadStream(`${config.TEMP_FILE_UPLOAD}/${filename}`),
-      filename
-    );
-    fs.unlink(`${config.TEMP_FILE_UPLOAD}/${filename}`, () => (err: any) =>
-      console.error(err)
-    );
-    return this.post(
-      `${this.path}/legacy/document/${document.userId}`,
-      formData,
-      {
-        headers: formData.getHeaders()
-      }
-    );
+    formData.append("file", fs.createReadStream(`${config.TEMP_FILE_UPLOAD}/${filename}`), filename);
+    fs.unlink(`${config.TEMP_FILE_UPLOAD}/${filename}`, () => (err: any) => console.error(err));
+    return this.post(`${this.path}/legacy/document/${document.userId}`, formData, { headers: formData.getHeaders() });
   };
 
   deleteUserByEmail = async (email: string): Promise<IUser> => {
