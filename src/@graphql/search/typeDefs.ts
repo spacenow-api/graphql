@@ -99,6 +99,7 @@ const typeDefs = gql`
     nextPage: Int
     total: Int
     totalPages: Int
+    frequencies: [String]
     result: [SearchListing]
   }
   
