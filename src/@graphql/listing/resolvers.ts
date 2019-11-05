@@ -113,6 +113,10 @@ const resolvers = {
       return await dataSources.listingsAPI.getAllListings();
     },
 
+    getAllListingsByDate: async (_: any, args: any, { dataSources }: any) => {
+      return await dataSources.listingsAPI.getAllListingsByDate();
+    },
+
     getListingById: async (_: any, args: any, { dataSources }: any) => {
       const { listingsAPI, locationsAPI, usersAPI } = dataSources;
       return listingsAPI.fetchWholeListing(

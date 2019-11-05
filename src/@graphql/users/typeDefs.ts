@@ -149,6 +149,12 @@ const typeDefs = gql`
     admin: CustomAdminUserVerification
   }
 
+  type UsersCountResponse {
+    count: Int
+    guests: Int
+    hosts: Int
+  }
+
   type UsersResponse {
     rows: [User]
     count: Int
@@ -161,7 +167,9 @@ const typeDefs = gql`
 
   extend type Query {
     getAllUsers: [User]
+    getTotalUsersLegacy: UsersCountResponse
     getAllUsersLegacy: UsersResponse
+    getTotalUsersLegacyByDate: UsersCountResponse
     getUser(id: String!): User
     getUserDocuments(userId: String!): DocumentResponse
     getUserLegacyById(id: String!, token: String): User

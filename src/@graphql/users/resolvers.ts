@@ -4,6 +4,14 @@ const resolvers = {
       return dataSources.usersAPI.getAllUsers();
     },
 
+    getTotalUsersLegacy: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.usersAPI.getTotalUsersLegacy();
+    },
+
+    getTotalUsersLegacyByDate: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.usersAPI.getTotalUsersLegacyByDate();
+    },
+
     getUserLegacyById: async (_: any, args: any, { dataSources }: any) => {
       return await dataSources.usersAPI.getUserLegacyById(args.id, args.token);
     },

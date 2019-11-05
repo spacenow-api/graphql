@@ -61,6 +61,11 @@ class BookingsAPI extends PersonalizationAPI {
     return this.post(`/getHourlyAvailability`, { listingId, date, checkInHour, checkOutHour })
       .catch(err => new ApolloError(toError(err)));
   }
+
+  getTotalBookingsByDate = async (): Promise<any> => {
+    return this.get(`/date`).catch(err => new ApolloError(toError(err)));
+  };
+
 }
 
 export default BookingsAPI;

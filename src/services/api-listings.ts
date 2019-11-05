@@ -64,6 +64,10 @@ class ListingsAPI extends PersonalizationAPI {
     return this.get(`/listings`).catch(err => new ApolloError(toError(err)));
   };
 
+  getAllListingsByDate = async (): Promise<any> => {
+    return this.get(`/listings/count/date`).catch(err => new ApolloError(toError(err)));
+  };
+
   getAllListingsByUser = async (
     userId: string
   ): Promise<_.IListingSettingsResponse> => {

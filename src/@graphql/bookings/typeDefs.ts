@@ -6,6 +6,10 @@ const typeDefs = gql`
     items: [BookingType]
   }
 
+  type BookingsCount {
+    count: Int
+  }
+
   type BookingType {
     listing: Listing
     listingId: Int
@@ -56,6 +60,7 @@ const typeDefs = gql`
       period: [String]
     ): Bookings
     getHourlyAvailability(listingId: Int!, date: String!, checkInHour: String!, checkOutHour: String!): HourlyAvailability
+    getTotalBookingsByDate: BookingsCount
   }
 
   extend type Mutation {
