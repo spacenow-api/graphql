@@ -17,7 +17,7 @@ const resolvers = {
     },
 
     getAllUsersLegacy: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.usersAPI.getAllUsersLegacy();
+      return dataSources.usersAPI.getAllUsersLegacy(args.days);
     },
 
     getUser: async (_: any, args: any, { dataSources }: any) => {

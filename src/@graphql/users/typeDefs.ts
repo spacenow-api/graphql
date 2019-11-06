@@ -168,7 +168,7 @@ const typeDefs = gql`
   extend type Query {
     getAllUsers: [User]
     getTotalUsersLegacy: UsersCountResponse
-    getAllUsersLegacy: UsersResponse
+    getAllUsersLegacy(days: Int): UsersResponse
     getTotalUsersLegacyByDate: UsersCountResponse
     getUser(id: String!): User
     getUserDocuments(userId: String!): DocumentResponse
