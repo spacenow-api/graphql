@@ -26,6 +26,7 @@ const typeDefs = gql`
     email: String
     password: String
     emailConfirmed: Boolean
+    type: String
     role: String
     userBanStatus: Int
     provider: String
@@ -48,6 +49,7 @@ const typeDefs = gql`
 
   input UserProfileInput {
     status: String
+    email: String
     userId: String
     profileId: Int
     firstName: String
