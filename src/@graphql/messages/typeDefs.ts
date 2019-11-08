@@ -42,7 +42,7 @@ const typeDefs = gql`
   }
 
   extend type Query {
-    getMessagesByUser(id: String!, type: String!, pageIndex: Int!, pageSize: Int!): Messages @cacheControl(maxAge: 30)
+    getMessagesByUser(id: String!, type: String!, pageIndex: Int!, pageSize: Int!): Messages
     getMessage(id: String!): Message
     getMessageItems(id: String!, pageIndex: Int!, pageSize: Int): MessageItems
     countUnreadMessages(id: String!, type: String!): CountMessage
