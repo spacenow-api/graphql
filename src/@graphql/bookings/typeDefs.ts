@@ -34,6 +34,7 @@ const typeDefs = gql`
     checkOut: String
     checkInHour: String
     checkOutHour: String
+    message: String
     reservations: [String]
   }
 
@@ -74,6 +75,7 @@ const typeDefs = gql`
       reservations: [String]
       checkInHour: String
       checkOutHour: String
+      message: String
     ): BookingOutput
 
     timeoutBooking(bookingId: String): BookingOutput

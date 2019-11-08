@@ -21,7 +21,8 @@ interface IBooking {
 	guestId: string,
 	isAbsorvedFee: boolean,
 	checkInHour: string,
-	checkOutHour: string
+	checkOutHour: string,
+	message: string
 }
 
 export default IBooking;
