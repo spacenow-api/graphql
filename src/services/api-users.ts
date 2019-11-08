@@ -54,11 +54,8 @@ class UsersAPI extends PersonalizationAPI {
     );
   };
 
-  updateUserProfileLegacy = async (
-    userId: string,
-    userProfile: IUserProfileLegacy
-  ): Promise<IUserProfileLegacy> => {
-    return this.patch(`${this.path}/legacy/profile?id=${userId}`, userProfile);
+  updateUserProfileLegacy = async (userId: string, userProfile: IUserProfileLegacy): Promise<IUserProfileLegacy> => {
+    return this.patch(`${this.path}/legacy/profile?id=${userId}`, userProfile).catch(catchApolloError);
   };
 
   updateProfilePicture = async (picture: IProfilePictureInput): Promise<IProfilePicture> => {
