@@ -9,7 +9,7 @@ const resolvers = {
     },
 
     getTotalUsersLegacyByDate: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.usersAPI.getTotalUsersLegacyByDate();
+      return dataSources.usersAPI.getTotalUsersLegacyByDate(args.days);
     },
 
     getUserLegacyById: async (_: any, args: any, { dataSources }: any) => {

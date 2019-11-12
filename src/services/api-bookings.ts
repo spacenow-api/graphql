@@ -62,8 +62,8 @@ class BookingsAPI extends PersonalizationAPI {
       .catch(err => new ApolloError(toError(err)));
   }
 
-  getTotalBookingsByDate = async (): Promise<any> => {
-    return this.get(`/date`).catch(err => new ApolloError(toError(err)));
+  getTotalBookingsByDate = async (days: number): Promise<any> => {
+    return this.get(`/date?days=${days}`).catch(err => new ApolloError(toError(err)));
   };
 
 }

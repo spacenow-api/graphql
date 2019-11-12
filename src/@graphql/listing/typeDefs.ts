@@ -337,7 +337,8 @@ const typeDefs = gql`
     getListingById(id: Int!, isPublic: Boolean): Listing
     getAllListingsByUser(userId: String!, isPublic: Boolean): Listings
     getAllListings: Listings
-    getAllListingsByDate: ListingsCount
+    getTotalListingsByDate(days: Int, category: Int): ListingsCount
+    getTotalListingsByCategory(category: ID): ListingsCount
     getPhotosByListingId(listingId: Int!): [ListingPhotos]
     getLocationById(id: Int!): Location
     getAllAmenitiesBySubCategoryId(subCategoryId: Int!): [ListSettings]

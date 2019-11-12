@@ -31,7 +31,7 @@ const resolvers = {
     },
 
     getTotalBookingsByDate: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.bookingsAPI.getTotalBookingsByDate();
+      return dataSources.bookingsAPI.getTotalBookingsByDate(args.days);
     },
 
   },

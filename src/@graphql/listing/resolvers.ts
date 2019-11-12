@@ -113,8 +113,12 @@ const resolvers = {
       return await dataSources.listingsAPI.getAllListings();
     },
 
-    getAllListingsByDate: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.listingsAPI.getAllListingsByDate();
+    getTotalListingsByDate: async (_: any, args: any, { dataSources }: any) => {
+      return await dataSources.listingsAPI.getAllListingsByDate(args.days, args.category);
+    },
+
+    getTotalListingsByCategory: async (_: any, args: any, { dataSources }: any) => {
+      return await dataSources.listingsAPI.getAllListingsByCategory(args.category);
     },
 
     getListingById: async (_: any, args: any, { dataSources }: any) => {

@@ -169,7 +169,7 @@ const typeDefs = gql`
     getAllUsers: [User]
     getTotalUsersLegacy: UsersCountResponse
     getAllUsersLegacy(days: Int): UsersResponse
-    getTotalUsersLegacyByDate: UsersCountResponse
+    getTotalUsersLegacyByDate(days: Int): UsersCountResponse
     getUser(id: String!): User
     getUserDocuments(userId: String!): DocumentResponse
     getUserLegacyById(id: String!, token: String): User
