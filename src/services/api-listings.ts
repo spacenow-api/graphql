@@ -154,8 +154,7 @@ class ListingsAPI extends PersonalizationAPI {
   }
 
   claimListing = async (listingId: number) => {
-    console.log(listingId)
-    return this.put(`/listings/claim/${listingId}`).catch(err => new ApolloError(toError(err)))
+    return this.put(`/listings/claim/${listingId}`).catch(err => new ApolloError(toError(err)));
   }
 
   getPublicReviews = async (listingId: number, page: number, pageSize: number): Promise<Array<_.IReviews>> => {
