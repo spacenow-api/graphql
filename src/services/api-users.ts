@@ -62,35 +62,18 @@ class UsersAPI extends PersonalizationAPI {
     );
   };
 
-  updateUserProfileLegacy = async (
-    userId: string,
-    userProfile: IUserProfileLegacy
-  ): Promise<IUserProfileLegacy> => {
-    return this.patch(`${this.path}/legacy/profile?id=${userId}`, userProfile);
+  updateUserProfileLegacy = async (userId: string, userProfile: IUserProfileLegacy): Promise<IUserProfileLegacy> => {
+    return this.patch(`${this.path}/legacy/profile?id=${userId}`, userProfile).catch(catchApolloError);
   };
 
-  updateProfilePicture = async (
-    picture: IProfilePictureInput
-  ): Promise<IProfilePicture> => {
+  updateProfilePicture = async (picture: IProfilePictureInput): Promise<IProfilePicture> => {
     const { createReadStream, filename }: any = await picture.file;
     const stream = createReadStream();
     await streaming({ stream, filename });
     const formData = new FormData();
-    formData.append(
-      "file",
-      fs.createReadStream(`${config.TEMP_FILE_UPLOAD}/${filename}`),
-      filename
-    );
-    fs.unlink(`${config.TEMP_FILE_UPLOAD}/${filename}`, () => (err: any) =>
-      console.error(err)
-    );
-    return this.post(
-      `${this.path}/legacy/profile/picture?id=${picture.userId}`,
-      formData,
-      {
-        headers: formData.getHeaders()
-      }
-    );
+    formData.append("file", fs.createReadStream(`${config.TEMP_FILE_UPLOAD}/${filename}`), filename);
+    fs.unlink(`${config.TEMP_FILE_UPLOAD}/${filename}`, () => (err: any) => console.error(err));
+    return this.post(`${this.path}/legacy/profile/picture?id=${picture.userId}`, formData, { headers: formData.getHeaders() }).catch(catchApolloError);
   };
 
   getUserDocuments = async (userId: string): Promise<[IDocument]> => {
@@ -110,21 +93,9 @@ class UsersAPI extends PersonalizationAPI {
     const stream = createReadStream();
     await streaming({ stream, filename });
     const formData = new FormData();
-    formData.append(
-      "file",
-      fs.createReadStream(`${config.TEMP_FILE_UPLOAD}/${filename}`),
-      filename
-    );
-    fs.unlink(`${config.TEMP_FILE_UPLOAD}/${filename}`, () => (err: any) =>
-      console.error(err)
-    );
-    return this.post(
-      `${this.path}/legacy/document/${document.userId}`,
-      formData,
-      {
-        headers: formData.getHeaders()
-      }
-    );
+    formData.append("file", fs.createReadStream(`${config.TEMP_FILE_UPLOAD}/${filename}`), filename);
+    fs.unlink(`${config.TEMP_FILE_UPLOAD}/${filename}`, () => (err: any) => console.error(err));
+    return this.post(`${this.path}/legacy/document/${document.userId}`, formData, { headers: formData.getHeaders() }).catch(catchApolloError);
   };
 
   deleteUserByEmail = async (email: string): Promise<IUser> => {

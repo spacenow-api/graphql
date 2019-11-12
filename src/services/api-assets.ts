@@ -2,6 +2,7 @@ import FormData from 'form-data';
 import fs from 'fs';
 
 import streaming from '../helpers/streaming';
+import { catchApolloError } from "./../helpers/exceptions/HttpException";
 
 import PersonalizationAPI from '../interfaces/personalization.inteface';
 import * as _ from '../interfaces/listing.interface';
@@ -23,17 +24,9 @@ class AssetsAPI extends PersonalizationAPI {
 		const stream = createReadStream();
 		await streaming({ stream, filename });
 		const formData = new FormData();
-		formData.append(
-			'file',
-			fs.createReadStream(`${config.TEMP_FILE_UPLOAD}/${filename}`),
-			filename,
-		);
-		fs.unlink(`${config.TEMP_FILE_UPLOAD}/${filename}`, () => (err: any) =>
-			console.error(err),
-		);
-		return this.post(`${this.path}/upload/${asset.listingId}`, formData, {
-			headers: formData.getHeaders(),
-		});
+		formData.append('file', fs.createReadStream(`${config.TEMP_FILE_UPLOAD}/${filename}`), filename);
+		fs.unlink(`${config.TEMP_FILE_UPLOAD}/${filename}`, () => (err: any) => console.error(err));
+		return this.post(`${this.path}/upload/${asset.listingId}`, formData, { headers: formData.getHeaders() }).catch(catchApolloError);
 	};
 
 	deletePhoto = (args: any) => {

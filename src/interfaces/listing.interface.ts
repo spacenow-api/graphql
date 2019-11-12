@@ -211,3 +211,19 @@ export interface IListingResponse {
 	quantity: number;
 	status: string;
 }
+
+export interface IReviews {
+	id: number;
+	reservationId: number;
+	listId: number;
+	authorId: string;
+	userId: string;
+	reviewContent?: string;
+	rating: number;
+	privateFeedback?: string;
+	parentId?: number;
+	automated?: number;
+	createdAt: Date;
+	updatedAt: Date;
+	isAdmin?: number;
+}

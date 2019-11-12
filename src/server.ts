@@ -1,7 +1,7 @@
-import { ApolloServer } from "apollo-server";
+import { ApolloServer } from 'apollo-server'
 
-import { typeDefs, resolvers } from "./@graphql";
-import { CurrencyDirective } from "./@graphql/directives";
+import { typeDefs, resolvers } from './@graphql'
+import { CurrencyDirective } from './@graphql/directives'
 
 import {
   AssetsAPI,
@@ -17,10 +17,11 @@ import {
   HubSpotAPI,
   PricesAPI,
   EmailsAPI,
-  SearchAPI
-} from "./services";
+  SearchAPI,
+  MessagesAPI
+} from './services'
 
-import * as config from "./config";
+import * as config from './config'
 
 const server = new ApolloServer({
   typeDefs,
@@ -47,11 +48,12 @@ const server = new ApolloServer({
       hubSpotAPI: new HubSpotAPI(config.HUBSPOT_FORMS_API),
       pricesAPI: new PricesAPI(config.API_CAMPAIGNS),
       emailsAPI: new EmailsAPI(config.EMAILS_API),
-      searchAPI: new SearchAPI(config.SEARCH_API_HOST)
-    };
+      searchAPI: new SearchAPI(config.SEARCH_API_HOST),
+      messagesAPI: new MessagesAPI(config.MESSAGES_API)
+    }
   }
-});
+})
 
 server.listen().then(({ url }: any) => {
-  console.info(`Server * GraphQL * listening on ${url}`);
-});
+  console.info(`Server * GraphQL * listening on ${url}`)
+})

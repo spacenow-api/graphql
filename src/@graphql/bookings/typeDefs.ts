@@ -28,14 +28,17 @@ const typeDefs = gql`
     bookingId: String
     guestServiceFee: Float
     hostId: String
+    host: User
     paymentState: String
     updatedAt: Float
     priceType: String
     guestId: String
+    guest: User
     checkIn: String
     checkOut: String
     checkInHour: String
     checkOutHour: String
+    message: String
     reservations: [String]
   }
 
@@ -77,6 +80,7 @@ const typeDefs = gql`
       reservations: [String]
       checkInHour: String
       checkOutHour: String
+      message: String
     ): BookingOutput
 
     timeoutBooking(bookingId: String): BookingOutput

@@ -99,12 +99,13 @@ const typeDefs = gql`
     nextPage: Int
     total: Int
     totalPages: Int
+    frequencies: [String]
     result: [SearchListing]
   }
   
   extend type Query {  
-    searchByAddress(lat: String!, lng: String!, categories: String, duration: String, priceMin: Float, priceMax: Float, instant: String, page: Int, limit: Int, radius: Int): SearchResult
-    searchByFilters(key: String!, categories: String, duration: String, priceMin: Float, priceMax: Float, instant: String, page: Int, limit: Int, radius: Int): SearchResult
+    searchByAddress(lat: String!, lng: String!, categories: String, duration: String, priceMin: Float, priceMax: Float, instant: String, page: Int, limit: Int, radius: Int, availability: [String]): SearchResult
+    searchByFilters(key: String!, categories: String, duration: String, priceMin: Float, priceMax: Float, instant: String, page: Int, limit: Int, radius: Int, availability: [String]): SearchResult
   }
 `;
 

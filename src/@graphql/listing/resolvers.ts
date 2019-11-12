@@ -49,6 +49,18 @@ const resolvers = {
     }
   },
 
+  Review: {
+    author(parent: any, args: any, context: any, info: any) {
+      return context.dataSources.usersAPI.getUserLegacyById(parent.authorId);
+    }
+  },
+
+  PrivateReview: {
+    author(parent: any, args: any, context: any, info: any) {
+      return context.dataSources.usersAPI.getUserLegacyById(parent.authorId);
+    }
+  },
+
   Query: {
     getPhotosByListingId: async (_: any, args: any, { dataSources }: any) => {
       return await dataSources.listingsAPI.getPhotosByListingId(args.listingId);
@@ -184,7 +196,15 @@ const resolvers = {
       return await dataSources.listingsAPI.getListingSpecificationsByParentId(
         args.listSettingsParentId
       );
-    }
+    },
+
+    getPublicReviews: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.listingsAPI.getPublicReviews(args.listingId, args.page, args.pageSize);
+    },
+
+    getPrivateReviews: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.listingsAPI.getPrivateReviews(args.listingId);
+    },
   },
 
   Mutation: {
@@ -288,6 +308,28 @@ const resolvers = {
     claimListing: async (_: any, args: any, { dataSources }: any) => {
       const { listingsAPI } = dataSources;
       return listingsAPI.claimListing(args.listingId);
+    },
+
+    createReviewFromGuest: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.listingsAPI.createReviewFromGuest(
+        args.bookingId,
+        args.publicComment,
+        args.privateComment,
+        args.ratingOverall,
+        args.ratingCheckIn,
+        args.ratingHost,
+        args.ratingValue,
+        args.ratingCleanliness,
+        args.ratingLocation
+      );
+    },
+
+    createReviewFromHost: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.listingsAPI.createReviewFromHost(
+        args.bookingId,
+        args.publicComment,
+        args.ratingOverall
+      );
     }
   }
 };

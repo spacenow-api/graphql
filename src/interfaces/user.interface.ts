@@ -15,6 +15,7 @@ interface IUser {
 
 interface IUserProfileLegacy {
   userId: string;
+  email: string;
   profileId: number;
   firstName: string;
   lastName: string;
