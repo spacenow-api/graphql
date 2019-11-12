@@ -35,6 +35,11 @@ const resolvers = {
     getHourlyAvailability: async (_: any, args: any, { dataSources }: any) => {
       return dataSources.bookingsAPI.getHourlyAvailability(args.listingId, args.date, args.checkInHour, args.checkOutHour);
     },
+
+    getTotalBookingsByDate: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.bookingsAPI.getTotalBookingsByDate(args.days);
+    },
+
   },
 
   Mutation: {

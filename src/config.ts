@@ -21,7 +21,7 @@ export const USERS_API_HOST: string = process.env.USERS_API_HOST || 'http://loca
 
 export const API_AVAILABILITIES: string = process.env.API_AVAILABILITIES || 'http://localhost:6011/availabilities'
 
-export const API_BOOKING: string = process.env.API_BOOKING || 'http://localhost:6007/bookings'
+export const API_BOOKING: string = process.env.API_BOOKING || 'http://localhost:6012/bookings';
 
 export const HOLIDAYS_HOST: string =
   'https://data.gov.au/data/api/3/action/datastore_search?resource_id=bda4d4f2-7fde-4bfc-8a23-a6eefc8cef80'

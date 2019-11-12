@@ -38,6 +38,14 @@ class UsersAPI extends PersonalizationAPI {
     return this.get(`${this.path}/${id}`).catch(catchApolloError);
   };
 
+  getTotalUsersLegacy = async (): Promise<IResponseUser> => {
+    return this.get(`${this.path}/legacy/count/users`).catch(catchApolloError);
+  };
+
+  getTotalUsersLegacyByDate = async (days: number): Promise<IResponseUser> => {
+    return this.get(`${this.path}/legacy/count/users/date?days=${days}`).catch(catchApolloError);
+  };
+
   getUserLegacyById = async (id: string, token?: string): Promise<IUser> => {
     if (token)
       return this.post(`${this.path}/legacy/email/verification`, { token }).catch(catchApolloError);
