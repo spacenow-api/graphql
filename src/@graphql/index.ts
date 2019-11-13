@@ -9,6 +9,7 @@ import bookingT from './bookings/typeDefs'
 import emailsT from './emails/typeDefs'
 import searchT from './search/typeDefs'
 import messagesT from './messages/typeDefs'
+import twilioT from './twilio/typeDefs'
 
 const typeDefs = [
   rootT,
@@ -21,7 +22,8 @@ const typeDefs = [
   bookingT,
   emailsT,
   searchT,
-  messagesT
+  messagesT,
+  twilioT
 ]
 
 import listingR from './listing/resolvers'
@@ -34,6 +36,7 @@ import bookingR from './bookings/resolvers'
 import emailsR from './emails/resolvers'
 import searchR from './search/resolvers'
 import messagesR from './messages/resolvers'
+import twilioR from './twilio/resolvers'
 
 const resolvers: any = [
   listingR,
@@ -45,7 +48,8 @@ const resolvers: any = [
   bookingR,
   emailsR,
   searchR,
-  messagesR
+  messagesR,
+  twilioR
 ]
 
 export { typeDefs, resolvers }

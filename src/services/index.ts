@@ -13,6 +13,7 @@ import PricesAPI from './api-prices'
 import EmailsAPI from './api-emails'
 import SearchAPI from './api-search'
 import MessagesAPI from './api-messages'
+import TwilioAPI from './api-twilio'
 
 export {
   AssetsAPI,
@@ -29,5 +30,6 @@ export {
   PricesAPI,
   EmailsAPI,
   SearchAPI,
-  MessagesAPI
+  MessagesAPI,
+  TwilioAPI
 }

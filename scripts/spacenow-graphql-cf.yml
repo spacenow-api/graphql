@@ -131,6 +131,21 @@ Parameters:
     Type: String
     Default: ''
     NoEcho: true
+  TwilioAccountSid:
+    Description: 'TWILIO_ACCOUNT_SID'
+    Type: String
+    Default: ''
+    NoEcho: true
+  TwilioAuthToken:
+    Description: 'TWILIO_AUTH_TOKEN'
+    Type: String
+    Default: ''
+    NoEcho: true
+  TwilioPhoneFrom:
+    Description: 'TWILIO_PHONE_FROM'
+    Type: String
+    Default: ''
+    NoEcho: true
 Conditions:
   isMaster: !Equals [!Ref SliceName, master]
   isFeature: !Not [Condition: isMaster]
@@ -257,6 +272,12 @@ Resources:
               Value: !Ref PaymentsApiHost
             - Name: MESSAGES_API
               Value: !Ref MessagesApi
+            - Name: TWILIO_ACCOUNT_SID
+              Value: !Ref TwilioAccountSid
+            - Name: TWILIO_AUTH_TOKEN
+              Value: !Ref TwilioAuthToken
+            - Name: TWILIO_PHONE_FROM
+              Value: !Ref TwilioPhoneFrom
 
           LogConfiguration:
             LogDriver: awslogs
