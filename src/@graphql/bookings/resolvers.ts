@@ -44,7 +44,9 @@ const resolvers = {
 
   Mutation: {
     createBooking: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.bookingsAPI.createBooking(args);
+      const user = await dataSources.usersAPI.getUserLegacyById(args.hostId)
+      const message = 'New booking request'
+      return dataSources.bookingsAPI.createBooking(args).then(dataSources.twilioAPI.sendMessage(user.profile.phoneNumber, message));
     },
 
     timeoutBooking: async (_: any, args: any, { dataSources }: any) => {
@@ -52,11 +54,15 @@ const resolvers = {
     },
 
     acceptBooking: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.bookingsAPI.acceptBooking(args.bookingId);
+      const user = dataSources.bookingsAPI.getBookingById(args.bookingId)
+      const message = 'Booking confirmed'
+      return dataSources.bookingsAPI.acceptBooking(args.bookingId).then(dataSources.twilioAPI.sendMessage(user.guest.profile.phoneNumber, message));
     },
 
     declineBooking: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.bookingsAPI.declineBooking(args.bookingId);
+      const user = dataSources.bookingsAPI.getBookingById(args.bookingId)
+      const message = 'Booking declined'
+      return dataSources.bookingsAPI.declineBooking(args.bookingId).then(dataSources.twilioAPI.sendMessage(user.guest.profile.phoneNumber, message));
     }
   }
 };

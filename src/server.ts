@@ -18,7 +18,8 @@ import {
   PricesAPI,
   EmailsAPI,
   SearchAPI,
-  MessagesAPI
+  MessagesAPI,
+  TwilioAPI
 } from './services'
 
 import * as config from './config'
@@ -49,7 +50,8 @@ const server = new ApolloServer({
       pricesAPI: new PricesAPI(config.API_CAMPAIGNS),
       emailsAPI: new EmailsAPI(config.EMAILS_API),
       searchAPI: new SearchAPI(config.SEARCH_API_HOST),
-      messagesAPI: new MessagesAPI(config.MESSAGES_API)
+      messagesAPI: new MessagesAPI(config.MESSAGES_API),
+      twilioAPI: new TwilioAPI()
     }
   }
 })
