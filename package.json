@@ -12,7 +12,7 @@
     "debug": "tsnd --inspect --respawn src/server.ts",
     "start": "tsn ./src/server.ts",
     "dev": "NODE_ENV=development tsnd ./src/server.ts",
-    "prod": "NODE_ENV=production node ./dist/server.js"
+    "prod": "NODE_ENV=production npx pm2-runtime start pm2.yaml"
   },
   "dependencies": {
     "apollo-datasource-rest": "~0.5.0",
@@ -24,7 +24,8 @@
     "graphql-upload": "~8.0.7",
     "jsonwebtoken": "~8.5.1",
     "memory-streams": "~0.1.3",
-    "moment": "~2.24.0"
+    "moment": "~2.24.0",
+    "pm2": "~4.1.2"
   },
   "devDependencies": {
     "@types/bluebird": "~3.5.27",
