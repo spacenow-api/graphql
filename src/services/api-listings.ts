@@ -129,8 +129,12 @@ class ListingsAPI extends PersonalizationAPI {
     return this.get(`/listings/fetch/accesstypes`).catch(err => new ApolloError(toError(err)))
   }
 
-  getPhotosByListingId = async (listingId: string): Promise<_.IListingPhotosResponse> => {
+  getPhotosByListingId = async (listingId: string): Promise<Array<_.IListingPhotosResponse>> => {
     return this.get(`/listings/photos/${listingId}`).catch(err => new ApolloError(toError(err)))
+  }
+
+  getVideoByListingId = async (listingId: string): Promise<_.IListingPhotosResponse> => {
+    return this.get(`/listings/video/${listingId}`).catch(err => new ApolloError(toError(err)))
   }
 
   createDraft = async (listing: _.IDraftRequest) => {
@@ -150,8 +154,7 @@ class ListingsAPI extends PersonalizationAPI {
   }
 
   claimListing = async (listingId: number) => {
-    console.log(listingId)
-    return this.put(`/listings/claim/${listingId}`).catch(err => new ApolloError(toError(err)))
+    return this.put(`/listings/claim/${listingId}`).catch(err => new ApolloError(toError(err)));
   }
 
   getPublicReviews = async (listingId: number, page: number, pageSize: number): Promise<Array<_.IReviews>> => {

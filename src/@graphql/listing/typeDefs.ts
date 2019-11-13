@@ -376,6 +376,7 @@ const typeDefs = gql`
     getTotalListingsByDate(days: Int, category: Int): ListingsCount
     getTotalListingsByCategory(category: ID): ListingsCount
     getPhotosByListingId(listingId: Int!): [ListingPhotos]
+    getVideoByListingId(listingId: Int!): ListingPhotos
     getLocationById(id: Int!): Location
     getAllAmenitiesBySubCategoryId(subCategoryId: Int!): [ListSettings]
     getAllAmenitiesByListingId(listing: Int!): [Amenity]

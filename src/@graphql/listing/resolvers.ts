@@ -66,6 +66,10 @@ const resolvers = {
       return await dataSources.listingsAPI.getPhotosByListingId(args.listingId);
     },
 
+    getVideoByListingId: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.listingsAPI.getVideoByListingId(args.listingId);
+    },
+
     getAvailabilitiesByListingId: async (
       _: any,
       args: any,
