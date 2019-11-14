@@ -1,4 +1,6 @@
-import { ApolloServer } from 'apollo-server'
+import express from 'express'
+import compression from 'compression';
+import { ApolloServer } from 'apollo-server-express'
 
 import { typeDefs, resolvers } from './@graphql'
 import { CurrencyDirective } from './@graphql/directives'
@@ -27,12 +29,9 @@ import * as config from './config'
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  schemaDirectives: {
-    currency: CurrencyDirective
-  },
+  schemaDirectives: { currency: CurrencyDirective },
   introspection: config.PLAYGROUND,
   playground: config.PLAYGROUND,
-  onHealthCheck: () => Promise.resolve(),
   context: ({ req, res }) => ({ token: req.headers.authorization, res }),
   dataSources: () => {
     return {
@@ -56,6 +55,10 @@ const server = new ApolloServer({
   }
 })
 
-server.listen().then(({ url }: any) => {
-  console.info(`Server * GraphQL * listening on ${url}`)
+const app = express();
+app.use(compression());
+server.applyMiddleware({ app, path: '/' });
+
+app.listen({ port: config.PORT }, () => {
+  console.info(`Server * GraphQL * Running`)
 })

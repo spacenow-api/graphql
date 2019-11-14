@@ -1,4 +1,4 @@
-import { UserInputError } from "apollo-server";
+import { UserInputError } from "apollo-server-express";
 import axios from "axios";
 import moment from "moment";
 import GraphQLUpload from "graphql-upload";

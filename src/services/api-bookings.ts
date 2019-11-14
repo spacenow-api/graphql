@@ -3,7 +3,7 @@ import PersonalizationAPI from "../interfaces/personalization.inteface";
 
 import { toError } from "./../helpers/exceptions/HttpException";
 
-import { ApolloError } from "apollo-server";
+import { ApolloError } from "apollo-server-express";
 
 class BookingsAPI extends PersonalizationAPI {
 

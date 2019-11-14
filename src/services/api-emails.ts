@@ -1,6 +1,6 @@
 import { IEmail } from '../interfaces';
 import PersonalizationAPI from '../interfaces/personalization.inteface';
-import { ApolloError } from "apollo-server";
+import { ApolloError } from "apollo-server-express";
 import { toError } from "./../helpers/exceptions/HttpException";
 
 class EmailsAPI extends PersonalizationAPI {
