@@ -1,241 +1,187 @@
-import { UserInputError } from "apollo-server-express";
-import axios from "axios";
-import moment from "moment";
-import GraphQLUpload from "graphql-upload";
+import { UserInputError } from 'apollo-server-express'
+import axios from 'axios'
+import moment from 'moment'
+import GraphQLUpload from 'graphql-upload'
 
-import * as config from "../../config";
+import * as config from '../../config'
 
-import {
-  IHolidayResponse,
-  IListingResponse,
-  IUpdateRequest,
-  IDraftRequest
-} from "../../interfaces";
+import { IHolidayResponse, IListingResponse, IUpdateRequest, IDraftRequest } from '../../interfaces'
 
 const resolvers = {
   Upload: GraphQLUpload,
 
   Listing: {
     amenities(parent: any, args: any, context: any, info: any) {
-      return context.dataSources.listingsAPI.getAllAmenitiesByListingId(
-        parent.id
-      );
+      return context.dataSources.listingsAPI.getAllAmenitiesByListingId(parent.id)
     },
     listingData(parent: any, args: any, context: any, info: any) {
-      return context.dataSources.listingsAPI.getListingDataByListingId(
-        parent.id
-      );
+      return context.dataSources.listingsAPI.getListingDataByListingId(parent.id)
     },
     location(parent: any, args: any, context: any, info: any) {
-      return context.dataSources.locationsAPI.getLocationById(
-        parent.locationId
-      );
+      return context.dataSources.locationsAPI.getLocationById(parent.locationId)
     },
     photos(parent: any, args: any, context: any, info: any) {
-      return context.dataSources.listingsAPI.getPhotosByListingId(parent.id);
+      return context.dataSources.listingsAPI.getPhotosByListingId(parent.id)
     },
     settingsParent(parent: any, args: any, context: any, info: any) {
-      return context.dataSources.listingsAPI.getListingSettingsByListingId(
-        parent.id
-      );
+      return context.dataSources.listingsAPI.getListingSettingsByListingId(parent.id)
     },
     accessDays(parent: any, args: any, context: any, info: any) {
-      return context.dataSources.listingsAPI.getListingAccessDaysByListingId(
-        parent.id
-      );
+      return context.dataSources.listingsAPI.getListingAccessDaysByListingId(parent.id)
     },
     user(parent: any, args: any, context: any, info: any) {
-      return context.dataSources.usersAPI.getUserLegacyById(parent.userId);
+      return context.dataSources.usersAPI.getUserLegacyById(parent.userId)
     }
   },
 
   Review: {
     author(parent: any, args: any, context: any, info: any) {
-      return context.dataSources.usersAPI.getUserLegacyById(parent.authorId);
+      return context.dataSources.usersAPI.getUserLegacyById(parent.authorId)
     }
   },
 
   PrivateReview: {
     author(parent: any, args: any, context: any, info: any) {
-      return context.dataSources.usersAPI.getUserLegacyById(parent.authorId);
+      return context.dataSources.usersAPI.getUserLegacyById(parent.authorId)
     }
   },
 
   Query: {
     getPhotosByListingId: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.listingsAPI.getPhotosByListingId(args.listingId);
+      return await dataSources.listingsAPI.getPhotosByListingId(args.listingId)
     },
 
     getVideoByListingId: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.listingsAPI.getVideoByListingId(args.listingId);
+      return dataSources.listingsAPI.getVideoByListingId(args.listingId)
     },
 
-    getAvailabilitiesByListingId: async (
-      _: any,
-      args: any,
-      { dataSources }: any
-    ) => {
-      const {
-        availability
-      } = await dataSources.availabilitiesAPI.getAvailabilitiesByListingId(
-        args.listingId
-      );
+    getAvailabilitiesByListingId: async (_: any, args: any, { dataSources }: any) => {
+      const { availability } = await dataSources.availabilitiesAPI.getAvailabilitiesByListingId(args.listingId)
       return {
         bookingDates: availability.bookingDates,
         exceptionDates: availability.exceptionDates
-      };
+      }
     },
 
     getAllBookings: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.bookingsAPI.getAllBookings();
+      return await dataSources.bookingsAPI.getAllBookings()
     },
 
     getBooking: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.bookingsAPI.getBooking();
+      return await dataSources.bookingsAPI.getBooking()
     },
 
     getCategoriesLegacy: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.categoriesAPI.getCategoriesLegacy();
+      return await dataSources.categoriesAPI.getCategoriesLegacy()
     },
 
     getCategory: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.categoriesAPI.getCategory(args.id);
+      return await dataSources.categoriesAPI.getCategory(args.id)
     },
 
     getRootCategories: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.categoriesAPI.getRootCategories();
+      return await dataSources.categoriesAPI.getRootCategories()
     },
 
     getAllHolidays: async (_: any, args: any, { dataSources }: any) => {
-      const response = await axios.get(config.HOLIDAYS_HOST);
-      const data: IHolidayResponse = response.data;
+      const response = await axios.get(config.HOLIDAYS_HOST)
+      const data: IHolidayResponse = response.data
       const holidays = data.result.records
         .filter(o => !o.Jurisdiction.indexOf(args.state.toLowerCase()))
         .map(o => ({
-          date: moment(o["Date"], "YYYYMMDD").format("YYYY-MM-DD"),
-          description: o["Holiday Name"]
-        }));
-      if (holidays) return holidays;
+          date: moment(o['Date'], 'YYYYMMDD').format('YYYY-MM-DD'),
+          description: o['Holiday Name']
+        }))
+      if (holidays) return holidays
       return {
-        status: "failed to get Holidays"
-      };
+        status: 'failed to get Holidays'
+      }
     },
 
     getAllListingsByUser: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.listingsAPI.getAllListingsByUser(args.userId);
+      return await dataSources.listingsAPI.getAllListingsByUser(args.userId)
     },
 
     getAllListings: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.listingsAPI.getAllListings();
+      return await dataSources.listingsAPI.getAllListings()
     },
 
     getTotalListingsByDate: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.listingsAPI.getAllListingsByDate(args.days, args.category);
+      return await dataSources.listingsAPI.getAllListingsByDate(args.days, args.category)
     },
 
     getTotalListingsByCategory: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.listingsAPI.getAllListingsByCategory(args.category);
+      return await dataSources.listingsAPI.getAllListingsByCategory(args.category)
     },
 
     getListingById: async (_: any, args: any, { dataSources }: any) => {
-      const { listingsAPI, locationsAPI, usersAPI } = dataSources;
-      return listingsAPI.fetchWholeListing(
-        args.id,
-        locationsAPI,
-        usersAPI,
-        args.isPublic
-      );
+      const { listingsAPI, locationsAPI, usersAPI } = dataSources
+      return listingsAPI.fetchWholeListing(args.id, locationsAPI, usersAPI, args.isPublic)
     },
 
-    getLetterListingsByState: async (
-      _: any,
-      args: any,
-      { dataSources }: any
-    ) => {
-      const { listingsAPI, locationsAPI, usersAPI } = dataSources;
-      return listingsAPI.getLetterListingsByState(
-        args.state,
-        locationsAPI,
-        usersAPI
-      );
+    getLetterListingsByState: async (_: any, args: any, { dataSources }: any) => {
+      const { listingsAPI, locationsAPI, usersAPI } = dataSources
+      return listingsAPI.getLetterListingsByState(args.state, locationsAPI, usersAPI)
     },
 
     getLocationById: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.locationsAPI.getLocationById(args.id);
+      return await dataSources.locationsAPI.getLocationById(args.id)
     },
 
-    getAllAmenitiesBySubCategoryId: async (
-      _: any,
-      args: any,
-      { dataSources }: any
-    ) => {
-      return await dataSources.listingsAPI.getAllAmenitiesBySubCategoryId(
-        args.subCategoryId
-      );
+    getAllAmenitiesBySubCategoryId: async (_: any, args: any, { dataSources }: any) => {
+      return await dataSources.listingsAPI.getAllAmenitiesBySubCategoryId(args.subCategoryId)
     },
 
-    getAllAmenitiesByListingId: async (
-      _: any,
-      args: any,
-      { dataSources }: any
-    ) => {
-      return await dataSources.listingsAPI.getAllAmenitiesByListingId(
-        args.listingId
-      );
+    getAllAmenitiesByListingId: async (_: any, args: any, { dataSources }: any) => {
+      return await dataSources.listingsAPI.getAllAmenitiesByListingId(args.listingId)
     },
 
     getAllRules: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.listingsAPI.getAllRules();
+      return await dataSources.listingsAPI.getAllRules()
     },
 
     getAllAccessTypes: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.listingsAPI.getAllAccessTypes();
+      return await dataSources.listingsAPI.getAllAccessTypes()
     },
 
-    getAllSpecificationsByParentId: async (
-      _: any,
-      args: any,
-      { dataSources }: any
-    ) => {
-      return await dataSources.listingsAPI.getListingSpecificationsByParentId(
-        args.listSettingsParentId
-      );
+    getAllSpecificationsByParentId: async (_: any, args: any, { dataSources }: any) => {
+      return await dataSources.listingsAPI.getListingSpecificationsByParentId(args.listSettingsParentId)
     },
 
     getPublicReviews: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.listingsAPI.getPublicReviews(args.listingId, args.page, args.pageSize);
+      return dataSources.listingsAPI.getPublicReviews(args.listingId, args.page, args.pageSize)
     },
 
     getPrivateReviews: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.listingsAPI.getPrivateReviews(args.listingId);
-    },
+      return dataSources.listingsAPI.getPrivateReviews(args.listingId)
+    }
   },
 
   Mutation: {
     uploadPhoto: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.assetsAPI.uploadPhoto(args);
+      return await dataSources.assetsAPI.uploadPhoto(args)
     },
 
     deletePhoto: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.assetsAPI.deletePhoto(args);
+      return await dataSources.assetsAPI.deletePhoto(args)
     },
 
     setCoverPhoto: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.assetsAPI.setCoverPhoto(args);
+      return await dataSources.assetsAPI.setCoverPhoto(args)
     },
 
     createCategory: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.categoriesAPI.createCategory(args);
+      return await dataSources.categoriesAPI.createCategory(args)
     },
 
     createOrUpdateListing: async (_: any, args: any, { dataSources }: any) => {
-      const { listingsAPI, locationsAPI, usersAPI } = dataSources;
-      let listingObj: IListingResponse;
+      const { listingsAPI, locationsAPI, usersAPI } = dataSources
+      let listingObj: IListingResponse
       if (args.listingId) {
         // Update an existent Listing;
-        const listingExists = await listingsAPI.getListingById(args.listingId);
+        const listingExists = await listingsAPI.getListingById(args.listingId)
         if (!listingExists) {
-          throw new UserInputError(`Listing ${args.listingId} not found.`);
+          throw new UserInputError(`Listing ${args.listingId} not found.`)
         }
         const requestUpdateObj: IUpdateRequest = {
           listingId: args.listingId,
@@ -261,9 +207,10 @@ const resolvers = {
           listingAmenities: args.listingAmenities,
           listingAccessDays: args.listingAccessDays,
           listingExceptionDates: args.listingExceptionDates,
-          listingRules: args.listingRules
-        };
-        listingObj = await listingsAPI.update(requestUpdateObj);
+          listingRules: args.listingRules,
+          link: args.link
+        }
+        listingObj = await listingsAPI.update(requestUpdateObj)
       } else {
         // Considering a new listing from scratch;
         const requestDraftObj: IDraftRequest = {
@@ -273,45 +220,37 @@ const resolvers = {
           title: args.title,
           coverPhotoId: args.coverPhotoId,
           quantity: args.quantity
-        };
-        listingObj = await listingsAPI.createDraft(requestDraftObj);
+        }
+        listingObj = await listingsAPI.createDraft(requestDraftObj)
       }
-      return listingsAPI.fetchWholeListing(
-        listingObj.id,
-        locationsAPI,
-        usersAPI
-      );
+      return listingsAPI.fetchWholeListing(listingObj.id, locationsAPI, usersAPI)
     },
 
     getOrCreateLocation: async (_: any, args: any, { dataSources }: any) => {
-      const { locationsAPI } = dataSources;
+      const { locationsAPI } = dataSources
       return locationsAPI.getOrCreateLocation({
         suggestAddress: args.suggestAddress,
         unit: args.unit
-      });
+      })
     },
 
     publish: async (_: any, args: any, { dataSources }: any) => {
-      const { listingsAPI } = dataSources;
-      return listingsAPI.publish(args.listingId, args.status);
+      const { listingsAPI } = dataSources
+      return listingsAPI.publish(args.listingId, args.status)
     },
 
-    cleanListingAvailabilities: async (
-      _: any,
-      args: any,
-      { dataSources }: any
-    ) => {
-      const { bookingsAPI } = dataSources;
-      return bookingsAPI.cleanListingAvailabilities(args.listingId);
+    cleanListingAvailabilities: async (_: any, args: any, { dataSources }: any) => {
+      const { bookingsAPI } = dataSources
+      return bookingsAPI.cleanListingAvailabilities(args.listingId)
     },
 
     removeListingById: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.listingsAPI.removeListingById(args.listingId);
+      return dataSources.listingsAPI.removeListingById(args.listingId)
     },
 
     claimListing: async (_: any, args: any, { dataSources }: any) => {
-      const { listingsAPI } = dataSources;
-      return listingsAPI.claimListing(args.listingId);
+      const { listingsAPI } = dataSources
+      return listingsAPI.claimListing(args.listingId)
     },
 
     createReviewFromGuest: async (_: any, args: any, { dataSources }: any) => {
@@ -325,17 +264,13 @@ const resolvers = {
         args.ratingValue,
         args.ratingCleanliness,
         args.ratingLocation
-      );
+      )
     },
 
     createReviewFromHost: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.listingsAPI.createReviewFromHost(
-        args.bookingId,
-        args.publicComment,
-        args.ratingOverall
-      );
+      return dataSources.listingsAPI.createReviewFromHost(args.bookingId, args.publicComment, args.ratingOverall)
     }
   }
-};
+}
 
-export default resolvers;
+export default resolvers
