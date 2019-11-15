@@ -1,4 +1,4 @@
-import { gql } from "apollo-server-express";
+import { gql } from 'apollo-server-express'
 
 const typeDefs = gql`
   type Location {
@@ -281,6 +281,7 @@ const typeDefs = gql`
     listingRules: [Int]
     listingAccessDays: ListingAccessDays
     status: String
+    link: String
   }
 
   type Listing {
@@ -365,11 +366,7 @@ const typeDefs = gql`
     getCategoriesLegacy: [CategoryLegacy]
     getCategory(id: String!): Category
     getRootCategories: [Category]
-    getAllHolidays(
-      countryShortName: String
-      year: Int
-      state: String!
-    ): [Holidays]
+    getAllHolidays(countryShortName: String, year: Int, state: String!): [Holidays]
     getListingById(id: Int!, isPublic: Boolean): Listing
     getAllListingsByUser(userId: String!, isPublic: Boolean): Listings
     getAllListings: Listings
@@ -392,12 +389,7 @@ const typeDefs = gql`
     uploadPhoto(file: Upload, listingId: Int!): ListingPhotos
     deletePhoto(photoId: Int!, listingId: Int!): Success
     setCoverPhoto(photoId: Int!, listingId: Int!): Success
-    createCategory(
-      name: String
-      parentId: String
-      order: Int
-      isActive: Boolean
-    ): Category
+    createCategory(name: String, parentId: String, order: Int, isActive: Boolean): Category
     createOrUpdateListing(
       locationId: Int!
       listSettingsParentId: Int!
@@ -434,9 +426,19 @@ const typeDefs = gql`
     cleanListingAvailabilities(listingId: Int!): Success
     removeListingById(listingId: Int!): Success
     claimListing(listingId: Int!): Success
-    createReviewFromGuest(bookingId: String!, publicComment: String!, privateComment: String, ratingOverall: Int!, ratingCheckIn: Int!, ratingHost: Int!, ratingValue: Int!, ratingCleanliness: Int!, ratingLocation: Int!): [Review]
+    createReviewFromGuest(
+      bookingId: String!
+      publicComment: String!
+      privateComment: String
+      ratingOverall: Int!
+      ratingCheckIn: Int!
+      ratingHost: Int!
+      ratingValue: Int!
+      ratingCleanliness: Int!
+      ratingLocation: Int!
+    ): [Review]
     createReviewFromHost(bookingId: String!, publicComment: String!, ratingOverall: Int!): [Review]
   }
-`;
+`
 
-export default typeDefs;
+export default typeDefs
