@@ -420,6 +420,7 @@ const typeDefs = gql`
       listingAccessDays: ListingAccessDaysInput
       listingExceptionDates: [String]
       listingRules: [Int]
+      link: String
     ): Listing
     getOrCreateLocation(suggestAddress: String!, unit: String): Location
     publish(listingId: Int!, status: Boolean!): Listing
