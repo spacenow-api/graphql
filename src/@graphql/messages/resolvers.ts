@@ -49,6 +49,9 @@ const resolvers = {
     postMessage: async (_: any, args: any, { dataSources }: any) => {
       return dataSources.messagesAPI.postMessage(args)
     },
+    postMessageToHost: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.messagesAPI.postMessageToHost(args)
+    },
     readMessage: async (_: any, args: any, { dataSources }: any) => {
       return dataSources.messagesAPI.readMessage(args)
     },
