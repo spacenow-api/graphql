@@ -1,6 +1,7 @@
 import { gql } from 'apollo-server-express'
 
 const typeDefs = gql`
+
   type Messages {
     count: Int
     rows: [Message]
@@ -9,6 +10,17 @@ const typeDefs = gql`
   type MessageItems {
     count: Int
     rows: [MessageItem]
+  }
+
+  type MessageHost {
+    id: String
+    messageId: String
+    flexibleTime: Int
+    peopleQuantity: Int
+    reason: String
+    reservations: [String]
+    startTime: String
+    endTime: String
   }
 
   type Message {
@@ -20,10 +32,11 @@ const typeDefs = gql`
     listing: Listing
     listingId: Int
     isRead: Int
+    unreadItems: Int
     messageItems: [MessageItem]
+    messageHost: MessageHost
     createdAt: String
     updatedAt: String
-    unreadItems: Int
   }
 
   type MessageItem {
@@ -51,6 +64,7 @@ const typeDefs = gql`
 
   extend type Mutation {
     postMessage(listingId: Int!, guestId: String!, hostId: String!, content: String!): Message
+    postMessageToHost(listingId: Int!, guestId: String!, hostId: String!, content: String!, bookingPeriod: String!, period: Int!, reservations: [String]!, checkInTime: String, checkOutTime: String, hasFlexibleTime: Boolean!, peopleQuantity: Int, reason: String!): Message
     readMessage(id: String!, userId: String!): Message
     postMessageItem(messageId: String!, sentBy: String!, content: String!, isRead: Int): MessageItem
     readMessageItems(id: String!): MessageItem

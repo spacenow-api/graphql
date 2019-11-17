@@ -1,10 +1,10 @@
-import PersonalizationAPI from '../interfaces/personalization.inteface'
-
-import { toError } from './../helpers/exceptions/HttpException'
-
 import { ApolloError } from 'apollo-server-express'
 
+import PersonalizationAPI from '../interfaces/personalization.inteface'
+import { toError } from './../helpers/exceptions/HttpException'
+
 class MessagesAPI extends PersonalizationAPI {
+
   constructor(apiAddress: string) {
     super()
     this.baseURL = apiAddress
@@ -22,6 +22,25 @@ class MessagesAPI extends PersonalizationAPI {
 
   postMessage = async (message: any): Promise<any> => {
     return this.post(`/message`, message).catch(err => new ApolloError(toError(err)))
+  }
+
+  postMessageToHost = async (message: any): Promise<any> => {
+    return this.post(`/message`, {
+      "listingId": message.listingId,
+      "hostId": message.hostId,
+      "guestId": message.guestId,
+      "content": message.content,
+      "contactHost": {
+        "bookingPeriod": message.bookingPeriod,
+        "period": message.period,
+        "reservations": message.reservations,
+        "checkInTime": message.checkInTime,
+        "checkOutTime": message.checkOutTime,
+        "hasFlexibleTime": message.hasFlexibleTime,
+        "peopleQuantity": message.peopleQuantity,
+        "reason": message.reason
+      }
+    }).catch(err => new ApolloError(toError(err)))
   }
 
   readMessage = async (args: any): Promise<any> => {
