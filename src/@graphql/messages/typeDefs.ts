@@ -17,6 +17,8 @@ const typeDefs = gql`
     messageId: String
     flexibleTime: Int
     peopleQuantity: Int
+    bookingPeriod: String
+    period: Int
     reason: String
     reservations: [String]
     startTime: String
