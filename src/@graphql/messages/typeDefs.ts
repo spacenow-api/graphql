@@ -9,6 +9,7 @@ const typeDefs = gql`
 
   type MessageItems {
     count: Int
+    messageParent: Message
     rows: [MessageItem]
   }
 

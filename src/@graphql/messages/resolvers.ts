@@ -21,9 +21,15 @@ const resolvers = {
     }
   },
 
+  MessageItems: {
+    messageParent(parent: any, args: any, { dataSources }: any, info: any) {
+      return dataSources.messagesAPI.getMessage(parent.rows[0].messageId);
+    }
+  },
+
   MessageItem: {
-    sent(parent: any, args: any, context: any, info: any) {
-      return context.dataSources.usersAPI.getUserLegacyById(parent.sentBy)
+    sent(parent: any, args: any, { dataSources }: any, info: any) {
+      return dataSources.usersAPI.getUserLegacyById(parent.sentBy);
     }
   },
 
