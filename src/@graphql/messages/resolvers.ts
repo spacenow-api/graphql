@@ -23,7 +23,10 @@ const resolvers = {
 
   MessageItems: {
     messageParent(parent: any, args: any, { dataSources }: any, info: any) {
-      return dataSources.messagesAPI.getMessage(parent.rows[0].messageId);
+      if (parent.rows && parent.rows.length > 0) {
+        return dataSources.messagesAPI.getMessage(parent.rows[0].messageId);
+      }
+      return null;
     }
   },
 
