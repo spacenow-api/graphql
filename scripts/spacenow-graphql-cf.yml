@@ -278,7 +278,7 @@ Resources:
             - Name: MESSAGES_API
               Value: !Ref MessagesApi
             - Name: NOTIFICATION_API
-              Value: !Ref NotificattionApi
+              Value: !Ref NotificationApi
             - Name: TWILIO_ACCOUNT_SID
               Value: !Ref TwilioAccountSid
             - Name: TWILIO_AUTH_TOKEN
