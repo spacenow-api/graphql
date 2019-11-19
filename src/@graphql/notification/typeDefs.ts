@@ -2,7 +2,6 @@ import { gql } from 'apollo-server'
 
 const typeDefs = gql`
 
-
   type Notification {
     id: String
     name: String
