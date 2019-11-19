@@ -46,7 +46,14 @@ const resolvers = {
     }
   },
 
+  ExternalClicksObject: {
+    listing(parent: any, args: any, { dataSources }: any, info: any) {
+      return dataSources.listingsAPI.getListingById(parent.listingId, false, false);
+    }
+  },
+
   Query: {
+
     getPhotosByListingId: async (_: any, args: any, { dataSources }: any) => {
       return await dataSources.listingsAPI.getPhotosByListingId(args.listingId)
     },
@@ -154,10 +161,15 @@ const resolvers = {
 
     getPrivateReviews: async (_: any, args: any, { dataSources }: any) => {
       return dataSources.listingsAPI.getPrivateReviews(args.listingId)
+    },
+
+    getExternalClicksByUser: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.listingsAPI.getExternalClicksByUser(args.userId);
     }
   },
 
   Mutation: {
+
     uploadPhoto: async (_: any, args: any, { dataSources }: any) => {
       return await dataSources.assetsAPI.uploadPhoto(args)
     },
@@ -269,6 +281,10 @@ const resolvers = {
 
     createReviewFromHost: async (_: any, args: any, { dataSources }: any) => {
       return dataSources.listingsAPI.createReviewFromHost(args.bookingId, args.publicComment, args.ratingOverall)
+    },
+
+    saveClicksByListing: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.listingsAPI.saveClicksByListing(args.listingId);
     }
   }
 }

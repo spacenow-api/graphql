@@ -197,6 +197,14 @@ class ListingsAPI extends PersonalizationAPI {
       isAdmin: 1
     }).catch(err => new ApolloError(toError(err)))
   }
+
+  getExternalClicksByUser = async (userId: string) => {
+    return this.get(`/external/clicks/${userId}`).catch(err => new ApolloError(toError(err)));
+  }
+
+  saveClicksByListing = async (listingId: Number) => {
+    return this.post(`/external/clicks`, { listingId }).catch(err => new ApolloError(toError(err)));
+  }
 }
 
 export default ListingsAPI

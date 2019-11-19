@@ -359,6 +359,21 @@ const typeDefs = gql`
     createdAt: String
   }
 
+  type ExternalClicksObject {
+    id: String
+    userId: String
+    listingId: Int
+    clicks: Int
+    createdAt: String
+    updatedAt: String
+    listing: Listing
+  }
+
+  type ExternalClicksType {
+    totalClicks: Int
+    rows: [ExternalClicksObject]
+  }
+
   extend type Query {
     getAvailabilitiesByListingId(listingId: Int!): Availabilities
     getAllBookings: [Booking]
@@ -383,6 +398,7 @@ const typeDefs = gql`
     getLetterListingsByState(state: String!): [Listing]
     getPublicReviews(listingId: Int!, page: Int, pageSize: Int): PublicReview
     getPrivateReviews(listingId: Int!): [PrivateReview]
+    getExternalClicksByUser(userId: String!): ExternalClicksType
   }
 
   extend type Mutation {
@@ -439,6 +455,7 @@ const typeDefs = gql`
       ratingLocation: Int!
     ): [Review]
     createReviewFromHost(bookingId: String!, publicComment: String!, ratingOverall: Int!): [Review]
+    saveClicksByListing(listingId: Int!): ExternalClicksType
   }
 `
 
