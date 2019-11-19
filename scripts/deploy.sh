@@ -47,6 +47,7 @@ SEARCH_API_HOST=$(get_ssm_parameter /$2/SPACENOW/SEARCH_API_HOST)
 EMAILS_API=$(get_ssm_parameter /$2/SPACENOW/EMAILS_API)
 PAYMENTS_API_HOST=$(get_ssm_parameter /$2/SPACENOW/PAYMENTS_API_HOST)
 MESSAGES_API=$(get_ssm_parameter /$2/SPACENOW/MESSAGES_API)
+NOTIFICATION_API=$(get_ssm_parameter /$2/SPACENOW/NOTIFICATION_API)
 TWILIO_ACCOUNT_SID=$(get_ssm_parameter /$2/SPACENOW/TWILIO_ACCOUNT_SID)
 TWILIO_AUTH_TOKEN=$(get_ssm_parameter /$2/SPACENOW/TWILIO_AUTH_TOKEN)
 TWILIO_PHONE_FROM=$(get_ssm_parameter /$2/SPACENOW/TWILIO_PHONE_FROM)
@@ -69,6 +70,7 @@ CF_PARAMS="ParameterKey=ImageUrl,ParameterValue=$3 \
           ParameterKey=EmailsApi,ParameterValue=$EMAILS_API \
           ParameterKey=PaymentsApiHost,ParameterValue=$PAYMENTS_API_HOST \
           ParameterKey=MessagesApi,ParameterValue=$MESSAGES_API \
+          ParameterKey=NotificationApi,ParameterValue=$NOTIFICATION_API \
           ParameterKey=TwilioAccountSid,ParameterValue=$TWILIO_ACCOUNT_SID \
           ParameterKey=TwilioAuthToken,ParameterValue=$TWILIO_AUTH_TOKEN \
           ParameterKey=TwilioPhoneFrom,ParameterValue=$TWILIO_PHONE_FROM \

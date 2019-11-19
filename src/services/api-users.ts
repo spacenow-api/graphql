@@ -76,8 +76,20 @@ class UsersAPI extends PersonalizationAPI {
     return this.post(`${this.path}/legacy/profile/picture?id=${picture.userId}`, formData, { headers: formData.getHeaders() }).catch(catchApolloError);
   };
 
+  updateUserNotification = async (userId: string, notificationId: string, notification: any): Promise<[any]> => {
+    return this.post(`users/legacy/${userId}/${notificationId}/notification`, notification).catch(
+      catchApolloError
+    );
+  };
+
   getUserDocuments = async (userId: string): Promise<[IDocument]> => {
     return this.get(`${this.path}/legacy/documents/${userId}`).catch(
+      catchApolloError
+    );
+  };
+
+  getUserNotifications = async (userId: string): Promise<[any]> => {
+    return this.get(`users/legacy/${userId}/notifications`).catch(
       catchApolloError
     );
   };

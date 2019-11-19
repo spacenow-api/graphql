@@ -131,6 +131,11 @@ Parameters:
     Type: String
     Default: ''
     NoEcho: true
+  NotificationApi:
+    Description: 'NOTIFICATION_API'
+    Type: String
+    Default: ''
+    NoEcho: true
   TwilioAccountSid:
     Description: 'TWILIO_ACCOUNT_SID'
     Type: String
@@ -272,6 +277,8 @@ Resources:
               Value: !Ref PaymentsApiHost
             - Name: MESSAGES_API
               Value: !Ref MessagesApi
+            - Name: NOTIFICATION_API
+              Value: !Ref NotificattionApi
             - Name: TWILIO_ACCOUNT_SID
               Value: !Ref TwilioAccountSid
             - Name: TWILIO_AUTH_TOKEN

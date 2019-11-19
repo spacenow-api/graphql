@@ -47,6 +47,20 @@ const typeDefs = gql`
     rows: [Document]
   }
 
+  input UserNotificationInput {
+    isSMS: Boolean
+    isEmail: Boolean
+    isPushNotification: Boolean
+  }
+  
+  type UserNotification {
+    userId: String
+    notificationId: String
+    isSMS: Boolean
+    isEmail: Boolean
+    isPushNotification: Boolean
+  }
+
   input UserProfileInput {
     status: String
     email: String
@@ -174,12 +188,14 @@ const typeDefs = gql`
     getTotalUsersLegacyByDate(days: Int): UsersCountResponse
     getUser(id: String!): User
     getUserDocuments(userId: String!): DocumentResponse
+    getUserNotifications(userId: String!): [UserNotification]
     getUserLegacyById(id: String!, token: String): User
   }
 
   extend type Mutation {
     updateUserLegacy(input: UserInput): Success
     updateUserProfileLegacy(userId: String, input: UserProfileInput): Success
+    updateUserNotification(userId: ID, notificationId: ID, input: UserNotificationInput): UserNotification
     updateProfilePicture(file: Upload, userId: String!): UserProfilePicture
     deleteUserByEmail(email: String): Success
     deleteDocument(id: String, userId: String): Success

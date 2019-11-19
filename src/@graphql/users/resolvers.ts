@@ -26,6 +26,10 @@ const resolvers = {
 
     getUserDocuments: async (_: any, args: any, { dataSources }: any) => {
       return await dataSources.usersAPI.getUserDocuments(args.userId);
+    },
+
+    getUserNotifications: async (_: any, args: any, { dataSources }: any) => {
+      return await dataSources.usersAPI.getUserNotifications(args.userId);
     }
   },
 
@@ -60,6 +64,16 @@ const resolvers = {
 
     updateUserLegacy: async (_: any, args: any, { dataSources }: any) => {
       return dataSources.usersAPI.updateUserLegacy(args.input);
+    },
+
+    updateUserNotification: async (
+      _: any,
+      args: any,
+      { dataSources }: any
+    ) => {
+      return await dataSources.usersAPI.updateUserNotification(args.userId, args.notificationId, {
+        data: args.input
+      });
     },
 
     updateUserProfileLegacy: async (
