@@ -10,6 +10,7 @@ import emailsT from './emails/typeDefs'
 import searchT from './search/typeDefs'
 import messagesT from './messages/typeDefs'
 import twilioT from './twilio/typeDefs'
+import notificationT from './notification/typeDefs'
 
 const typeDefs = [
   rootT,
@@ -23,7 +24,8 @@ const typeDefs = [
   emailsT,
   searchT,
   messagesT,
-  twilioT
+  twilioT,
+  notificationT
 ]
 
 import listingR from './listing/resolvers'
@@ -37,6 +39,7 @@ import emailsR from './emails/resolvers'
 import searchR from './search/resolvers'
 import messagesR from './messages/resolvers'
 import twilioR from './twilio/resolvers'
+import notificationR from './notification/resolvers'
 
 const resolvers: any = [
   listingR,
@@ -49,7 +52,8 @@ const resolvers: any = [
   emailsR,
   searchR,
   messagesR,
-  twilioR
+  twilioR,
+  notificationR
 ]
 
 export { typeDefs, resolvers }

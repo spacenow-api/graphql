@@ -45,6 +45,8 @@ export const EMAILS_API: string = process.env.EMAILS_API || 'http://localhost:60
 
 export const MESSAGES_API: string = process.env.MESSAGES_API || 'http://localhost:6014'
 
+export const NOTIFICATION_API: string = process.env.NOTIFICATION_API || 'http://localhost:6015'
+
 export const TWILIO_ACCOUNT_SID: string = process.env.TWILIO_ACCOUNT_SID || ''
 
 export const TWILIO_AUTH_TOKEN: string = process.env.TWILIO_AUTH_TOKEN || ''

@@ -14,6 +14,7 @@ import EmailsAPI from './api-emails'
 import SearchAPI from './api-search'
 import MessagesAPI from './api-messages'
 import TwilioAPI from './api-twilio'
+import NotificationAPI from './api-notification'
 
 export {
   AssetsAPI,
@@ -31,5 +32,6 @@ export {
   EmailsAPI,
   SearchAPI,
   MessagesAPI,
-  TwilioAPI
+  TwilioAPI,
+  NotificationAPI
 }
