@@ -13,7 +13,7 @@ class NotificationAPI extends PersonalizationAPI {
   sendSMSMessage = async (data: any): Promise<any> => {
     return this.post(
       `/send-sms-message`,
-      data 
+      JSON.stringify(data)
     ).catch(err => new ApolloError(toError(err)))
   }
 

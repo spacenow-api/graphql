@@ -9,15 +9,19 @@ const typeDefs = gql`
     message: String
   }
 
+  input SMSMessageInput {
+    message: String
+    receiver: String
+    sender: String
+  }
+  
   type SMSMessage {
     status: String
   }
 
   extend type Mutation {
     sendSMSMessage(
-      message: String
-      receiver: String
-      sender: String
+      input: SMSMessageInput
     ): SMSMessage
   }
 

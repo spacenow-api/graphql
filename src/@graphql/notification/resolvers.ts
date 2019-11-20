@@ -2,7 +2,7 @@ const resolvers = {
   Mutation: {
     sendSMSMessage: async (_: any, args: any, { dataSources }: any) => {
       const { notificationAPI } = dataSources;
-      await notificationAPI.sendSMSMessage(args.body);
+      await notificationAPI.sendSMSMessage(args.input);
       return { status: "success" }
     },
   },
