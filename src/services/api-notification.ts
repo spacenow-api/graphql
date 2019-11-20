@@ -10,6 +10,13 @@ class NotificationAPI extends PersonalizationAPI {
     this.baseURL = apiAddress
   }
 
+  sendSMSMessage = async (data: any): Promise<any> => {
+    return this.post(
+      `/send-sms-message`,
+      data 
+    ).catch(err => new ApolloError(toError(err)))
+  }
+
   getNotifications = async (): Promise<any> => {
     return this.get(
       `/notifications`
