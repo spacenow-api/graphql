@@ -23,6 +23,32 @@ class NotificationAPI extends PersonalizationAPI {
     ).catch(err => new ApolloError(toError(err)))
   }
 
+  getNotificationsByType = async (type: any): Promise<any> => {
+    return this.get(
+      `/notifications-by-type?type=${type}`
+    ).catch(err => new ApolloError(toError(err)))
+  }
+
+  getNotification = async (id: any): Promise<any> => {
+    return this.get(
+      `/notification/${id}`
+    ).catch(err => new ApolloError(toError(err)))
+  }
+
+  putNotification = async (id: any, data: any): Promise<any> => {
+    return this.put(
+      `/notification/${id}`,
+      JSON.stringify(data)
+    ).catch(err => new ApolloError(toError(err)))
+  }
+
+  postNotification = async (data: any): Promise<any> => {
+    return this.post(
+      `/notification`,
+      JSON.stringify(data)
+    ).catch(err => new ApolloError(toError(err)))
+  }
+
 }
 
 export default NotificationAPI

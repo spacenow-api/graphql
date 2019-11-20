@@ -2,11 +2,27 @@ import { gql } from 'apollo-server-express'
 
 const typeDefs = gql`
 
+  enum NotificationType {
+    guest
+    host
+  }
+
   type Notification {
-    id: String
+    id: ID
     name: String
     slug: String
     message: String
+    type: NotificationType
+  }
+
+  input NotificationInput {
+    name: String
+    message: String
+    type: NotificationType
+  }
+
+  type NotificationResponse {
+    status: String
   }
 
   input SMSMessageInput {
@@ -23,10 +39,19 @@ const typeDefs = gql`
     sendSMSMessage(
       input: SMSMessageInput
     ): SMSMessage
+    postNotification(
+      input: NotificationInput
+    ): NotificationResponse
+    putNotification(
+      id: ID,
+      input: NotificationInput
+    ): NotificationResponse
   }
 
   extend type Query {
     getNotifications: [Notification]
+    getNotificationsByType(type: NotificationType): [Notification]
+    getNotification(id: ID): NotificationResponse
   }
 
 `

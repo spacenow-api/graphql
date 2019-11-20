@@ -46,7 +46,7 @@ const resolvers = {
     createBooking: async (_: any, args: any, { dataSources }: any) => {
       const user = await dataSources.usersAPI.getUserLegacyById(args.hostId)
       const message = 'New booking request'
-      return dataSources.bookingsAPI.createBooking(args).then(dataSources.twilioAPI.sendMessage(user.profile.phoneNumber, message));
+      return dataSources.bookingsAPI.createBooking(args).then(dataSources.notificationAPI.sendSMSMessage({ message, sender: "Spacenow", receiver: user.profile.phoneNumber }));
     },
 
     timeoutBooking: async (_: any, args: any, { dataSources }: any) => {
@@ -56,7 +56,7 @@ const resolvers = {
     acceptBooking: async (_: any, args: any, { dataSources }: any) => {
       const user = dataSources.bookingsAPI.getBookingById(args.bookingId)
       const message = 'Booking confirmed'
-      return dataSources.bookingsAPI.acceptBooking(args.bookingId).then(dataSources.twilioAPI.sendMessage(user.guest.profile.phoneNumber, message));
+      return dataSources.bookingsAPI.acceptBooking(args.bookingId).then(dataSources.notificationAPI.sendSMSMessage({ message, sender: "Spacenow", receiver: user.guest.profile.phoneNumber }));
     },
 
     declineBooking: async (_: any, args: any, { dataSources }: any) => {
