@@ -52,6 +52,10 @@ class UsersAPI extends PersonalizationAPI {
     return this.get(`${this.path}/legacy/${id}`).catch(catchApolloError);
   };
 
+  getUsersByProvider = async (provider: string): Promise<IUser> => {
+    return this.get(`${this.path}/legacy/provider/${provider}`).catch(catchApolloError);
+  };
+
   createUser = async (user: IUser): Promise<IUser> => {
     return this.post(`${this.path}`, user).catch(catchApolloError);
   };

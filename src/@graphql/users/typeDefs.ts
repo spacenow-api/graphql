@@ -190,6 +190,7 @@ const typeDefs = gql`
     getUserDocuments(userId: String!): DocumentResponse
     getUserNotifications(userId: String!): [UserNotification]
     getUserLegacyById(id: String!, token: String): User
+    getUsersByProvider(provider: String): [User]
   }
 
   extend type Mutation {

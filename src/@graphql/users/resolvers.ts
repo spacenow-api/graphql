@@ -20,6 +20,10 @@ const resolvers = {
       return dataSources.usersAPI.getAllUsersLegacy(args.days);
     },
 
+    getUsersByProvider: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.usersAPI.getUsersByProvider(args.provider);
+    },
+
     getUser: async (_: any, args: any, { dataSources }: any) => {
       return dataSources.usersAPI.getUser(args.id);
     },
