@@ -46,6 +46,7 @@ class BookingsAPI extends PersonalizationAPI {
   };
 
   getAllBookingsByUser = async (args: any): Promise<any> => {
+    this.memoizedResults.clear()
     let bookingsApi = `/byGuestId/${args.userId}`
     if (args.userType === "host")
       bookingsApi = `/byHostId/${args.userId}`
