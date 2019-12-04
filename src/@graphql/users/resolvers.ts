@@ -8,7 +8,11 @@ const resolvers = {
       return dataSources.usersAPI.getTotalUsersLegacy();
     },
 
-    getTotalUsersLegacyByDate: async (_: any, args: any, { dataSources }: any) => {
+    getTotalUsersLegacyByDate: async (
+      _: any,
+      args: any,
+      { dataSources }: any
+    ) => {
       return dataSources.usersAPI.getTotalUsersLegacyByDate(args.days);
     },
 
@@ -70,14 +74,14 @@ const resolvers = {
       return dataSources.usersAPI.updateUserLegacy(args.input);
     },
 
-    updateUserNotification: async (
-      _: any,
-      args: any,
-      { dataSources }: any
-    ) => {
-      return await dataSources.usersAPI.updateUserNotification(args.userId, args.notificationId, {
-        data: args.input
-      });
+    updateUserNotification: async (_: any, args: any, { dataSources }: any) => {
+      return await dataSources.usersAPI.updateUserNotification(
+        args.userId,
+        args.notificationId,
+        {
+          data: args.input
+        }
+      );
     },
 
     updateUserProfileLegacy: async (

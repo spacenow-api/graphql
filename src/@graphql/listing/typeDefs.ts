@@ -1,4 +1,4 @@
-import { gql } from 'apollo-server-express'
+import { gql } from "apollo-server-express";
 
 const typeDefs = gql`
   type Location {
@@ -312,8 +312,15 @@ const typeDefs = gql`
     rows: [Listing]
   }
 
+  type CountAll {
+    all: Int
+    active: Int
+    deleted: Int
+    published: Int
+  }
+
   type ListingsCount {
-    count: Int
+    count: CountAll
   }
 
   type ListingAsset {
@@ -381,7 +388,11 @@ const typeDefs = gql`
     getCategoriesLegacy: [CategoryLegacy]
     getCategory(id: String!): Category
     getRootCategories: [Category]
-    getAllHolidays(countryShortName: String, year: Int, state: String!): [Holidays]
+    getAllHolidays(
+      countryShortName: String
+      year: Int
+      state: String!
+    ): [Holidays]
     getListingById(id: Int!, isPublic: Boolean): Listing
     getAllListingsByUser(userId: String!, isPublic: Boolean): Listings
     getAllListings: Listings
@@ -405,7 +416,12 @@ const typeDefs = gql`
     uploadPhoto(file: Upload, listingId: Int!): ListingPhotos
     deletePhoto(photoId: Int!, listingId: Int!): Success
     setCoverPhoto(photoId: Int!, listingId: Int!): Success
-    createCategory(name: String, parentId: String, order: Int, isActive: Boolean): Category
+    createCategory(
+      name: String
+      parentId: String
+      order: Int
+      isActive: Boolean
+    ): Category
     createOrUpdateListing(
       locationId: Int!
       listSettingsParentId: Int!
@@ -454,9 +470,13 @@ const typeDefs = gql`
       ratingCleanliness: Int!
       ratingLocation: Int!
     ): [Review]
-    createReviewFromHost(bookingId: String!, publicComment: String!, ratingOverall: Int!): [Review]
+    createReviewFromHost(
+      bookingId: String!
+      publicComment: String!
+      ratingOverall: Int!
+    ): [Review]
     saveClicksByListing(listingId: Int!): ExternalClicksType
   }
-`
+`;
 
-export default typeDefs
+export default typeDefs;
