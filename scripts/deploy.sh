@@ -51,6 +51,7 @@ NOTIFICATION_API=$(get_ssm_parameter /$2/SPACENOW/NOTIFICATION_API)
 TWILIO_ACCOUNT_SID=$(get_ssm_parameter /$2/SPACENOW/TWILIO_ACCOUNT_SID)
 TWILIO_AUTH_TOKEN=$(get_ssm_parameter /$2/SPACENOW/TWILIO_AUTH_TOKEN)
 TWILIO_PHONE_FROM=$(get_ssm_parameter /$2/SPACENOW/TWILIO_PHONE_FROM)
+GOOGLE_MAP_API=$(get_ssm_parameter /$2/SPACENOW/GOOGLE_MAP_API)
 echo "ENV ${2}"
 CF_PARAMS="ParameterKey=ImageUrl,ParameterValue=$3 \
           ParameterKey=ContainerPort,ParameterValue=4000 \
@@ -74,6 +75,7 @@ CF_PARAMS="ParameterKey=ImageUrl,ParameterValue=$3 \
           ParameterKey=TwilioAccountSid,ParameterValue=$TWILIO_ACCOUNT_SID \
           ParameterKey=TwilioAuthToken,ParameterValue=$TWILIO_AUTH_TOKEN \
           ParameterKey=TwilioPhoneFrom,ParameterValue=$TWILIO_PHONE_FROM \
+          ParameterKey=GoogleMapApi,ParameterValue=$GOOGLE_MAP_API \
           ParameterKey=HostedZoneName,ParameterValue=$HostedZoneName"
 echo "Checking if stack exists ..."
 if ! aws cloudformation describe-stacks --region $region --stack-name $stack_name ; then

@@ -13,6 +13,7 @@ const typeDefs = gql`
     zipcode: String
     lat: String
     lng: String
+    placeId: String
     createdAt: String
     updatedAt: String
   }
@@ -350,6 +351,20 @@ const typeDefs = gql`
     result: [Review]
   }
 
+  type GoogleReview {
+    author_name: String
+    profile_photo_url: String
+    rating: Float
+    text: String
+    time: Float
+    relative_time_description: String
+  }
+
+  type GoogleReviews {
+    rating: Float
+    reviews: [GoogleReview]
+  }
+
   type PrivateReview {
     id: Int
     reservationId: String
@@ -408,6 +423,7 @@ const typeDefs = gql`
     getAllSpecificationsByParentId(listSettingsParentId: Int!): [ListSettings]
     getLetterListingsByState(state: String!): [Listing]
     getPublicReviews(listingId: Int!, page: Int, pageSize: Int): PublicReview
+    getGoogleReviews(placeId: String): GoogleReviews
     getPrivateReviews(listingId: Int!): [PrivateReview]
     getExternalClicksByUser(userId: String!): ExternalClicksType
   }
@@ -454,7 +470,11 @@ const typeDefs = gql`
       listingRules: [Int]
       link: String
     ): Listing
-    getOrCreateLocation(suggestAddress: String!, unit: String): Location
+    getOrCreateLocation(
+      suggestAddress: String!
+      unit: String
+      placeId: String
+    ): Location
     publish(listingId: Int!, status: Boolean!): Listing
     cleanListingAvailabilities(listingId: Int!): Success
     removeListingById(listingId: Int!): Success

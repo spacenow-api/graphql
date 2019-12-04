@@ -1,6 +1,7 @@
 interface ILocationRequest {
   suggestAddress: string;
   unit?: string;
+  placeId: string;
 }
 
 interface ILocationResponse {
@@ -15,6 +16,7 @@ interface ILocationResponse {
   zipcode: string;
   lat: string;
   lng: string;
+  placeId: string;
   createdAt: Date;
   updatedAt: Date;
 }
