@@ -213,6 +213,7 @@ const typeDefs = gql`
     sources: Sources
     preferred_locales: [String]
     invoice_settings: InvoiceSettings
+    lastCardCreated: SourceData
   }
 
   type PaymentResponse {
