@@ -83,6 +83,7 @@ const typeDefs = gql`
     ): Bookings
     getHourlyAvailability(listingId: Int!, date: String!, checkInHour: String!, checkOutHour: String!): HourlyAvailability
     getTotalBookingsByDate(days: Int): BookingsCount
+    getVouchers: [Voucher]
     getVoucherValidation(voucherCode: String!): VoucherValidation
   }
 

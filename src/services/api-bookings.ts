@@ -67,6 +67,10 @@ class BookingsAPI extends PersonalizationAPI {
     return this.get(`/date?days=${days}`).catch(err => new ApolloError(toError(err)));
   };
 
+  listVouchers = async () => {
+    return this.get('/voucher').catch(err => new ApolloError(toError(err)));
+  }
+
   createVoucher = async (type: string, value: number, limit: number, expireAt: string) => {
     return this.post('/voucher', { type, value, limit, expireAt }).catch(err => new ApolloError(toError(err)));
   }

@@ -45,6 +45,10 @@ const resolvers = {
       return dataSources.bookingsAPI.getTotalBookingsByDate(args.days);
     },
 
+    getVouchers: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.bookingsAPI.listVouchers();
+    },
+
     getVoucherValidation: async (_: any, args: any, { dataSources }: any) => {
       return dataSources.bookingsAPI.validateVoucher(args.voucherCode);
     }
