@@ -106,7 +106,7 @@ const typeDefs = gql`
     timeoutBooking(bookingId: String): BookingOutput
     acceptBooking(bookingId: String!): BookingOutput
     declineBooking(bookingId: String!): BookingOutput
-    createVoucher(type: String!, value: Float!, limit: Int!, expireAt: String): Voucher
+    createVoucher(type: String!, value: Float!, usageLimit: Int!, expireAt: String): Voucher
     desactiveVoucher(voucherCode: String!): Voucher
     insertVoucher(voucherCode: String!, bookingId: String!): BookingType
     removeVoucher(voucherCode: String!, bookingId: String!): BookingType
