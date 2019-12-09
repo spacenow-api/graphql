@@ -410,7 +410,7 @@ const typeDefs = gql`
     ): [Holidays]
     getListingById(id: Int!, isPublic: Boolean): Listing
     getAllListingsByUser(userId: String!, isPublic: Boolean): Listings
-    getAllListings: Listings
+    getAllListings: [Listing]
     getTotalListingsByDate(days: Int, category: Int): ListingsCount
     getTotalListingsByCategory(category: ID): ListingsCount
     getPhotosByListingId(listingId: Int!): [ListingPhotos]
@@ -478,6 +478,7 @@ const typeDefs = gql`
     publish(listingId: Int!, status: Boolean!): Listing
     cleanListingAvailabilities(listingId: Int!): Success
     removeListingById(listingId: Int!): Success
+    changeListingStatus(listingId: Int!, status: String!): Listing
     claimListing(listingId: Int!): Success
     createReviewFromGuest(
       bookingId: String!
