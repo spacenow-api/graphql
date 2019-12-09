@@ -349,6 +349,10 @@ const resolvers = {
       return dataSources.listingsAPI.removeListingById(args.listingId);
     },
 
+    changeListingStatus: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.listingsAPI.changeListingStatus(args.listingId, args.status);
+    },
+
     claimListing: async (_: any, args: any, { dataSources }: any) => {
       const { listingsAPI } = dataSources;
       return listingsAPI.claimListing(args.listingId);

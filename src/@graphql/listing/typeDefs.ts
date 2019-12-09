@@ -478,6 +478,7 @@ const typeDefs = gql`
     publish(listingId: Int!, status: Boolean!): Listing
     cleanListingAvailabilities(listingId: Int!): Success
     removeListingById(listingId: Int!): Success
+    changeListingStatus(listingId: Int!, status: String!): Listing
     claimListing(listingId: Int!): Success
     createReviewFromGuest(
       bookingId: String!

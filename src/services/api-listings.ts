@@ -219,6 +219,10 @@ class ListingsAPI extends PersonalizationAPI {
     );
   };
 
+  changeListingStatus = async (listingId: number, status: string): Promise<any> => {
+    return this.put(`/listings/${listingId}/status/${status}`).catch(err => new ApolloError(toError(err)));
+  };
+
   publish = async (listingId: number, status: boolean) => {
     return this.put(`/listings/${listingId}/publish/${status}`).catch(
       err => new ApolloError(toError(err))
