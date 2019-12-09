@@ -62,7 +62,7 @@ class ListingsAPI extends PersonalizationAPI {
     }
   };
 
-  getAllListings = async (): Promise<_.IListingSettingsResponse> => {
+  getAllListings = async () => {
     return this.get(`/listings`).catch(err => new ApolloError(toError(err)));
   };
 
