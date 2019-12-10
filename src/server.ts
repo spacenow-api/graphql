@@ -43,7 +43,7 @@ const server = new ApolloServer({
       usersAPI: new UsersAPI(config.USERS_API_HOST),
       paymentsAPI: new PaymentsAPI(config.PAYMENTS_API_HOST),
       categoriesAPI: new CategoriesAPI(config.CATEGORIES_API_HOST),
-      locationsAPI: new LocationsAPI(config.LOCATIONS_API_HOST),
+      locationsAPI: new LocationsAPI(config.SPACES_API_HOST),
       availabilitiesAPI: new AvailabilitiesAPI(config.API_AVAILABILITIES),
       weWorkAPI: new WeWorkAPI(config.WEWORK_API),
       hubSpotAPI: new HubSpotAPI(config.HUBSPOT_FORMS_API),
