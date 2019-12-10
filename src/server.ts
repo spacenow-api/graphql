@@ -36,14 +36,14 @@ const server = new ApolloServer({
   context: ({ req, res }) => ({ token: req.headers.authorization, res }),
   dataSources: () => {
     return {
-      assetsAPI: new AssetsAPI(config.ASSETS_API_HOST),
+      assetsAPI: new AssetsAPI(config.SPACES_API_HOST),
       authAPI: new AuthAPI(config.USERS_API_HOST),
       bookingsAPI: new BookingsAPI(config.API_BOOKING),
       listingsAPI: new ListingsAPI(config.SPACES_API_HOST),
       usersAPI: new UsersAPI(config.USERS_API_HOST),
       paymentsAPI: new PaymentsAPI(config.PAYMENTS_API_HOST),
       categoriesAPI: new CategoriesAPI(config.SPACES_API_HOST),
-      locationsAPI: new LocationsAPI(config.LOCATIONS_API_HOST),
+      locationsAPI: new LocationsAPI(config.SPACES_API_HOST),
       availabilitiesAPI: new AvailabilitiesAPI(config.API_AVAILABILITIES),
       weWorkAPI: new WeWorkAPI(config.WEWORK_API),
       hubSpotAPI: new HubSpotAPI(config.HUBSPOT_FORMS_API),

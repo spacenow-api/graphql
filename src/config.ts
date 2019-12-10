@@ -11,14 +11,8 @@ export const PLAYGROUND = process.env.PLAYGROUND
 
 export const TEMP_FILE_UPLOAD = "./temp";
 
-export const ASSETS_API_HOST: string =
-  process.env.ASSETS_API_HOST || "http://localhost:6007";
-
 export const CATEGORIES_API_HOST: string =
   process.env.CATEGORIES_API_HOST || "http://localhost:6003";
-
-export const LOCATIONS_API_HOST: string =
-  process.env.LOCATIONS_API_HOST || "http://localhost:6005";
 
 export const SPACES_API_HOST: string =
   process.env.SPACES_API_HOST || "http://localhost:6002";

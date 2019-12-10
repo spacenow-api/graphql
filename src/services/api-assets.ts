@@ -6,7 +6,7 @@ import { catchApolloError } from "./../helpers/exceptions/HttpException";
 
 import PersonalizationAPI from '../interfaces/personalization.inteface';
 import * as _ from '../interfaces/listing.interface';
-import { IPhotoInput, IMailConfirmation, IMailRequest } from '../interfaces';
+import { IPhotoInput } from '../interfaces';
 
 import * as config from '../config';
 
@@ -14,9 +14,9 @@ class AssetsAPI extends PersonalizationAPI {
 
 	private path = '/photos';
 
-	constructor(apiAssets: string) {
+	constructor(api: string) {
 		super();
-		this.baseURL = apiAssets;
+		this.baseURL = api;
 	}
 
 	uploadPhoto = async (asset: IPhotoInput): Promise<_.IListingPhotosResponse> => {
@@ -36,10 +36,6 @@ class AssetsAPI extends PersonalizationAPI {
 	setCoverPhoto = (args: any) => {
 		return this.put(`${this.path}/${args.listingId}/${args.photoId}`);
 	};
-
-	sendMail = async (mailRequest: IMailRequest): Promise<IMailConfirmation> => {
-		return this.post('/mail/send', mailRequest);
-	}
 }
 
 export default AssetsAPI;
