@@ -1,9 +1,9 @@
-import express from 'express'
-import compression from 'compression';
-import { ApolloServer } from 'apollo-server-express'
+import express from "express";
+import compression from "compression";
+import { ApolloServer } from "apollo-server-express";
 
-import { typeDefs, resolvers } from './@graphql'
-import { CurrencyDirective } from './@graphql/directives'
+import { typeDefs, resolvers } from "./@graphql";
+import { CurrencyDirective } from "./@graphql/directives";
 
 import {
   AssetsAPI,
@@ -23,9 +23,9 @@ import {
   MessagesAPI,
   TwilioAPI,
   NotificationAPI
-} from './services'
+} from "./services";
 
-import * as config from './config'
+import * as config from "./config";
 
 const server = new ApolloServer({
   typeDefs,
@@ -42,7 +42,7 @@ const server = new ApolloServer({
       listingsAPI: new ListingsAPI(config.SPACES_API_HOST),
       usersAPI: new UsersAPI(config.USERS_API_HOST),
       paymentsAPI: new PaymentsAPI(config.PAYMENTS_API_HOST),
-      categoriesAPI: new CategoriesAPI(config.CATEGORIES_API_HOST),
+      categoriesAPI: new CategoriesAPI(config.SPACES_API_HOST),
       locationsAPI: new LocationsAPI(config.LOCATIONS_API_HOST),
       availabilitiesAPI: new AvailabilitiesAPI(config.API_AVAILABILITIES),
       weWorkAPI: new WeWorkAPI(config.WEWORK_API),
@@ -53,14 +53,14 @@ const server = new ApolloServer({
       messagesAPI: new MessagesAPI(config.MESSAGES_API),
       twilioAPI: new TwilioAPI(),
       notificationAPI: new NotificationAPI(config.NOTIFICATION_API)
-    }
+    };
   }
-})
+});
 
 const app = express();
 app.use(compression());
-server.applyMiddleware({ app, path: '/' });
+server.applyMiddleware({ app, path: "/" });
 
 app.listen({ port: config.PORT }, () => {
-  console.info(`Server * GraphQL * Running`)
-})
+  console.info(`Server * GraphQL * Running`);
+});

@@ -104,18 +104,6 @@ const resolvers = {
       return await dataSources.bookingsAPI.getBooking();
     },
 
-    getCategoriesLegacy: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.categoriesAPI.getCategoriesLegacy();
-    },
-
-    getCategory: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.categoriesAPI.getCategory(args.id);
-    },
-
-    getRootCategories: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.categoriesAPI.getRootCategories();
-    },
-
     getAllHolidays: async (_: any, args: any, { dataSources }: any) => {
       const response = await axios.get(config.HOLIDAYS_HOST);
       const data: IHolidayResponse = response.data;
@@ -262,10 +250,6 @@ const resolvers = {
       return await dataSources.assetsAPI.setCoverPhoto(args);
     },
 
-    createCategory: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.categoriesAPI.createCategory(args);
-    },
-
     createOrUpdateListing: async (_: any, args: any, { dataSources }: any) => {
       const { listingsAPI, locationsAPI, usersAPI } = dataSources;
       let listingObj: IListingResponse;
@@ -350,7 +334,10 @@ const resolvers = {
     },
 
     changeListingStatus: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.listingsAPI.changeListingStatus(args.listingId, args.status);
+      return dataSources.listingsAPI.changeListingStatus(
+        args.listingId,
+        args.status
+      );
     },
 
     claimListing: async (_: any, args: any, { dataSources }: any) => {
