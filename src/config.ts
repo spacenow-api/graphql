@@ -17,9 +17,6 @@ export const ASSETS_API_HOST: string =
 export const CATEGORIES_API_HOST: string =
   process.env.CATEGORIES_API_HOST || "http://localhost:6003";
 
-export const LOCATIONS_API_HOST: string =
-  process.env.LOCATIONS_API_HOST || "http://localhost:6005";
-
 export const SPACES_API_HOST: string =
   process.env.SPACES_API_HOST || "http://localhost:6002";
 
