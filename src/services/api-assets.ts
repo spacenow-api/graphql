@@ -14,9 +14,9 @@ class AssetsAPI extends PersonalizationAPI {
 
 	private path = '/photos';
 
-	constructor(apiAssets: string) {
+	constructor(api: string) {
 		super();
-		this.baseURL = apiAssets;
+		this.baseURL = api;
 	}
 
 	uploadPhoto = async (asset: IPhotoInput): Promise<_.IListingPhotosResponse> => {

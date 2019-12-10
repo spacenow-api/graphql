@@ -36,7 +36,7 @@ const server = new ApolloServer({
   context: ({ req, res }) => ({ token: req.headers.authorization, res }),
   dataSources: () => {
     return {
-      assetsAPI: new AssetsAPI(config.ASSETS_API_HOST),
+      assetsAPI: new AssetsAPI(config.SPACES_API_HOST),
       authAPI: new AuthAPI(config.USERS_API_HOST),
       bookingsAPI: new BookingsAPI(config.API_BOOKING),
       listingsAPI: new ListingsAPI(config.SPACES_API_HOST),
