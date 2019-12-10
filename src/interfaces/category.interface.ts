@@ -1,13 +1,4 @@
-interface ICategory {
-  id: string;
-  name: string;
-  slug: string;
-  parentId: string;
-  order: number;
-  isActive: boolean;
-}
-
-interface IBookingPeriodLegacy {
+interface IBookingPeriod {
   id: number;
   listSettingsParentId: number;
   monthly: number;
@@ -18,30 +9,17 @@ interface IBookingPeriodLegacy {
   updatedAt: Date;
 }
 
-interface ISubCategoryLegacy {
+interface ISubCategories {
   id: number;
   listSettingsParentId: number;
   listSettingsChildId: number;
-  typeId: number;
-  itemName: string;
-  otherItemName: string;
-  description: string;
-  maximum: number;
-  minimum: number;
-  startValue: number;
-  endValue: number;
-  step: string;
-  isEnable: string;
-  photo: string;
-  photoType: string;
-  isSpecification: number;
   createdAt: Date;
   updatedAt: Date;
-  specData: string;
-  bookingPeriod: IBookingPeriodLegacy;
+  subcategory: ISubCategory;
+  bookingPeriod: IBookingPeriod;
 }
 
-interface ICategoryLegacy {
+interface ISubCategory {
   id: number;
   typeId: number;
   itemName: string;
@@ -59,7 +37,27 @@ interface ICategoryLegacy {
   createdAt: Date;
   updatedAt: Date;
   specData: string;
-  subCategories: Array<ISubCategoryLegacy>;
 }
 
-export { ICategory, ICategoryLegacy, ISubCategoryLegacy, IBookingPeriodLegacy };
+interface ICategory {
+  id: number;
+  typeId: number;
+  itemName: string;
+  otherItemName: string;
+  description: string;
+  maximum: number;
+  minimum: number;
+  startValue: number;
+  endValue: number;
+  step: string;
+  isEnable: string;
+  photo: string;
+  photoType: string;
+  isSpecification: number;
+  createdAt: Date;
+  updatedAt: Date;
+  specData: string;
+  subCategories: Array<ISubCategories>;
+}
+
+export { ICategory, ISubCategory, ISubCategories, IBookingPeriod };
