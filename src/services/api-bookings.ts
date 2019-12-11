@@ -67,6 +67,29 @@ class BookingsAPI extends PersonalizationAPI {
     return this.get(`/date?days=${days}`).catch(err => new ApolloError(toError(err)));
   };
 
+  listVouchers = async () => {
+    return this.get('/voucher').catch(err => new ApolloError(toError(err)));
+  }
+
+  createVoucher = async (type: string, value: number, usageLimit: number) => {
+    return this.post('/voucher', { type, value, usageLimit }).catch(err => new ApolloError(toError(err)));
+  }
+
+  desactiveVoucher = async (voucherCode: string) => {
+    return this.delete(`/voucher/${voucherCode}`).catch(err => new ApolloError(toError(err)));
+  }
+
+  validateVoucher = async (voucherCode: string) => {
+    return this.get(`/voucher/${voucherCode}/validate`).catch(err => new ApolloError(toError(err)));
+  }
+
+  insertVoucher = async (voucherCode: string, bookingId: string) => {
+    return this.put(`/voucher/${voucherCode}/booking/${bookingId}/insert`).catch(err => new ApolloError(toError(err)));
+  }
+
+  removeVoucher = async (voucherCode: string, bookingId: string) => {
+    return this.put(`/voucher/${voucherCode}/booking/${bookingId}/remove`).catch(err => new ApolloError(toError(err)));
+  }
 }
 
 export default BookingsAPI;

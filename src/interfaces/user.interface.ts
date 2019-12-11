@@ -7,6 +7,7 @@ interface IUser {
   emailConfirmed: number;
   type: string;
   userBanStatus: number;
+  voucherCode: string;
   role: string;
   provider: string;
   createdAt: Date;

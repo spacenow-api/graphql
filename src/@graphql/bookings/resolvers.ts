@@ -43,6 +43,14 @@ const resolvers = {
 
     getTotalBookingsByDate: async (_: any, args: any, { dataSources }: any) => {
       return dataSources.bookingsAPI.getTotalBookingsByDate(args.days);
+    },
+
+    getVouchers: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.bookingsAPI.listVouchers();
+    },
+
+    getVoucherValidation: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.bookingsAPI.validateVoucher(args.voucherCode);
     }
   },
 
@@ -61,6 +69,22 @@ const resolvers = {
 
     declineBooking: async (_: any, args: any, { dataSources }: any) => {
       return dataSources.bookingsAPI.declineBooking(args.bookingId);
+    },
+
+    createVoucher: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.bookingsAPI.createVoucher(args.type, args.value, args.usageLimit);
+    },
+
+    desactiveVoucher: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.bookingsAPI.desactiveVoucher(args.voucherCode);
+    },
+
+    insertVoucher: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.bookingsAPI.insertVoucher(args.voucherCode, args.bookingId);
+    },
+
+    removeVoucher: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.bookingsAPI.removeVoucher(args.voucherCode, args.bookingId);
     }
   }
 };

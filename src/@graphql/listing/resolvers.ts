@@ -73,7 +73,7 @@ const resolvers = {
 
   Query: {
     getPhotosByListingId: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.listingsAPI.getPhotosByListingId(args.listingId);
+      return dataSources.listingsAPI.getPhotosByListingId(args.listingId);
     },
 
     getVideoByListingId: async (_: any, args: any, { dataSources }: any) => {
@@ -97,11 +97,11 @@ const resolvers = {
     },
 
     getAllBookings: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.bookingsAPI.getAllBookings();
+      return dataSources.bookingsAPI.getAllBookings();
     },
 
     getBooking: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.bookingsAPI.getBooking();
+      return dataSources.bookingsAPI.getBooking();
     },
 
     getAllHolidays: async (_: any, args: any, { dataSources }: any) => {
@@ -120,15 +120,19 @@ const resolvers = {
     },
 
     getAllListingsByUser: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.listingsAPI.getAllListingsByUser(args.userId);
+      return dataSources.listingsAPI.getAllListingsByUser(args.userId);
+    },
+
+    getAllPlainListings: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.listingsAPI.getAllPlainListings();
     },
 
     getAllListings: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.listingsAPI.getAllListings();
+      return dataSources.listingsAPI.getAllListings();
     },
 
     getTotalListingsByDate: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.listingsAPI.getAllListingsByDate(
+      return dataSources.listingsAPI.getAllListingsByDate(
         args.days,
         args.category
       );
@@ -139,13 +143,13 @@ const resolvers = {
       args: any,
       { dataSources }: any
     ) => {
-      return await dataSources.listingsAPI.getAllListingsByCategory(
+      return dataSources.listingsAPI.getAllListingsByCategory(
         args.category
       );
     },
 
     getListingsCategories: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.listingsAPI.getListingsCategories();
+      return dataSources.listingsAPI.getListingsCategories();
     },
 
     getListingById: async (_: any, args: any, { dataSources }: any) => {
@@ -172,7 +176,7 @@ const resolvers = {
     },
 
     getLocationById: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.locationsAPI.getLocationById(args.id);
+      return dataSources.locationsAPI.getLocationById(args.id);
     },
 
     getAllAmenitiesBySubCategoryId: async (
@@ -180,7 +184,7 @@ const resolvers = {
       args: any,
       { dataSources }: any
     ) => {
-      return await dataSources.listingsAPI.getAllAmenitiesBySubCategoryId(
+      return dataSources.listingsAPI.getAllAmenitiesBySubCategoryId(
         args.subCategoryId
       );
     },
@@ -190,17 +194,17 @@ const resolvers = {
       args: any,
       { dataSources }: any
     ) => {
-      return await dataSources.listingsAPI.getAllAmenitiesByListingId(
+      return dataSources.listingsAPI.getAllAmenitiesByListingId(
         args.listingId
       );
     },
 
     getAllRules: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.listingsAPI.getAllRules();
+      return dataSources.listingsAPI.getAllRules();
     },
 
     getAllAccessTypes: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.listingsAPI.getAllAccessTypes();
+      return dataSources.listingsAPI.getAllAccessTypes();
     },
 
     getAllSpecificationsByParentId: async (
@@ -208,7 +212,7 @@ const resolvers = {
       args: any,
       { dataSources }: any
     ) => {
-      return await dataSources.listingsAPI.getListingSpecificationsByParentId(
+      return dataSources.listingsAPI.getListingSpecificationsByParentId(
         args.listSettingsParentId
       );
     },
@@ -243,15 +247,15 @@ const resolvers = {
 
   Mutation: {
     uploadPhoto: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.assetsAPI.uploadPhoto(args);
+      return dataSources.assetsAPI.uploadPhoto(args);
     },
 
     deletePhoto: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.assetsAPI.deletePhoto(args);
+      return dataSources.assetsAPI.deletePhoto(args);
     },
 
     setCoverPhoto: async (_: any, args: any, { dataSources }: any) => {
-      return await dataSources.assetsAPI.setCoverPhoto(args);
+      return dataSources.assetsAPI.setCoverPhoto(args);
     },
 
     createOrUpdateListing: async (_: any, args: any, { dataSources }: any) => {

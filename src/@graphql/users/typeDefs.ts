@@ -8,6 +8,7 @@ const typeDefs = gql`
     emailConfirmed: Boolean
     role: String
     userBanStatus: Int
+    voucherCode: String
     provider: String
   }
 
@@ -30,6 +31,7 @@ const typeDefs = gql`
     role: String
     userBanStatus: Int
     provider: String
+    voucherCode: String
     profile: UserProfile
     userVerifiedInfo: UserVerificationInfo
   }

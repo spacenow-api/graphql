@@ -39,6 +39,7 @@ const typeDefs = gql`
     checkInHour: String
     checkOutHour: String
     message: String
+    voucherCode: String
     reservations: [String]
   }
 
@@ -53,6 +54,24 @@ const typeDefs = gql`
     isAvailable: Boolean
   }
 
+  type Voucher {
+    id: String
+    code: String
+    type: String
+    value: Int
+    usageCount: Int
+    usageLimit: Int
+    expireAt: String
+    status: String
+    createdAt: String
+    updatedAt: String
+  }
+
+  type VoucherValidation {
+    status: String
+    data: Voucher
+  }
+
   extend type Query {
     getBookingById(id: String!): BookingType
     getPendingBookingsByUser(listingId: Int, userId: String): Bookings
@@ -64,6 +83,8 @@ const typeDefs = gql`
     ): Bookings
     getHourlyAvailability(listingId: Int!, date: String!, checkInHour: String!, checkOutHour: String!): HourlyAvailability
     getTotalBookingsByDate(days: Int): BookingsCount
+    getVouchers: [Voucher]
+    getVoucherValidation(voucherCode: String!): VoucherValidation
   }
 
   extend type Mutation {
@@ -82,10 +103,13 @@ const typeDefs = gql`
       checkOutHour: String
       message: String
     ): BookingOutput
-
     timeoutBooking(bookingId: String): BookingOutput
     acceptBooking(bookingId: String!): BookingOutput
     declineBooking(bookingId: String!): BookingOutput
+    createVoucher(type: String!, value: Float!, usageLimit: Int!): Voucher
+    desactiveVoucher(voucherCode: String!): Voucher
+    insertVoucher(voucherCode: String!, bookingId: String!): BookingType
+    removeVoucher(voucherCode: String!, bookingId: String!): BookingType
   }
 `;
 
