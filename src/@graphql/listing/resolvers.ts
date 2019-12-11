@@ -144,6 +144,10 @@ const resolvers = {
       );
     },
 
+    getListingsCategories: async (_: any, args: any, { dataSources }: any) => {
+      return await dataSources.listingsAPI.getListingsCategories();
+    },
+
     getListingById: async (_: any, args: any, { dataSources }: any) => {
       const { listingsAPI, locationsAPI, usersAPI } = dataSources;
       return listingsAPI.fetchWholeListing(

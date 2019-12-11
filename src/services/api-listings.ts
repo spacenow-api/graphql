@@ -81,6 +81,12 @@ class ListingsAPI extends PersonalizationAPI {
     );
   };
 
+  getListingsCategories = async (): Promise<any> => {
+    return this.get(`/listings/count/categories`).catch(
+      err => new ApolloError(toError(err))
+    );
+  };
+
   getAllListingsByUser = async (
     userId: string
   ): Promise<_.IListingSettingsResponse> => {

@@ -274,6 +274,11 @@ const typeDefs = gql`
     count: CountAll
   }
 
+  type ListingsCategoriesCount {
+    category: String
+    count: CountAll
+  }
+
   type ListingAsset {
     listingId: Int
     assetId: String
@@ -360,6 +365,7 @@ const typeDefs = gql`
     getAllListings: [Listing]
     getTotalListingsByDate(days: Int, category: Int): ListingsCount
     getTotalListingsByCategory(category: ID): ListingsCount
+    getListingsCategories: [ListingsCategoriesCount]
     getPhotosByListingId(listingId: Int!): [ListingPhotos]
     getVideoByListingId(listingId: Int!): ListingPhotos
     getLocationById(id: Int!): Location
