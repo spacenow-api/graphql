@@ -39,7 +39,7 @@ const typeDefs = gql`
     checkInHour: String
     checkOutHour: String
     message: String
-    voucherId: String
+    voucherCode: String
     reservations: [String]
   }
 
