@@ -30,6 +30,7 @@ const typeDefs = gql`
     role: String
     userBanStatus: Int
     provider: String
+    voucherActiveId: String
     profile: UserProfile
     userVerifiedInfo: UserVerificationInfo
   }
