@@ -41,6 +41,7 @@ const typeDefs = gql`
     message: String
     voucherCode: String
     reservations: [String]
+    priceDetails: PriceDetails
   }
 
   type BookingOutput {
@@ -70,6 +71,15 @@ const typeDefs = gql`
   type VoucherValidation {
     status: String
     data: Voucher
+  }
+
+  type PriceDetails {
+    valueUnit: Float 
+    valuePerQuantity: Float 
+    valueFee: Float 
+    valueVoucher: Float
+    valueDiscount: Float
+    total: Float
   }
 
   extend type Query {
