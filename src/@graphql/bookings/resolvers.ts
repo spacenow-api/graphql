@@ -12,6 +12,10 @@ const resolvers = {
     },
     host(parent: any, args: any, context: any, info: any) {
       return context.dataSources.usersAPI.getUserLegacyById(parent.hostId);
+    },
+    priceDetails(parent: any, args: any, context: any, info: any) {
+      const { period, basePrice, guestServiceFee, totalPrice, voucherCode } = parent;
+      return context.dataSources.bookingsAPI.getPricesDetails(period, basePrice, guestServiceFee, totalPrice, voucherCode);
     }
   },
 

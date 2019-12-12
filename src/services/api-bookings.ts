@@ -41,8 +41,7 @@ class BookingsAPI extends PersonalizationAPI {
   };
 
   getPendingBookingsByUser = async (args: any): Promise<IBooking> => {
-    return this.get(`/getPendingByGuestId/${args.userId}/${args.listingId}`)
-      .catch(err => new ApolloError(toError(err)));
+    return this.get(`/getPendingByGuestId/${args.userId}/${args.listingId}`).catch(err => new ApolloError(toError(err)));
   };
 
   getAllBookingsByUser = async (args: any): Promise<any> => {
@@ -59,8 +58,7 @@ class BookingsAPI extends PersonalizationAPI {
   };
 
   getHourlyAvailability = async (listingId: number, date: string, checkInHour: string, checkOutHour: string): Promise<any> => {
-    return this.post(`/getHourlyAvailability`, { listingId, date, checkInHour, checkOutHour })
-      .catch(err => new ApolloError(toError(err)));
+    return this.post(`/getHourlyAvailability`, { listingId, date, checkInHour, checkOutHour }).catch(err => new ApolloError(toError(err)));
   }
 
   getTotalBookingsByDate = async (days: number): Promise<any> => {
@@ -89,6 +87,40 @@ class BookingsAPI extends PersonalizationAPI {
 
   removeVoucher = async (voucherCode: string, bookingId: string) => {
     return this.put(`/voucher/${voucherCode}/booking/${bookingId}/remove`).catch(err => new ApolloError(toError(err)));
+  }
+
+  getPricesDetails = async (period: number, basePrice: number, guestServiceFee: number, totalPrice: number, voucherCode: string) => {
+    try {
+      const valueUnit = basePrice;
+      const valuePerQuantity = basePrice * period;
+      const valueFee = valuePerQuantity * guestServiceFee;
+      let valueVoucher = 0;
+      let valueDiscount = 0;
+      if (voucherCode) {
+        const validateResult = await this.validateVoucher(voucherCode);
+        if (validateResult.status === 'VALID') {
+          const { data: { value, type } } = validateResult;
+          valueVoucher = value;
+          switch (type) {
+            case 'percentual': {
+              valueDiscount = valuePerQuantity * (value / 100);
+              break;
+            }
+            case 'zerofee': {
+              valueDiscount = valueFee;
+              break;
+            }
+            default: {
+              valueDiscount = value;
+              break;
+            }
+          }
+        }
+      }
+      return { valueUnit, valuePerQuantity, valueFee, valueVoucher, valueDiscount, total: totalPrice };
+    } catch (err) {
+      return new ApolloError(toError(err));
+    }
   }
 }
 
