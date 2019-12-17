@@ -40,6 +40,10 @@ class SearchAPI extends PersonalizationAPI {
       availability
     }).catch((err) => new ApolloError(toError(err)));
   };
+
+  searchSimilarSpaces = async (listingId: number) => {
+    return this.get(`/search/${listingId}/similar`).catch((err) => new ApolloError(toError(err)));
+  }
 }
 
 export default SearchAPI;
