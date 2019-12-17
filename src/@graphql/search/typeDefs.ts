@@ -1,7 +1,6 @@
 import { gql } from "apollo-server-express";
 
 const typeDefs = gql`
-
   type SearchPhotos {
     id: Int
     name: String
@@ -106,10 +105,37 @@ const typeDefs = gql`
   type SimilarResult {
     result: [SearchListing]
   }
-  
-  extend type Query {  
-    searchByAddress(lat: String!, lng: String!, categories: String, duration: String, priceMin: Float, priceMax: Float, instant: String, page: Int, limit: Int, radius: Int, availability: [String]): SearchResult
-    searchByFilters(key: String!, categories: String, duration: String, priceMin: Float, priceMax: Float, instant: String, page: Int, limit: Int, radius: Int, availability: [String]): SearchResult
+
+  extend type Query {
+    searchByAddress(
+      lat: String!
+      lng: String!
+      categories: String
+      duration: String
+      priceMin: Float
+      priceMax: Float
+      capacityMin: Int
+      capacityMax: Int
+      instant: String
+      page: Int
+      limit: Int
+      radius: Int
+      availability: [String]
+    ): SearchResult
+    searchByFilters(
+      key: String!
+      categories: String
+      duration: String
+      priceMin: Float
+      priceMax: Float
+      capacityMin: Int
+      capacityMax: Int
+      instant: String
+      page: Int
+      limit: Int
+      radius: Int
+      availability: [String]
+    ): SearchResult
     searchSimilarSpaces(listingId: Int!): SimilarResult
   }
 `;
