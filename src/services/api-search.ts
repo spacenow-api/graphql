@@ -42,7 +42,7 @@ class SearchAPI extends PersonalizationAPI {
   };
 
   searchSimilarSpaces = async (listingId: number) => {
-    return this.get(`/search/${listingId}/similar`).catch((err) => new ApolloError(toError(err)));
+    return this.get(`/search/similar/${listingId}`).catch((err) => new ApolloError(toError(err)));
   }
 }
 
