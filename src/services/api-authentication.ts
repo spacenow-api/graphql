@@ -18,12 +18,13 @@ class AuthAPI extends PersonalizationAPI {
     this.baseURL = apiAddress;
   }
 
-  signup = async (email: string, password: string, firstName: string, lastName: string) => {
+  signup = async (email: string, password: string, firstName: string, lastName: string, userType: string) => {
     return this.post(`${this.path}/signup`, {
       email,
       password,
       firstName,
-      lastName
+      lastName,
+      userType
     }).catch(catchApolloError);
   };
 
