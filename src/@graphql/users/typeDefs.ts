@@ -149,6 +149,7 @@ const typeDefs = gql`
     expiresIn: Int
     status: String
     user: CustomUserVerification
+    userType: String
   }
 
   type CustomAdminUserVerification {
