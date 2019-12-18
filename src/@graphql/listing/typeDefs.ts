@@ -51,7 +51,7 @@ const typeDefs = gql`
     totalPrice: Float
     bookingType: String
     basePrice: Float
-    createdAt: Int
+    createdAt: Date @date
     period: Int
     sourceId: String
     bookingState: String
@@ -67,6 +67,9 @@ const typeDefs = gql`
     guestId: String
     checkIn: String
     checkOut: String
+    guest: User
+    host: User
+    listing: Listing
   }
 
   type BookingPeriodLegacy {
