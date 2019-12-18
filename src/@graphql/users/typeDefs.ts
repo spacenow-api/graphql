@@ -1,4 +1,4 @@
-import { gql } from "apollo-server-express";
+import { gql } from 'apollo-server-express'
 
 const typeDefs = gql`
   input UserInput {
@@ -32,6 +32,7 @@ const typeDefs = gql`
     userBanStatus: Int
     provider: String
     voucherCode: String
+    userType: String
     profile: UserProfile
     userVerifiedInfo: UserVerificationInfo
   }
@@ -54,7 +55,7 @@ const typeDefs = gql`
     isEmail: Boolean
     isPushNotification: Boolean
   }
-  
+
   type UserNotification {
     userId: String
     notificationId: String
@@ -209,16 +210,11 @@ const typeDefs = gql`
     tokenGoogleValidate(token: String!): TokenWithUser
     tokenFacebookValidate(token: String!): TokenWithUser
     tokenAdminValidate(token: String!): AdminTokenValidation
-    signup(
-      email: String!
-      password: String!
-      firstName: String!
-      lastName: String!
-    ): TokenWithUser
+    signup(email: String!, password: String!, firstName: String!, lastName: String!, userType: String): TokenWithUser
     resetPassword(email: String!): Success
     resetPasswordUpdate(token: String!, password: String!): Success
     resendEmail(email: String!): Success
   }
-`;
+`
 
-export default typeDefs;
+export default typeDefs

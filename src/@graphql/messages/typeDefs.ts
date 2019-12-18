@@ -1,7 +1,6 @@
 import { gql } from 'apollo-server-express'
 
 const typeDefs = gql`
-
   type Messages {
     count: Int
     rows: [Message]
@@ -60,14 +59,27 @@ const typeDefs = gql`
   extend type Query {
     getMessagesByUser(id: String!, type: String!, pageIndex: Int!, pageSize: Int!): Messages
     getMessage(id: String!): Message
-    getMessageItems(id: String!, pageIndex: Int!, pageSize: Int): MessageItems
+    getMessageItems(id: String!, pageIndex: Int!, pageSize: Int): MessageItems @cacheControl(maxAge: 30)
     countUnreadMessages(id: String!, type: String!): CountMessage
     countUnreadMessageItems(id: String!, userId: String!): CountMessage
   }
 
   extend type Mutation {
     postMessage(listingId: Int!, guestId: String!, hostId: String!, content: String!): Message
-    postMessageToHost(listingId: Int!, guestId: String!, hostId: String!, content: String!, bookingPeriod: String!, period: Int!, reservations: [String]!, checkInTime: String, checkOutTime: String, hasFlexibleTime: Boolean!, peopleQuantity: Int, reason: String!): Message
+    postMessageToHost(
+      listingId: Int!
+      guestId: String!
+      hostId: String!
+      content: String!
+      bookingPeriod: String!
+      period: Int!
+      reservations: [String]!
+      checkInTime: String
+      checkOutTime: String
+      hasFlexibleTime: Boolean!
+      peopleQuantity: Int
+      reason: String!
+    ): Message
     readMessage(id: String!, userId: String!): Message
     postMessageItem(messageId: String!, sentBy: String!, content: String!, isRead: Int): MessageItem
     readMessageItems(id: String!): MessageItem
