@@ -140,6 +140,7 @@ const typeDefs = gql`
     email: String
     password: String
     emailConfirmed: Boolean
+    userType: String
     profile: UserProfile
     verification: UserVerificationInfo
   }
