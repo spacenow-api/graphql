@@ -51,7 +51,7 @@ const resolvers = {
     },
 
     tokenGoogleValidate: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.authAPI.tokenGoogleValidate({ token: args.token })
+      return dataSources.authAPI.tokenGoogleValidate({ token: args.token }, args.userType)
     },
 
     tokenFacebookValidate: async (_: any, args: any, { dataSources }: any) => {
