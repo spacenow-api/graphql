@@ -55,7 +55,7 @@ const resolvers = {
     },
 
     tokenFacebookValidate: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.authAPI.tokenFacebookValidate({ token: args.token })
+      return dataSources.authAPI.tokenFacebookValidate({ token: args.token }, args.userType)
     },
 
     tokenAdminValidate: async (_: any, args: any, { dataSources }: any) => {

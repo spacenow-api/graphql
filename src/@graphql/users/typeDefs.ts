@@ -209,7 +209,7 @@ const typeDefs = gql`
     loginAdmin(email: String, password: String): Token
     tokenValidate(token: String!): TokenValidation
     tokenGoogleValidate(token: String!): TokenWithUser
-    tokenFacebookValidate(token: String!): TokenWithUser
+    tokenFacebookValidate(token: String!, userType: String): TokenWithUser
     tokenAdminValidate(token: String!): AdminTokenValidation
     signup(email: String!, password: String!, firstName: String!, lastName: String!, userType: String): TokenWithUser
     resetPassword(email: String!): Success
