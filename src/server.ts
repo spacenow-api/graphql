@@ -3,7 +3,10 @@ import compression from "compression";
 import { ApolloServer } from "apollo-server-express";
 
 import { typeDefs, resolvers } from "./@graphql";
-import { CurrencyDirective } from "./@graphql/directives";
+import {
+  CurrencyDirective,
+  FormattableDateDirective
+} from "./@graphql/directives";
 
 import {
   AssetsAPI,
@@ -30,7 +33,10 @@ import * as config from "./config";
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  schemaDirectives: { currency: CurrencyDirective },
+  schemaDirectives: {
+    currency: CurrencyDirective,
+    date: FormattableDateDirective
+  },
   introspection: config.PLAYGROUND,
   playground: config.PLAYGROUND,
   context: ({ req, res }) => ({ token: req.headers.authorization, res }),

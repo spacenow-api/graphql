@@ -15,6 +15,21 @@ import {
 const resolvers = {
   Upload: GraphQLUpload,
 
+  Booking: {
+    guest(parent: any, args: any, context: any, info: any) {
+      return context.dataSources.usersAPI.getUserLegacyById(parent.guestId);
+    },
+    host(parent: any, args: any, context: any, info: any) {
+      return context.dataSources.usersAPI.getUserLegacyById(parent.hostId);
+    },
+    listing(parent: any, args: any, { dataSources }: any, info: any) {
+      return dataSources.listingsAPI.getListingById(
+        parent.listingId,
+        false,
+        false
+      );
+    }
+  },
   Listing: {
     amenities(parent: any, args: any, context: any, info: any) {
       return context.dataSources.listingsAPI.getAllAmenitiesByListingId(
@@ -143,9 +158,7 @@ const resolvers = {
       args: any,
       { dataSources }: any
     ) => {
-      return dataSources.listingsAPI.getAllListingsByCategory(
-        args.category
-      );
+      return dataSources.listingsAPI.getAllListingsByCategory(args.category);
     },
 
     getListingsCategories: async (_: any, args: any, { dataSources }: any) => {
@@ -194,9 +207,7 @@ const resolvers = {
       args: any,
       { dataSources }: any
     ) => {
-      return dataSources.listingsAPI.getAllAmenitiesByListingId(
-        args.listingId
-      );
+      return dataSources.listingsAPI.getAllAmenitiesByListingId(args.listingId);
     },
 
     getAllRules: async (_: any, args: any, { dataSources }: any) => {
