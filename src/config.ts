@@ -27,7 +27,7 @@ export const API_BOOKING: string =
   process.env.API_BOOKING || "http://localhost:6012/bookings";
 
 export const HOLIDAYS_HOST: string =
-  "https://data.gov.au/data/api/3/action/datastore_search?resource_id=bda4d4f2-7fde-4bfc-8a23-a6eefc8cef80";
+  "https://data.gov.au/data/api/3/action/datastore_search?resource_id=c4163dc4-4f5a-4cae-b787-43ef0fcf8d8b";
 
 export const GOOGLE_PLACE_API_URL =
   "https://maps.googleapis.com/maps/api/place/details/json?place_id=";
