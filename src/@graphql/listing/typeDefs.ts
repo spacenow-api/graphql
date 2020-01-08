@@ -282,6 +282,11 @@ const typeDefs = gql`
     count: CountAll
   }
 
+  type LocationsCountListings {
+    state: String
+    count: CountAll
+  }
+
   type ListingAsset {
     listingId: Int
     assetId: String
@@ -373,6 +378,7 @@ const typeDefs = gql`
     getPhotosByListingId(listingId: Int!): [ListingPhotos]
     getVideoByListingId(listingId: Int!): ListingPhotos
     getLocationById(id: Int!): Location
+    getLocationsCountListings: [LocationsCountListings]
     getAllAmenitiesBySubCategoryId(subCategoryId: Int!): [ListSettings]
     getAllAmenitiesByListingId(listing: Int!): [Amenity]
     getAllRules: [ListSettings]

@@ -192,6 +192,14 @@ const resolvers = {
       return dataSources.locationsAPI.getLocationById(args.id);
     },
 
+    getLocationsCountListings: async (
+      _: any,
+      args: any,
+      { dataSources }: any
+    ) => {
+      return dataSources.locationsAPI.getLocationsCountListings();
+    },
+
     getAllAmenitiesBySubCategoryId: async (
       _: any,
       args: any,

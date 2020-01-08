@@ -1,23 +1,32 @@
-import { ApolloError } from 'apollo-server-express';
+import { ApolloError } from "apollo-server-express";
 
-import { toError } from './../helpers/exceptions/HttpException';
+import { toError } from "./../helpers/exceptions/HttpException";
 
-import PersonalizationAPI from '../interfaces/personalization.inteface';
-import { ILocationRequest } from '../interfaces/location.interface';
+import PersonalizationAPI from "../interfaces/personalization.inteface";
+import { ILocationRequest } from "../interfaces/location.interface";
 
 class LocationsAPI extends PersonalizationAPI {
-
   constructor(apiAddress: string) {
     super();
     this.baseURL = apiAddress;
   }
 
   getLocationById = async (id: number) => {
-    return this.get(`/locations/${id}`).catch((err) => new ApolloError(toError(err)));
+    return this.get(`/locations/${id}`).catch(
+      err => new ApolloError(toError(err))
+    );
   };
 
   getOrCreateLocation = async (location: ILocationRequest) => {
-    return this.post('/locations', location).catch((err) => new ApolloError(toError(err)));
+    return this.post("/locations", location).catch(
+      err => new ApolloError(toError(err))
+    );
+  };
+
+  getLocationsCountListings = async () => {
+    return this.get("/locations/count/listings").catch(
+      err => new ApolloError(toError(err))
+    );
   };
 }
 
