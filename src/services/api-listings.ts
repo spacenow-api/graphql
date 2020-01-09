@@ -62,8 +62,8 @@ class ListingsAPI extends PersonalizationAPI {
     }
   };
 
-  getAllPlainListings = async () => {
-    return this.get(`/listings`).catch(err => new ApolloError(toError(err)));
+  getAllPlainListings = async (page: number, limit: number) => {
+    return this.get(`/listings?page=${page}&limit=${limit}`).catch(err => new ApolloError(toError(err)));
   };
 
   getAllListings = async () => {

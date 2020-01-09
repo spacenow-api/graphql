@@ -370,7 +370,7 @@ const typeDefs = gql`
     ): [Holidays]
     getListingById(id: Int!, isPublic: Boolean): Listing
     getAllListingsByUser(userId: String!, isPublic: Boolean): Listings
-    getAllPlainListings: [Listing]
+    getAllPlainListings(page: Int!, limit: Int!): Listings
     getAllListings: Listings
     getTotalListingsByDate(days: Int, category: Int): ListingsCount
     getTotalListingsByCategory(category: ID): ListingsCount

@@ -139,7 +139,7 @@ const resolvers = {
     },
 
     getAllPlainListings: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.listingsAPI.getAllPlainListings();
+      return dataSources.listingsAPI.getAllPlainListings(args.page, args.limit);
     },
 
     getAllListings: async (_: any, args: any, { dataSources }: any) => {
