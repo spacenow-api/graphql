@@ -103,7 +103,7 @@ class BookingsAPI extends PersonalizationAPI {
           valueVoucher = value;
           switch (type) {
             case 'percentual': {
-              valueDiscount = valuePerQuantity * (value / 100);
+              valueDiscount = (valuePerQuantity + valueFee) * (value / 100);
               break;
             }
             case 'zerofee': {
