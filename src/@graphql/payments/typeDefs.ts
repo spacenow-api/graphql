@@ -255,6 +255,7 @@ const typeDefs = gql`
     createPaymentCard(cardName: String!, cardNumber: String!, expMonth: Int!, expYear: Int!, cvc: String!): StripeSourceType
     deletePaymentCard(cardId: String!): StripeSourceType
     createPayment(cardId: String!, bookingId: String!): PaymentResponse
+    updateDefaultCard(cardId: String!): StripeSourceType
   }
 `;
 

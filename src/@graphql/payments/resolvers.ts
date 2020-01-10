@@ -67,6 +67,10 @@ const resolvers = {
 
     createPayment: async (_: any, args: any, { dataSources }: any) => {
       return dataSources.paymentsAPI.doPayment(args.cardId, args.bookingId);
+    },
+
+    updateDefaultCard: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.paymentsAPI.updateDefaultCard(args.cardId);
     }
   }
 };

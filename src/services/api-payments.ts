@@ -46,6 +46,11 @@ class PaymentsAPI extends PersonalizationAPI {
     const userId = await AuthUtils.getUserIdByToken(this.context.token);
     return this.post(`/payments/${userId}/create`, { cardId, bookingId }).catch(err => new ApolloError(toError(err)));
   };
+
+  updateDefaultCard = async (cardId: string) => {
+    const userId = await AuthUtils.getUserIdByToken(this.context.token);
+    return this.put(`/payments/${userId}/card/${cardId}/default`, { userId, cardId }).catch(err => new ApolloError(toError(err)));
+  }
 }
 
 export default PaymentsAPI;
