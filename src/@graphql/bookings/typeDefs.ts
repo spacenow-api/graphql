@@ -62,6 +62,7 @@ const typeDefs = gql`
     hours: Int
     isAvailable: Boolean
     suggestion: HourlySuggestion
+    error: String
   }
 
   type Voucher {
