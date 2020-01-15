@@ -59,7 +59,6 @@ const typeDefs = gql`
   }
 
   type HourlyAvailability {
-    status: Boolean
     hours: Int
     isAvailable: Boolean
     suggestion: HourlySuggestion
