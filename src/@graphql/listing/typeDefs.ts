@@ -266,7 +266,7 @@ const typeDefs = gql`
     rows: [Listing]
   }
 
-  type CountAll {
+  type CountAllListings {
     all: Int
     active: Int
     deleted: Int
@@ -274,17 +274,17 @@ const typeDefs = gql`
   }
 
   type ListingsCount {
-    count: CountAll
+    count: CountAllListings
   }
 
   type ListingsCategoriesCount {
     category: String
-    count: CountAll
+    count: CountAllListings
   }
 
   type LocationsCountListings {
     state: String
-    count: CountAll
+    count: CountAllListings
   }
 
   type ListingAsset {

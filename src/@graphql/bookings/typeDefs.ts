@@ -6,10 +6,6 @@ const typeDefs = gql`
     items: [BookingType]
   }
 
-  type BookingsCount {
-    count: Int
-  }
-
   type BookingType {
     listing: Listing
     listingId: Int
@@ -90,6 +86,17 @@ const typeDefs = gql`
     valueVoucher: Float
     valueDiscount: Float
     total: Float
+  }
+
+  type CountAllBookings {
+    all: Int
+    approved: Int
+    completed: Int
+    cancelled: Int
+  }
+
+  BookingsCount {
+    count: CountAllBookings
   }
 
   extend type Query {
