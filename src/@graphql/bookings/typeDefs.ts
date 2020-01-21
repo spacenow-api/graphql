@@ -95,7 +95,7 @@ const typeDefs = gql`
     cancelled: Int
   }
 
-  BookingsCount {
+  type BookingsCount {
     count: CountAllBookings
   }
 
