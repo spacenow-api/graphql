@@ -34,7 +34,7 @@ class AuthAPI extends PersonalizationAPI {
     return this.post(`${this.path}/token/validate`, token).catch(catchApolloError)
   }
 
-  tokenGoogleValidate = async (iToken: IToken, userType: string) => {
+  tokenGoogleValidate = async (iToken: IToken, userType: string = 'guest') => {
     return this.post(`${this.path}/token/google/validate`, { token: iToken.token, userType }).catch(catchApolloError)
   }
 
