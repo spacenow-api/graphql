@@ -80,9 +80,9 @@ const typeDefs = gql`
   }
 
   type PriceDetails {
-    valueUnit: Float 
-    valuePerQuantity: Float 
-    valueFee: Float 
+    valueUnit: Float
+    valuePerQuantity: Float
+    valueFee: Float
     valueVoucher: Float
     valueDiscount: Float
     total: Float
@@ -108,7 +108,12 @@ const typeDefs = gql`
       status: String
       period: [String]
     ): Bookings
-    getHourlyAvailability(listingId: Int!, date: String!, checkInHour: String!, checkOutHour: String!): HourlyAvailability
+    getHourlyAvailability(
+      listingId: Int!
+      date: String!
+      checkInHour: String!
+      checkOutHour: String!
+    ): HourlyAvailability
     getTotalBookingsByDate(days: Int): BookingsCount
     getVouchers: [Voucher]
     getVoucherValidation(voucherCode: String!): VoucherValidation
