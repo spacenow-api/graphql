@@ -40,8 +40,10 @@ export const WEWORK_API_KEY: string = "API_KEY";
 
 export const HUBSPOT_FORMS_API: string = "https://forms.hubspot.com";
 
-export const HUBSPOT_PORTAL_ID: string = "5126785";
-export const HUBSPOT_FORM_GUID: string = "81780c35-04df-4b49-a2d7-781537210b11";
+export const HUBSPOT_PORTAL_ID: string =
+  process.env.HUBSPOT_PORTAL_ID || "5126785";
+export const HUBSPOT_FORM_GUID: string =
+  process.env.HUBSPOT_FORM_GUID || "81780c35-04df-4b49-a2d7-781537210b11";
 
 export const API_CAMPAIGNS: string =
   process.env.API_CAMPAIGNS ||
