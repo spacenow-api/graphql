@@ -261,6 +261,18 @@ const resolvers = {
       { dataSources }: any
     ) => {
       return dataSources.listingsAPI.getExternalClicksByUser(args.userId);
+    },
+
+    fetchAddonsByListing: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.listingsAPI.fetchAddonsByListing(args.listingId);
+    },
+
+    fetchAddonsBySubCategory: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.listingsAPI.fetchAddonsBySubCategory(args.listSettingsId);
+    },
+
+    fetchAddonsByBooking: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.listingsAPI.fetchAddonsByBooking(args.bookingId);
     }
   },
 
@@ -396,6 +408,30 @@ const resolvers = {
 
     saveClicksByListing: async (_: any, args: any, { dataSources }: any) => {
       return dataSources.listingsAPI.saveClicksByListing(args.listingId);
+    },
+
+    createAddon: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.listingsAPI.createAddon(args.listingId, args.description, args.value);
+    },
+
+    deleteAddon: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.listingsAPI.deleteAddon(args.id);
+    },
+
+    createAddonSuggestion: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.listingsAPI.createAddonSuggestion(args.listSettingsId, args.description);
+    },
+
+    deleteAddonSuggestion: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.listingsAPI.deleteAddonSuggestion(args.id);
+    },
+
+    setAddonOnBooking: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.listingsAPI.setAddonOnBooking(args.bookingId, args.addonId);
+    },
+
+    removeAddonFromBooking: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.listingsAPI.removeAddonFromBooking(args.bookingId, args.addonId);
     }
   }
 };
