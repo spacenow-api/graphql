@@ -78,10 +78,6 @@ Parameters:
     Description: "Assets api host endpoint"
     Type: String
     Default: ""
-  CategoriesApiHost:
-    Description: "Assets api host endpoint"
-    Type: String
-    Default: ""
   LocationsApiHost:
     Description: "Assets api host endpoint"
     Type: String
@@ -258,8 +254,6 @@ Resources:
           Environment:
             - Name: ASSETS_API_HOST
               Value: !Ref AssetsApiHost
-            - Name: CATEGORIES_API_HOST
-              Value: !Ref CategoriesApiHost
             - Name: LOCATIONS_API_HOST
               Value: !Ref LocationsApiHost
             - Name: SPACES_API_HOST

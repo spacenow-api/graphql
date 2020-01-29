@@ -35,7 +35,6 @@ echo "Getting SSM Parameters "
 
 ACM_CERTIFICATE=$(get_ssm_parameter /$2/SPACENOW/ACM_CERTIFICATE)
 ASSETS_API_HOST=$(get_ssm_parameter /$2/SPACENOW/ASSETS_API_HOST)
-CATEGORIES_API_HOST=$(get_ssm_parameter /$2/SPACENOW/CATEGORIES_API_HOST)
 LOCATIONS_API_HOST=$(get_ssm_parameter /$2/SPACENOW/LOCATIONS_API_HOST)
 SPACES_API_HOST=$(get_ssm_parameter /$2/SPACENOW/SPACES_API_HOST)
 USERS_API_HOST=$(get_ssm_parameter /$2/SPACENOW/USERS_API_HOST)
@@ -59,7 +58,6 @@ CF_PARAMS="ParameterKey=ImageUrl,ParameterValue=$3 \
           ParameterKey=SliceName,ParameterValue=$4 \
           ParameterKey=Certificate,ParameterValue=$ACM_CERTIFICATE \
           ParameterKey=AssetsApiHost,ParameterValue=$ASSETS_API_HOST \
-          ParameterKey=CategoriesApiHost,ParameterValue=$CATEGORIES_API_HOST \
           ParameterKey=LocationsApiHost,ParameterValue=$LOCATIONS_API_HOST \
           ParameterKey=SpacesApiHost,ParameterValue=$SPACES_API_HOST \
           ParameterKey=UsersApiHost,ParameterValue=$USERS_API_HOST \
