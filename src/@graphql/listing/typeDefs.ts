@@ -359,6 +359,21 @@ const typeDefs = gql`
     rows: [ExternalClicksObject]
   }
 
+  type AddonsListingType {
+    id: String
+    listingId: Int
+    description: String
+    key: String
+    value: Float
+  }
+
+  type AddonsSubCategorySuggestionsType {
+    id: String
+    listSettingsId: Int
+    description: String
+    key: String
+  }
+
   extend type Query {
     getAvailabilitiesByListingId(listingId: Int!): Availabilities
     getAllBookings: [Booking]
@@ -389,6 +404,9 @@ const typeDefs = gql`
     getGoogleReviews(placeId: String): GoogleReviews
     getPrivateReviews(listingId: Int!): [PrivateReview]
     getExternalClicksByUser(userId: String!): ExternalClicksType
+    fetchAddonsByListing(listingId: Int!): [AddonsListingType]
+    fetchAddonsBySubCategory(listSettingsId: Int!): [AddonsSubCategorySuggestionsType]
+    fetchAddonsByBooking(bookingId: String!): [AddonsListingType]
   }
 
   extend type Mutation {
@@ -454,6 +472,12 @@ const typeDefs = gql`
       ratingOverall: Int!
     ): [Review]
     saveClicksByListing(listingId: Int!): ExternalClicksType
+    createAddon(listingId: Int!, description: String!, value: Float!): AddonsListingType
+    deleteAddon(id: String!): AddonsListingType
+    createAddonSuggestion(listSettingsId: Int!, description: String!): AddonsSubCategorySuggestionsType
+    deleteAddonSuggestion(id: String!): AddonsSubCategorySuggestionsType
+    setAddonOnBooking(bookingId: String!, addonId: String!): [AddonsListingType]
+    removeAddonFromBooking(bookingId: String!, addonId: String!): [AddonsListingType]
   }
 `;
 

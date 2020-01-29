@@ -318,6 +318,52 @@ class ListingsAPI extends PersonalizationAPI {
       err => new ApolloError(toError(err))
     );
   };
+
+  fetchAddonsByListing = async (listingId: number) => {
+    return this.get(`/addons/listing/${listingId}`)
+      .catch(err => new ApolloError(toError(err)));
+  }
+
+  createAddon = async (listingId: number, description: string, value: number) => {
+    return this.post("/addons/listing", { listingId, description, value })
+      .catch(err => new ApolloError(toError(err)));
+  }
+
+  deleteAddon = async (id: string) => {
+    return this.delete(`/addons/listing/${id}`)
+      .catch(err => new ApolloError(toError(err)));
+  }
+
+  fetchAddonsBySubCategory = async (listSettingsId: number) => {
+    return this.get(`/addons/suggestion/${listSettingsId}`)
+      .catch(err => new ApolloError(toError(err)));
+  }
+
+  createAddonSuggestion = async (listSettingsId: number, description: string) => {
+    return this.post("/addons/suggestion", { listSettingsId, description })
+      .catch(err => new ApolloError(toError(err)));
+  }
+
+  deleteAddonSuggestion = async (id: string) => {
+    return this.delete(`/addons/suggestion/${id}`)
+      .catch(err => new ApolloError(toError(err)));
+  }
+
+  fetchAddonsByBooking = async (bookingId: string) => {
+    return this.get(`/addons/booking/${bookingId}`)
+      .catch(err => new ApolloError(toError(err)));
+  }
+
+  setAddonOnBooking = async (bookingId: string, addonId: string) => {
+    return this.put("/addons/booking/set", { bookingId, addonId })
+      .catch(err => new ApolloError(toError(err)));
+  }
+
+  removeAddonFromBooking = async (bookingId: string, addonId: string) => {
+    return this.put("/addons/booking/remove", { bookingId, addonId })
+      .catch(err => new ApolloError(toError(err)));
+  }
+
 }
 
 export default ListingsAPI;
