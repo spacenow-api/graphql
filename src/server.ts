@@ -25,7 +25,8 @@ import {
   SearchAPI,
   MessagesAPI,
   TwilioAPI,
-  NotificationAPI
+  NotificationAPI,
+  V2ListingsAPI
 } from "./services";
 
 import * as config from "./config";
@@ -58,7 +59,8 @@ const server = new ApolloServer({
       searchAPI: new SearchAPI(config.SEARCH_API_HOST),
       messagesAPI: new MessagesAPI(config.MESSAGES_API),
       twilioAPI: new TwilioAPI(),
-      notificationAPI: new NotificationAPI(config.NOTIFICATION_API)
+      notificationAPI: new NotificationAPI(config.NOTIFICATION_API),
+      v2ListingAPI: new V2ListingsAPI(config.SPACES_API_HOST)
     };
   }
 });

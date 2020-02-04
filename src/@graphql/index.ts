@@ -11,6 +11,7 @@ import messagesT from "./messages/typeDefs";
 import twilioT from "./twilio/typeDefs";
 import notificationT from "./notification/typeDefs";
 import categoryT from "./category/typeDefs";
+import v2ListingT from "./v2-listing/typeDefs";
 
 const typeDefs = [
   rootT,
@@ -25,7 +26,8 @@ const typeDefs = [
   messagesT,
   twilioT,
   notificationT,
-  categoryT
+  categoryT,
+  v2ListingT
 ];
 
 import listingR from "./listing/resolvers";
@@ -40,6 +42,7 @@ import messagesR from "./messages/resolvers";
 import twilioR from "./twilio/resolvers";
 import notificationR from "./notification/resolvers";
 import categoryR from "./category/resolvers";
+import v2ListingR from "./v2-listing/resolvers";
 
 const resolvers: any = [
   listingR,
@@ -53,7 +56,8 @@ const resolvers: any = [
   messagesR,
   twilioR,
   notificationR,
-  categoryR
+  categoryR,
+  v2ListingR
 ];
 
 export { typeDefs, resolvers };
