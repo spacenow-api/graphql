@@ -27,6 +27,12 @@ class V2ListingsAPI extends PersonalizationAPI {
       err => new ApolloError(toError(err))
     );
   };
+
+  putV2Listing = (input: any) => {
+    return this.patch(`${this.path}/${input.id}`, input).catch(
+      err => new ApolloError(toError(err))
+    );
+  };
 }
 
 export default V2ListingsAPI;

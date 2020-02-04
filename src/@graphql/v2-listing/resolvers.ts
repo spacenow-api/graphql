@@ -16,6 +16,10 @@ const resolvers = {
     postV2Listing: async (_: any, args: any, { dataSources }: any) => {
       const { v2ListingAPI } = dataSources;
       return v2ListingAPI.postV2Listing();
+    },
+    putV2Listing: async (_: any, args: any, { dataSources }: any) => {
+      const { v2ListingAPI } = dataSources;
+      return v2ListingAPI.putV2Listing(args.input);
     }
   }
 };
