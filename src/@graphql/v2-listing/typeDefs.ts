@@ -12,8 +12,26 @@ const typeDefs = gql`
     isPublished: Boolean
     isReady: Boolean
     status: String
+    location: V2Location
     createdAt: Date @date
     updatedAt: Date @date
+  }
+
+  type V2Location {
+    id: Int
+    userId: String
+    country: String
+    address1: String
+    address2: String
+    buildingName: String
+    city: String
+    state: String
+    zipcode: String
+    lat: String
+    lng: String
+    placeId: String
+    createdAt: Date
+    updatedAt: Date
   }
 
   type V2Step {
@@ -44,25 +62,12 @@ const typeDefs = gql`
     isReady: Boolean
     status: String
     location: V2InputLocation
-    createdAt: Date
-    updatedAt: Date
   }
 
   input V2InputLocation {
-    id: Int
-    userId: String
-    country: String
-    address1: String
-    address2: String
-    buildingName: String
-    city: String
-    state: String
-    zipcode: String
-    lat: String
-    lng: String
+    address: String
+    unit: String
     placeId: String
-    createdAt: Date
-    updatedAt: Date
   }
 
   extend type Query {
