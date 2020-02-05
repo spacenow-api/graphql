@@ -28,10 +28,12 @@ class V2ListingsAPI extends PersonalizationAPI {
     );
   };
 
-  putV2Listing = (input: any) => {
-    return this.patch(`${this.path}/${input.id}`, input).catch(
-      err => new ApolloError(toError(err))
-    );
+  putV2Listing = async (input: any) => {
+    console.log("INPUT ==>> ", new Object({ ...input }));
+    return await this.patch(
+      `${this.path}/${input.id}`,
+      new Object({ ...input })
+    ).catch(err => new ApolloError(toError(err)));
   };
 }
 
