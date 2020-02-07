@@ -10,6 +10,18 @@ const resolvers = {
     getV2Steps: async (_: any, args: any, { dataSources }: any) => {
       const { v2ListingAPI } = dataSources;
       return v2ListingAPI.getV2Steps(args.id);
+    },
+    getV2Rules: async (_: any, args: any, { dataSources }: any) => {
+      const { v2ListingAPI } = dataSources;
+      return v2ListingAPI.getV2Rules();
+    },
+    getV2Amenities: async (_: any, args: any, { dataSources }: any) => {
+      const { v2ListingAPI } = dataSources;
+      return v2ListingAPI.getV2Amenities();
+    },
+    getV2Features: async (_: any, args: any, { dataSources }: any) => {
+      const { v2ListingAPI } = dataSources;
+      return v2ListingAPI.getV2Features();
     }
   },
   Mutation: {
