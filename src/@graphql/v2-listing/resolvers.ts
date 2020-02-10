@@ -22,6 +22,14 @@ const resolvers = {
     getV2Features: async (_: any, args: any, { dataSources }: any) => {
       const { v2ListingAPI } = dataSources;
       return v2ListingAPI.getV2Features();
+    },
+    getV2RootCategories: async (_: any, args: any, { dataSources }: any) => {
+      const { v2ListingAPI } = dataSources;
+      return v2ListingAPI.getV2RootCategories();
+    },
+    getV2Category: async (_: any, args: any, { dataSources }: any) => {
+      const { v2ListingAPI } = dataSources;
+      return v2ListingAPI.getV2Category(args.id);
     }
   },
   Mutation: {

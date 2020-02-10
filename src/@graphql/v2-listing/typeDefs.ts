@@ -63,6 +63,11 @@ const typeDefs = gql`
     link: String
     listingType: String
     direction: String
+    alcoholLicence: String
+    wifiNetwork: String
+    wifiUsername: String
+    wifiPassword: String
+    wifiPasswordDecrypt: String
     createdAt: Date @date
     updatedAt: Date @date
   }
@@ -147,6 +152,18 @@ const typeDefs = gql`
     updatedAt: Date @date
   }
 
+  type V2Category {
+    id: String
+    name: String
+    slug: String
+    order: Int
+    parentId: String
+    isActive: Boolean
+    children: [V2Category]
+    createdAt: Date @date
+    updatedAt: Date @date
+  }
+
   input V2InputListing {
     id: Int
     userId: String
@@ -165,6 +182,7 @@ const typeDefs = gql`
     amenities: [V2InputAmenity]
     rules: [V2InputRule]
     features: [V2InputFeature]
+    category: [V2InputCategory]
   }
 
   input V2InputListingData {
@@ -191,6 +209,10 @@ const typeDefs = gql`
     link: String
     listingType: String
     direction: String
+    alcoholLicence: String
+    wifiNetwork: String
+    wifiUsername: String
+    wifiPassword: String
   }
 
   input V2InputLocation {
@@ -241,12 +263,18 @@ const typeDefs = gql`
     id: String
   }
 
+  input V2InputCategory {
+    id: String
+  }
+
   extend type Query {
     getV2Listing(id: Int!): V2Listing
     getV2Steps(id: Int!): V2Step
     getV2Rules: [V2Rule]
     getV2Amenities: [V2Amenity]
     getV2Features: [V2Feature]
+    getV2RootCategories: [V2Category]
+    getV2Category(id: String!): [V2Category]
   }
 
   extend type Mutation {
