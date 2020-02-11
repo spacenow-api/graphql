@@ -30,7 +30,11 @@ const resolvers = {
     getV2Category: async (_: any, args: any, { dataSources }: any) => {
       const { v2ListingAPI } = dataSources;
       return v2ListingAPI.getV2Category(args.id);
-    }
+    },
+    getV2Cancellations: async (_: any, args: any, { dataSources }: any) => {
+      const { v2ListingAPI } = dataSources;
+      return v2ListingAPI.getV2Cancellations();
+    },
   },
   Mutation: {
     postV2Listing: async (_: any, args: any, { dataSources }: any) => {
@@ -40,6 +44,10 @@ const resolvers = {
     putV2Listing: async (_: any, args: any, { dataSources }: any) => {
       const { v2ListingAPI } = dataSources;
       return v2ListingAPI.putV2Listing(args.input);
+    },
+    postV2Location: async (_: any, args: any, { dataSources }: any) => {
+      const { v2ListingAPI } = dataSources;
+      return v2ListingAPI.postV2Location(args.input);
     }
   }
 };

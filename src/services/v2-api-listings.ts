@@ -46,6 +46,12 @@ class V2ListingsAPI extends PersonalizationAPI {
     );
   };
 
+  getV2Cancellations = () => {
+    return this.get(`${this.path}/cancellations`).catch(
+      err => new ApolloError(toError(err))
+    );
+  };
+
   getV2Listing = (id: any) => {
     return this.get(`${this.path}/listing/${id}`).catch(
       err => new ApolloError(toError(err))
@@ -59,9 +65,15 @@ class V2ListingsAPI extends PersonalizationAPI {
   };
 
   putV2Listing = async (input: any) => {
-    console.log("INPUT ==>> ", new Object({ ...input }));
     return await this.patch(
       `${this.path}/listing/${input.id}`,
+      new Object({ ...input })
+    ).catch(err => new ApolloError(toError(err)));
+  };
+
+  postV2Location = async (input: any) => {
+    return await this.post(
+      `${this.path}/location`,
       new Object({ ...input })
     ).catch(err => new ApolloError(toError(err)));
   };

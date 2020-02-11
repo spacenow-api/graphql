@@ -48,9 +48,15 @@ const typeDefs = gql`
     maxTerm: Float
     description: String
     basePrice: Float
+    maxPrice: Float
+    peakPrice: Float
     currency: String
+    checkInStart: String
+    checkInEnd: String
+    checkOut: String
     isAbsorvedFee: Boolean
     capacity: Int
+    cancellationPolicy: Int
     size: Float
     meetingRooms: Int
     isFurnished: Boolean
@@ -62,6 +68,7 @@ const typeDefs = gql`
     status: String
     link: String
     listingType: String
+    listingStyle: String
     direction: String
     alcoholLicence: String
     wifiNetwork: String
@@ -118,9 +125,10 @@ const typeDefs = gql`
     id: Int
     listingAccessDaysId: Int
     weekday: Int
-    openHour: String
-    closeHour: String
+    openHour: Date
+    closeHour: Date
     allday: Boolean
+    peaktime: Boolean
     createdAt: Date @date
     updatedAt: Date @date
   }
@@ -164,6 +172,15 @@ const typeDefs = gql`
     updatedAt: Date @date
   }
 
+  type V2Cancellation {
+    id: String
+    policyName: String
+    policyContent: String
+    isActive: Boolean
+    createdAt: Date @date
+    updatedAt: Date @date
+  }
+
   input V2InputListing {
     id: Int
     userId: String
@@ -194,9 +211,15 @@ const typeDefs = gql`
     maxTerm: Float
     description: String
     basePrice: Float
+    maxPrice: Float
+    peakPrice: Float
     currency: String
+    checkInStart: String
+    checkInEnd: String
+    checkOut: String
     isAbsorvedFee: Boolean
     capacity: Int
+    cancellationPolicy: Int
     size: Float
     meetingRooms: Int
     isFurnished: Boolean
@@ -208,6 +231,7 @@ const typeDefs = gql`
     status: String
     link: String
     listingType: String
+    listingStyle: String
     direction: String
     alcoholLicence: String
     wifiNetwork: String
@@ -246,9 +270,10 @@ const typeDefs = gql`
     id: Int
     listingAccessDaysId: Int
     weekday: Int
-    openHour: String
-    closeHour: String
+    openHour: Date
+    closeHour: Date
     allday: Boolean
+    peaktime: Boolean
   }
 
   input V2InputAmenity {
@@ -275,11 +300,13 @@ const typeDefs = gql`
     getV2Features: [V2Feature]
     getV2RootCategories: [V2Category]
     getV2Category(id: String!): [V2Category]
+    getV2Cancellations: [V2Cancellation]
   }
 
   extend type Mutation {
     postV2Listing: V2Listing
     putV2Listing(input: V2InputListing): V2Listing
+    postV2Location(input: V2InputLocation): V2Location
   }
 `;
 
