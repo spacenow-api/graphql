@@ -21,7 +21,7 @@ const typeDefs = gql`
     id: Int
     userId: String
     locationId: Int
-    listSettingsParentId: Int
+    listSettingsParentId: String
     bookingPeriod: String
     title: String
     bookingType: String
@@ -31,10 +31,11 @@ const typeDefs = gql`
     listingData: V2Data
     location: V2Location
     accessDays: V2AccessDays
-    photos: [V2Photos]
+    photos: [V2Media]
     rules: [V2Rule]
-    amenities: [V2Amenity]
     features: [V2Feature]
+    amenities: [V2Amenity]
+    tags: [V2Tag]
     createdAt: Date @date
     updatedAt: Date @date
   }
@@ -74,7 +75,11 @@ const typeDefs = gql`
     wifiNetwork: String
     wifiUsername: String
     wifiPassword: String
-    wifiPasswordDecrypt: String
+    capacityCocktail: Int
+    capacityBanquet: Int
+    capacityTheatre: Int
+    capacityClassroom: Int
+    capacityBoardroom: Int
     createdAt: Date @date
     updatedAt: Date @date
   }
@@ -96,13 +101,18 @@ const typeDefs = gql`
     updatedAt: Date @date
   }
 
-  type V2Photos {
-    id: Int
-    listingId: Int
+  type V2Media {
     name: String
+    type: String
     isCover: Boolean
     createdAt: Date @date
     updatedAt: Date @date
+  }
+
+  type V2UploadMedia {
+    name: String
+    type: String
+    isCover: Boolean
   }
 
   type V2AccessDays {
@@ -172,6 +182,17 @@ const typeDefs = gql`
     updatedAt: Date @date
   }
 
+  type V2Tag {
+    id: String
+    name: String
+    slug: String
+    order: Int
+    categoryId: String
+    isActive: Boolean
+    createdAt: Date @date
+    updatedAt: Date @date
+  }
+
   type V2Cancellation {
     id: String
     policyName: String
@@ -185,7 +206,7 @@ const typeDefs = gql`
     id: Int
     userId: String
     locationId: Int
-    listSettingsParentId: Int
+    listSettingsParentId: String
     bookingPeriod: String
     title: String
     bookingType: String
@@ -194,12 +215,13 @@ const typeDefs = gql`
     status: String
     location: V2InputLocation
     listingData: V2InputListingData
-    photos: [V2InputPhotos]
+    photos: [V2InputMedia]
     accessDays: V2InputAccessDays
     amenities: [V2InputAmenity]
     rules: [V2InputRule]
     features: [V2InputFeature]
     category: [V2InputCategory]
+    tags: [V2InputTag]
   }
 
   input V2InputListingData {
@@ -237,6 +259,11 @@ const typeDefs = gql`
     wifiNetwork: String
     wifiUsername: String
     wifiPassword: String
+    capacityCocktail: Int
+    capacityBanquet: Int
+    capacityTheatre: Int
+    capacityClassroom: Int
+    capacityBoardroom: Int
   }
 
   input V2InputLocation {
@@ -245,10 +272,13 @@ const typeDefs = gql`
     placeId: String
   }
 
-  input V2InputPhotos {
-    id: Int
-    listingId: Int
+  input V2InputUpload {
+    file: Upload
+  }
+
+  input V2InputMedia {
     name: String
+    type: String
     isCover: Boolean
   }
 
@@ -292,6 +322,10 @@ const typeDefs = gql`
     id: String
   }
 
+  input V2InputTag {
+    id: String
+  }
+
   extend type Query {
     getV2Listing(id: Int!): V2Listing
     getV2Steps(id: Int!): V2Step
@@ -299,7 +333,7 @@ const typeDefs = gql`
     getV2Amenities: [V2Amenity]
     getV2Features: [V2Feature]
     getV2RootCategories: [V2Category]
-    getV2Category(id: String!): [V2Category]
+    getV2CategoryTags(id: String!): [V2Tag]
     getV2Cancellations: [V2Cancellation]
   }
 
@@ -307,6 +341,7 @@ const typeDefs = gql`
     postV2Listing: V2Listing
     putV2Listing(input: V2InputListing): V2Listing
     postV2Location(input: V2InputLocation): V2Location
+    postV2Media(input: V2InputUpload): V2UploadMedia
   }
 `;
 

@@ -27,14 +27,14 @@ const resolvers = {
       const { v2ListingAPI } = dataSources;
       return v2ListingAPI.getV2RootCategories();
     },
-    getV2Category: async (_: any, args: any, { dataSources }: any) => {
+    getV2CategoryTags: async (_: any, args: any, { dataSources }: any) => {
       const { v2ListingAPI } = dataSources;
-      return v2ListingAPI.getV2Category(args.id);
+      return v2ListingAPI.getV2CategoryTags(args.id);
     },
     getV2Cancellations: async (_: any, args: any, { dataSources }: any) => {
       const { v2ListingAPI } = dataSources;
       return v2ListingAPI.getV2Cancellations();
-    },
+    }
   },
   Mutation: {
     postV2Listing: async (_: any, args: any, { dataSources }: any) => {
@@ -48,6 +48,10 @@ const resolvers = {
     postV2Location: async (_: any, args: any, { dataSources }: any) => {
       const { v2ListingAPI } = dataSources;
       return v2ListingAPI.postV2Location(args.input);
+    },
+    postV2Media: async (_: any, args: any, { dataSources }: any) => {
+      const { v2ListingAPI } = dataSources;
+      return v2ListingAPI.postV2Media(args.input);
     }
   }
 };
