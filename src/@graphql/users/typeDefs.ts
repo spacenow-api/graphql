@@ -201,11 +201,7 @@ const typeDefs = gql`
   extend type Mutation {
     updateUserLegacy(input: UserInput): Success
     updateUserProfileLegacy(userId: String, input: UserProfileInput): Success
-    updateUserNotification(
-      userId: ID
-      notificationId: ID
-      input: UserNotificationInput
-    ): UserNotification
+    updateUserNotification(userId: ID, notificationId: ID, input: UserNotificationInput): UserNotification
     updateProfilePicture(file: Upload, userId: String!): UserProfilePicture
     deleteUserByEmail(email: String): Success
     deleteDocument(id: String, userId: String): Success
@@ -216,13 +212,7 @@ const typeDefs = gql`
     tokenGoogleValidate(token: String!, userType: String): TokenWithUser
     tokenFacebookValidate(token: String!, userType: String): TokenWithUser
     tokenAdminValidate(token: String!): AdminTokenValidation
-    signup(
-      email: String!
-      password: String!
-      firstName: String!
-      lastName: String!
-      userType: String
-    ): TokenWithUser
+    signup(email: String!, password: String!, phoneNumber: String!, firstName: String!, lastName: String!, userType: String): TokenWithUser
     resetPassword(email: String!): Success
     resetPasswordUpdate(token: String!, password: String!): Success
     resendEmail(email: String!): Success
