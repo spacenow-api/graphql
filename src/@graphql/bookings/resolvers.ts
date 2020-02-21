@@ -76,7 +76,7 @@ const resolvers = {
     },
 
     createVoucher: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.bookingsAPI.createVoucher(args.type, args.value, args.usageLimit);
+      return dataSources.bookingsAPI.createVoucher(args.code, args.type, args.value, args.usageLimit, args.expireAt);
     },
 
     desactiveVoucher: async (_: any, args: any, { dataSources }: any) => {
