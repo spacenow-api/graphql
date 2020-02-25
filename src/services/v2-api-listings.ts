@@ -64,8 +64,9 @@ class V2ListingsAPI extends PersonalizationAPI {
     await streaming({ stream, filename });
     const formData = new FormData();
     formData.append("file", fs.createReadStream(`${TEMP_FILE_UPLOAD}/${filename}`), filename);
+    formData.append("category", input.category);
     fs.unlink(`${TEMP_FILE_UPLOAD}/${filename}`, () => (err: any) => console.error(err));
-    return await this.post(`${this.path}/media`, formData, { headers: formData.getHeaders() }).catch(err => new ApolloError(toError(err)));
+    return await this.post(`${this.path}/media/${input.listingId}`, formData, { headers: formData.getHeaders() }).catch(err => new ApolloError(toError(err)));
   };
 }
 

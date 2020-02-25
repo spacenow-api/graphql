@@ -72,8 +72,8 @@ const typeDefs = gql`
     listingStyle: String
     direction: String
     alcoholLicence: String
+    wifiSpeed: String
     wifiNetwork: String
-    wifiUsername: String
     wifiPassword: String
     capacityCocktail: Int
     capacityBanquet: Int
@@ -105,6 +105,7 @@ const typeDefs = gql`
     name: String
     type: String
     isCover: Boolean
+    category: String
     createdAt: Date @date
     updatedAt: Date @date
   }
@@ -113,6 +114,7 @@ const typeDefs = gql`
     name: String
     type: String
     isCover: Boolean
+    category: String
   }
 
   type V2AccessDays {
@@ -256,8 +258,8 @@ const typeDefs = gql`
     listingStyle: String
     direction: String
     alcoholLicence: String
+    wifiSpeed: String
     wifiNetwork: String
-    wifiUsername: String
     wifiPassword: String
     capacityCocktail: Int
     capacityBanquet: Int
@@ -273,13 +275,16 @@ const typeDefs = gql`
   }
 
   input V2InputUpload {
-    file: Upload
+    file: Upload,
+    category: String
+    listingId: Int
   }
 
   input V2InputMedia {
     name: String
     type: String
     isCover: Boolean
+    category: String
   }
 
   input V2InputAccessDays {
