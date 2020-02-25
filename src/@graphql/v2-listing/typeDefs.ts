@@ -204,6 +204,20 @@ const typeDefs = gql`
     updatedAt: Date @date
   }
 
+input V2InputStep {
+  id: Int
+  listingId: Int
+  step1: String
+  step2: String
+  step3: String
+  step4: String
+  step5: String
+  step6: String
+  step7: String
+  step8: String
+  completed: Float
+}
+
   input V2InputListing {
     id: Int
     userId: String
@@ -343,6 +357,7 @@ const typeDefs = gql`
   }
 
   extend type Mutation {
+    putV2Steps(id: Int!, steps: V2InputStep!): V2Step
     postV2Listing: V2Listing
     putV2Listing(input: V2InputListing): V2Listing
     postV2Location(input: V2InputLocation): V2Location
