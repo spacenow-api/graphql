@@ -1,4 +1,4 @@
-import { gql } from "apollo-server-express";
+import { gql } from 'apollo-server-express'
 
 const typeDefs = gql`
   type Location {
@@ -374,15 +374,23 @@ const typeDefs = gql`
     key: String
   }
 
+  type InspectionType {
+    id: Int
+    listingId: Int
+    messageId: String
+    guestId: String
+    status: String
+    date: String
+    time: String
+    createdAt: String
+    updatedAt: String
+  }
+
   extend type Query {
     getAvailabilitiesByListingId(listingId: Int!): Availabilities
     getAllBookings: [Booking]
     getBooking: Booking
-    getAllHolidays(
-      countryShortName: String
-      year: Int
-      state: String!
-    ): [Holidays]
+    getAllHolidays(countryShortName: String, year: Int, state: String!): [Holidays]
     getListingById(id: Int!, isPublic: Boolean): Listing
     getAllListingsByUser(userId: String!, isPublic: Boolean): Listings
     getAllPlainListings(page: Int!, limit: Int!): Listings
@@ -407,6 +415,7 @@ const typeDefs = gql`
     fetchAddonsByListing(listingId: Int!): [AddonsListingType]
     fetchAddonsBySubCategory(listSettingsId: Int!): [AddonsSubCategorySuggestionsType]
     fetchAddonsByBooking(bookingId: String!): [AddonsListingType]
+    getInspections: [InspectionType]
   }
 
   extend type Mutation {
@@ -445,11 +454,7 @@ const typeDefs = gql`
       listingRules: [Int]
       link: String
     ): Listing
-    getOrCreateLocation(
-      suggestAddress: String!
-      unit: String
-      placeId: String
-    ): Location
+    getOrCreateLocation(suggestAddress: String!, unit: String, placeId: String): Location
     publish(listingId: Int!, status: Boolean!): Listing
     cleanListingAvailabilities(listingId: Int!): Success
     removeListingById(listingId: Int!): Success
@@ -466,11 +471,7 @@ const typeDefs = gql`
       ratingCleanliness: Int!
       ratingLocation: Int!
     ): [Review]
-    createReviewFromHost(
-      bookingId: String!
-      publicComment: String!
-      ratingOverall: Int!
-    ): [Review]
+    createReviewFromHost(bookingId: String!, publicComment: String!, ratingOverall: Int!): [Review]
     saveClicksByListing(listingId: Int!): ExternalClicksType
     createAddon(listingId: Int!, description: String!, value: Float!): AddonsListingType
     deleteAddon(id: String!): AddonsListingType
@@ -478,7 +479,15 @@ const typeDefs = gql`
     deleteAddonSuggestion(id: String!): AddonsSubCategorySuggestionsType
     setAddonOnBooking(bookingId: String!, addonId: String!): [AddonsListingType]
     removeAddonFromBooking(bookingId: String!, addonId: String!): [AddonsListingType]
+    createInspection(
+      listingId: Int!
+      messageId: String!
+      guestId: String!
+      date: String!
+      time: String!
+    ): InspectionType
+    updateInspection(status: String!, id: Int!): InspectionType
   }
-`;
+`
 
-export default typeDefs;
+export default typeDefs
