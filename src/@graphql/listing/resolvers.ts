@@ -346,11 +346,17 @@ const resolvers = {
 
     createInspection: async (_: any, args: any, { dataSources }: any) => {
       console.log(args)
-      return dataSources.listingsAPI.createInspection(args)
+      return dataSources.listingsAPI.createInspection(
+        args.listingId,
+        args.messageId,
+        args.guestId,
+        args.date,
+        args.time
+      )
     },
 
     updateInspection: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.listingsAPI.updateInspection(args)
+      return dataSources.listingsAPI.updateInspection(args.id, args.status)
     }
   }
 }
