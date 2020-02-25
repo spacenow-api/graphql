@@ -9,6 +9,7 @@ import PersonalizationAPI from '../interfaces/personalization.inteface'
 import * as config from '../config'
 
 import * as _ from '../interfaces/listing.interface'
+import { IInspection } from 'interfaces'
 
 class ListingsAPI extends PersonalizationAPI {
   constructor(apiAddress: string) {
@@ -268,12 +269,12 @@ class ListingsAPI extends PersonalizationAPI {
     return this.get('/inspection').catch(err => new ApolloError(toError(err)))
   }
 
-  createInspection = async (data: any) => {
+  createInspection = async (data: IInspection) => {
     console.log('data api: ==>>>', data)
     return this.post('/inspection/create', { data }).catch(err => new ApolloError(toError(err)))
   }
 
-  updateInspection = async (data: any) => {
+  updateInspection = async (data: IInspection) => {
     return this.put('/inspection/update', { data }).catch(err => new ApolloError(toError(err)))
   }
 }
