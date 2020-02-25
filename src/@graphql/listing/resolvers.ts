@@ -158,6 +158,7 @@ const resolvers = {
     },
 
     getAllAccessTypes: async (_: any, args: any, { dataSources }: any) => {
+      console.log('dataSources', dataSources)
       return dataSources.listingsAPI.getAllAccessTypes()
     },
 
@@ -194,7 +195,8 @@ const resolvers = {
       return dataSources.listingsAPI.fetchAddonsByBooking(args.bookingId)
     },
 
-    getInspections: async (_: any, { dataSources }: any) => {
+    getInspections: async (_: any, args: any, { dataSources }: any) => {
+      console.log('dataSources', dataSources)
       return dataSources.listingsAPI.getInspections()
     }
   },
