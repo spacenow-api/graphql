@@ -54,6 +54,10 @@ class V2ListingsAPI extends PersonalizationAPI {
     return await this.patch(`${this.path}/listing/${input.id}`, new Object({ ...input })).catch(err => new ApolloError(toError(err)));
   };
 
+  putV2Steps = async (id: any, steps: any) => {
+    return await this.patch(`${this.path}/listing/${id}/steps`, new Object({ ...steps })).catch(err => new ApolloError(toError(err)));
+  };
+
   postV2Location = async (input: any) => {
     return await this.post(`${this.path}/location`, new Object({ ...input })).catch(err => new ApolloError(toError(err)));
   };

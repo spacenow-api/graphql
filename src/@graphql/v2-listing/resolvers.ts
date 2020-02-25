@@ -37,6 +37,10 @@ const resolvers = {
     }
   },
   Mutation: {
+    putV2Steps: async (_: any, args: any, { dataSources }: any) => {
+      const { v2ListingAPI } = dataSources;
+      return v2ListingAPI.putV2Steps(args.id, args.steps);
+    },
     postV2Listing: async (_: any, args: any, { dataSources }: any) => {
       const { v2ListingAPI } = dataSources;
       return v2ListingAPI.postV2Listing();
