@@ -479,13 +479,7 @@ const typeDefs = gql`
     deleteAddonSuggestion(id: String!): AddonsSubCategorySuggestionsType
     setAddonOnBooking(bookingId: String!, addonId: String!): [AddonsListingType]
     removeAddonFromBooking(bookingId: String!, addonId: String!): [AddonsListingType]
-    createInspection(
-      listingId: Int!
-      messageId: String!
-      guestId: String!
-      date: String!
-      time: String!
-    ): InspectionType
+    createInspection(listingId: Int!, messageId: String!, guestId: String, date: String!, time: String!): InspectionType
     updateInspection(status: String!, id: Int!): InspectionType
   }
 `

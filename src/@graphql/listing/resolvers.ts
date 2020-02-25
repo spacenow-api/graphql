@@ -343,6 +343,7 @@ const resolvers = {
     },
 
     createInspection: async (_: any, args: any, { dataSources }: any) => {
+      console.log(args)
       return dataSources.listingsAPI.createInspection(args)
     },
 

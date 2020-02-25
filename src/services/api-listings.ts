@@ -269,6 +269,7 @@ class ListingsAPI extends PersonalizationAPI {
   }
 
   createInspection = async (data: any) => {
+    console.log('data api: ==>>>', data)
     return this.post('/inspection/create', { data }).catch(err => new ApolloError(toError(err)))
   }
 
