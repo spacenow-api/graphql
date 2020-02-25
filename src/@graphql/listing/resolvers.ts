@@ -5,7 +5,7 @@ import GraphQLUpload from 'graphql-upload'
 
 import * as config from '../../config'
 
-import { IHolidayResponse, IListingResponse, IUpdateRequest, IDraftRequest } from '../../interfaces'
+import { IHolidayResponse, IListingResponse, IUpdateRequest, IDraftRequest, IInspection } from '../../interfaces'
 
 const resolvers = {
   Upload: GraphQLUpload,
@@ -344,7 +344,7 @@ const resolvers = {
       return dataSources.listingsAPI.removeAddonFromBooking(args.bookingId, args.addonId)
     },
 
-    createInspection: async (_: any, args: any, { dataSources }: any) => {
+    createInspection: async (_: any, args: IInspection, { dataSources }: any) => {
       console.log(args)
       return dataSources.listingsAPI.createInspection(
         args.listingId,

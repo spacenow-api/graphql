@@ -269,13 +269,15 @@ class ListingsAPI extends PersonalizationAPI {
     return this.get('/inspection').catch(err => new ApolloError(toError(err)))
   }
 
-  createInspection = async (data: IInspection) => {
-    console.log('data api: ==>>>', data)
-    return this.post('/inspection/create', { data }).catch(err => new ApolloError(toError(err)))
+  createInspection = async (listingId: any, messageId: any, guestId: any, date: any, time: any) => {
+    // console.log('data api: ==>>>', data)
+    return this.post('/inspection/create', { listingId, messageId, guestId, date, time }).catch(
+      err => new ApolloError(toError(err))
+    )
   }
 
-  updateInspection = async (data: IInspection) => {
-    return this.put('/inspection/update', { data }).catch(err => new ApolloError(toError(err)))
+  updateInspection = async (id: any, status: any) => {
+    return this.put('/inspection/update', { id, status }).catch(err => new ApolloError(toError(err)))
   }
 }
 
