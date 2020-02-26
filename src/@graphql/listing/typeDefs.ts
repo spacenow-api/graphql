@@ -480,7 +480,7 @@ const typeDefs = gql`
     setAddonOnBooking(bookingId: String!, addonId: String!): [AddonsListingType]
     removeAddonFromBooking(bookingId: String!, addonId: String!): [AddonsListingType]
     createInspection(listingId: Int!, messageId: String!, guestId: String, date: String!, time: String!): InspectionType
-    updateInspection(id: Int!, status: String!): InspectionType
+    updateInspection(id: String!, status: String!): InspectionType
   }
 `
 
