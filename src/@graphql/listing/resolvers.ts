@@ -196,7 +196,6 @@ const resolvers = {
     },
 
     getInspections: async (_: any, args: any, { dataSources }: any) => {
-      console.log('dataSources', dataSources)
       return dataSources.listingsAPI.getInspections()
     }
   },
@@ -345,7 +344,6 @@ const resolvers = {
     },
 
     createInspection: async (_: any, args: IInspection, { dataSources }: any) => {
-      console.log(args)
       return dataSources.listingsAPI.createInspection(
         args.listingId,
         args.messageId,
