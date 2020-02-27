@@ -270,7 +270,6 @@ class ListingsAPI extends PersonalizationAPI {
   }
 
   createInspection = async (listingId: any, messageId: any, guestId: any, date: any, time: any) => {
-    // console.log('data api: ==>>>', data)
     return this.post('/inspection', { listingId, messageId, guestId, date, time }).catch(
       err => new ApolloError(toError(err))
     )
@@ -278,6 +277,18 @@ class ListingsAPI extends PersonalizationAPI {
 
   updateInspection = async (id: any, status: any) => {
     return this.put('/inspection', { id, status }).catch(err => new ApolloError(toError(err)))
+  }
+
+  getSavedListingsByUser = async (userId: string) => {
+    return this.get(`/saved-listings/${userId}`).catch(err => new ApolloError(toError(err)))
+  }
+
+  createSavedListing = async (listingId: number, userId: string) => {
+    return this.post('/saved-listing', { listingId, userId }).catch(err => new ApolloError(toError(err)))
+  }
+
+  checkSavedListingByUser = async (listingId: string, userId: string) => {
+    return this.get(`/saved-listing/${listingId}/${userId}`).catch(err => new ApolloError(toError(err)))
   }
 }
 

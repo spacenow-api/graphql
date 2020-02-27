@@ -392,6 +392,13 @@ const typeDefs = gql`
     content: String
   }
 
+  type SavedListingType {
+    listingId: Int
+    userId: String
+    listing: Listing
+    user: User
+  }
+
   extend type Query {
     getAvailabilitiesByListingId(listingId: Int!): Availabilities
     getAllBookings: [Booking]
@@ -422,6 +429,8 @@ const typeDefs = gql`
     fetchAddonsBySubCategory(listSettingsId: Int!): [AddonsSubCategorySuggestionsType]
     fetchAddonsByBooking(bookingId: String!): [AddonsListingType]
     getInspections: [InspectionType]
+    getSavedListingsByUser: [SavedListingType]
+    checkSavedListingByUser: [SavedListingType]
   }
 
   extend type Mutation {
@@ -487,6 +496,7 @@ const typeDefs = gql`
     removeAddonFromBooking(bookingId: String!, addonId: String!): [AddonsListingType]
     createInspection(listingId: Int!, messageId: String!, guestId: String, date: String!, time: String!): InspectionType
     updateInspection(id: String!, status: String!): InspectionType
+    createSavedListing(listingId: Int!, userId: String!): SavedListingType
   }
 `
 

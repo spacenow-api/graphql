@@ -24,6 +24,7 @@ import { IDocument, IDocumentInput } from './document.interface'
 import { IReviews } from './listing.interface'
 import { IMessage } from './message.interface'
 import { IInspection } from './inspection.interface'
+import { ISavedListing } from './saved-listing.interface'
 
 export {
   IAssetOutput,
@@ -61,5 +62,6 @@ export {
   IDocumentInput,
   IMessage,
   IReviews,
-  IInspection
+  IInspection,
+  ISavedListing
 }

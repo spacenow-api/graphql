@@ -5,7 +5,14 @@ import GraphQLUpload from 'graphql-upload'
 
 import * as config from '../../config'
 
-import { IHolidayResponse, IListingResponse, IUpdateRequest, IDraftRequest, IInspection } from '../../interfaces'
+import {
+  IHolidayResponse,
+  IListingResponse,
+  IUpdateRequest,
+  IDraftRequest,
+  IInspection,
+  ISavedListing
+} from '../../interfaces'
 
 const resolvers = {
   Upload: GraphQLUpload,
@@ -197,6 +204,14 @@ const resolvers = {
 
     getInspections: async (_: any, args: any, { dataSources }: any) => {
       return dataSources.listingsAPI.getInspections()
+    },
+
+    getSavedListingsByUser: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.listingsAPI.getSavedListingsByUser(args.userId)
+    },
+
+    checkSavedListingByUser: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.listingsAPI.checkSavedListingByUser(args.listingId, args.userId)
     }
   },
 
@@ -355,6 +370,10 @@ const resolvers = {
 
     updateInspection: async (_: any, args: any, { dataSources }: any) => {
       return dataSources.listingsAPI.updateInspection(args.id, args.status)
+    },
+
+    createSavedListing: async (_: any, args: ISavedListing, { dataSources }: any) => {
+      return dataSources.listingsAPI.createSavedListing(args.listingId, args.userId)
     }
   }
 }
