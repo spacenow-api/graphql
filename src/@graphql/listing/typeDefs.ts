@@ -388,7 +388,7 @@ const typeDefs = gql`
   }
 
   type MessageItemInspec {
-    content
+    content: String
   }
 
   extend type Query {
