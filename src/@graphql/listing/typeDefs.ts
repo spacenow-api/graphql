@@ -388,6 +388,7 @@ const typeDefs = gql`
   }
 
   type MessageItemInspec {
+    id: String
     content: String
   }
 
