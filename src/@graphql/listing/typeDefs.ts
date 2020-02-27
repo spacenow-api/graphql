@@ -429,8 +429,8 @@ const typeDefs = gql`
     fetchAddonsBySubCategory(listSettingsId: Int!): [AddonsSubCategorySuggestionsType]
     fetchAddonsByBooking(bookingId: String!): [AddonsListingType]
     getInspections: [InspectionType]
-    getSavedListingsByUser: [SavedListingType]
-    checkSavedListingByUser: [SavedListingType]
+    getSavedListingsByUser(userId: String!): [SavedListingType]
+    checkSavedListingByUser(userId: String!, listingId: Int!): [SavedListingType]
   }
 
   extend type Mutation {
