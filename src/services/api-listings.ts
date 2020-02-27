@@ -266,7 +266,7 @@ class ListingsAPI extends PersonalizationAPI {
   }
 
   getInspections = async () => {
-    return this.get('/inspection').catch(err => new ApolloError(toError(err)))
+    return this.get('/inspections').catch(err => new ApolloError(toError(err)))
   }
 
   createInspection = async (listingId: any, messageId: any, guestId: any, date: any, time: any) => {
