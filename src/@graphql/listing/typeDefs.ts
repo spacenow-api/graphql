@@ -382,8 +382,13 @@ const typeDefs = gql`
     status: String
     date: String
     time: String
+    messages: [MessageItem]
     createdAt: String
     updatedAt: String
+  }
+
+  type MessageItem {
+    content
   }
 
   extend type Query {
