@@ -212,6 +212,10 @@ const resolvers = {
 
     checkSavedListingByUser: async (_: any, args: any, { dataSources }: any) => {
       return dataSources.listingsAPI.checkSavedListingByUser(args.listingId, args.userId)
+    },
+
+    removeSavedListingByUser: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.listingsAPI.removeSavedListingByUser(args.listingId, args.userId)
     }
   },
 

@@ -430,7 +430,7 @@ const typeDefs = gql`
     fetchAddonsByBooking(bookingId: String!): [AddonsListingType]
     getInspections: [InspectionType]
     getSavedListingsByUser(userId: String!): [SavedListingType]
-    checkSavedListingByUser(userId: String!, listingId: Int!): [SavedListingType]
+    checkSavedListingByUser(userId: String!, listingId: Int!): SavedListingType
   }
 
   extend type Mutation {
@@ -497,6 +497,7 @@ const typeDefs = gql`
     createInspection(listingId: Int!, messageId: String!, guestId: String, date: String!, time: String!): InspectionType
     updateInspection(id: String!, status: String!): InspectionType
     createSavedListing(listingId: Int!, userId: String!): SavedListingType
+    removeSavedListingByUser(listingId: Int!, userId: String!): SavedListingType
   }
 `
 
