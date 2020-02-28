@@ -382,13 +382,17 @@ const typeDefs = gql`
     status: String
     date: String
     time: String
-    messages: [MessageItemInspection]
+    message: MessageInspection
     createdAt: String
     updatedAt: String
   }
 
-  type MessageItemInspection {
+  type MessageInspection {
     id: String
+    messages: [MessageItemsInspection]
+  }
+
+  type MessageItemsInspection {
     content: String
   }
 
