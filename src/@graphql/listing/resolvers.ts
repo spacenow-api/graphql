@@ -212,10 +212,6 @@ const resolvers = {
 
     checkSavedListingByUser: async (_: any, args: any, { dataSources }: any) => {
       return dataSources.listingsAPI.checkSavedListingByUser(args.listingId, args.userId)
-    },
-
-    removeSavedListingByUser: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.listingsAPI.removeSavedListingByUser(args.listingId, args.userId)
     }
   },
 
@@ -378,6 +374,10 @@ const resolvers = {
 
     createSavedListing: async (_: any, args: ISavedListing, { dataSources }: any) => {
       return dataSources.listingsAPI.createSavedListing(args.listingId, args.userId)
+    },
+
+    removeSavedListingByUser: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.listingsAPI.removeSavedListingByUser(args.listingId, args.userId)
     }
   }
 }
