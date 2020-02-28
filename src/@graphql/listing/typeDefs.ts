@@ -396,7 +396,7 @@ const typeDefs = gql`
     listingId: Int
     userId: String
     listing: Listing
-    user: User
+    user: UserProfile
   }
 
   extend type Query {
