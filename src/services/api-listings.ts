@@ -288,11 +288,11 @@ class ListingsAPI extends PersonalizationAPI {
   }
 
   checkSavedListingByUser = async (listingId: string, userId: string) => {
-    return this.get(`/saved-listing/${listingId}/${userId}`).catch(err => new ApolloError(toError(err)))
+    return this.get(`/saved-listing/${userId}/${listingId}`).catch(err => new ApolloError(toError(err)))
   }
 
   removeSavedListingByUser = async (listingId: string, userId: string) => {
-    return this.delete(`/saved-listing/${listingId}/${userId}`).catch(err => new ApolloError(toError(err)))
+    return this.delete(`/saved-listing/${userId}/${listingId}`).catch(err => new ApolloError(toError(err)))
   }
 }
 
