@@ -1,5 +1,7 @@
 import { ICategory } from "../interfaces";
 import PersonalizationAPI from "../interfaces/personalization.inteface";
+import { ApolloError } from 'apollo-server-express'
+import { toError } from './../helpers/exceptions/HttpException'
 
 class CategoriesAPI extends PersonalizationAPI {
   private path = "/categories";
@@ -12,6 +14,27 @@ class CategoriesAPI extends PersonalizationAPI {
   getCategories = async (): Promise<ICategory> => {
     return this.get(`${this.path}`);
   };
+
+  getCategoryActivities = async (id: number): Promise<any> => {
+    return this.get(`/v2/category/${id}/activities`).catch(err => new ApolloError(toError(err)))
+  }
+
+  getCategoryFeatures = async (id: number): Promise<any> => {
+    return this.get(`/v2/category/${id}/features`).catch(err => new ApolloError(toError(err)))
+  }
+
+  getCategoryStyles = async (id: number): Promise<any> => {
+    return this.get(`/v2/category/${id}/styles`).catch(err => new ApolloError(toError(err)))
+  }
+
+  getCategoryRules = async (id: number): Promise<any> => {
+    return this.get(`/v2/category/${id}/rules`).catch(err => new ApolloError(toError(err)))
+  }
+
+  getCategoryAmenities = async (id: number): Promise<any> => {
+    return this.get(`/v2/category/${id}/amenities`).catch(err => new ApolloError(toError(err)))
+  }
+
 }
 
 export default CategoriesAPI;
