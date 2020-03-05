@@ -1,4 +1,4 @@
-import { gql } from 'apollo-server-express'
+import { gql } from "apollo-server-express";
 
 const typeDefs = gql`
   type Location {
@@ -471,6 +471,7 @@ const typeDefs = gql`
       listingAccessDays: ListingAccessDaysInput
       listingExceptionDates: [String]
       listingRules: [Int]
+      listingActivities: [Int]
       link: String
     ): Listing
     getOrCreateLocation(suggestAddress: String!, unit: String, placeId: String): Location
@@ -503,6 +504,6 @@ const typeDefs = gql`
     createSavedListing(listingId: Int!, userId: String!): SavedListingType
     removeSavedListingByUser(listingId: Int!, userId: String!): SavedListingType
   }
-`
+`;
 
-export default typeDefs
+export default typeDefs;

@@ -58,10 +58,12 @@ const typeDefs = gql`
   extend type Query {
     getCategories: [Category]
     getCategoryActivities(id: Int!): [ListSettings]
+    getCategorySpecifications(id: Int!): [ListSettings]
     getCategoryAmenities(id: Int!): [ListSettings]
     getCategoryFeatures(id: Int!): [ListSettings]
     getCategoryRules(id: Int!): [ListSettings]
     getCategoryStyles(id: Int!): [ListSettings]
+    getCategoryBookingPeriod(id: Int!): BookingPeriod
   }
 `;
 

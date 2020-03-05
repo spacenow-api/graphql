@@ -4,20 +4,26 @@ const resolvers = {
       return dataSources.categoriesAPI.getCategories();
     },
     getCategoryActivities: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.categoriesAPI.getCategoryActivities(args.id)
+      return dataSources.categoriesAPI.getCategoryActivities(args.id);
+    },
+    getCategorySpecifications: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.categoriesAPI.getCategorySpecifications(args.id);
     },
     getCategoryAmenities: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.categoriesAPI.getCategoryAmenities(args.id)
+      return dataSources.categoriesAPI.getCategoryAmenities(args.id);
     },
     getCategoryFeatures: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.categoriesAPI.getCategoryFeatures(args.id)
+      return dataSources.categoriesAPI.getCategoryFeatures(args.id);
     },
     getCategoryStyles: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.categoriesAPI.getCategoryStyles(args.id)
+      return dataSources.categoriesAPI.getCategoryStyles(args.id);
     },
     getCategoryRules: async (_: any, args: any, { dataSources }: any) => {
-      return dataSources.categoriesAPI.getCategoryRules(args.id)
+      return dataSources.categoriesAPI.getCategoryRules(args.id);
     },
+    getCategoryBookingPeriod: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.categoriesAPI.getCategoryBookingPeriod(args.id);
+    }
   }
 };
 
