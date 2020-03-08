@@ -21,6 +21,12 @@ const resolvers = {
     getCategoryRules: async (_: any, args: any, { dataSources }: any) => {
       return dataSources.categoriesAPI.getCategoryRules(args.id);
     },
+    getCategoryAccess: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.categoriesAPI.getCategoryAccess(args.id);
+    },
+    getCategoryCheckinTypes: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.categoriesAPI.getCategoryCheckinTypes(args.id);
+    },
     getCategoryBookingPeriod: async (_: any, args: any, { dataSources }: any) => {
       return dataSources.categoriesAPI.getCategoryBookingPeriod(args.id);
     }

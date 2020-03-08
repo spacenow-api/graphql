@@ -39,6 +39,14 @@ class CategoriesAPI extends PersonalizationAPI {
     return this.get(`/v2/category/${id}/amenities`).catch(err => new ApolloError(toError(err)));
   };
 
+  getCategoryAccess = async (id: number): Promise<any> => {
+    return this.get(`/v2/category/${id}/access`).catch(err => new ApolloError(toError(err)));
+  };
+
+  getCategoryCheckinTypes = async (id: number): Promise<any> => {
+    return this.get(`/v2/category/${id}/checkin-types`).catch(err => new ApolloError(toError(err)));
+  };
+
   getCategoryBookingPeriod = async (id: number): Promise<any> => {
     return this.get(`/v2/category/${id}/booking-period`).catch(err => new ApolloError(toError(err)));
   };
