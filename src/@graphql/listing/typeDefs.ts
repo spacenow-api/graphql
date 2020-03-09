@@ -129,7 +129,63 @@ const typeDefs = gql`
     settingsData: ListSettings
   }
 
+  type ListingFeatures {
+    id: Int
+    listingId: Int
+    listSettingsId: Int
+    amount: Int
+    quantity: Int
+    currency: String
+    settings: String
+    type: String
+    createdAt: String
+    updatedAt: String
+    settingsData: ListSettings
+  }
+
+  type ListingAccess {
+    id: Int
+    listingId: Int
+    listSettingsId: Int
+    amount: Int
+    quantity: Int
+    currency: String
+    settings: String
+    type: String
+    createdAt: String
+    updatedAt: String
+    settingsData: ListSettings
+  }
+
   type Amenity {
+    id: Int
+    listingId: Int
+    listSettingsId: Int
+    amount: Int
+    quantity: Int
+    currency: String
+    settings: String
+    type: String
+    createdAt: String
+    updatedAt: String
+    settingsData: ListSettings
+  }
+
+  type Feature {
+    id: Int
+    listingId: Int
+    listSettingsId: Int
+    amount: Int
+    quantity: Int
+    currency: String
+    settings: String
+    type: String
+    createdAt: String
+    updatedAt: String
+    settingsData: ListSettings
+  }
+
+  type Access {
     id: Int
     listingId: Int
     listSettingsId: Int
@@ -231,6 +287,8 @@ const typeDefs = gql`
     bookingType: String
     spaceType: String
     listingAmenities: [Int]
+    listingFeatures: [Int]
+    listingAccess: [Int]
     listingExceptionDates: [String]
     listingRules: [Int]
     listingAccessDays: ListingAccessDays
@@ -254,6 +312,8 @@ const typeDefs = gql`
     listingData: ListingData
     location: Location
     amenities: [Amenity]
+    access: [Access]
+    features: [Feature]
     rules: [ListingRules]
     photos: [ListingPhotos]
     accessDays: ListingAccessDays
@@ -450,6 +510,7 @@ const typeDefs = gql`
       quantity: Int
       listingId: Int
       accessType: String
+      listingStyle: String
       bookingNoticeTime: String
       minTerm: Float
       maxTerm: Float
@@ -472,6 +533,8 @@ const typeDefs = gql`
       listingExceptionDates: [String]
       listingRules: [Int]
       listingActivities: [Int]
+      listingFeatures: [Int]
+      listingAccess: [Int]
       link: String
     ): Listing
     getOrCreateLocation(suggestAddress: String!, unit: String, placeId: String): Location

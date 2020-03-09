@@ -33,6 +33,7 @@ class ListingsAPI extends PersonalizationAPI {
       const rulesArray = (id: string) => this.getListingRulesByListingId(id)
       const accessDaysObj = (id: string) => this.getListingAccessDaysByListingId(id)
       const userObj = (id: string) => usersAPI.getUserLegacyById(id)
+      const features = (id: string) => this.getV2ListingFeatures(id)
       return Promise.all([
         listingDataObj(listingId),
         locationObj(listingObj.locationId),
@@ -41,7 +42,8 @@ class ListingsAPI extends PersonalizationAPI {
         photosArray(listingId),
         rulesArray(listingId),
         accessDaysObj(listingId),
-        userObj(listingObj.userId)
+        userObj(listingObj.userId),
+        features(listingId)
       ]).then(values => {
         return {
           ...listingObj,
@@ -52,13 +54,21 @@ class ListingsAPI extends PersonalizationAPI {
           photos: values[4],
           rules: values[5],
           accessDays: values[6],
-          user: values[7]
+          user: values[7],
+          features: values[8]
         }
       })
     } catch (err) {
       throw new ApolloError(toError(err))
     }
   }
+
+  /**
+   * V2
+   */
+  getV2ListingFeatures = (id: any) => {
+    return this.get(`/v2/listing/${id}/features`).catch(err => new ApolloError(toError(err)));
+  };
 
   getAllPlainListings = async (page: number, limit: number) => {
     return this.get(`/listings?page=${page}&limit=${limit}`).catch(err => new ApolloError(toError(err)))
@@ -155,6 +165,7 @@ class ListingsAPI extends PersonalizationAPI {
   }
 
   update = async (listing: _.IUpdateRequest) => {
+    console.log("LISTING DATA ===>>>", listing);
     return await this.put(`/listings/update`, listing).catch(err => new ApolloError(toError(err)))
   }
 

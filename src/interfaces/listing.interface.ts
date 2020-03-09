@@ -12,6 +12,7 @@ export interface IUpdateRequest {
   listingId: number;
   title?: string;
   accessType?: string;
+  listingStyle?: string;
   bookingNoticeTime?: string;
   minTerm?: number;
   maxTerm?: number;
@@ -34,6 +35,8 @@ export interface IUpdateRequest {
   listingExceptionDates?: Array<string>;
   listingRules?: Array<number>;
   listingActivities?: Array<number>;
+  listingAccess?: Array<number>;
+  listingFeatures?: Array<number>;
   link?: string;
 }
 

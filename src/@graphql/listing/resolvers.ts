@@ -234,6 +234,7 @@ const resolvers = {
           listingId: args.listingId,
           title: args.title,
           accessType: args.accessType,
+          listingStyle: args.listingStyle,
           bookingNoticeTime: args.bookingNoticeTime,
           minTerm: args.minTerm,
           maxTerm: args.maxTerm,
@@ -256,6 +257,8 @@ const resolvers = {
           listingExceptionDates: args.listingExceptionDates,
           listingRules: args.listingRules,
           listingActivities: args.listingActivities,
+          listingFeatures: args.listingFeatures,
+          listingAccess: args.listingAccess,
           link: args.link
         };
         listingObj = await listingsAPI.update(requestUpdateObj);
