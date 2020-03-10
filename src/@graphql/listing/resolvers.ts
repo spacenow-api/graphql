@@ -25,6 +25,18 @@ const resolvers = {
     amenities(parent: any, args: any, context: any, info: any) {
       return context.dataSources.listingsAPI.getAllAmenitiesByListingId(parent.id);
     },
+    activities(parent: any, args: any, context: any, info: any) {
+      return context.dataSources.listingsAPI.getV2ListingActivities(parent.id);
+    },
+    access(parent: any, args: any, context: any, info: any) {
+      return context.dataSources.listingsAPI.getV2ListingAccess(parent.id);
+    },
+    features(parent: any, args: any, context: any, info: any) {
+      return context.dataSources.listingsAPI.getV2ListingFeatures(parent.id);
+    },
+    styles(parent: any, args: any, context: any, info: any) {
+      return context.dataSources.listingsAPI.getV2ListingStyles(parent.id);
+    },
     listingData(parent: any, args: any, context: any, info: any) {
       return context.dataSources.listingsAPI.getListingDataByListingId(parent.id);
     },
@@ -129,7 +141,9 @@ const resolvers = {
 
     getListingById: async (_: any, args: any, { dataSources }: any) => {
       const { listingsAPI, locationsAPI, usersAPI } = dataSources;
-      return listingsAPI.fetchWholeListing(args.id, locationsAPI, usersAPI, args.isPublic);
+      const listing = await listingsAPI.fetchWholeListing(args.id, locationsAPI, usersAPI, args.isPublic);
+      console.log("LISTING ===>>>", listing)
+      return listing
     },
 
     getLetterListingsByState: async (_: any, args: any, { dataSources }: any) => {
@@ -259,6 +273,7 @@ const resolvers = {
           listingActivities: args.listingActivities,
           listingFeatures: args.listingFeatures,
           listingAccess: args.listingAccess,
+          listingStyles: args.listingStyles,
           link: args.link
         };
         listingObj = await listingsAPI.update(requestUpdateObj);

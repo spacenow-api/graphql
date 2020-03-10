@@ -33,7 +33,10 @@ class ListingsAPI extends PersonalizationAPI {
       const rulesArray = (id: string) => this.getListingRulesByListingId(id)
       const accessDaysObj = (id: string) => this.getListingAccessDaysByListingId(id)
       const userObj = (id: string) => usersAPI.getUserLegacyById(id)
+      const activities = (id: string) => this.getV2ListingActivities(id)
       const features = (id: string) => this.getV2ListingFeatures(id)
+      const access = (id: string) => this.getV2ListingAccess(id)
+      const styles = (id: string) => this.getV2ListingStyles(id)
       return Promise.all([
         listingDataObj(listingId),
         locationObj(listingObj.locationId),
@@ -43,7 +46,10 @@ class ListingsAPI extends PersonalizationAPI {
         rulesArray(listingId),
         accessDaysObj(listingId),
         userObj(listingObj.userId),
-        features(listingId)
+        activities(listingId),
+        features(listingId),
+        access(listingId),
+        styles(listingId)
       ]).then(values => {
         return {
           ...listingObj,
@@ -55,7 +61,10 @@ class ListingsAPI extends PersonalizationAPI {
           rules: values[5],
           accessDays: values[6],
           user: values[7],
-          features: values[8]
+          activities: values[8],
+          features: values[9],
+          access: values[10],
+          styles: values[11]
         }
       })
     } catch (err) {
@@ -70,6 +79,21 @@ class ListingsAPI extends PersonalizationAPI {
     return this.get(`/v2/listing/${id}/features`).catch(err => new ApolloError(toError(err)));
   };
 
+  getV2ListingActivities = (id: any) => {
+    return this.get(`/v2/listing/${id}/activities`).catch(err => new ApolloError(toError(err)));
+  };
+
+  getV2ListingAccess = (id: any) => {
+    return this.get(`/v2/listing/${id}/access`).catch(err => new ApolloError(toError(err)));
+  };
+
+  getV2ListingStyles = (id: any) => {
+    return this.get(`/v2/listing/${id}/styles`).catch(err => new ApolloError(toError(err)));
+  };
+
+  /**
+   * V1
+   */
   getAllPlainListings = async (page: number, limit: number) => {
     return this.get(`/listings?page=${page}&limit=${limit}`).catch(err => new ApolloError(toError(err)))
   }

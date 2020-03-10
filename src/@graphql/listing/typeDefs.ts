@@ -106,7 +106,7 @@ const typeDefs = gql`
     specData: String
   }
 
-  type ListingRules {
+  type Rule {
     id: Int
     listingId: Int
     listSettingsId: Int
@@ -115,21 +115,7 @@ const typeDefs = gql`
     settingsData: ListSettings
   }
 
-  type ListingAmenities {
-    id: Int
-    listingId: Int
-    listSettingsId: Int
-    amount: Int
-    quantity: Int
-    currency: String
-    settings: String
-    type: String
-    createdAt: String
-    updatedAt: String
-    settingsData: ListSettings
-  }
-
-  type ListingFeatures {
+  type Activity {
     id: Int
     listingId: Int
     listSettingsId: Int
@@ -142,21 +128,7 @@ const typeDefs = gql`
     updatedAt: String
     settingsData: ListSettings
   }
-
-  type ListingAccess {
-    id: Int
-    listingId: Int
-    listSettingsId: Int
-    amount: Int
-    quantity: Int
-    currency: String
-    settings: String
-    type: String
-    createdAt: String
-    updatedAt: String
-    settingsData: ListSettings
-  }
-
+  
   type Amenity {
     id: Int
     listingId: Int
@@ -186,6 +158,20 @@ const typeDefs = gql`
   }
 
   type Access {
+    id: Int
+    listingId: Int
+    listSettingsId: Int
+    amount: Int
+    quantity: Int
+    currency: String
+    settings: String
+    type: String
+    createdAt: String
+    updatedAt: String
+    settingsData: ListSettings
+  }
+
+  type Style {
     id: Int
     listingId: Int
     listSettingsId: Int
@@ -270,6 +256,7 @@ const typeDefs = gql`
     id: Int
     listingId: Int
     accessType: String
+    listingStyle: String
     bookingNoticeTime: String
     minTerm: Float
     maxTerm: Float
@@ -286,11 +273,13 @@ const typeDefs = gql`
     maxEntranceHeight: String
     bookingType: String
     spaceType: String
+    listingActivities: [Int]
     listingAmenities: [Int]
     listingFeatures: [Int]
     listingAccess: [Int]
     listingExceptionDates: [String]
     listingRules: [Int]
+    listingStyles: [Int]
     listingAccessDays: ListingAccessDays
     status: String
     link: String
@@ -311,10 +300,12 @@ const typeDefs = gql`
     count: Int
     listingData: ListingData
     location: Location
+    activities: [Activity]
     amenities: [Amenity]
     access: [Access]
     features: [Feature]
-    rules: [ListingRules]
+    rules: [Rule]
+    styles: [Style]
     photos: [ListingPhotos]
     accessDays: ListingAccessDays
     settingsParent: ListSettingsParent
@@ -535,6 +526,7 @@ const typeDefs = gql`
       listingActivities: [Int]
       listingFeatures: [Int]
       listingAccess: [Int]
+      listingStyles: [Int]
       link: String
     ): Listing
     getOrCreateLocation(suggestAddress: String!, unit: String, placeId: String): Location

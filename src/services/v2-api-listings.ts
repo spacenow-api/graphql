@@ -46,6 +46,22 @@ class V2ListingsAPI extends PersonalizationAPI {
     return this.get(`${this.path}/listing/${id}`).catch(err => new ApolloError(toError(err)));
   };
 
+  getV2ListingActivities = (id: any) => {
+    return this.get(`${this.path}/listing/${id}/activities`).catch(err => new ApolloError(toError(err)));
+  };
+
+  getV2ListingFeatures = (id: any) => {
+    return this.get(`${this.path}/listing/${id}/features`).catch(err => new ApolloError(toError(err)));
+  };
+
+  getV2ListingStyles = (id: any) => {
+    return this.get(`${this.path}/listing/${id}/styles`).catch(err => new ApolloError(toError(err)));
+  };
+
+  getV2ListingAccess = (id: any) => {
+    return this.get(`${this.path}/listing/${id}/access`).catch(err => new ApolloError(toError(err)));
+  };
+
   postV2Listing = () => {
     return this.post(`${this.path}/listing`).catch(err => new ApolloError(toError(err)));
   };

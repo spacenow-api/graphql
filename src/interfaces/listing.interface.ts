@@ -37,6 +37,7 @@ export interface IUpdateRequest {
   listingActivities?: Array<number>;
   listingAccess?: Array<number>;
   listingFeatures?: Array<number>;
+  listingStyles?: Array<number>;
   link?: string;
 }
 
@@ -178,6 +179,7 @@ export interface IListingDataResponse {
   spaceType: string;
   bookingType: string;
   accessType: string;
+  listingStyle: string;
 }
 
 export interface IListingResponse {
