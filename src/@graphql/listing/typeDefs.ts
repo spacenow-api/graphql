@@ -309,6 +309,7 @@ const typeDefs = gql`
     photos: [ListingPhotos]
     accessDays: ListingAccessDays
     settingsParent: ListSettingsParent
+    category: ListSettings
     user: User
   }
 

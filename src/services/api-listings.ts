@@ -91,6 +91,10 @@ class ListingsAPI extends PersonalizationAPI {
     return this.get(`/v2/listing/${id}/styles`).catch(err => new ApolloError(toError(err)));
   };
 
+  getV2Category = (id: any) => {
+    return this.get(`/v2/category/${id}`).catch(err => new ApolloError(toError(err)));
+  };
+
   /**
    * V1
    */

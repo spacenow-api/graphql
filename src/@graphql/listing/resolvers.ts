@@ -46,6 +46,10 @@ const resolvers = {
     photos(parent: any, args: any, context: any, info: any) {
       return context.dataSources.listingsAPI.getPhotosByListingId(parent.id);
     },
+    category(parent: any, args: any, context: any, info: any) {
+      console.log("PARENT ID", parent.listSettingsParentId)
+      return context.dataSources.listingsAPI.getV2Category(parent.listSettingsParentId);
+    },
     settingsParent(parent: any, args: any, context: any, info: any) {
       return context.dataSources.listingsAPI.getListingSettingsByListingId(parent.id);
     },
@@ -142,7 +146,6 @@ const resolvers = {
     getListingById: async (_: any, args: any, { dataSources }: any) => {
       const { listingsAPI, locationsAPI, usersAPI } = dataSources;
       const listing = await listingsAPI.fetchWholeListing(args.id, locationsAPI, usersAPI, args.isPublic);
-      console.log("LISTING ===>>>", listing)
       return listing
     },
 
@@ -172,7 +175,6 @@ const resolvers = {
     },
 
     getAllAccessTypes: async (_: any, args: any, { dataSources }: any) => {
-      console.log("dataSources", dataSources);
       return dataSources.listingsAPI.getAllAccessTypes();
     },
 
