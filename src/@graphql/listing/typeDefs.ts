@@ -128,7 +128,7 @@ const typeDefs = gql`
     updatedAt: String
     settingsData: ListSettings
   }
-  
+
   type Amenity {
     id: Int
     listingId: Int
@@ -212,6 +212,7 @@ const typeDefs = gql`
     region: String
     key: String
     type: String
+    category: String
     createdAt: String
     updatedAt: String
   }
@@ -469,6 +470,8 @@ const typeDefs = gql`
     getListingsCategories: [ListingsCategoriesCount]
     getPhotosByListingId(listingId: Int!): [ListingPhotos]
     getVideoByListingId(listingId: Int!): ListingPhotos
+    getFloorplanByListingId(listingId: Int!): ListingPhotos
+    getMenuByListingId(listingId: Int!): ListingPhotos
     getLocationById(id: Int!): Location
     getLocationsCountListings: [LocationsCountListings]
     getAllAmenitiesBySubCategoryId(subCategoryId: Int!): [ListSettings]
@@ -490,7 +493,7 @@ const typeDefs = gql`
   }
 
   extend type Mutation {
-    uploadPhoto(file: Upload, listingId: Int!): ListingPhotos
+    uploadPhoto(file: Upload, category: String!, listingId: Int!): ListingPhotos
     deletePhoto(photoId: Int!, listingId: Int!): Success
     setCoverPhoto(photoId: Int!, listingId: Int!): Success
     createOrUpdateListing(

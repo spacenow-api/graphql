@@ -1,48 +1,43 @@
 interface IAsset {
-	title: string;
-	description: string;
-	accessControl: string;
-	isActive: true;
+  title: string;
+  description: string;
+  accessControl: string;
+  isActive: true;
 }
 
 interface IAssetInput {
-	file: File;
-	folder?: string;
+  file: File;
+  folder?: string;
 }
 
 interface IAssetOutput extends IAsset {
-	fileType: string;
-	fileName: string;
-	sizes: Array<IAssetSize>;
-	createdAt: Date;
-	updatedAt: Date;
+  fileType: string;
+  fileName: string;
+  sizes: Array<IAssetSize>;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 interface IAssetSize {
-	size: string;
+  size: string;
 }
 
 interface IListingAsset {
-	listingId: number;
-	assetId: string;
-	isCover: boolean;
+  listingId: number;
+  assetId: string;
+  isCover: boolean;
 }
 
 interface IListingAssetInput extends IListingAsset {}
 
 interface IListingAssetOutput extends IListingAsset {
-	asset: IAssetOutput;
+  asset: IAssetOutput;
 }
 
 interface IPhotoInput {
-	file: File;
-	listingId: number;
+  file: File;
+  category: string;
+  listingId: number;
 }
 
-export {
-	IAssetOutput as default,
-	IAssetInput,
-	IListingAssetOutput,
-	IListingAssetInput,
-	IPhotoInput,
-};
+export { IAssetOutput as default, IAssetInput, IListingAssetOutput, IListingAssetInput, IPhotoInput };

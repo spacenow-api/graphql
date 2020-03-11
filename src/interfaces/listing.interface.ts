@@ -81,6 +81,7 @@ export interface IListingPhotosResponse {
   region: string;
   key: string;
   type: string;
+  category: string;
   createdAt: Date;
   updatedAt: Date;
 }

@@ -6,6 +6,7 @@ const typeDefs = gql`
     name: String
     isCover: Boolean
     type: String
+    category: String
   }
 
   type SearchListingData {

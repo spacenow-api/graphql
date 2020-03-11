@@ -47,7 +47,7 @@ const resolvers = {
       return context.dataSources.listingsAPI.getPhotosByListingId(parent.id);
     },
     category(parent: any, args: any, context: any, info: any) {
-      console.log("PARENT ID", parent.listSettingsParentId)
+      console.log("PARENT ID", parent.listSettingsParentId);
       return context.dataSources.listingsAPI.getV2Category(parent.listSettingsParentId);
     },
     settingsParent(parent: any, args: any, context: any, info: any) {
@@ -86,6 +86,14 @@ const resolvers = {
 
     getVideoByListingId: async (_: any, args: any, { dataSources }: any) => {
       return dataSources.listingsAPI.getVideoByListingId(args.listingId);
+    },
+
+    getFloorplanByListingId: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.listingsAPI.getFloorplanByListingId(args.listingId);
+    },
+
+    getMenuByListingId: async (_: any, args: any, { dataSources }: any) => {
+      return dataSources.listingsAPI.getMenuByListingId(args.listingId);
     },
 
     getAvailabilitiesByListingId: async (_: any, args: any, { dataSources }: any) => {
@@ -146,7 +154,7 @@ const resolvers = {
     getListingById: async (_: any, args: any, { dataSources }: any) => {
       const { listingsAPI, locationsAPI, usersAPI } = dataSources;
       const listing = await listingsAPI.fetchWholeListing(args.id, locationsAPI, usersAPI, args.isPublic);
-      return listing
+      return listing;
     },
 
     getLetterListingsByState: async (_: any, args: any, { dataSources }: any) => {
