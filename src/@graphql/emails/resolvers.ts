@@ -1,17 +1,12 @@
-
 const resolvers = {
   Mutation: {
-    
     sendEmail: async (_: any, args: any, { dataSources }: any) => {
       const { emailsAPI } = dataSources;
 
-      await emailsAPI.sendEmail(
-        args
-      );
+      await emailsAPI.sendEmail(args);
 
-      return { status: "success" }
-    },
-
+      return { status: "success" };
+    }
   }
 };
 

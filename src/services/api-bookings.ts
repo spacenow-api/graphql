@@ -6,7 +6,6 @@ import { toError } from "./../helpers/exceptions/HttpException";
 import { ApolloError } from "apollo-server-express";
 
 class BookingsAPI extends PersonalizationAPI {
-
   constructor(apiAddress: string) {
     super();
     this.baseURL = apiAddress;
@@ -45,10 +44,9 @@ class BookingsAPI extends PersonalizationAPI {
   };
 
   getAllBookingsByUser = async (args: any): Promise<any> => {
-    this.memoizedResults.clear()
-    let bookingsApi = `/byGuestId/${args.userId}`
-    if (args.userType === "host")
-      bookingsApi = `/byHostId/${args.userId}`
+    this.memoizedResults.clear();
+    let bookingsApi = `/byGuestId/${args.userId}`;
+    if (args.userType === "host") bookingsApi = `/byHostId/${args.userId}`;
     const bookings = await this.get(bookingsApi).catch(err => new ApolloError(toError(err)));
     const sortedItems = bookings.items.sort((a: IBooking, b: IBooking) => b.updatedAt - a.updatedAt);
     return {
@@ -59,35 +57,35 @@ class BookingsAPI extends PersonalizationAPI {
 
   getHourlyAvailability = async (listingId: number, date: string, checkInHour: string, checkOutHour: string): Promise<any> => {
     return this.post(`/getHourlyAvailability`, { listingId, date, checkInHour, checkOutHour }).catch(err => new ApolloError(toError(err)));
-  }
+  };
 
   getTotalBookingsByDate = async (days: number): Promise<any> => {
     return this.get(`/date?days=${days}`).catch(err => new ApolloError(toError(err)));
   };
 
   listVouchers = async () => {
-    return this.get('/voucher').catch(err => new ApolloError(toError(err)));
-  }
+    return this.get("/voucher").catch(err => new ApolloError(toError(err)));
+  };
 
   createVoucher = async (code: string, type: string, value: number, usageLimit: number, expireAt: string) => {
-    return this.post('/voucher', { code, type, value, usageLimit, expireAt }).catch(err => { console.log("ERROR ===>>>", err); new ApolloError(toError(err)) });
-  }
+    return this.post("/voucher", { code, type, value, usageLimit, expireAt }).catch(err => new ApolloError(toError(err)));
+  };
 
   desactiveVoucher = async (voucherCode: string) => {
     return this.delete(`/voucher/${voucherCode}`).catch(err => new ApolloError(toError(err)));
-  }
+  };
 
   validateVoucher = async (voucherCode: string) => {
     return this.get(`/voucher/${voucherCode}/validate`).catch(err => new ApolloError(toError(err)));
-  }
+  };
 
   insertVoucher = async (voucherCode: string, bookingId: string) => {
     return this.put(`/voucher/${voucherCode}/booking/${bookingId}/insert`).catch(err => new ApolloError(toError(err)));
-  }
+  };
 
   removeVoucher = async (voucherCode: string, bookingId: string) => {
     return this.put(`/voucher/${voucherCode}/booking/${bookingId}/remove`).catch(err => new ApolloError(toError(err)));
-  }
+  };
 
   getPricesDetails = async (period: number, basePrice: number, guestServiceFee: number, totalPrice: number, voucherCode: string) => {
     try {
@@ -98,15 +96,17 @@ class BookingsAPI extends PersonalizationAPI {
       let valueDiscount = 0;
       if (voucherCode) {
         const validateResult = await this.validateVoucher(voucherCode);
-        if (validateResult.status === 'VALID') {
-          const { data: { value, type } } = validateResult;
+        if (validateResult.status === "VALID") {
+          const {
+            data: { value, type }
+          } = validateResult;
           valueVoucher = value;
           switch (type) {
-            case 'percentual': {
+            case "percentual": {
               valueDiscount = (valuePerQuantity + valueFee) * (value / 100);
               break;
             }
-            case 'zerofee': {
+            case "zerofee": {
               valueDiscount = valueFee;
               break;
             }
@@ -121,7 +121,7 @@ class BookingsAPI extends PersonalizationAPI {
     } catch (err) {
       return new ApolloError(toError(err));
     }
-  }
+  };
 }
 
 export default BookingsAPI;
