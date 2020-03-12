@@ -47,7 +47,6 @@ const resolvers = {
       return context.dataSources.listingsAPI.getPhotosByListingId(parent.id);
     },
     category(parent: any, args: any, context: any, info: any) {
-      console.log("PARENT ID", parent.listSettingsParentId);
       return context.dataSources.listingsAPI.getV2Category(parent.listSettingsParentId);
     },
     settingsParent(parent: any, args: any, context: any, info: any) {
