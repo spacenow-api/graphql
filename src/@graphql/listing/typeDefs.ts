@@ -1,7 +1,5 @@
 import { gql } from "apollo-server-express";
 
-// uploadPhoto(file: Upload, category: String!, listingId: Int!): ListingPhotos
-
 const typeDefs = gql`
   type Location {
     id: Int
@@ -501,7 +499,7 @@ const typeDefs = gql`
   }
 
   extend type Mutation {
-    uploadPhoto(file: Upload, listingId: Int!): ListingPhotos
+    uploadPhoto(file: Upload, category: String!, listingId: Int!): ListingPhotos
     deletePhoto(photoId: Int!, listingId: Int!): Success
     setCoverPhoto(photoId: Int!, listingId: Int!): Success
     createOrUpdateListing(
