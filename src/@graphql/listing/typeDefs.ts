@@ -1,5 +1,7 @@
 import { gql } from "apollo-server-express";
 
+// uploadPhoto(file: Upload, category: String!, listingId: Int!): ListingPhotos
+
 const typeDefs = gql`
   type Location {
     id: Int
@@ -460,7 +462,11 @@ const typeDefs = gql`
     getAvailabilitiesByListingId(listingId: Int!): Availabilities
     getAllBookings: [Booking]
     getBooking: Booking
-    getAllHolidays(countryShortName: String, year: Int, state: String!): [Holidays]
+    getAllHolidays(
+      countryShortName: String
+      year: Int
+      state: String!
+    ): [Holidays]
     getListingById(id: Int!, isPublic: Boolean): Listing
     getAllListingsByUser(userId: String!, isPublic: Boolean): Listings
     getAllPlainListings(page: Int!, limit: Int!): Listings
@@ -485,7 +491,9 @@ const typeDefs = gql`
     getPrivateReviews(listingId: Int!): [PrivateReview]
     getExternalClicksByUser(userId: String!): ExternalClicksType
     fetchAddonsByListing(listingId: Int!): [AddonsListingType]
-    fetchAddonsBySubCategory(listSettingsId: Int!): [AddonsSubCategorySuggestionsType]
+    fetchAddonsBySubCategory(
+      listSettingsId: Int!
+    ): [AddonsSubCategorySuggestionsType]
     fetchAddonsByBooking(bookingId: String!): [AddonsListingType]
     getInspections: [InspectionType]
     getSavedListingsByUser(userId: String!): [SavedListingType]
@@ -493,7 +501,7 @@ const typeDefs = gql`
   }
 
   extend type Mutation {
-    uploadPhoto(file: Upload, category: String!, listingId: Int!): ListingPhotos
+    uploadPhoto(file: Upload, listingId: Int!): ListingPhotos
     deletePhoto(photoId: Int!, listingId: Int!): Success
     setCoverPhoto(photoId: Int!, listingId: Int!): Success
     createOrUpdateListing(
@@ -533,7 +541,11 @@ const typeDefs = gql`
       listingStyles: [Int]
       link: String
     ): Listing
-    getOrCreateLocation(suggestAddress: String!, unit: String, placeId: String): Location
+    getOrCreateLocation(
+      suggestAddress: String!
+      unit: String
+      placeId: String
+    ): Location
     publish(listingId: Int!, status: Boolean!): Listing
     cleanListingAvailabilities(listingId: Int!): Success
     removeListingById(listingId: Int!): Success
@@ -550,15 +562,35 @@ const typeDefs = gql`
       ratingCleanliness: Int!
       ratingLocation: Int!
     ): [Review]
-    createReviewFromHost(bookingId: String!, publicComment: String!, ratingOverall: Int!): [Review]
+    createReviewFromHost(
+      bookingId: String!
+      publicComment: String!
+      ratingOverall: Int!
+    ): [Review]
     saveClicksByListing(listingId: Int!): ExternalClicksType
-    createAddon(listingId: Int!, description: String!, value: Float!): AddonsListingType
+    createAddon(
+      listingId: Int!
+      description: String!
+      value: Float!
+    ): AddonsListingType
     deleteAddon(id: String!): AddonsListingType
-    createAddonSuggestion(listSettingsId: Int!, description: String!): AddonsSubCategorySuggestionsType
+    createAddonSuggestion(
+      listSettingsId: Int!
+      description: String!
+    ): AddonsSubCategorySuggestionsType
     deleteAddonSuggestion(id: String!): AddonsSubCategorySuggestionsType
     setAddonOnBooking(bookingId: String!, addonId: String!): [AddonsListingType]
-    removeAddonFromBooking(bookingId: String!, addonId: String!): [AddonsListingType]
-    createInspection(listingId: Int!, messageId: String!, guestId: String, date: String!, time: String!): InspectionType
+    removeAddonFromBooking(
+      bookingId: String!
+      addonId: String!
+    ): [AddonsListingType]
+    createInspection(
+      listingId: Int!
+      messageId: String!
+      guestId: String
+      date: String!
+      time: String!
+    ): InspectionType
     updateInspection(id: String!, status: String!): InspectionType
     createSavedListing(listingId: Int!, userId: String!): SavedListingType
     removeSavedListingByUser(listingId: Int!, userId: String!): SavedListingType
